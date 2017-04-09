@@ -52,7 +52,7 @@ public:
 	void User
 	//UserId is for identify your identification.
 	Train get_train( int UserId, string Trainid );
-	QTrain query_train( int UserId, string TrainId, int DayTime );
+	vecotr<QTrain> query_train( int UserId, string TrainId, int DayTime );
 	//Query one station.
 	vector<QTrain> query_station( int UserId, string Station, short StationType );
 	//Query two stations.
@@ -189,7 +189,7 @@ class DataBase_Train : public DataBase_Base
 		vector<int>stopTime;
 		vector<int>startTime;
 	};
-	struct query_Train
+	struct QTrain
 	{
 		bool availiable;
 
