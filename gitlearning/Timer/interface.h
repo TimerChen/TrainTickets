@@ -19,13 +19,13 @@ public:
 	string to_string();
 };
 
-class DataBase_Base
+class DataBase_Base                                     //流程控制,基类库
 {
 public:
 	DataBase_Base( const string &Name = "Default" )
 	{ initialize(); }
 	~DataBase_Base()
-	{ saveData(); }
+	{ saveData(); }                         
 private:
 	virtual void loadData();
 	virtual void saveData();
@@ -35,7 +35,7 @@ private:
 	The data base controll all types of databases.
 	I/O and other main things.
 */
-class DataBase_Main : public DataBase_Base
+class DataBase_Main : public DataBase_Base             //对外接口
 {
 private:
 	loadData();
@@ -80,7 +80,7 @@ public:
 };
 //A class for save the user who connect with server.
 //So it will never save data.
-class DataBase_User : public DataBase_Base
+class DataBase_User : public DataBase_Base             //前后端分离进行身份验证,
 {
 
 public:
@@ -90,7 +90,7 @@ public:
 	// Login with your account id and password.
 	// return 0: failed
 	// return else : template id
-	int login( cosnt string &ID, const string &password );
+	int login( const string &ID, const string &password );
 
 	//-1:not exist.
 	int query_identifyType( int UserId );
