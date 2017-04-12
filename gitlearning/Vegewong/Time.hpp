@@ -1,23 +1,20 @@
-//Time.hpp
-//Vegewong 2017/4/11 0:53
-//该类实现了 int → 普通时间 转换的功能
-//默认时间的字符串按照"XXXX-XX-XX,XX:XX(:XX)"格式给出 e.g.2017-03-28,15:39(:59)
-#include <cstdlib>
 #include <cstdio>
 #include <string>
+#include <sstream>
+#include <iomanip>
 using namespace std;
-class TimeFormatError{};
 
-bool isLeap(const short &Year)
-{
-    return (Year % 4 == 0 && (Year % 100 != 0 || Year % 400 == 0));
-}
+#define MIN 60
+#define HOU 3600
+#define DAY 86400
+#define MONTH 2678400
+#define YEAR 31622400
 
 class Time
 {
-  private:
-    bool time_valid(const short &Year, const short &Month, const short &Day,
-                    const short &Hou, const short &Min, const short &Sec);
+ // private:
+    //bool time_valid(const short &Year, const short &Month, const short &Day,
+                   // const short &Hou, const short &Min, const short &Sec);
 
   public:
     Time(const int &t = 0);
@@ -27,112 +24,65 @@ class Time
     int to_int();
     Time &set(const int &t = 0);
     string to_string();
+    stringstream stream;
 };
-
-bool Time::time_valid(const short &Year, const short &Month, const short &Day, const short &Hou,
-                      const short &Min, const short &Sec)
-{
-    if (2010 < Year && Year < 2020 && 0 < Month && Month <= 12 && 0 < Day 
-        && 0 <= Hou && Hou <= 24 && 0 <= Min && Min <= 59 && 0 <= Sec && Sec <= 59)
-    {
-        switch (Month)
-        {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-        {
-            if (Day <= 31)
-                return true;
-            else
-                return false;
-            break;
-        }
-        case 2:
-        {
-            if ((isLeap(Year) && Day <= 29) || (!isLeap(Year) && Day <= 28))
-                return true;
-            else
-                return false;
-            break;
-        }
-        default:
-        {
-            if (Day <= 30)
-                return true;
-            else
-                return false;
-            break;
-        }
-        }
-    }
-}
-
-Time::Time(const string &t)
-{
-    scanf("%d%c%d%c%d%c%d%c%d", &year, &month,
-          &day, &hou, &min); //读取各数值,并丢弃其后符号
-    char tmp;
-    scanf("%c", &tmp);
-    if (tmp == '\0')
-        sec = 0;
-    else if (tmp == ':')
-        scanf("%d", &sec);
-    else
-        throw TimeFormatError();
-
-    if (!time_valid(year, month, day, hou, min, sec))
-        throw TimeFormatError();
-}
 
 Time::Time(const int &t)
 {
     int time_proce = t;
 
-    year = time_proce / (366 * 86400);
-    time_proce -= 366 * 86400 * year;
-    year += 2010;
+    year = time_proce / YEAR;
+    time_proce -= YEAR * year;
+    year += 2015;
     //
-    month = time_proce / (86400 * 31);
-    time_proce -= month * 31 * 86400;
+    month = time_proce / MONTH;
+    time_proce -= month * MONTH;
     //
-    day = time_proce / 86400;
-    time_proce -= day * 86400;
+    day = time_proce / DAY;
+    time_proce -= day * DAY;
     //
-    hou = time_proce / 3600;
-    time_proce = hou * 3600;
+    hou = time_proce / HOU;
+    time_proce -= hou * HOU;
     //
-    min = time_proce / 60;
-    time_proce = min * 60;
+    min = time_proce / MIN;
+    time_proce -= min * MIN;
     //
     sec = time_proce;
 }
 
-int Time::to_int()
+Time::Time(const string &t)
 {
-    return (sec + min * 60 + hou * 3600 + day * 86400 + 
-            month * 31 * 86400 + year * 366 * 86400);
+    //sscanf(t, "%d-%d-%d %d:%d:%d", &year, &month, &day,
+    //                              &hou, &min, &sec);
+    //以上代码因为C++11特性无法工作
+    char tmp;
+    
+    stream.clear();
+    stream << t;
+    stream >> year >> tmp >> month >> tmp >> day 
+                          >> hou >> tmp >> min >> tmp >> sec;
 }
 
 string Time::to_string()
 {
-    char year_s[4];
-    char month_s[2];
-    char day_s[2];
-    char hou_s[2];
-    char min_s[2];
-    char sec_s[2];
-    itoa(year, year_s, 10);
-    itoa(month, month_s, 10);
-    itoa(day, day_s, 10);
-    itoa(hou, hou_s, 10);
-    itoa(min, min_s, 10);
-    itoa(sec, sec_s, 10);
+    stream.clear();
+    string string_to_output1, string_to_output2, string_to_output3;
     
-    string time_ans = year_s;
-    time_ans+'-'+month_s+'-'+day_s+','+hou_s+':'+min_s+':'+sec_s;
-    return time_ans;
+    stream << year << '-' << month << '-' << day << ' ';
+    stream << setfill('0') << setw(2) << hou << ':';
+    stream << setfill('0') << setw(2) << min << ':' << setfill('0') << setw(2) << sec;
+    stream >> string_to_output1;
+    stream >> string_to_output2;
+    string_to_output3 = string_to_output1 + ' ' + string_to_output2;
+    
+    return string_to_output3;
+}
+
+int Time::to_int()
+{
+    int tmp = 0;
+    tmp = (year - 2015) * YEAR + month * MONTH + day * DAY
+        + hou * HOU + min * MIN + sec;
+
+    return tmp;
 }
