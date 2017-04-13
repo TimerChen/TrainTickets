@@ -21,7 +21,6 @@ void FileModify::open()
 {
 	if(file_ptr.good())
 		file_ptr.open(file.c_str());
-		cout << file <<endl;
 }
 
 void FileModify::close()
