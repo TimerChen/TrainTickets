@@ -10,7 +10,7 @@ int main() {
         a.push_back(i);
     }
 
-    SmartPoint<vector<int>> p = &a;
+    shared_ptr<vector<int>> p = &a;
     p->push_back(2);
     for (vector<int>::iterator it = (*p).begin(); it != (*p).end(); ++it) {
         cout << *it << endl;
