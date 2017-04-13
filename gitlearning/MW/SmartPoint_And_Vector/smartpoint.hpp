@@ -1,41 +1,46 @@
 #ifndef SMART_POINT
 #define SMART_POINT
 
-template <typename T, bool array> class SmartPoint;
-template <typename T, bool array> class SmartPoint_Base {
-    friend class SmartPoint<T, array>;
+template <typename T, bool array, bool opnew> class shared_ptr;
+template <typename T, bool array, bool opnew> class shared_ptr_Base {
+    friend class shared_ptr<T, array, opnew>;
 
   private:
     int cnt;
     T *baseptr;
-    SmartPoint_Base(T *_ptr) : baseptr(_ptr), cnt(1) {}
+    shared_ptr_Base(T *_ptr) : baseptr(_ptr), cnt(1) {}
     void AddNewPoint() { ++cnt; }
     void distruction() {
         --cnt;
-        if (cnt <= 0) this->~SmartPoint_Base();
+        if (cnt <= 0) this->~shared_ptr_Base();
     }
-    ~SmartPoint_Base() {
-        if (array)
-            delete[] baseptr;
-        else
-            delete baseptr;
+    T &operator[](int i) { return baseptr[i]; }
+    ~shared_ptr_Base() {
+        if (opnew) {
+            if (array)
+                delete[] baseptr;
+            else
+                delete baseptr;
+        } else {
+            operator delete(baseptr);
+        }
     }
 };
 
-template <typename T, bool array = false> class SmartPoint {
-    SmartPoint_Base<T, array> *base;
+template <typename T, bool array = false, bool opnew = false> class shared_ptr {
+    shared_ptr_Base<T, array, opnew> *base;
 
   public:
-    SmartPoint() : base(nullptr) {}
-    SmartPoint(T *ptr) : base(new SmartPoint_Base<T, array>(ptr)) {}
-    SmartPoint(const SmartPoint &rs) {
+    shared_ptr() : base(nullptr) {}
+    shared_ptr(T *ptr) : base(new shared_ptr_Base<T, array, opnew>(ptr)) {}
+    shared_ptr(const shared_ptr &rs) {
         base = rs.base;
         base->AddNewPoint();
     }
     T &operator*() { return *(base->baseptr); }
-    T &operator[](int i) { return (base->baseptr)[i]; }
+    T &operator[](int i) { return (*base)[i]; }
     T *operator->() { return base->baseptr; }
-    SmartPoint &operator=(const SmartPoint &rs) {
+    shared_ptr &operator=(const shared_ptr &rs) {
         if (!base) {
             base = rs.base;
             base->AddNewPoint();
@@ -46,15 +51,26 @@ template <typename T, bool array = false> class SmartPoint {
         }
         return *this;
     }
-    SmartPoint &operator=(const T *rt) {
+    shared_ptr &operator=(const T *rt) {
         if (base) {
             base->distruction();
         }
-        base = new SmartPoint_Base<T, array>(rt);
+        base = new shared_ptr_Base<T, array, opnew>(rt);
         return *this;
     }
+    bool operator==(const shared_ptr &rt) const { return base == rt.base; }
+    bool operator!=(const shared_ptr &rt) const { return base != rt.base; }
 
-    ~SmartPoint() { base->distruction(); }
+    ~shared_ptr() { base->distruction(); }
+};
+
+template <typename T> class normal_ptr {
+    T *ptr;
+
+  public:
+    normal_ptr(T *rp = nullptr) : ptr(rp) {}
+    T &operator*() const { return *ptr; }
+    T *operator->() const { return ptr; }
 };
 
 #endif
