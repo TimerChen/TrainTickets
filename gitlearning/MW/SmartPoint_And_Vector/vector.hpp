@@ -79,14 +79,17 @@ template <typename T> class vector {
          *   even if there are not enough elements, just return the answer.
          * as well as operator-
          */
-
+        iterator(const iterator &it) {
+            pos = it.pos;
+            oriplace = it.oriplace;
+        }
         iterator operator+(const int &n) const {
             // TODO
-            return iterator(pos + n, *oriplace);
+            return iterator(pos + n, &(*oriplace));
         }
         iterator operator-(const int &n) const {
             // TODO
-            return iterator(pos - n, *oriplace);
+            return iterator(pos - n, &(*oriplace));
         }
         // return th distance between two iterator,
         // if these two iterators points to different vectors, throw
@@ -115,7 +118,7 @@ template <typename T> class vector {
          * TODO iter++
          */
         iterator operator++(int) {
-            iterator tmp(pos, *oriplace);
+            iterator tmp(pos, &(*oriplace));
             ++pos;
             return tmp;
         }
@@ -130,7 +133,7 @@ template <typename T> class vector {
          * TODO iter--
          */
         iterator operator--(int) {
-            iterator tmp(pos, *oriplace);
+            iterator tmp(pos, &(*oriplace));
             --pos;
             return tmp;
         }
@@ -178,9 +181,9 @@ template <typename T> class vector {
         friend const_iterator vector::cbegin() const;
         friend const_iterator vector::cend() const;
         friend iterator;
-        normal_ptr<shared_ptr<T, true, true>> oriplace;
+        normal_ptr<const shared_ptr<T, true, true>> oriplace;
         size_t pos;
-        const_iterator(size_t _pos, shared_ptr<T, true, true> *_c)
+        const_iterator(size_t _pos, const shared_ptr<T, true, true> *_c)
             : pos(_pos), oriplace(_c) {}
 
       public:
@@ -189,14 +192,17 @@ template <typename T> class vector {
         *   even if there are not enough elements, just return the answer.
         * as well as operator-
         */
-
+        const_iterator(const const_iterator &it) {
+            pos = it.pos;
+            oriplace = it.oriplace;
+        }
         const_iterator operator+(const int &n) const {
             // TODO
-            return const_iterator(pos + n, *oriplace);
+            return const_iterator(pos + n, &(*oriplace));
         }
         const_iterator operator-(const int &n) const {
             // TODO
-            return const_iterator(pos - n, *oriplace);
+            return const_iterator(pos - n, &(*oriplace));
         }
         // return th distance between two iterator,
         // if these two iterators points to different vectors, throw
@@ -225,7 +231,7 @@ template <typename T> class vector {
         * TODO iter++
         */
         const_iterator operator++(int) {
-            const_iterator tmp(pos, *oriplace);
+            const_iterator tmp(pos, &(*oriplace));
             ++pos;
             return tmp;
         }
@@ -240,7 +246,7 @@ template <typename T> class vector {
         * TODO iter--
         */
         const_iterator operator--(int) {
-            const_iterator tmp(pos, *oriplace);
+            const_iterator tmp(pos, &(*oriplace));
             --pos;
             return tmp;
         }
@@ -254,7 +260,7 @@ template <typename T> class vector {
         /**
         * TODO *it
         */
-        const T &operator*() const { return *oriplace[pos]; }
+        const T &operator*() const { return (*oriplace)[pos]; }
         /**
         * a operator to check whether two iterators are same (pointing to the
         * same memory).
@@ -411,7 +417,7 @@ template <typename T> class vector {
         container[pos.pos].~T();
         new (static_cast<void *>(&container[pos.pos])) T(value);
         ++sz;
-        return iterator(pos.pos, container);
+        return iterator(pos.pos, &container);
     }
     /**
      * inserts value at index ind.

@@ -15,6 +15,7 @@ template <typename T, bool array, bool opnew> class shared_ptr_Base {
         if (cnt <= 0) this->~shared_ptr_Base();
     }
     T &operator[](int i) { return baseptr[i]; }
+    const T &operator[](int i) const { return *baseptr[i]; }
     ~shared_ptr_Base() {
         if (opnew) {
             if (array)
@@ -39,6 +40,7 @@ template <typename T, bool array = false, bool opnew = false> class shared_ptr {
     }
     T &operator*() { return *(base->baseptr); }
     T &operator[](int i) { return (*base)[i]; }
+    const T &operator[](int i) const { return (*base)[i]; }
     T *operator->() { return base->baseptr; }
     shared_ptr &operator=(const shared_ptr &rs) {
         if (!base) {
@@ -51,7 +53,7 @@ template <typename T, bool array = false, bool opnew = false> class shared_ptr {
         }
         return *this;
     }
-    shared_ptr &operator=(const T *rt) {
+    shared_ptr &operator=(T *rt) {
         if (base) {
             base->distruction();
         }
@@ -69,6 +71,7 @@ template <typename T> class normal_ptr {
 
   public:
     normal_ptr(T *rp = nullptr) : ptr(rp) {}
+    normal_ptr &operator=(const normal_ptr &rp) { ptr = rp.ptr; }
     T &operator*() const { return *ptr; }
     T *operator->() const { return ptr; }
 };
