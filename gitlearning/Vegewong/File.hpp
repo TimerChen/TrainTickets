@@ -19,8 +19,7 @@ class FileModify
 
 void FileModify::open()
 {
-	if(file_ptr.good())
-		file_ptr.open(file.c_str());
+	file_ptr.open(file.c_str(), ios::app);
 }
 
 void FileModify::close()
@@ -40,7 +39,8 @@ void FileModify::reset()
 
 string FileModify::read()
 {
-	fstream file_out(file.c_str());
+	fstream file_out;
+	file_out.open(file.c_str());
 	string string_read;
 	string tmp;
 	
@@ -57,5 +57,5 @@ string FileModify::read()
 
 void FileModify::write(const string &data)
 {
-	file_ptr << data;
+	file_ptr << data << endl;
 }
