@@ -1,0 +1,10 @@
+BasedOnStyle: Mozilla
+IndentWidth: 4
+AllowShortIfStatementsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+IndentCaseLabels: false
+SpaceAfterControlStatementKeyword: true
+AllowShortFunctionsOnASingleLine: false
+AlignAfterOpenBracket: Align
+---  
+Language: Cpp  
