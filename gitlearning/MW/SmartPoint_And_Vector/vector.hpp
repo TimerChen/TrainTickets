@@ -7,9 +7,7 @@
 #include <climits>
 #include <cstddef>
 
-//#include <cstdlib>
 #include <new>
-//#include <vector>//���Լ��ӵģ���������ɾ����������������
 
 namespace sjtu {
 
@@ -17,8 +15,9 @@ namespace sjtu {
  * a data container like std::vector
  * store data in a successive memory and support random access.
  */
-template <typename T> class vector {
-    typedef unsigned int size_t;
+template <typename T>
+class vector {
+    // typedef unsigned int size_t;
     shared_ptr<T, true, true> container;
     size_t sz;
     size_t upbound;
@@ -41,7 +40,7 @@ template <typename T> class vector {
         }
     }
 
-  public:
+   public:
     /**
      * TODO
      * a type for actions of the elements of a vector, and you should write
@@ -53,7 +52,7 @@ template <typename T> class vector {
     friend class iterator;
     class const_iterator;
     class iterator {
-      private:
+       private:
         /**
          * TODO add data members
          *   just add whatever you want.
@@ -73,7 +72,7 @@ template <typename T> class vector {
         iterator(size_t _pos, shared_ptr<T, true, true> *_c)
             : pos(_pos), oriplace(_c) {}
 
-      public:
+       public:
         /**
          * return a new iterator which pointer n-next elements
          *   even if there are not enough elements, just return the answer.
@@ -173,7 +172,7 @@ template <typename T> class vector {
      * has same function as iterator, just for a const object.
      */
     class const_iterator {
-      private:
+       private:
         /**
         * TODO add data members
         *   just add whatever you want.
@@ -186,7 +185,7 @@ template <typename T> class vector {
         const_iterator(size_t _pos, const shared_ptr<T, true, true> *_c)
             : pos(_pos), oriplace(_c) {}
 
-      public:
+       public:
         /**
         * return a new iterator which pointer n-next elements
         *   even if there are not enough elements, just return the answer.
@@ -295,7 +294,8 @@ template <typename T> class vector {
             new (static_cast<void *>(&container[i])) T(other[i]);
         }
     }
-    template <typename A> vector(const A &other) {
+    template <typename A>
+    vector(const A &other) {
         upbound = other.capacity();
         sz = other.size();
         container = reinterpret_cast<T *>(operator new(sizeof(T) * upbound));
@@ -307,8 +307,8 @@ template <typename T> class vector {
      * TODO Destructor
      */
     ~vector() {
-        size_t osz = sz;
-        for (int i = 0; i != osz; ++i) {
+        // size_t osz = sz;
+        for (int i = 0; i != sz; ++i) {
             container[i].~T();
         }
     }
