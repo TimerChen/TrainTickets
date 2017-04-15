@@ -23,8 +23,6 @@ class shared_ptr_Base
     void distruction()
     {
         --cnt;
-        if (cnt <= 0)
-            this->~shared_ptr_Base();
     }
     T& operator[](int i)
     {
@@ -89,6 +87,8 @@ class shared_ptr
             base->AddNewPoint();
         } else {
             base->distruction();
+            if (base->cnt <= 0)
+                delete base;
             base = rs.base;
             base->AddNewPoint();
         }
@@ -98,6 +98,8 @@ class shared_ptr
     {
         if (base) {
             base->distruction();
+            if (base->cnt <= 0)
+                delete base;
         }
         base = new shared_ptr_Base<T, array, opnew>(rt);
         return *this;
@@ -114,6 +116,8 @@ class shared_ptr
     ~shared_ptr()
     {
         base->distruction();
+        if (base->cnt <= 0)
+            delete base;
     }
 };
 
