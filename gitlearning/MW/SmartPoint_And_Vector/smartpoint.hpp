@@ -3,6 +3,8 @@
 
 template <typename T, bool array, bool opnew>
 class shared_ptr;
+template <typename T>
+class normal_ptr;
 template <typename T, bool array, bool opnew>
 class shared_ptr_Base
 {
@@ -112,29 +114,29 @@ class shared_ptr
     {
         return base != rt.base;
     }
-    normal_ptr operator+(const int pos)
+    normal_ptr<T> operator+(const int pos)
     {
-        return normal_ptr(base->baseptr + pos);
+        return normal_ptr<T>(base->baseptr + pos);
     }
-    normal_ptr operator-(const int pos)
+    normal_ptr<T> operator-(const int pos)
     {
-        return normal_ptr(base->baseptr - pos);
+        return normal_ptr<T>(base->baseptr - pos);
     }
-    normal_ptr operator+=(const int pos)
+    normal_ptr<T> operator+=(const int pos)
     {
-        normal_ptr tmp(base->baseptr + pos);
+        normal_ptr<T> tmp(base->baseptr + pos);
         this->~shared_ptr();
         return tmp;
     }
-    normal_ptr operator-=(const int pos)
+    normal_ptr<T> operator-=(const int pos)
     {
-        normal_ptr tmp(base->baseptr - pos);
+        normal_ptr<T> tmp(base->baseptr - pos);
         this->~shared_ptr();
         return tmp;
     }
-    normal_ptr operator++()
+    normal_ptr<T> operator++()
     {
-        normal_ptr tmp(base->baseptr + 1);
+        normal_ptr<T> tmp(base->baseptr + 1);
         this->~shared_ptr();
         return tmp;
     }
@@ -169,43 +171,43 @@ class normal_ptr
     {
         return other.ptr != ptr;
     }
-    normal_ptr operator+(const int pos)
+    normal_ptr<T> operator+(const int pos)
     {
-        return normal_ptr(ptr + pos);
+        return normal_ptr<T>(ptr + pos);
     }
-    normal_ptr operator-(const int pos)
+    normal_ptr<T> operator-(const int pos)
     {
-        return normal_ptr(ptr - pos);
+        return normal_ptr<T>(ptr - pos);
     }
-    normal_ptr& operator+=(const int pos)
+    normal_ptr<T>& operator+=(const int pos)
     {
         ptr += pos;
         return *this;
     }
-    normal_ptr& operator-=(const int pos)
+    normal_ptr<T>& operator-=(const int pos)
     {
         ptr -= pos;
         return *this;
     }
-    normal_ptr& operator++()
+    normal_ptr<T>& operator++()
     {
         ++ptr;
         return *this;
     }
-    normal_ptr operator++(int x)
+    normal_ptr<T> operator++(int x)
     {
-        normal_ptr tmp(ptr);
+        normal_ptr<T> tmp(ptr);
         ++ptr;
         return tmp;
     }
-    normal_ptr& operator--()
+    normal_ptr<T>& operator--()
     {
         --ptr;
         return *this;
     }
-    normal_ptr operator--(int x)
+    normal_ptr<T> operator--(int x)
     {
-        normal_ptr tmp(ptr);
+        normal_ptr<T> tmp(ptr);
         --ptr;
         return tmp;
     }
