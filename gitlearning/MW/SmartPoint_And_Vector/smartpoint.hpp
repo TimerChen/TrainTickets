@@ -112,6 +112,32 @@ class shared_ptr
     {
         return base != rt.base;
     }
+    normal_ptr operator+(const int pos)
+    {
+        return normal_ptr(base->baseptr + pos);
+    }
+    normal_ptr operator-(const int pos)
+    {
+        return normal_ptr(base->baseptr - pos);
+    }
+    normal_ptr operator+=(const int pos)
+    {
+        normal_ptr tmp(base->baseptr + pos);
+        this->~shared_ptr();
+        return tmp;
+    }
+    normal_ptr operator-=(const int pos)
+    {
+        normal_ptr tmp(base->baseptr - pos);
+        this->~shared_ptr();
+        return tmp;
+    }
+    normal_ptr operator++()
+    {
+        normal_ptr tmp(base->baseptr + 1);
+        this->~shared_ptr();
+        return tmp;
+    }
 
     ~shared_ptr()
     {
@@ -135,6 +161,55 @@ class normal_ptr
     {
         ptr = rp.ptr;
     }
+    bool operator==(const normal_ptr& other)
+    {
+        return other.ptr == ptr;
+    }
+    bool operator!=(const normal_ptr& other)
+    {
+        return other.ptr != ptr;
+    }
+    normal_ptr operator+(const int pos)
+    {
+        return normal_ptr(ptr + pos);
+    }
+    normal_ptr operator-(const int pos)
+    {
+        return normal_ptr(ptr - pos);
+    }
+    normal_ptr& operator+=(const int pos)
+    {
+        ptr += pos;
+        return *this;
+    }
+    normal_ptr& operator-=(const int pos)
+    {
+        ptr -= pos;
+        return *this;
+    }
+    normal_ptr& operator++()
+    {
+        ++ptr;
+        return *this;
+    }
+    normal_ptr operator++(int x)
+    {
+        normal_ptr tmp(ptr);
+        ++ptr;
+        return tmp;
+    }
+    normal_ptr& operator--()
+    {
+        --ptr;
+        return *this;
+    }
+    normal_ptr operator--(int x)
+    {
+        normal_ptr tmp(ptr);
+        --ptr;
+        return tmp;
+    }
+
     T& operator*() const
     {
         return *ptr;
