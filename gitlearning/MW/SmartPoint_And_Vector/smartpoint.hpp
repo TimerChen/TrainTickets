@@ -11,8 +11,10 @@ template <typename T, bool array, bool opnew>
 class shared_ptr;
 template <typename T>
 class normal_ptr;
-template <typename T, bool array = false, bool opnew = false>
+template <typename T, bool array, bool opnew>
 class const_shared_ptr;
+template <typename T, bool array, bool opnew>
+class const_shared_ptr_Base;
 
 template <typename T, bool array, bool opnew>
 class shared_ptr_Base
@@ -62,14 +64,14 @@ class const_shared_ptr_Base
 {
 
   private:
-    shared_ptr_Base* sb;
+    shared_ptr_Base<T, array, opnew>* sb;
     const T* baseptr;
     const_shared_ptr_Base(T* _ptr,
                           const shared_ptr_Base<T, array, opnew>* _sb = nullptr)
       : baseptr(_ptr)
     {
         if (!_sb) {
-            sb = new shared_ptr_Base<T, array, opnew>(ptr);
+            sb = new shared_ptr_Base<T, array, opnew>(_ptr);
         } else
             sb = _sb;
     }
@@ -199,12 +201,14 @@ class const_shared_ptr
     }
     const_shared_ptr(const shared_ptr<T, array, opnew>& rs)
     {
-        base = new const_shared_ptr_Base(rs.base->baseptr, rs.base);
+        base =
+          new const_shared_ptr_Base<T, array, opnew>(rs.base->baseptr, rs.base);
         base->AddNewPoint();
     }
     const_shared_ptr(const const_shared_ptr<T, array, opnew>& rs)
     {
-        base = new const_shared_ptr_Base(rs.base->baseptr, rs.base);
+        base =
+          new const_shared_ptr_Base<T, array, opnew>(rs.base->baseptr, rs.base);
         base->AddNewPoint();
     }
     const T& operator*() const
@@ -232,7 +236,8 @@ class const_shared_ptr
     }
     const_shared_ptr& operator=(const shared_ptr<T, array, opnew>& rs)
     {
-        base = new const_shared_ptr_Base(rs.base->baseptr, rs.base);
+        base =
+          new const_shared_ptr_Base<T, array, opnew>(rs.base->baseptr, rs.base);
         base->AddNewPoint();
     }
     const_shared_ptr& operator=(T* rt)
@@ -268,7 +273,7 @@ class const_shared_ptr
 template <typename T>
 class normal_ptr
 {
-    friend class const_normal_ptr;
+    friend class const_normal_ptr<T>;
     T* ptr;
 
   public:
@@ -349,7 +354,7 @@ class const_normal_ptr
       : ptr(rp)
     {
     }
-    const_normal_ptr(const normal_ptr& rp)
+    const_normal_ptr(const normal_ptr<T>& rp)
       : ptr(rp.ptr)
     {
     }
