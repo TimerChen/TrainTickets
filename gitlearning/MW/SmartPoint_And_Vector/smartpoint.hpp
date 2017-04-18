@@ -21,6 +21,7 @@ class shared_ptr_Base
 {
     friend class shared_ptr<T, array, opnew>;
     friend class const_shared_ptr_Base<T, array, opnew>;
+    friend class const_shared_ptr<T, array, opnew>;
 
   private:
     int cnt;
@@ -62,18 +63,25 @@ class shared_ptr_Base
 template <typename T, bool array, bool opnew>
 class const_shared_ptr_Base
 {
+    friend class const_shared_ptr<T, array, opnew>;
 
   private:
     shared_ptr_Base<T, array, opnew>* sb;
     const T* baseptr;
     const_shared_ptr_Base(T* _ptr,
-                          const shared_ptr_Base<T, array, opnew>* _sb = nullptr)
+                          shared_ptr_Base<T, array, opnew>* const _sb = nullptr)
       : baseptr(_ptr)
     {
         if (!_sb) {
             sb = new shared_ptr_Base<T, array, opnew>(_ptr);
         } else
             sb = _sb;
+    }
+    const_shared_ptr_Base(const T* _ptr,
+                          shared_ptr_Base<T, array, opnew>* const _sb)
+      : baseptr(_ptr)
+      , sb(_sb)
+    {
     }
     void AddNewPoint()
     {
@@ -87,7 +95,7 @@ class const_shared_ptr_Base
     }
     const T& operator[](int i) const
     {
-        return *baseptr[i];
+        return baseptr[i];
     }
     ~const_shared_ptr_Base()
     {
@@ -97,6 +105,7 @@ class const_shared_ptr_Base
 template <typename T, bool array = false, bool opnew = false>
 class shared_ptr
 {
+    friend class const_shared_ptr<T, array, opnew>;
     shared_ptr_Base<T, array, opnew>* base;
 
   public:
@@ -207,8 +216,8 @@ class const_shared_ptr
     }
     const_shared_ptr(const const_shared_ptr<T, array, opnew>& rs)
     {
-        base =
-          new const_shared_ptr_Base<T, array, opnew>(rs.base->baseptr, rs.base);
+        base = new const_shared_ptr_Base<T, array, opnew>(rs.base->baseptr,
+                                                          rs.base->sb);
         base->AddNewPoint();
     }
     const T& operator*() const
