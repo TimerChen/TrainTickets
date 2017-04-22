@@ -6,6 +6,8 @@ void swap( T &a, T &b )
 { T c(a); a=b;b=c; }
 template<class T>
 T min(const T &a, const T &b){return a<b?a:b;}
+template<class T>
+T max(const T &a, const T &b){return a<b?b:a;}
 
 template<class TI, class T, class Compare>
 TI lower_bound( TI data, TI end, const T &val, Compare cmp )
