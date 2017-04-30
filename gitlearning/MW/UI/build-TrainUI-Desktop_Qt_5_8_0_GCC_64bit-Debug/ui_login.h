@@ -33,6 +33,7 @@ public:
     QPushButton *loginBtn;
     QLineEdit *pwdLineEdit;
     QLineEdit *usrLineEdit;
+    QPushButton *registBtn;
 
     void setupUi(QDialog *Login)
     {
@@ -54,17 +55,17 @@ public:
         exitBtn = new QPushButton(Login);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
 
-        formLayout->setWidget(5, QFormLayout::SpanningRole, exitBtn);
+        formLayout->setWidget(7, QFormLayout::SpanningRole, exitBtn);
 
         auloginBtn = new QPushButton(Login);
         auloginBtn->setObjectName(QStringLiteral("auloginBtn"));
 
-        formLayout->setWidget(4, QFormLayout::LabelRole, auloginBtn);
+        formLayout->setWidget(5, QFormLayout::LabelRole, auloginBtn);
 
         loginBtn = new QPushButton(Login);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
 
-        formLayout->setWidget(4, QFormLayout::FieldRole, loginBtn);
+        formLayout->setWidget(5, QFormLayout::FieldRole, loginBtn);
 
         pwdLineEdit = new QLineEdit(Login);
         pwdLineEdit->setObjectName(QStringLiteral("pwdLineEdit"));
@@ -75,6 +76,11 @@ public:
         usrLineEdit->setObjectName(QStringLiteral("usrLineEdit"));
 
         formLayout->setWidget(1, QFormLayout::FieldRole, usrLineEdit);
+
+        registBtn = new QPushButton(Login);
+        registBtn->setObjectName(QStringLiteral("registBtn"));
+
+        formLayout->setWidget(6, QFormLayout::SpanningRole, registBtn);
 
 
         retranslateUi(Login);
@@ -91,6 +97,7 @@ public:
         exitBtn->setText(QApplication::translate("Login", "\351\200\200\345\207\272", Q_NULLPTR));
         auloginBtn->setText(QApplication::translate("Login", "\347\256\241\347\220\206\345\221\230\347\231\273\345\275\225", Q_NULLPTR));
         loginBtn->setText(QApplication::translate("Login", "\347\224\250\346\210\267\347\231\273\345\275\225", Q_NULLPTR));
+        registBtn->setText(QApplication::translate("Login", "\346\263\250\345\206\214", Q_NULLPTR));
     } // retranslateUi
 
 };
