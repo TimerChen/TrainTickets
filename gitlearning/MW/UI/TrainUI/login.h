@@ -21,6 +21,8 @@ private slots:
 
     void on_auloginBtn_clicked();
 
+    void on_registBtn_clicked();
+
 private:
     Ui::Login *ui;
 };

@@ -6,31 +6,158 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>783</width>
-    <height>558</height>
+    <width>823</width>
+    <height>802</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>783</width>
-     <height>49</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QToolBar" name="mainToolBar">
-   <attribute name="toolBarArea">
-    <enum>TopToolBarArea</enum>
-   </attribute>
-   <attribute name="toolBarBreak">
-    <bool>false</bool>
-   </attribute>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>840</y>
+      <width>82</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>12308</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>241</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../../../../../mnt/hgfs/share/12308.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>127</x>
+      <y>240</y>
+      <width>129</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>12308</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>50</y>
+      <width>411</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPushButton" name="loginBtn">
+       <property name="text">
+        <string>登录</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="regBtn">
+       <property name="text">
+        <string>注册</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+    <zorder>regBtn</zorder>
+    <zorder>loginBtn</zorder>
+   </widget>
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>300</y>
+      <width>691</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <widget class="QPushButton" name="stationToStationSearch">
+     <property name="text">
+      <string>站站查询</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Trainsearch">
+     <property name="text">
+      <string>车次查询</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="stationSearch">
+     <property name="text">
+      <string>车站查询</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>680</y>
+      <width>691</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="myticketBtn">
+       <property name="text">
+        <string>我的车票</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="modifyAccountBtn">
+       <property name="text">
+        <string>修改用户信息</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="logoutBtn">
+       <property name="text">
+        <string>退出登录</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>loginBtn</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label</zorder>
+   <zorder>label_3</zorder>
+   <zorder>stationToStationSearch</zorder>
+   <zorder>Trainsearch</zorder>
+   <zorder>stationSearch</zorder>
+   <zorder>regBtn</zorder>
+   <zorder>modifyAccountBtn</zorder>
+   <zorder>myticketBtn</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
