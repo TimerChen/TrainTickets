@@ -25,10 +25,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    login.cpp
+    login.cpp \
+    regist.cpp \
+    myticket.cpp
 
 HEADERS  += mainwindow.h \
-    login.h
+    login.h \
+    regist.h \
+    myticket.h
 
 FORMS    += mainwindow.ui \
-    login.ui
+    login.ui \
+    regist.ui \
+    myticket.ui

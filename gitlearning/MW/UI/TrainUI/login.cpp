@@ -1,5 +1,6 @@
 #include <QMessageBox>
 #include "login.h"
+#include "regist.h"
 #include "ui_login.h"
 
 Login::Login(QWidget *parent) :
@@ -8,6 +9,7 @@ Login::Login(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->pwdLineEdit->setEchoMode(QLineEdit::Password);
+    ui->usrLineEdit->setFocus();
 }
 
 Login::~Login()
@@ -19,7 +21,7 @@ void Login::on_loginBtn_clicked()
 {
     if (ui->usrLineEdit->text() == "mw" && ui->pwdLineEdit->text()=="123456")//send ui->usrLineEdit->text() and ui->pwdLineEdit->text()
                                                                            //to the server to check normal account, change the thing in if()
-    accept();
+        accept();
     else {
       QMessageBox::warning(this,tr("警告"),tr("用户名或密码错误！"),QMessageBox::Yes);
       ui->pwdLineEdit->clear();
@@ -34,5 +36,13 @@ void Login::on_auloginBtn_clicked()
         accept();
     else {
        QMessageBox::warning(this,tr("警告"),tr("用户名或密码错误！"),QMessageBox::Yes);
+    }
+}
+
+void Login::on_registBtn_clicked()
+{
+    Regist* reg = new Regist(this);
+    if (reg->exec() == QDialog::Accepted) {
+        delete reg;
     }
 }
