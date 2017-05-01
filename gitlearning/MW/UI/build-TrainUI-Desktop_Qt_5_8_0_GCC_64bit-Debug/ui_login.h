@@ -39,7 +39,9 @@ public:
     {
         if (Login->objectName().isEmpty())
             Login->setObjectName(QStringLiteral("Login"));
-        Login->resize(794, 433);
+        Login->resize(794, 399);
+        Login->setMinimumSize(QSize(794, 399));
+        Login->setMaximumSize(QSize(794, 399));
         formLayout = new QFormLayout(Login);
         formLayout->setObjectName(QStringLiteral("formLayout"));
         label = new QLabel(Login);
@@ -85,6 +87,8 @@ public:
 
         retranslateUi(Login);
         QObject::connect(exitBtn, SIGNAL(clicked()), Login, SLOT(close()));
+        QObject::connect(usrLineEdit, SIGNAL(returnPressed()), loginBtn, SLOT(click()));
+        QObject::connect(pwdLineEdit, SIGNAL(returnPressed()), loginBtn, SLOT(click()));
 
         QMetaObject::connectSlotsByName(Login);
     } // setupUi

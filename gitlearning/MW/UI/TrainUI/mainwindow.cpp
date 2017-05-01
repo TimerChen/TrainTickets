@@ -9,9 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ui->myticketBtn->hide();
-    ui->modifyAccountBtn->hide();
-    ui->logoutBtn->hide();
+    ui->myticketBtn->setEnabled(false);
+    ui->modifyAccountBtn->setEnabled(false);
+    ui->logoutBtn->setEnabled(false);
 }
 
 MainWindow::~MainWindow()
@@ -24,11 +24,11 @@ void MainWindow::on_loginBtn_clicked()
     Login log(this);
     if (log.exec() == QDialog::Accepted) {
         //add something that show you have loged in
-        ui->loginBtn->hide();
-        ui->regBtn->hide();
-        ui->myticketBtn->show();
-        ui->modifyAccountBtn->show();
-        ui->logoutBtn->show();
+        ui->loginBtn->setEnabled(false);
+        ui->regBtn->setEnabled(false);
+        ui->myticketBtn->setEnabled(true);
+        ui->modifyAccountBtn->setEnabled(true);
+        ui->logoutBtn->setEnabled(true);
     }
 }
 
@@ -41,9 +41,9 @@ void MainWindow::on_regBtn_clicked()
 void MainWindow::on_logoutBtn_clicked()
 {
     ///send a package to server to log out
-    ui->myticketBtn->hide();
-    ui->modifyAccountBtn->hide();
-    ui->logoutBtn->hide();
-    ui->loginBtn->show();
-    ui->regBtn->show();
+    ui->myticketBtn->setEnabled(false);
+    ui->modifyAccountBtn->setEnabled(false);
+    ui->logoutBtn->setEnabled(false);
+    ui->loginBtn->setEnabled(true);
+    ui->regBtn->setEnabled(true);
 }

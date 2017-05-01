@@ -29,10 +29,9 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralWidget;
-    QLabel *label_2;
     QLabel *label;
     QLabel *label_3;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_2;
     QPushButton *loginBtn;
     QPushButton *regBtn;
@@ -40,7 +39,7 @@ public:
     QPushButton *stationToStationSearch;
     QPushButton *Trainsearch;
     QPushButton *stationSearch;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QPushButton *myticketBtn;
     QPushButton *modifyAccountBtn;
@@ -51,12 +50,11 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(823, 802);
+        MainWindow->resize(826, 800);
+        MainWindow->setMinimumSize(QSize(826, 800));
+        MainWindow->setMaximumSize(QSize(826, 800));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        label_2 = new QLabel(centralWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        label_2->setGeometry(QRect(390, 840, 82, 351));
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(50, 10, 241, 251));
@@ -65,20 +63,20 @@ public:
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(127, 240, 129, 32));
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(340, 50, 411, 191));
-        verticalLayout_2 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(centralWidget);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(340, 50, 411, 191));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget);
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setContentsMargins(11, 11, 11, 11);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        loginBtn = new QPushButton(widget);
+        loginBtn = new QPushButton(layoutWidget);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
 
         verticalLayout_2->addWidget(loginBtn);
 
-        regBtn = new QPushButton(widget);
+        regBtn = new QPushButton(layoutWidget);
         regBtn->setObjectName(QStringLiteral("regBtn"));
 
         verticalLayout_2->addWidget(regBtn);
@@ -98,40 +96,35 @@ public:
         stationSearch = new QPushButton(splitter);
         stationSearch->setObjectName(QStringLiteral("stationSearch"));
         splitter->addWidget(stationSearch);
-        widget1 = new QWidget(centralWidget);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(60, 680, 691, 60));
-        horizontalLayout = new QHBoxLayout(widget1);
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(60, 680, 691, 60));
+        horizontalLayout = new QHBoxLayout(layoutWidget1);
         horizontalLayout->setSpacing(6);
         horizontalLayout->setContentsMargins(11, 11, 11, 11);
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
-        myticketBtn = new QPushButton(widget1);
+        myticketBtn = new QPushButton(layoutWidget1);
         myticketBtn->setObjectName(QStringLiteral("myticketBtn"));
 
         horizontalLayout->addWidget(myticketBtn);
 
-        modifyAccountBtn = new QPushButton(widget1);
+        modifyAccountBtn = new QPushButton(layoutWidget1);
         modifyAccountBtn->setObjectName(QStringLiteral("modifyAccountBtn"));
 
         horizontalLayout->addWidget(modifyAccountBtn);
 
-        logoutBtn = new QPushButton(widget1);
+        logoutBtn = new QPushButton(layoutWidget1);
         logoutBtn->setObjectName(QStringLiteral("logoutBtn"));
 
         horizontalLayout->addWidget(logoutBtn);
 
         MainWindow->setCentralWidget(centralWidget);
-        loginBtn->raise();
-        label_2->raise();
+        layoutWidget->raise();
+        splitter->raise();
+        layoutWidget->raise();
         label->raise();
         label_3->raise();
-        stationToStationSearch->raise();
-        Trainsearch->raise();
-        stationSearch->raise();
-        regBtn->raise();
-        modifyAccountBtn->raise();
-        myticketBtn->raise();
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
@@ -144,7 +137,6 @@ public:
     void retranslateUi(QMainWindow *MainWindow)
     {
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
-        label_2->setText(QApplication::translate("MainWindow", "12308", Q_NULLPTR));
         label->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "12308", Q_NULLPTR));
         loginBtn->setText(QApplication::translate("MainWindow", "\347\231\273\345\275\225", Q_NULLPTR));
