@@ -26,17 +26,17 @@ QT_BEGIN_NAMESPACE
 class Ui_Regist
 {
 public:
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout;
     QLabel *label;
     QLabel *label_2;
     QLabel *label_3;
-    QWidget *widget1;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout_2;
     QLineEdit *usrLineEdit;
     QLineEdit *pwdLineEdit;
     QLineEdit *confirmpwdLineEdit;
-    QWidget *widget2;
+    QWidget *layoutWidget2;
     QVBoxLayout *verticalLayout_3;
     QPushButton *loginBtn;
     QPushButton *backtologinBtn;
@@ -46,66 +46,68 @@ public:
     {
         if (Regist->objectName().isEmpty())
             Regist->setObjectName(QStringLiteral("Regist"));
-        Regist->resize(858, 492);
-        widget = new QWidget(Regist);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(49, 30, 118, 158));
-        verticalLayout = new QVBoxLayout(widget);
+        Regist->resize(858, 442);
+        Regist->setMinimumSize(QSize(858, 442));
+        Regist->setMaximumSize(QSize(858, 442));
+        layoutWidget = new QWidget(Regist);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(49, 30, 118, 158));
+        verticalLayout = new QVBoxLayout(layoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
 
         verticalLayout->addWidget(label);
 
-        label_2 = new QLabel(widget);
+        label_2 = new QLabel(layoutWidget);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         verticalLayout->addWidget(label_2);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
 
         verticalLayout->addWidget(label_3);
 
-        widget1 = new QWidget(Regist);
-        widget1->setObjectName(QStringLiteral("widget1"));
-        widget1->setGeometry(QRect(220, 30, 591, 161));
-        verticalLayout_2 = new QVBoxLayout(widget1);
+        layoutWidget1 = new QWidget(Regist);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(220, 30, 591, 161));
+        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        usrLineEdit = new QLineEdit(widget1);
+        usrLineEdit = new QLineEdit(layoutWidget1);
         usrLineEdit->setObjectName(QStringLiteral("usrLineEdit"));
 
         verticalLayout_2->addWidget(usrLineEdit);
 
-        pwdLineEdit = new QLineEdit(widget1);
+        pwdLineEdit = new QLineEdit(layoutWidget1);
         pwdLineEdit->setObjectName(QStringLiteral("pwdLineEdit"));
 
         verticalLayout_2->addWidget(pwdLineEdit);
 
-        confirmpwdLineEdit = new QLineEdit(widget1);
+        confirmpwdLineEdit = new QLineEdit(layoutWidget1);
         confirmpwdLineEdit->setObjectName(QStringLiteral("confirmpwdLineEdit"));
 
         verticalLayout_2->addWidget(confirmpwdLineEdit);
 
-        widget2 = new QWidget(Regist);
-        widget2->setObjectName(QStringLiteral("widget2"));
-        widget2->setGeometry(QRect(46, 210, 771, 200));
-        verticalLayout_3 = new QVBoxLayout(widget2);
+        layoutWidget2 = new QWidget(Regist);
+        layoutWidget2->setObjectName(QStringLiteral("layoutWidget2"));
+        layoutWidget2->setGeometry(QRect(46, 210, 771, 200));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget2);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        loginBtn = new QPushButton(widget2);
+        loginBtn = new QPushButton(layoutWidget2);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
 
         verticalLayout_3->addWidget(loginBtn);
 
-        backtologinBtn = new QPushButton(widget2);
+        backtologinBtn = new QPushButton(layoutWidget2);
         backtologinBtn->setObjectName(QStringLiteral("backtologinBtn"));
 
         verticalLayout_3->addWidget(backtologinBtn);
 
-        exitButton = new QPushButton(widget2);
+        exitButton = new QPushButton(layoutWidget2);
         exitButton->setObjectName(QStringLiteral("exitButton"));
 
         verticalLayout_3->addWidget(exitButton);

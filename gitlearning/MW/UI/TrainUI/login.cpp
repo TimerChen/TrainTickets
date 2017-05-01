@@ -10,6 +10,11 @@ Login::Login(QWidget *parent) :
     ui->setupUi(this);
     ui->pwdLineEdit->setEchoMode(QLineEdit::Password);
     ui->usrLineEdit->setFocus();
+    setTabOrder(ui->usrLineEdit,ui->pwdLineEdit);
+    setTabOrder(ui->pwdLineEdit,ui->loginBtn);
+    setTabOrder(ui->loginBtn,ui->auloginBtn);
+    setTabOrder(ui->auloginBtn,ui->registBtn);
+    setTabOrder(ui->registBtn,ui->exitBtn);
 }
 
 Login::~Login()
