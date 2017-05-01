@@ -15,6 +15,14 @@ Login::Login(QWidget *parent) :
     setTabOrder(ui->loginBtn,ui->auloginBtn);
     setTabOrder(ui->auloginBtn,ui->registBtn);
     setTabOrder(ui->registBtn,ui->exitBtn);
+    setTabOrder(ui->exitBtn,ui->usrLineEdit);
+    QRegExp rx("^[a-zA-Z0-9]+");
+    QRegExpValidator *pReg = new QRegExpValidator(rx, this); ///change to smart point
+    ui->pwdLineEdit->setValidator(pReg);
+    ui->pwdLineEdit->setMaxLength(12);
+
+    ui->usrLineEdit->setMaxLength(12);
+    ui->usrLineEdit->setValidator(pReg);
 }
 
 Login::~Login()

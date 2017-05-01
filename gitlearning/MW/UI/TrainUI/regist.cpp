@@ -1,3 +1,4 @@
+#include <QMessageBox>
 #include "regist.h"
 #include "ui_regist.h"
 
@@ -8,6 +9,14 @@ Regist::Regist(QWidget *parent) :
     ui->setupUi(this);
     ui->pwdLineEdit->setEchoMode(QLineEdit::Password);
     ui->confirmpwdLineEdit->setEchoMode(QLineEdit::Password);
+    QRegExp rx("^[a-zA-Z0-9]+");
+    QRegExpValidator *pReg = new QRegExpValidator(rx, this); ///change to smart point
+    ui->confirmpwdLineEdit->setValidator(pReg);
+    ui->confirmpwdLineEdit->setMaxLength(12);
+    ui->pwdLineEdit->setValidator(pReg);
+    ui->pwdLineEdit->setMaxLength(12);
+    ui->usrLineEdit->setValidator(pReg);
+    ui->usrLineEdit->setMaxLength(12);
 }
 
 Regist::~Regist()
@@ -17,8 +26,14 @@ Regist::~Regist()
 
 void Regist::on_loginBtn_clicked()
 {
-    if (ui->confirmpwdLineEdit->text() == ui->pwdLineEdit->text() && true){//server permits
-        accept();
+    if (ui->confirmpwdLineEdit->text() == ui->pwdLineEdit->text()){
+        if (true)//server permits
+            accept();
+        else {
+            QMessageBox::warning(this,"注册失败","用户名已存在或服务器拒绝本次注册",QMessageBox::Yes);
+        }
+    } else {
+        QMessageBox::warning(this, "密码不匹配", "确认密码不相同",QMessageBox::Cancel);
     }
 }
 
