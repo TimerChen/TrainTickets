@@ -6,6 +6,7 @@ Myticket::Myticket(QWidget *parent) :
     ui(new Ui::Myticket)
 {
     ui->setupUi(this);
+    ui->ticketsTextEdit->setReadOnly(true);
 }
 
 Myticket::~Myticket()

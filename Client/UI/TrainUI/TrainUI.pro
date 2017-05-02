@@ -27,14 +27,26 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     login.cpp \
     regist.cpp \
-    myticket.cpp
+    myticket.cpp \
+    myinform.cpp \
+    stationtostationsearch.cpp \
+    trainsearch.cpp \
+    stationsearch.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
     regist.h \
-    myticket.h
+    myticket.h \
+    myinform.h \
+    stationtostationsearch.h \
+    trainsearch.h \
+    stationsearch.h
 
 FORMS    += mainwindow.ui \
     login.ui \
     regist.ui \
-    myticket.ui
+    myticket.ui \
+    myinform.ui \
+    stationtostationsearch.ui \
+    trainsearch.ui \
+    stationsearch.ui
