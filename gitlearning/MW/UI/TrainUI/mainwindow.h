@@ -22,6 +22,16 @@ private slots:
 
     void on_logoutBtn_clicked();
 
+    void on_myticketBtn_clicked();
+
+    void on_myinformBtn_clicked();
+
+    void on_stationToStationSearchBtn_clicked();
+
+    void on_trainSearchBtn_clicked();
+
+    void on_stationSearchBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
 };

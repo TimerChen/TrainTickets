@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
  <class>Myticket</class>
  <widget class="QDialog" name="Myticket">
@@ -5,13 +6,56 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>727</width>
+    <height>564</height>
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>我的车票</string>
   </property>
+  <widget class="QTextEdit" name="ticketsTextEdit">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>30</y>
+     <width>541</width>
+     <height>381</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>430</y>
+     <width>601</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QPushButton" name="preTicketBtn">
+      <property name="text">
+       <string>前一张</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="nextTicketBtn">
+      <property name="text">
+       <string>后一张</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="modifyTicketBtn">
+      <property name="text">
+       <string>退订/改签</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
  </widget>
  <resources/>
  <connections/>

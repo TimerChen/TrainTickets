@@ -35,6 +35,18 @@
       <height>251</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>241</width>
+      <height>251</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>241</width>
+      <height>251</height>
+     </size>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -54,6 +66,18 @@
       <height>32</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>129</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>129</width>
+      <height>32</height>
+     </size>
+    </property>
     <property name="text">
      <string>12308</string>
     </property>
@@ -70,6 +94,18 @@
     <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
       <widget class="QPushButton" name="loginBtn">
+       <property name="minimumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
        <property name="text">
         <string>登录</string>
        </property>
@@ -77,6 +113,18 @@
      </item>
      <item>
       <widget class="QPushButton" name="regBtn">
+       <property name="minimumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
        <property name="text">
         <string>注册</string>
        </property>
@@ -95,20 +143,68 @@
       <height>351</height>
      </rect>
     </property>
+    <property name="minimumSize">
+     <size>
+      <width>691</width>
+      <height>351</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>691</width>
+      <height>351</height>
+     </size>
+    </property>
     <property name="orientation">
      <enum>Qt::Vertical</enum>
     </property>
-    <widget class="QPushButton" name="stationToStationSearch">
+    <widget class="QPushButton" name="stationToStationSearchBtn">
+     <property name="minimumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
      <property name="text">
       <string>站站查询</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="Trainsearch">
+    <widget class="QPushButton" name="trainSearchBtn">
+     <property name="minimumSize">
+      <size>
+       <width>691</width>
+       <height>111</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>691</width>
+       <height>111</height>
+      </size>
+     </property>
      <property name="text">
       <string>车次查询</string>
      </property>
     </widget>
-    <widget class="QPushButton" name="stationSearch">
+    <widget class="QPushButton" name="stationSearchBtn">
+     <property name="minimumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
      <property name="text">
       <string>车站查询</string>
      </property>
@@ -126,20 +222,56 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="myticketBtn">
+       <property name="minimumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
        <property name="text">
         <string>我的车票</string>
        </property>
       </widget>
      </item>
      <item>
-      <widget class="QPushButton" name="modifyAccountBtn">
+      <widget class="QPushButton" name="myinformBtn">
+       <property name="minimumSize">
+        <size>
+         <width>221</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>221</width>
+         <height>58</height>
+        </size>
+       </property>
        <property name="text">
-        <string>修改用户信息</string>
+        <string>用户信息</string>
        </property>
       </widget>
      </item>
      <item>
       <widget class="QPushButton" name="logoutBtn">
+       <property name="minimumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
        <property name="text">
         <string>退出登录</string>
        </property>

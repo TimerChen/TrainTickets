@@ -36,16 +36,16 @@ void Login::on_loginBtn_clicked()
                                                                            //to the server to check normal account, change the thing in if()
         accept();
     else {
-      QMessageBox::warning(this,tr("警告"),tr("用户名或密码错误！"),QMessageBox::Yes);
       ui->pwdLineEdit->clear();
       ui->pwdLineEdit->setFocus();
+      QMessageBox::warning(this,tr("警告"),tr("用户名或密码错误！"),QMessageBox::Yes);
     }
 }
 
 void Login::on_auloginBtn_clicked()
 {//unavailable now
     if (ui->usrLineEdit->text() == "mw" && ui->pwdLineEdit->text()=="123456")//send ui->usrLineEdit->text() and ui->pwdLineEdit->text()
-                                                                           //to the server to check normal account, change the thing in if()
+                                                                   //to the server to check normal account, change the thing in if()
         accept();
     else {
        QMessageBox::warning(this,tr("警告"),tr("用户名或密码错误！"),QMessageBox::Yes);

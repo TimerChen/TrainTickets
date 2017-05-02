@@ -36,13 +36,13 @@ public:
     QPushButton *loginBtn;
     QPushButton *regBtn;
     QSplitter *splitter;
-    QPushButton *stationToStationSearch;
-    QPushButton *Trainsearch;
-    QPushButton *stationSearch;
+    QPushButton *stationToStationSearchBtn;
+    QPushButton *trainSearchBtn;
+    QPushButton *stationSearchBtn;
     QWidget *layoutWidget1;
     QHBoxLayout *horizontalLayout;
     QPushButton *myticketBtn;
-    QPushButton *modifyAccountBtn;
+    QPushButton *myinformBtn;
     QPushButton *logoutBtn;
     QStatusBar *statusBar;
 
@@ -58,11 +58,15 @@ public:
         label = new QLabel(centralWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setGeometry(QRect(50, 10, 241, 251));
+        label->setMinimumSize(QSize(241, 251));
+        label->setMaximumSize(QSize(241, 251));
         label->setPixmap(QPixmap(QString::fromUtf8("../../../../../../../../mnt/hgfs/share/12308.png")));
         label->setScaledContents(true);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(127, 240, 129, 32));
+        label_3->setMinimumSize(QSize(129, 32));
+        label_3->setMaximumSize(QSize(129, 32));
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(340, 50, 411, 191));
@@ -73,11 +77,15 @@ public:
         verticalLayout_2->setContentsMargins(0, 0, 0, 0);
         loginBtn = new QPushButton(layoutWidget);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
+        loginBtn->setMinimumSize(QSize(409, 58));
+        loginBtn->setMaximumSize(QSize(409, 58));
 
         verticalLayout_2->addWidget(loginBtn);
 
         regBtn = new QPushButton(layoutWidget);
         regBtn->setObjectName(QStringLiteral("regBtn"));
+        regBtn->setMinimumSize(QSize(409, 58));
+        regBtn->setMaximumSize(QSize(409, 58));
 
         verticalLayout_2->addWidget(regBtn);
 
@@ -86,16 +94,24 @@ public:
         splitter = new QSplitter(centralWidget);
         splitter->setObjectName(QStringLiteral("splitter"));
         splitter->setGeometry(QRect(60, 300, 691, 351));
+        splitter->setMinimumSize(QSize(691, 351));
+        splitter->setMaximumSize(QSize(691, 351));
         splitter->setOrientation(Qt::Vertical);
-        stationToStationSearch = new QPushButton(splitter);
-        stationToStationSearch->setObjectName(QStringLiteral("stationToStationSearch"));
-        splitter->addWidget(stationToStationSearch);
-        Trainsearch = new QPushButton(splitter);
-        Trainsearch->setObjectName(QStringLiteral("Trainsearch"));
-        splitter->addWidget(Trainsearch);
-        stationSearch = new QPushButton(splitter);
-        stationSearch->setObjectName(QStringLiteral("stationSearch"));
-        splitter->addWidget(stationSearch);
+        stationToStationSearchBtn = new QPushButton(splitter);
+        stationToStationSearchBtn->setObjectName(QStringLiteral("stationToStationSearchBtn"));
+        stationToStationSearchBtn->setMinimumSize(QSize(691, 112));
+        stationToStationSearchBtn->setMaximumSize(QSize(691, 112));
+        splitter->addWidget(stationToStationSearchBtn);
+        trainSearchBtn = new QPushButton(splitter);
+        trainSearchBtn->setObjectName(QStringLiteral("trainSearchBtn"));
+        trainSearchBtn->setMinimumSize(QSize(691, 111));
+        trainSearchBtn->setMaximumSize(QSize(691, 111));
+        splitter->addWidget(trainSearchBtn);
+        stationSearchBtn = new QPushButton(splitter);
+        stationSearchBtn->setObjectName(QStringLiteral("stationSearchBtn"));
+        stationSearchBtn->setMinimumSize(QSize(691, 112));
+        stationSearchBtn->setMaximumSize(QSize(691, 112));
+        splitter->addWidget(stationSearchBtn);
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
         layoutWidget1->setGeometry(QRect(60, 680, 691, 60));
@@ -106,16 +122,22 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         myticketBtn = new QPushButton(layoutWidget1);
         myticketBtn->setObjectName(QStringLiteral("myticketBtn"));
+        myticketBtn->setMinimumSize(QSize(222, 58));
+        myticketBtn->setMaximumSize(QSize(222, 58));
 
         horizontalLayout->addWidget(myticketBtn);
 
-        modifyAccountBtn = new QPushButton(layoutWidget1);
-        modifyAccountBtn->setObjectName(QStringLiteral("modifyAccountBtn"));
+        myinformBtn = new QPushButton(layoutWidget1);
+        myinformBtn->setObjectName(QStringLiteral("myinformBtn"));
+        myinformBtn->setMinimumSize(QSize(221, 58));
+        myinformBtn->setMaximumSize(QSize(221, 58));
 
-        horizontalLayout->addWidget(modifyAccountBtn);
+        horizontalLayout->addWidget(myinformBtn);
 
         logoutBtn = new QPushButton(layoutWidget1);
         logoutBtn->setObjectName(QStringLiteral("logoutBtn"));
+        logoutBtn->setMinimumSize(QSize(222, 58));
+        logoutBtn->setMaximumSize(QSize(222, 58));
 
         horizontalLayout->addWidget(logoutBtn);
 
@@ -141,11 +163,11 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "12308", Q_NULLPTR));
         loginBtn->setText(QApplication::translate("MainWindow", "\347\231\273\345\275\225", Q_NULLPTR));
         regBtn->setText(QApplication::translate("MainWindow", "\346\263\250\345\206\214", Q_NULLPTR));
-        stationToStationSearch->setText(QApplication::translate("MainWindow", "\347\253\231\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
-        Trainsearch->setText(QApplication::translate("MainWindow", "\350\275\246\346\254\241\346\237\245\350\257\242", Q_NULLPTR));
-        stationSearch->setText(QApplication::translate("MainWindow", "\350\275\246\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
+        stationToStationSearchBtn->setText(QApplication::translate("MainWindow", "\347\253\231\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
+        trainSearchBtn->setText(QApplication::translate("MainWindow", "\350\275\246\346\254\241\346\237\245\350\257\242", Q_NULLPTR));
+        stationSearchBtn->setText(QApplication::translate("MainWindow", "\350\275\246\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
         myticketBtn->setText(QApplication::translate("MainWindow", "\346\210\221\347\232\204\350\275\246\347\245\250", Q_NULLPTR));
-        modifyAccountBtn->setText(QApplication::translate("MainWindow", "\344\277\256\346\224\271\347\224\250\346\210\267\344\277\241\346\201\257", Q_NULLPTR));
+        myinformBtn->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\344\277\241\346\201\257", Q_NULLPTR));
         logoutBtn->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272\347\231\273\345\275\225", Q_NULLPTR));
     } // retranslateUi
 
