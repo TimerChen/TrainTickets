@@ -54,11 +54,11 @@ TI upper_bound( TI data, TI end, const T &val )
 template<class TI, class BinaryPredicate>
 TI unique( TI data, TI end, BinaryPredicate pred )
 {
-	int i,j=0,n;
+	int i,j=-1,n;
 	n = end-data-1;
-	for(i=1;i<=n;i++)
+	for(i=0;i<n;i++)
 	{
-		if( j == 0 || !pred(data[j],data[i]) )
+		if( j == -1 || !pred(data[j],data[i]) )
 			data[++j] = data[i];
 	}
 	return data+j+1;
@@ -66,11 +66,11 @@ TI unique( TI data, TI end, BinaryPredicate pred )
 template<class TI>
 TI unique( TI data, TI end )
 {
-	int i,j=0,n;
+	int i,j=-1,n;
 	n = end-data-1;
-	for(i=1;i<=n;i++)
+	for(i=0;i<n;i++)
 	{
-		if( j == 0 || !(data[j] == data[i]) )
+		if( j == -1 || !(data[j] == data[i]) )
 			data[++j] = data[i];
 	}
 	return data+j+1;
