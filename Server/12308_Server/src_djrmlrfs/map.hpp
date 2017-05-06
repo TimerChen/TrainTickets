@@ -9,7 +9,7 @@
 #include <cstddef>
 #include "utility.hpp"
 #include "exceptions.hpp"
-namespace sjtu {
+namespace ttd {
 
 template<
 	class Key,
@@ -43,10 +43,6 @@ public:
 			fa = ls = rs = NULL;
 		}
 	};
-	/**
-	 * if there is anything wrong throw invalid_iterator.
-	 *     like it = map.begin(); --it;
-	 *       or it = map.end(); ++end();*/
 	class const_iterator;
 	class iterator {
 	private:
@@ -77,7 +73,7 @@ public:
 			tmp.end = end;
 			if (val->nxt == NULL)
 			{
-				throw invalid_iterator();
+				throw "invalid_iterator";
 				return tmp;
 			}
 			val = val->nxt;
@@ -90,7 +86,7 @@ public:
 		{
 			if (val->nxt == NULL)
 			{
-				throw invalid_iterator();
+				throw "invalid_iterator";
 				return this;
 			}
 			val = val->nxt;
@@ -106,7 +102,7 @@ public:
 			tmp.end = end;
 			if (val->pre == NULL)
 			{
-				throw invalid_iterator();
+				throw "invalid_iterator";
 				return tmp;
 			}
 			val = val->pre;
@@ -119,7 +115,7 @@ public:
 		{
 			if (val->pre == NULL)
 			{
-				throw invalid_iterator();
+				throw "invalid_iterator";
 				return this;
 			}
 			val = val->pre;
@@ -237,7 +233,7 @@ public:
 		iterator Now = find(key);
 		if (Now == End)
 		{
-			throw index_out_of_bound();
+			throw "index_out_of_bound";
 			return root->val.second;
 		}
 		return Now->second;
@@ -247,7 +243,7 @@ public:
 		const_iterator Now = find(key);
 		if (Now == cEnd)
 		{
-			throw index_out_of_bound();
+			throw "index_out_of_bound";
 			return root->val.second;
 		}
 		return Now->second;
@@ -263,20 +259,17 @@ public:
 		iterator Now = find(key);
 		if (Now == End)
 		{
-			throw index_out_of_bound();
+			throw "index_out_of_bound";
 			return root->val.second;
 		}
 		return Now->second;
 	}
-	/**
-	 * behave like at() throw index_out_of_bound if such key does not exist.
-	 */
 	const T & operator[](const Key &key) const
 	{
 		const_iterator Now = find(key);
 		if (Now == cEnd)
 		{
-			throw index_out_of_bound();
+			throw "index_out_of_bound";
 			return root->val.second;
 		}
 		return Now->second;
@@ -374,11 +367,6 @@ public:
 	{
 		return add(value,root,NULL,End);
 	}
-	/**
-	 * erase the element at pos.
-	 *
-	 * throw if pos pointed to a bad element (pos == this->end() || pos points an element out of this)
-	 */
 	bool del(Key now, node*&t)
 	{
 		int stop = 0, subtree;
@@ -441,18 +429,11 @@ public:
 	{
 		if (pos->end!=endnode || pos==End || pos->val==NULL)
 		{
-			throw invalid_iterator();
+			throw "invalid_iterator";
 			return;
 		}
 		del(pos->val->val.first,root);
 	}
-	/**
-	 * Returns the number of elements with key 
-	 *   that compares equivalent to the specified argument,
-	 *   which is either 1 or 0 
-	 *     since this container does not allow duplicates.
-	 * The default method of check the equivalence is !(a < b || b > a)
-	 */
 	size_t count(const Key &key) const
 	{
 		iterator now = find(key);
