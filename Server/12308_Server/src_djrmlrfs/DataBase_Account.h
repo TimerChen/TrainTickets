@@ -152,7 +152,6 @@ public:
 	{
 		Account a;	int temp = getIdNumber(ID);
 		// if there is no such account, return default information
-		if (nowAccData==NULL || temp==-1)	return a;
 		return accData[temp];
 	}
 
@@ -162,6 +161,15 @@ public:
 	{
 		accData[Id] = AccountInfo;
 		return 1;													//succeed
+	}
+	
+	void buyTickets(Ticket Tic, int num)
+	{
+		ticData[Tic] += num;
+	}
+	bool returnTickets(Ticket Tic, int num)
+	{
+		ticData[Tic] -= num;
 	}
 private:
 	int accNums;
