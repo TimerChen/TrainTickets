@@ -31,7 +31,9 @@ SOURCES += main.cpp\
     myinform.cpp \
     stationtostationsearch.cpp \
     trainsearch.cpp \
-    stationsearch.cpp
+    stationsearch.cpp \
+    searchticket.cpp \
+    toserverstructs.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -40,7 +42,12 @@ HEADERS  += mainwindow.h \
     myinform.h \
     stationtostationsearch.h \
     trainsearch.h \
-    stationsearch.h
+    stationsearch.h \
+    searchticket.h \
+    ../../../gitlearning/Timer/interface.h \
+    ../../../gitlearning/Timer/algorithm0.hpp \
+    ../../../gitlearning/Timer/tools.h \
+    toserverstructs.h
 
 FORMS    += mainwindow.ui \
     login.ui \
@@ -49,4 +56,5 @@ FORMS    += mainwindow.ui \
     myinform.ui \
     stationtostationsearch.ui \
     trainsearch.ui \
-    stationsearch.ui
+    stationsearch.ui \
+    searchticket.ui
