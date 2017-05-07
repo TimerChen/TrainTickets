@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>12308.png</normaloff>12308.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="label">
     <property name="geometry">
@@ -152,7 +156,7 @@
     <property name="maximumSize">
      <size>
       <width>691</width>
-      <height>351</height>
+      <height>343</height>
      </size>
     </property>
     <property name="orientation">

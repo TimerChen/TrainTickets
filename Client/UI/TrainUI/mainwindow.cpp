@@ -56,29 +56,37 @@ void MainWindow::on_logoutBtn_clicked()
 void MainWindow::on_myticketBtn_clicked()
 {
     Myticket myticket(this);
+
     myticket.exec();
 }
 
 void MainWindow::on_myinformBtn_clicked()
 {
     Myinform myinform(this);
+
     myinform.exec();
+
 }
 
 void MainWindow::on_stationToStationSearchBtn_clicked()
 {
     StationToStationSearch s(this);
+
     s.exec();
 }
 
 void MainWindow::on_trainSearchBtn_clicked()
 {
     TrainSearch s(this);
+
     s.exec();
+
 }
 
 void MainWindow::on_stationSearchBtn_clicked()
 {
     StationSearch s(this);
+
     s.exec();
+
 }

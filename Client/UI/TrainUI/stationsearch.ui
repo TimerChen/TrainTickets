@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>车站查询</string>
   </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>12308.png</normaloff>12308.png</iconset>
+  </property>
  </widget>
  <resources/>
  <connections/>
