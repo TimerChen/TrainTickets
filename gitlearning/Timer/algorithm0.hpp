@@ -1,6 +1,9 @@
 #include <cstdio>
 #include <iostream>
 
+#include "src_MW/smartpoint.hpp"
+namespace ttd {
+
 template<class T>
 void swap( T &a, T &b )
 { T c(a); a=b;b=c; }
@@ -8,6 +11,9 @@ template<class T>
 T min(const T &a, const T &b){return a<b?a:b;}
 template<class T>
 T max(const T &a, const T &b){return a<b?b:a;}
+
+
+
 
 template<class TI, class T, class Compare>
 TI lower_bound( TI data, TI end, const T &val, Compare cmp )
@@ -80,9 +86,9 @@ void sort( TI data, TI end, Compare cmp )
 	x = data+l;
 	while( l < r )
 	{
-		while( l < r && !cmp( data[r], *x ) )r--;
+		while( l < r && cmp( *x ,data[r] ) )r--;
 		if( l < r ){swap( data[l++], data[r] );x = data+r;}
-		while( l < r && !cmp( *x, data[l] ))l++;
+		while( l < r && cmp( data[l] ,*x ) )l++;
 		if( l < r ){swap( data[r--], data[l] );x = data+l;}
 	}
 	sort( data, x, cmp );
@@ -99,11 +105,13 @@ void sort( TI data, TI end )
 	x = data+l;
 	while( l < r )
 	{
-		while( l < r && !(data[r] < *x) )r--;
+		while( l < r && ( *x < data[r] ) )r--;
 		if( l < r ){swap( data[l++], data[r] );x = data+r;}
-		while( l < r && !( *x< data[l] ))l++;
+		while( l < r && ( data[l] < *x ) )l++;
 		if( l < r ){swap( data[r--], data[l] );x = data+l;}
 	}
 	sort( data, x );
 	sort( x+1, end );
+}
+
 }

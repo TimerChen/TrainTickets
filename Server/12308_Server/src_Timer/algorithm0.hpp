@@ -86,9 +86,9 @@ void sort( TI data, TI end, Compare cmp )
 	x = data+l;
 	while( l < r )
 	{
-		while( l < r && !cmp( data[r], *x ) )r--;
+		while( l < r && cmp( *x ,data[r] ) )r--;
 		if( l < r ){swap( data[l++], data[r] );x = data+r;}
-		while( l < r && !cmp( *x, data[l] ))l++;
+		while( l < r && cmp( data[l] ,*x ) )l++;
 		if( l < r ){swap( data[r--], data[l] );x = data+l;}
 	}
 	sort( data, x, cmp );
@@ -105,9 +105,9 @@ void sort( TI data, TI end )
 	x = data+l;
 	while( l < r )
 	{
-		while( l < r && !(data[r] < *x) )r--;
+		while( l < r && ( *x < data[r] ) )r--;
 		if( l < r ){swap( data[l++], data[r] );x = data+r;}
-		while( l < r && !( *x< data[l] ))l++;
+		while( l < r && ( data[l] < *x ) )l++;
 		if( l < r ){swap( data[r--], data[l] );x = data+l;}
 	}
 	sort( data, x );
