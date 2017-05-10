@@ -1,71 +1,62 @@
-/**
- * implement a container like std::map
- */
-#ifndef SJTU_MAP_HPP
-#define SJTU_MAP_HPP
+#ifndef TTD_MAP_HPP
+#define TTD_MAP_HPP
 
-// only for std::less<T>
 #include <functional>
 #include <cstddef>
-#include "utility.hpp"
 #include "exceptions.hpp"
+#include "utility.hpp"
+//using AVL
 namespace ttd {
-
-template<
-	class Key,
-	class T,
-	class Compare = std::less<Key>
+template<class Key,class T,class Compare = std::less<Key>
 > class map {
 public:
 	typedef pair<const Key, T> value_type;
+	
 	class node{
-		int height, stsize;//高度，子树size 
-		value_type val;//值 
-		node*pre, nxt;//前驱后继 
-		node*fa, ls, rs;//父亲，左右儿子 
-		node()
+	public:
+		int height;
+		value_type*val;
+		node *pre, *nxt;
+		node *ls, *rs;
+		node():val(NULL)
 		{
-			stsize = height = 1;
-			pre = nxt = NULL;
-			fa = ls = rs = NULL;
+			height = 0;
+			pre = nxt = ls = rs = NULL;
 		}
-		node(const value_type &vl)
+		node(const value_type &vl, node*l, node*r, int h = 0):val(new value_type(vl))
 		{
-			val = vl;
-			height = stsize = 1;
-			
+			height = h;
+			ls = l, rs = r;
 			pre = nxt = NULL;
-			fa = ls = rs = NULL;
 		}
 		~node()
 		{
+			delete val;
+			val = NULL;
 			pre = nxt = NULL;
-			fa = ls = rs = NULL;
+			ls = rs = NULL;
+		}
+		void operator=(const node &a)
+		{
+			height = a.height;
+			if (val == NULL)	val = new value_type(*a.val);
+			else	*val = *a.val;
+			pre = a.pre, nxt = a.nxt, ls = a.ls, rs = a.rs;
 		}
 	};
+	
 	class const_iterator;
+
 	class iterator {
-	private:
-		node*val, end;
 	public:
-		iterator() {
-			val = end = NULL;
-		}
-		iterator(const iterator &other) {
-			val = other.val, end = other.end;
-		}
-		~iterator()
+		node *val, *end;
+		iterator():val(NULL),end(NULL){}
+		iterator(const iterator &other):val(other.val),end(other.end){}
+		iterator operator=(const iterator &other)
 		{
-			val = end = NULL;
+			val = other.val , end = other.end;
 		}
-		/**
-		 * return a new iterator which pointer n-next elements
-		 *   even if there are not enough elements, just return the answer.
-		 * as well as operator-
-		 */
-		/**
-		 * TODO iter++
-		 */
+		~iterator(){val = end = NULL;}
 		iterator operator++(int)
 		{
 			iterator tmp;
@@ -73,28 +64,22 @@ public:
 			tmp.end = end;
 			if (val->nxt == NULL)
 			{
-				throw "invalid_iterator";
+				throw invalid_iterator();
 				return tmp;
 			}
 			val = val->nxt;
 			return tmp;
 		}
-		/**
-		 * TODO ++iter
-		 */
 		iterator & operator++()
 		{
 			if (val->nxt == NULL)
 			{
-				throw "invalid_iterator";
-				return this;
+				throw invalid_iterator();
+				return *this;
 			}
 			val = val->nxt;
-			return this;
+			return *this;
 		}
-		/**
-		 * TODO iter--
-		 */
 		iterator operator--(int)
 		{
 			iterator tmp;
@@ -102,373 +87,465 @@ public:
 			tmp.end = end;
 			if (val->pre == NULL)
 			{
-				throw "invalid_iterator";
+				throw invalid_iterator();
 				return tmp;
 			}
 			val = val->pre;
 			return tmp;
 		}
-		/**
-		 * TODO --iter
-		 */
 		iterator & operator--()
 		{
 			if (val->pre == NULL)
 			{
-				throw "invalid_iterator";
-				return this;
+				throw invalid_iterator();
+				return *this;
 			}
 			val = val->pre;
-			return this;
+			return *this;
 		}
-		/**
-		 * a operator to check whether two iterators are same (pointing to the same memory).
-		 */
 		value_type & operator*() const
 		{
-			return val->val;
+			return *(val->val);
 		}
 		bool operator==(const iterator &rhs) const
 		{
-			return val==rhs->val;
+			return val==rhs.val;
 		}
 		bool operator==(const const_iterator &rhs) const
 		{
-			return val==rhs->val;			
+			return val==rhs.val;			
 		}
-		/**
-		 * some other operator for iterator.
-		 */
 		bool operator!=(const iterator &rhs) const
 		{
-			return val!=rhs->val;
+			return val!=rhs.val;
 		}
 		bool operator!=(const const_iterator &rhs) const
 		{
-			return val!=rhs->val;
+			return val!=rhs.val;
 		}
-
-		/**
-		 * for the support of it->first. 
-		 * See <http://kelvinh.github.io/blog/2013/11/20/overloading-of-member-access-operator-dash-greater-than-symbol-in-cpp/> for help.
-		 */
 		value_type* operator->() const noexcept
 		{
-			return &(val->val);
+			return (val->val);
 		}
 	};
 	class const_iterator {
-		// it should has similar member method as iterator.
-		//  and it should be able to construct from an iterator.
-		private:
-			// data members.
 		public:
+			node*val,*end;
 			const_iterator() {
-				// TODO
+				val = end = NULL;
 			}
 			const_iterator(const const_iterator &other) {
-				// TODO
+				val = other.val, end = other.end;
 			}
 			const_iterator(const iterator &other) {
-				// TODO
+				val = other.val, end = other.end;
 			}
-			// And other methods in iterator.
-			// And other methods in iterator.
-			// And other methods in iterator.
+			const_iterator operator=(const iterator &other)
+			{
+				val = other.val , end = other.end;
+			}
+			const_iterator operator=(const const_iterator &other)
+			{
+				val = other.val , end = other.end;
+			}
+			~const_iterator()
+			{
+				val = end = NULL;
+			}
+			const_iterator operator++(int)
+			{
+				const_iterator tmp;
+				tmp.val = val;
+				tmp.end = end;
+				if (val->nxt == NULL)
+				{
+					throw invalid_iterator();
+					return tmp;
+				}
+				val = val->nxt;
+				return tmp;
+			}
+			const_iterator & operator++()
+			{
+				if (val->nxt == NULL)
+				{
+					throw invalid_iterator();
+					return *this;
+				}
+				val = val->nxt;
+				return *this;
+			}
+			const_iterator operator--(int)
+			{
+				const_iterator tmp;
+				tmp.val = val;
+				tmp.end = end;
+				if (val->pre == NULL)
+				{
+					throw invalid_iterator();
+					return tmp;
+				}
+				val = val->pre;
+				return tmp;
+			}
+			const_iterator & operator--()
+			{
+				if (val->pre == NULL)
+				{
+					throw invalid_iterator();
+					return *this;
+				}
+				val = val->pre;
+				return *this;
+			}
+			const value_type & operator*() const
+			{
+				return *(val->val);
+			}
+			bool operator==(const iterator &rhs) const
+			{
+				return val==rhs.val;
+			}
+			bool operator==(const const_iterator &rhs) const
+			{
+				return val==rhs.val;			
+			}
+			bool operator!=(const iterator &rhs) const
+			{
+				return val!=rhs.val;
+			}
+			bool operator!=(const const_iterator &rhs) const
+			{
+				return val!=rhs.val;
+			}
+			const value_type* operator->() const noexcept
+			{
+				return val->val;
+			}
 	};
 	
-	/**
-	 * TODO two constructors
-	 */
 	map()
 	{
+		Size = 0;
 		root = NULL;
 		endnode = new node;
-		Begin->val = End->val = endnode;
+		Begin.val = End.val = endnode;
+		End.end = Begin.end = endnode;
+		cBegin.val = cEnd.val = endnode;
+		cBegin.end = cEnd.end = endnode;
 	}
+	
 	void Cpy(node*&A, node*now)
 	{
-		A = new node(now.val);
-		A.stsize = now.stsize, A.height = now.height;
-		if (now->ls != NULL)	Cpy(A->ls,now->ls), A->ls->fa = A;
-		if (now->rs != NULL)	Cpy(A->rs,now->rs), A->rs->fa = A;
+		if (now == NULL)
+		{
+			A = NULL;
+			return;
+		}
+		A = new node(*(now->val),NULL,NULL);
+		A->height = now->height;
+		if (now->ls != NULL)	Cpy(A->ls,now->ls);
+		if (now->rs != NULL)	Cpy(A->rs,now->rs);
+	}
+	void makepn(node*&now,node*&pre)
+	{
+		if (now->ls != NULL)	makepn(now->ls,pre);
+		now->pre = pre;
+		if (pre != NULL)	now->pre->nxt = now;
+		pre = now;
+		if (now->rs != NULL)	makepn(now->rs,pre);
 	}
 	map(const map &other)
 	{
+		Size = other.Size;
+		root = NULL;
 		endnode = new node;
-		End->val = endnode;
+		Begin.val = End.val = endnode;
+		End.end = Begin.end = endnode;
+		cBegin.val = cEnd.val = endnode;
+		cBegin.end = cEnd.end = endnode;
+		
 		Cpy(root,other.root);
-		Begin->val = root;
-		while (Begin->val->ls != NULL)	Begin->val = Begin->val->ls;
+		if (root != NULL)	Begin.val = root;
+		while (Begin.val->ls != NULL)	Begin.val = Begin.val->ls;
+		
+		node* tend = NULL;	cBegin.val = Begin.val;
+		if (Size > 0)	{makepn(root,tend); tend->nxt = endnode;}
+		endnode->pre = tend;
 	}
-	/**
-	 * TODO assignment operator
-	 */
 	map & operator=(const map &other)
 	{
 		map Tmp(other);	clear();
-
-		End->val = Tmp.end->val, endnode = Tmp.endnode;
-		root = Tmp.root, Begin->val = Tmp.Begin->val;
-		
-		Tmp.Begin = Tmp.End = Tmp.root = Tmp.endnode = NULL;
+		Size = Tmp.Size;
+		root = Tmp.root, Tmp.root = NULL;
+		cBegin = Tmp.cBegin, Begin = Tmp.Begin;
+		delete endnode;
+		endnode = Tmp.endnode;
+		Tmp.endnode = NULL;
+		cEnd = Tmp.cEnd, End = Tmp.End;
+		Tmp.Begin = Tmp.End;
+		return *this;
 	}
-	/**
-	 * TODO Destructors
-	 */
 	~map()
 	{
 		clear();
-		delete endnode;
-		endnode = Begin = End = NULL;
+		if (endnode != NULL)	delete endnode;
+		endnode = NULL;
 	}
-	/**
-	 * TODO
-	 * access specified element with bounds checking
-	 * Returns a reference to the mapped value of the element with key equivalent to key.
-	 * If no such element exists, an exception of type `index_out_of_bound'
-	 */
 	T & at(const Key &key)
 	{
+		T aa;
+		value_type a(key,aa);
 		iterator Now = find(key);
-		if (Now == End)
+		if (Now == cEnd)
 		{
-			throw "index_out_of_bound";
-			return root->val.second;
+			throw invalid_iterator();
 		}
 		return Now->second;
 	}
 	const T & at(const Key &key) const
 	{
+		T aa;
+		value_type a(key,aa);
 		const_iterator Now = find(key);
 		if (Now == cEnd)
 		{
-			throw "index_out_of_bound";
-			return root->val.second;
+			throw invalid_iterator();
 		}
 		return Now->second;
 	}
-	/**
-	 * TODO
-	 * access specified element 
-	 * Returns a reference to the value that is mapped to a key equivalent to key,
-	 *   performing an insertion if such key does not already exist.
-	 */
 	T & operator[](const Key &key)
 	{
+		T aa;
+		value_type a(key,aa);
 		iterator Now = find(key);
-		if (Now == End)
-		{
-			throw "index_out_of_bound";
-			return root->val.second;
-		}
+		if (Now == End)	Now = insert(a).first;
 		return Now->second;
 	}
 	const T & operator[](const Key &key) const
 	{
+		T aa;
+		value_type a(key,aa);
 		const_iterator Now = find(key);
 		if (Now == cEnd)
 		{
-			throw "index_out_of_bound";
-			return root->val.second;
+			throw invalid_iterator();
 		}
 		return Now->second;
 	}
-	/**
-	 * return a iterator to the beginning
-	 */
-	iterator begin()
-	{
-		return Begin;
-	}
-	const_iterator cbegin() const {}
-	/**
-	 * return a iterator to the end
-	 * in fact, it returns past-the-end.
-	 */
-	iterator end()
-	{
-		return End;
-	}
-	const_iterator cend() const {}
-	/**
-	 * returns the number of elements.
-	 */
-	size_t size() const
-	{
-		if (root == NULL)	return 0;
-		return root.stsize;
-	}
-	/**
-	 * checks whether the container is empty
-	 * return true if empty, otherwise false.
-	 */
-	bool empty() const
-	{
-		return (size()==0);
-	}
-	/**
-	 * clears the contents
-	 */
+	iterator begin(){iterator tmp(Begin);return tmp;}
+	const_iterator cbegin() const{return cBegin;}
+	iterator end(){iterator tmp = End;return tmp;}
+	const_iterator cend() const{return cEnd;}
+	size_t size() const{return Size;}
+	bool empty() const{return (size()==0);}
 	void clear()
 	{
-		root->stsize = 0;
-		for (iterator i = Begin; i != End; ++i)
+		Size = 0;
+		for (iterator i = Begin; i != End;)
 		{
-			delete i->val;
-			i->val = NULL;
+			node*now=(i++).val;
+			delete (now->val);
+			now->val = NULL;
+			delete now;now = NULL;
 		}
-		Begin = End, root = NULL;
-		root->nxt = root->ls = root->rs = root->pre = NULL;
+		Begin = End, cBegin = cEnd, root = NULL;
+		if(endnode!=NULL)endnode->pre = NULL;
 	}
-	/**
-	 * insert an element.
-	 * return a pair, the first of the pair is
-	 *   the iterator to the new element (or the element that prevented the insertion), 
-	 *   the second one is true if insert successfully, or false.
-	 */
-	pair<iterator,bool> add(const value_type &value, node*&t, node*l, node*r)
+	void TL(node*&t)
 	{
-		
+		node*t1 = t->ls;
+		t->ls = t1->rs;
+		t1->rs = t;
+		t = t1;
+	}
+	void TR(node*&t)
+	{
+		node*t1 = t->rs;
+		t->rs = t1->ls;
+		t1->ls = t;
+		t = t1;
+	}
+	int max(int a, int b){return a>b?a:b;}
+	inline int height(node *t) const{return (t==NULL?-1:t->height);}
+	void uphei(node*&t)
+	{
+		if (t == NULL)	return;
+		t->height = max(height(t->ls),height(t->rs))+1;
+	}
+	void LL(node*&t)
+	{
+		node*t1 = t->ls;
+		t->ls = t1->rs;
+		t1->rs = t;
+		uphei(t), uphei(t1);
+		t = t1;
+	}
+	void RR(node*&t)
+	{
+		node*t1 = t->rs;
+		t->rs = t1->ls;
+		t1->ls = t;
+		uphei(t), uphei(t1);
+		t = t1;
+	}
+	void RL(node*&t){RR(t->ls), LL(t);}
+	void LR(node*&t){LL(t->rs), RR(t);}
+	void balance(node*&t)
+	{
+		if (t == NULL)	return;
+		if (height(t->ls)-height(t->rs) > 1)
+			if (height(t->ls->ls) >= height(t->ls->rs))
+				LL(t);	else	RL(t);
+		else if (height(t->rs)-height(t->ls) > 1)
+			if (height(t->rs->rs) >= height(t->rs->ls))
+				RR(t);	else	LR(t);
+		uphei(t);
+	}
+	pair<iterator,bool> add(const value_type &val, node*&t, node*l, node*r)
+	{
+		Compare cmp;
+		Key key = val.first;
+		T data = val.second;
 		pair<iterator,bool>	tmp;
 		if (t == NULL)
 		{
-			t = new node(value);
+			t = new node(val,NULL,NULL);
 			if (l == NULL)
 			{
 				t->nxt = r, t->pre = r->pre;
-				t->nxt->pre = t->pre->nxt = t;
+				t->nxt->pre = t;
+				if (t->pre != NULL)	t->pre->nxt = t;
 			}
 			else
 			{
-				t->pre = l, t->nxt = t->pre->nxt;
-				t->nxt->pre = t->pre->nxt = t;
+				t->pre = l, t->nxt = l->nxt;
+				t->pre->nxt = t->nxt->pre = t;
 			}
-			
-			tmp.seccond = 1, tmp.first.val = t, tmp.first.end = endnode;
+			tmp.second = true, tmp.first.val = t, tmp.first.end = endnode;
+			balance(t);	return tmp;
 		}
-		else if (value.first < t->val.first)
+		else if (cmp(key,t->val->first))
 		{
-			tmp = add(value,t->ls,NULL,t);
-			if (t->ls->height == t->rs->height+2)
-				if (value.first < t->ls->val.first)	LL(t);	else	LR(t);
+			pair<iterator,bool>	tt(add(val,t->ls,NULL,t));
+			balance(t);	return tt;
 		}
-		else if (value.first > t->val.first)
+		else if (cmp(t->val->first,key))
 		{
-			tmp = add(value,t->rs,t,NULL);
-			if (t->rs->height == t->ls->height+2)
-				if (value.first > t->rs->val.first)	RR(t);	else	RL(t);
+			pair<iterator,bool>	tt(add(val,t->rs,t,NULL));
+			balance(t);	return tt;
 		}
-		else	tmp.seccond = 0, tmp.first.val = t, tmp.first.end = endnode;
-		t->height = max(t->ls->height,t->rs->height)+1; 
+		else	{tmp.second = false, tmp.first.val = t, tmp.first.end = endnode;	return tmp;}
 		return tmp;
 	}
 	pair<iterator, bool> insert(const value_type &value)
 	{
-		return add(value,root,NULL,End);
+		pair<iterator,bool> ans(add(value,root,NULL,endnode));
+		if (Begin == End)	Begin.val = root;
+		else	if (Begin.val->pre != NULL)		Begin.val = Begin.val->pre;
+		cBegin.val = Begin.val;
+		if (ans.second)	Size++;
+		return ans;
 	}
-	bool del(Key now, node*&t)
+	node*findmin(node*t)
 	{
-		int stop = 0, subtree;
-		if (t == NULL)	return 1;
-		if (now < t->val.first)	stop = del(now,t->ls), subtree = 1;
-		else if (now > t->val.first)	stop = del(now,t->rs), subtree = 2;
+		if (t == NULL)	return t;
+		while (t->ls != NULL)	t = t->ls;
+		return t;
+	}
+	void some(node*&p, node*q)
+	{
+		if (p == q)
+		{
+			p = p->rs;
+			return;
+		}
+		some(p->ls,q);
+		balance(p);
+	}
+	void remove(Key key, node*&t)
+	{
+		Compare cmp;
+		if (cmp(key,t->val->first))	remove(key,t->ls);
+		else if (cmp(t->val->first,key))	remove(key,t->rs);
 		else if (t->ls!=NULL && t->rs!=NULL)
 		{
-			node*tmp = t->rs;
-			while (tmp->ls != NULL)	tmp = tmp->ls;
-			t->val = tmp->val;
-			tmp->pre->nxt = tmp->nxt->pre = t;
-			t->pre = tmp->pre, t->nxt = tmp->nxt;
-			tmp->pre = tmp->nxt = tmp;
-			stop = del(t->val->first,t->rs);
-			subtree = 2;
+			node*t1 = t->nxt;
+			some(t->rs,t1);
+			t1->ls = t->ls, t1->rs = t->rs;
+			if (t->val != NULL)	delete t->val;
+			t->val = NULL;	delete t;	t = t1;
 		}
 		else
 		{
-			node*tmp = t;
-			t->nxt->pre = t->pre;
-			t->pre->nxt = t->nxt;
-			t = (t->ls==NULL)?t->rs:t->ls;
+			node* tmp = t;
+			if (tmp->val != NULL)	delete tmp->val;
+			t = (t->ls==NULL)?t->rs:t->ls;	tmp->val = NULL; 
 			delete tmp;
-			return 0;
 		}
-		if (stop)	return 1;
-		int bf;
-		switch (subtree){
-			case 1:
-				bf = t->ls->height-t->rs->height+1;
-				if (bf == 0)	return 1;
-				if (bf == 1)	return 0;
-				if (bf == -1)
-				{
-					 bf = t->rs->ls->height-t->rs->rs->height;
-					 switch(bf){
-					 	case 0:RR(t);return 1;
-					 	case -1:RR(t);return 0;
-					 	default:RL(t);return 0;
-					 }
-				}
-				break;
-			case 2:
-				bf = t->ls->height-t->rs->height-1;
-				if (bf == 0)	return 1;
-				if (bf == -1)	return 0;
-				if (bf == 1)
-				{
-					bf = t->ls->ls->height-t->ls->rs->height;
-					switch(bf){
-						case 0:LL(t);return 1;
-						case 1:LL(t);return 0;
-						default:LR(t);return 0;
-					}
-				}
-		}
+		balance(t);
 	}
 	void erase(iterator pos)
 	{
-		if (pos->end!=endnode || pos==End || pos->val==NULL)
+		if (pos.end!=endnode || pos==End || pos.val==NULL)
 		{
-			throw "invalid_iterator";
+			throw invalid_iterator();
 			return;
 		}
-		del(pos->val->val.first,root);
+		--Size;	node*t = pos.val;
+		t->nxt->pre = t->pre;
+		if (pos == Begin)	++Begin, ++cBegin;
+		else	t->pre->nxt = t->nxt;
+		remove(pos->first,root);
 	}
 	size_t count(const Key &key) const
 	{
-		iterator now = find(key);
-		if (now == End)	return 0;
+		const_iterator zz = find(key);
+		if (zz == End)	return 0;
 		return 1;
 	}
-	/**
-	 * Finds an element with key equivalent to key.
-	 * key value of the element to search for.
-	 * Iterator to an element with key equivalent to key.
-	 *   If no such element is found, past-the-end (see end()) iterator is returned.
-	 */
 	iterator find(const Key &key)
 	{
 		node*now = root;
 		while (now != NULL)
 		{
-			if (key < now->val.first)	now = now->ls;
-			else if (now->val.first < key)	now = now->rs;
+			Compare cmp;
+			if (cmp(key,now->val->first))	now = now->ls;
+			else if (cmp(now->val->first,key))	now = now->rs;
 			else
 			{
 				iterator tmp;
-				tmp->val = now;
-				tmp->end = End;
+				tmp.val = now;
+				tmp.end = endnode;
 				return tmp;
 			}
 		}
 		return End;
 	}
-	const_iterator find(const Key &key) const {}
+	const_iterator find(const Key &key) const
+	{
+		node*now = root;
+		while (now != NULL)
+		{
+			Compare cmp;
+			if (cmp(key,now->val->first))	now = now->ls;
+			else if (cmp(now->val->first,key))	now = now->rs;
+			else
+			{
+				const_iterator tmp;
+				tmp.val = now;
+				tmp.end = endnode;
+				return tmp;
+			}
+		}
+		return cEnd;
+	}
+
 private:
 	int Size;
-	iterator* Begin, End;
-	const_iterator* cBegin, cEnd;
-	node* root, endnode;
+	iterator Begin, End;
+	const_iterator cBegin, cEnd;
+	node *root, *endnode;
 };
 
 }
