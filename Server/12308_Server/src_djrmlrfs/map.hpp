@@ -540,7 +540,61 @@ public:
 		}
 		return cEnd;
 	}
-
+		
+	void IN(node*&A)
+	{
+	/*	if (now == NULL)
+		{
+			A = NULL;
+			return;
+		}
+		T t;
+		Key key(filein);
+		filein t
+		A = new node(pair(key,t),NULL,NULL);
+		A->height = now->height;
+		int havel(filein), haver(filein);
+		if (havel)	Cpy(A->ls,now->ls);
+		if (haver)	Cpy(A->rs,now->rs);*/
+	}
+	void input()
+	{
+		if (Size != 0)
+		{
+			/*int x;
+			filein x
+			while (x--)
+			{
+				T t;
+				Key key(filein);
+				filein t
+				insert(pair(key,t))
+			}
+			return;*/
+		}
+		/*filein Size
+		IN(root);
+		if (root != NULL)	Begin.val = root;
+		while (Begin.val->ls != NULL)	Begin.val = Begin.val->ls;
+		node* tend = NULL;	cBegin.val = Begin.val;
+		if (Size > 0)	{makepn(root,tend); tend->nxt = endnode;}
+		endnode->pre = tend;*/
+	}
+	void Out(node *t)
+	{
+		/* fileout t->val->first
+		fileout t->val->second
+		fileout t->ls==NULL?0:1
+		fileout t->rs==NULL?0:1
+		if (t->ls != NULL)	Out(t->ls);
+		if (t->rs != NULL)	Out(t->rs);
+		*/
+	}
+	void output()
+	{
+		//fileout Size
+		Out(root);
+	}
 private:
 	int Size;
 	iterator Begin, End;
