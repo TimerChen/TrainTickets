@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>826</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>826</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>826</width>
+    <height>800</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>12308.png</normaloff>12308.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>10</y>
+      <width>241</width>
+      <height>251</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>241</width>
+      <height>251</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>241</width>
+      <height>251</height>
+     </size>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../../../../../mnt/hgfs/share/12308.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>127</x>
+      <y>240</y>
+      <width>129</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>129</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>129</width>
+      <height>32</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>12308</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>50</y>
+      <width>411</width>
+      <height>191</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_2">
+     <item>
+      <widget class="QPushButton" name="loginBtn">
+       <property name="minimumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>登录</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="regBtn">
+       <property name="minimumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>409</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>注册</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+    <zorder>regBtn</zorder>
+    <zorder>loginBtn</zorder>
+   </widget>
+   <widget class="QSplitter" name="splitter">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>300</y>
+      <width>691</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>691</width>
+      <height>351</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>691</width>
+      <height>343</height>
+     </size>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+    <widget class="QPushButton" name="stationToStationSearchBtn">
+     <property name="minimumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>站站查询</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="trainSearchBtn">
+     <property name="minimumSize">
+      <size>
+       <width>691</width>
+       <height>111</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>691</width>
+       <height>111</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>车次查询</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="stationSearchBtn">
+     <property name="minimumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>691</width>
+       <height>112</height>
+      </size>
+     </property>
+     <property name="text">
+      <string>车站查询</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>680</y>
+      <width>691</width>
+      <height>60</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QPushButton" name="myticketBtn">
+       <property name="minimumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>我的车票</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="myinformBtn">
+       <property name="minimumSize">
+        <size>
+         <width>221</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>221</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>用户信息</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="logoutBtn">
+       <property name="minimumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>222</width>
+         <height>58</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>退出登录</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <zorder>layoutWidget</zorder>
+   <zorder>splitter</zorder>
+   <zorder>layoutWidget</zorder>
+   <zorder>label</zorder>
+   <zorder>label_3</zorder>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
