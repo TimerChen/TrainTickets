@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>TrainSearch</class>
+ <widget class="QDialog" name="TrainSearch">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>792</width>
+    <height>748</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>车次查询</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>12308.png</normaloff>12308.png</iconset>
+  </property>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
