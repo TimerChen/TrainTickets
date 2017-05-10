@@ -63,13 +63,12 @@ public:
         label->setGeometry(QRect(50, 10, 241, 251));
         label->setMinimumSize(QSize(241, 251));
         label->setMaximumSize(QSize(241, 251));
-        label->setPixmap(QPixmap(QString::fromUtf8("../../../../../../../../mnt/hgfs/share/12308.png")));
+        label->setPixmap(QPixmap(QString::fromUtf8(":/new/prefix1/12308.png")));
         label->setScaledContents(true);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(127, 240, 129, 32));
-        label_3->setMinimumSize(QSize(129, 32));
-        label_3->setMaximumSize(QSize(129, 32));
+        label_3->setGeometry(QRect(150, 240, 51, 41));
+        label_3->setScaledContents(false);
         layoutWidget = new QWidget(centralWidget);
         layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
         layoutWidget->setGeometry(QRect(340, 50, 411, 191));

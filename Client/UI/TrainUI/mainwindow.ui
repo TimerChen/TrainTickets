@@ -55,7 +55,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../../../../../../mnt/hgfs/share/12308.png</pixmap>
+     <pixmap resource="../../../../../../../mnt/hgfs/share/pic.qrc">:/new/prefix1/12308.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -64,26 +64,17 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>127</x>
+      <x>150</x>
       <y>240</y>
-      <width>129</width>
-      <height>32</height>
+      <width>51</width>
+      <height>41</height>
      </rect>
-    </property>
-    <property name="minimumSize">
-     <size>
-      <width>129</width>
-      <height>32</height>
-     </size>
-    </property>
-    <property name="maximumSize">
-     <size>
-      <width>129</width>
-      <height>32</height>
-     </size>
     </property>
     <property name="text">
      <string>12308</string>
+    </property>
+    <property name="scaledContents">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QWidget" name="layoutWidget">
@@ -292,6 +283,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../../../../../../../mnt/hgfs/share/pic.qrc"/>
+ </resources>
  <connections/>
 </ui>
