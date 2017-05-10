@@ -16,16 +16,16 @@ SearchTicket::SearchTicket(QWidget *parent) :
     QStandardItemModel *model = new QStandardItemModel();
     model->setColumnCount(10);
 
-    model->setHeaderData(0,Qt::Horizontal,QString::fromLocal8Bit("编号"));
-    model->setHeaderData(1,Qt::Horizontal,QString::fromLocal8Bit("车次"));
-    model->setHeaderData(2,Qt::Horizontal,QString::fromLocal8Bit("发站"));
-    model->setHeaderData(3,Qt::Horizontal,QString::fromLocal8Bit("到站"));
-    model->setHeaderData(4,Qt::Horizontal,QString::fromLocal8Bit("发站时刻"));
-    model->setHeaderData(5,Qt::Horizontal,QString::fromLocal8Bit("到站时刻"));
-    model->setHeaderData(6,Qt::Horizontal,QString::fromLocal8Bit("座位类型"));
-    model->setHeaderData(7,Qt::Horizontal,QString::fromLocal8Bit("票价"));
-    model->setHeaderData(8,Qt::Horizontal,QString::fromLocal8Bit("余票量"));
-    model->setHeaderData(9,Qt::Horizontal,QString::fromLocal8Bit("是否可购买"));
+    model->setHeaderData(0,Qt::Horizontal,QString("编号"));
+    model->setHeaderData(1,Qt::Horizontal,QString("车次"));
+    model->setHeaderData(2,Qt::Horizontal,QString("发站"));
+    model->setHeaderData(3,Qt::Horizontal,QString("到站"));
+    model->setHeaderData(4,Qt::Horizontal,QString("发站时刻"));
+    model->setHeaderData(5,Qt::Horizontal,QString("到站时刻"));
+    model->setHeaderData(6,Qt::Horizontal,QString("座位类型"));
+    model->setHeaderData(7,Qt::Horizontal,QString("票价"));
+    model->setHeaderData(8,Qt::Horizontal,QString("余票量"));
+    model->setHeaderData(9,Qt::Horizontal,QString("是否可购买"));
     ui->ticketsTableView->setModel(model);
 
     ui->ticketsTableView->setColumnWidth(0,50);
