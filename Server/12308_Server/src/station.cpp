@@ -46,6 +46,9 @@ bool Station::remove(const QString &mod_ref)
 		return false;
 }
 
+
+	//I don't know what is this function --TimerChen
+/*
 int Station::Query(const QDate& _date, const int& fuzzy)
 {
 	using namespace ttd;
@@ -78,3 +81,4 @@ int Station::Query(const QDate& _date, const int& fuzzy)
 
 	return ans;
 }
+*/

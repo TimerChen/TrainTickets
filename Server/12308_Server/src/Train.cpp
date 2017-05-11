@@ -1,5 +1,11 @@
-#ifndef TTD_TRAIN_HPP
-#define TTD_TRAIN_HPP
+/*
+ *	Writed by Yanxi Lin.
+ *	Modified by Jingxiao Chen.
+ *
+ */
+
+#ifndef TRAIN_HPP
+#define TRAIN_HPP
 
 #include "include/train.h"
 #include "include/map.hpp"
@@ -8,7 +14,11 @@
 
 Ticket::Ticket(){}
 
-Ticket::Ticket (const QString &un, const QString &ls, const QString &us, const QString &tID, const QDateTime &lt, const QDateTime &ut, int pr, const QString &st) {
+Ticket::Ticket (const QString &un, const QString &ls,
+				const QString &us, const QString &tID,
+				const QDateTime &lt, const QDateTime &ut,
+				int pr, const QString &st)
+{
 	ticketID = ticketNumber;
 	ticketNumber++;
 	userName = un;
@@ -37,7 +47,11 @@ bool operator < (const Ticket &t1) const {
 }
 
 bool operator == (const Ticket &t1) const {
-	if (userName == t1.userName && trainID == t1.trainID && loadStation == t1.loadStation && unLoadStation == t1.unLoadStation && seatType == t1.seatType) return true;
+	if (userName == t1.userName &&
+		trainID == t1.trainID &&
+		loadStation == t1.loadStation &&
+		unLoadStation == t1.unLoadStation &&
+		seatType == t1.seatType) return true;
 	else return false;
 }
 
@@ -45,6 +59,12 @@ bool operator == (const Ticket &t1) const {
 
 
 
+Train::Train (const QString &tID = "")
+:trainID(tID)
+{
+	tooLateToReconstructe = false;
+	seatTypeNumber = stationNumber = 0;
+}
 
 Train::Train (const QString &tID, int setnr, int stanr, const ttd::vector <QString> &stan, const ttd::vector <int> &ma, const ttd::vector <QTime> &rt, const ttd::vector <QTime> &lt, const ttd::vector <QString> &set, const ttd::vector <int> &senr, const ttd::vector < ttd::vector <int> > &ptb) {
 	tooLateToReconstructe = false;
@@ -154,7 +174,9 @@ RestTicketsInformation Train::howRestTickets (QDate dat, QString lsta, QString u
 	if (!salingDate.find (dat)) return rti;
 	if (!salingDate[dat].ableToBuy) return rti;
 	for (int i = y1; i < y2; i++) {
-		if (rti.restTicketsNumber == -1 || rti.restTicketsNumber > salingDate[dat].restTickets[x][i]) rti.restTicketsNumber = salingDate[dat].restTickets[x][i];
+		if (rti.restTicketsNumber == -1 ||
+			rti.restTicketsNumber > salingDate[dat].restTickets[x][i])
+			rti.restTicketsNumber = salingDate[dat].restTickets[x][i];
 	}
 	return rti;
 }
@@ -181,7 +203,7 @@ bool Train::openDate (QDate dat) {
 	else return salingDate[dat].ableToBuy;
 }
 
-QTrain Train::ask (QDate dat, QString lsta, QString ulsta) {
+QTrain Train::query_stationToStation (QDate dat, QString lsta, QString ulsta) {
 	QTrain qt;
 	TrainPoint tp = getPoint (lsta, ulsta, seatType[0]);
 	if (!salingDate.find (dat)) qt.ableToBuy = false;
@@ -194,14 +216,14 @@ QTrain Train::ask (QDate dat, QString lsta, QString ulsta) {
 	for (int i = 0; i < seatTypeNumber; i++) {
 		RestTicketsInformation rti = showRestTickets (dat, lsta, ulsta, seatType[i]);
 		qt.price.push_back (rti.restTicketsPrice);
-		qt.number.push_back (rti.restTicketsNumber);
+		qt.seatNumber.push_back (rti.restTicketsNumber);
 	}
 	qt.loadStationLeaveTime = leaveTime[tp.loadStationPoint];
 	qt.unLoadStationReachTime = reachTime[tp.unLoadStationPoint];
 	return qt;
 }
 
-TrainRoute Train::ask () {
+TrainRoute Train::query_train () {
 	TrainRoute tr;
 
 	tr.trainID = trainID;

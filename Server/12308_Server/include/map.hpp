@@ -1,38 +1,18 @@
 /**
  * implement a container like std::map
  */
-#ifndef SJTU_MAP_HPP
-#define SJTU_MAP_HPP
+#ifndef TTD_MAP_HPP
+#define TTD_MAP_HPP
 
 // only for std::less<T>
 #include <functional>
 #include <cstddef>
-#include "utility.hpp"
-#include "exceptions.hpp"
+#include "include/utility.hpp"
+#include "include/exceptions.hpp"
 
 #include <iostream>
 
-namespace sjtu {
-	/*
-	template<class T>
-	struct normal_ptr
-	{
-		T *ptr;
-		normal_ptr(T *Ptr = nullptr):ptr(Ptr){}
-		T& operator *()
-		{	return *ptr;	}
-		T* operator ->()
-		{	return ptr;		}
-		const T& operator *()const
-		{	return *ptr;	}
-		const T* operator ->()const
-		{	return ptr;		}
-		bool operator == (const normal_ptr &a){return ptr==a.ptr;}
-		bool operator != (const normal_ptr &a){return ptr!=a.ptr;}
-		int operator - (const normal_ptr &a){return ptr - a.ptr;}
-		void del(){delete ptr;ptr = nullptr;}
-	};
-	*/
+namespace ttd {
 	template<class T>
 	void swap( T &a, T &b )
 	{ T c(a); a=b;b=c; }
@@ -41,13 +21,6 @@ namespace sjtu {
 	template<class T>
 	T max(const T &a, const T &b){return a>b?a:b;}
 
-/*
-template<
-	class Key,
-	class T,
-	class Compare
->
-class Debuger_Map;*/
 
 template<
 	class Key,

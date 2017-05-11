@@ -1,6 +1,6 @@
 /*
-	Edit by Hanjing Wang.
-	Modify by TimeMachine.stat
+	Edited by Hanjing Wang.
+	Modified by Jingxiao Chen.
 */
 #ifndef STATION_HPP
 #define STATION_HPP
@@ -15,7 +15,8 @@
 #include "vector.hpp"
 
 
-
+//Reply of station query
+//Data of station
 class Station
 {
 private:
@@ -34,8 +35,11 @@ public:
 	void insert(const QString& add_ref);
 	//valid delete train plan at this station
 	bool remove(const QString& mod_ref);
+
+	//I don't know what is this function --TimerChen
+	
 	//valid fuzzy query operation according to date provided(unit: QData("XXXX-XX-XX"))
-	int Query(const QDate& _date, const int& fuzzy = 0);
+	//int Query(const QDate& _date, const int& fuzzy = 0);
 };
 
 #endif // STATION_HPP
