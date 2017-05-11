@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,7 +27,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         servermainwindow.cpp \
     src/database_base.cpp \
-    src/database_main.cpp
+    src/database_main.cpp \
+    clientthread.cpp
 
 HEADERS  += servermainwindow.h \
     include/vector.hpp \
@@ -37,6 +39,7 @@ HEADERS  += servermainwindow.h \
     include/exceptions.hpp \
     include/database_main.h \
     include/DataBase.h \
-    include/algorithm0.hpp
+    include/algorithm0.hpp \
+    clientthread.h
 
 FORMS    += servermainwindow.ui
