@@ -15,6 +15,9 @@ public:
     explicit StationSearch(QWidget *parent = 0);
     ~StationSearch();
 
+private slots:
+    void on_searchbotton_clicked();
+
 private:
     Ui::StationSearch *ui;
 };

@@ -15,6 +15,9 @@ public:
     explicit TrainSearch(QWidget *parent = 0);
     ~TrainSearch();
 
+private slots:
+    void on_searchbotton_clicked();
+
 private:
     Ui::TrainSearch *ui;
 };
