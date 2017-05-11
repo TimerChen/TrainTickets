@@ -4,6 +4,16 @@
 #include <QMainWindow>
 
 namespace Ui {
+enum{
+    annonymous,
+    normal,
+    admin
+};
+enum{
+    stationToStation,
+    stationSearch,
+    trainSearch
+};
 class MainWindow;
 }
 
@@ -12,7 +22,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    explicit MainWindow(QWidget *parent = 0);
+    explicit MainWindow(QWidget *parent = 0, int user = Ui::annonymous);
     ~MainWindow();
 
 private slots:
@@ -34,6 +44,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    int userType;
 };
 
 #endif // MAINWINDOW_H
