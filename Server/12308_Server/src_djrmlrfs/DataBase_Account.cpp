@@ -107,9 +107,10 @@ int DataBase_Account::returnTicket(const int &Id, const Qstring &trainId, const 
 	//please cheak weather num < 0 or num > leftnum
 	//the front can insure there is such ticket
 	Ticket tmp(Id,accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
-	ticData[tmp] -= num, accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,-num));
-	return price*num;
-}
+	ticData[tmp] -= num;
+	if (!ticData[tmp])	ticData.erase(ticData.find(tmp));
+	accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,-num));
+	return price*num;}
 ttd::vector<DataBase_Account::ticLog> DataBase_Account::quiryLog(const int &Id)
 {
 	return accData[Id].log;

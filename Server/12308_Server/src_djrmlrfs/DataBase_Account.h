@@ -8,12 +8,13 @@ class DataBase_Account : public DataBase_Base
 {
  
 	friend class DataBase_User;
+public:
 	struct ticLog{
 		Qstring train, fromStation, toStation;
 		// I do not know which head file to include , It's in Qt 
-		QDateTime date;
+		QDate date;
 		int num;
-		ticLog(const Qstring&tra, const Qstring&fro, const Qstring&to, const QDateTime &day, const int &buynum)
+		ticLog(const Qstring&tra, const Qstring&fro, const Qstring&to, const QDate &day, const int &buynum)
 		:train(tra), fromStation(fro), toStation(to), date(day), num(buynum){}
 	};
 	struct Account
@@ -36,8 +37,8 @@ class DataBase_Account : public DataBase_Base
 		//the information in buying and refounding
 		ttd::vector<ticLog> log;
 
-		Account(const Qstring&Id = "Default", const int &num = -1, const Qstring&nam = "TimeMachine",
-		 const Qstring&pwhash = "e1119c269cdb64f851aef6db68c49610", const bool &adm = 0):
+		Account(const Qstring&Id = "Default", const Qstring&nam = "TimeMachine", const bool &adm = 0,
+		 const Qstring&pwhash = "e1119c269cdb64f851aef6db68c49610", const int &num = -1):
 		id_number(num), id(Id), name(nam), passwordHash(pwhash), isAdmin(adm){log.clear();}
 		Account operator=(const Account &acc);
 	};
@@ -47,11 +48,11 @@ class DataBase_Account : public DataBase_Base
 		Qstring buyer;
 		Qstring loadStation, unLoadStation;
 		Qstring trainID;
-		QDateTime loadTime, unLoadTime;
+		QDate loadTime, unLoadTime;
 		Qstring seatType;
 		Ticket(const int &a){accId = a; price = -1;}
         Ticket(const int &acid, const Qstring&name, const Qstring&st, const Qstring&ed,
-		 const Qstring&tra, const QDateTime &stt, const QDateTime &edt, const int &pri, const Qstring&stp)
+		 const Qstring&tra, const QDate &stt, const QDate &edt, const int &pri, const Qstring&stp)
 	:accId(acid), buyer(name), loadStation(st), unLoadStation(ed), trainID(tra), loadTime(stt), unLoadTime(edt), price(pri), seatType(stp){}
 		~Ticket(){}
 		
@@ -107,10 +108,10 @@ public:
 	void modify_account(const int &Id, const Account &AccountInfo );
 	//return the total cost
 	int buyTicket(const int &Id, const Qstring&trainId, const Qstring&from, const Qstring&to,
-		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const Qstring&type, const int &num);
+		const QDate &fromTime, const QDate &toTime, const int &price, const Qstring&type, const int &num);
 	
 	int returnTicket(const int &Id, const Qstring&trainId, const Qstring&from, const Qstring&to,
-		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const Qstring&type, const int &num);
+		const QDate &fromTime, const QDate &toTime, const int &price, const Qstring&type, const int &num);
 	ttd::vector<ticLog> quiryLog(const int &Id);
 	ttd::vector<ticLog> ownedTicket(const int &Id);
 private:
