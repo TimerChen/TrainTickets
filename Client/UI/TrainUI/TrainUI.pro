@@ -58,3 +58,6 @@ FORMS    += mainwindow.ui \
     trainsearch.ui \
     stationsearch.ui \
     searchticket.ui
+
+RESOURCES += \
+    ../../../../../../../mnt/hgfs/share/pic.qrc
