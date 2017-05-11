@@ -2,6 +2,7 @@
 #define DATABASE_USER_H
 #include <cstdio>
 #include <string>
+#include <QDateTime>
 #include "DataBase.h"
 #include "DataBase_Account.h"
 //User
@@ -9,13 +10,13 @@
 class DataBase_User : public DataBase_Base
 {
 public:
-	DataBase_User(const std::string &Name = "Default");
+	DataBase_User(const Qstring &Name = "Default");
 	~DataBase_User();
 	//very important, or you can choose you write or let me rewrite in account
 	void add_acc(shared_ptr<DataBase_Account> whichAcc);
 	// Login with your account id and password.
 	// return 0: failed
-	int login( const std::string &ID, const std::string &password );
+	int login( const Qstring &ID, const Qstring &password );
 	bool logged(int UserId);
 	bool is_admin(int UserId);
 	int query_identifyType( int UserId );

@@ -9,26 +9,26 @@ class DataBase_Account : public DataBase_Base
  
 	friend class DataBase_User;
 	struct ticLog{
-		std::string train, fromStation, toStation;
+		Qstring train, fromStation, toStation;
 		// I do not know which head file to include , It's in Qt 
 		QDateTime date;
 		int num;
-		ticLog(const std::string &tra, const std::string &fro, const std::string &to, const QDateTime &day, const int &buynum)
+		ticLog(const Qstring&tra, const Qstring&fro, const Qstring&to, const QDateTime &day, const int &buynum)
 		:train(tra), fromStation(fro), toStation(to), date(day), num(buynum){}
 	};
 	struct Account
 	{
 		//Your id for register.
-		std::string id;
+		Qstring id;
 
 		//Id for saving and finding quickly.
 		int id_number;
 
 		//Your name
-		std::string name;
+		Qstring name;
 
 		//We only save the hash code of password.
-		std::string passwordHash;
+		Qstring passwordHash;
 
 		//If this is a admin account.
 		bool isAdmin;
@@ -36,22 +36,22 @@ class DataBase_Account : public DataBase_Base
 		//the information in buying and refounding
 		ttd::vector<ticLog> log;
 
-		Account(const std::string &Id = "Default", const int &num = -1, const std::string &nam = "TimeMachine",
-		 const std::string &pwhash = "e1119c269cdb64f851aef6db68c49610", const bool &adm = 0):
+		Account(const Qstring&Id = "Default", const int &num = -1, const Qstring&nam = "TimeMachine",
+		 const Qstring&pwhash = "e1119c269cdb64f851aef6db68c49610", const bool &adm = 0):
 		id_number(num), id(Id), name(nam), passwordHash(pwhash), isAdmin(adm){log.clear();}
 		Account operator=(const Account &acc);
 	};
 	struct Ticket
 	{
 		int accId, price;
-		std::string buyer;
-		std::string loadStation, unLoadStation;
-		std::string trainID;
+		Qstring buyer;
+		Qstring loadStation, unLoadStation;
+		Qstring trainID;
 		QDateTime loadTime, unLoadTime;
-		std::string seatType;
+		Qstring seatType;
 		Ticket(const int &a){accId = a; price = -1;}
-        Ticket(const int &acid, const std::string &name, const std::string &st, const std::string &ed,
-		 const std::string &tra, const QDateTime &stt, const QDateTime &edt, const int &pri, const std::string &stp)
+        Ticket(const int &acid, const Qstring&name, const Qstring&st, const Qstring&ed,
+		 const Qstring&tra, const QDateTime &stt, const QDateTime &edt, const int &pri, const Qstring&stp)
 	:accId(acid), buyer(name), loadStation(st), unLoadStation(ed), trainID(tra), loadTime(stt), unLoadTime(edt), price(pri), seatType(stp){}
 		~Ticket(){}
 		
@@ -86,35 +86,36 @@ private:
 	static char str16[];
 	static unsigned int k[];
 	static unsigned int s[];
-	std::string Hex(int a);
+	Qstring Hex(int a);
 public:
 	//Get the hash code of a password.
-	std::string getPasswordHash( const std::string &Password );
-	DataBase_Account( const std::string &Name = "Default" );
+	Qstring getPasswordHash( const Qstring&Password );
+	DataBase_Account( const Qstring&Name = "Default" );
 	~DataBase_Account();
 
 	//Register or lead-in a NEW account.
 	//return	0:illegal	1:used-ID used	2: succeed.
-	int Register( const Account &NewAccout, const std::string &Password = "000000" );
+	int Register( const Account &NewAccout, const Qstring&Password = "000000" );
 	//Get the id_number by your string Id ( in logn ).
-	int getIdNumber( const std::string &Id );
+	int getIdNumber( const Qstring&Id );
 	
 	// must valid and admin
-	Account query_account(std::string ID);
+	Account query_account(Qstring ID);
+	Account query_account(int ID);
 	//please check weather valid, i means, logged and admin or change self
 	// and remember to check weather check password when modify password
 	void modify_account(const int &Id, const Account &AccountInfo );
 	//return the total cost
-	int buyTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
-		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const std::string &type, const int &num);
+	int buyTicket(const int &Id, const Qstring&trainId, const Qstring&from, const Qstring&to,
+		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const Qstring&type, const int &num);
 	
-	int returnTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
-		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const std::string &type, const int &num);
+	int returnTicket(const int &Id, const Qstring&trainId, const Qstring&from, const Qstring&to,
+		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const Qstring&type, const int &num);
 	ttd::vector<ticLog> quiryLog(const int &Id);
 	ttd::vector<ticLog> ownedTicket(const int &Id);
 private:
 	int accNums;
-	ttd::map<std::string,int> Numbers;
+	ttd::map<Qstring,int> Numbers;
 	ttd::vector<Account> accData;
 	ttd::map<Ticket,int> ticData;
 };

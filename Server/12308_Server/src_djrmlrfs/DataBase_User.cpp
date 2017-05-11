@@ -1,7 +1,5 @@
-#include <cstdio>
-#include <string>
 #include "DataBase_User.h"
-DataBase_User::DataBase_User(const std::string &Name)
+DataBase_User::DataBase_User(const Qstring &Name)
 {
 	nowTempId = 0;
 	dataBase_name = Name;
@@ -15,7 +13,7 @@ DataBase_User::~DataBase_User()
 	nowAccData = NULL;
 }
 
-int DataBase_User::login( const std::string &ID, const std::string &password )
+int DataBase_User::login( const Qstring &ID, const Qstring &password )
 {
 	if (nowAccData == NULL)	return 0;	// no account data
 	int Temp = nowAccData->getIdNumber(ID);//accountid
@@ -63,7 +61,4 @@ bool DataBase_User::logout( const int UserId )
 {
 	if (!logged(UserId))	return 0;
 	userData.erase(userData.find(UserId));		return 1;
-}
-int main()
-{
 }
