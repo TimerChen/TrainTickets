@@ -1,5 +1,5 @@
 
-#include "include/DataBase.h"
+#include "include/database.h"
 
 DataBase_Base::DataBase_Base( const QString &Name )
 :dataBase_name( Name )

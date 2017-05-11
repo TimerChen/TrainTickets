@@ -1,5 +1,5 @@
 #include "servermainwindow.h"
-#include "include/DataBase.h"
+#include "include/database.h"
 
 #include <QApplication>
 int main(int argc, char *argv[])
