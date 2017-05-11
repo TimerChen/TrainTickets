@@ -1,8 +1,8 @@
 #ifndef TTD_VECTOR_HPP
 #define TTD_VECTOR_HPP
 
-#include "exceptions.hpp"
-#include "smartpoint.hpp"
+#include "include/exceptions.hpp"
+#include "include/smartpoint.hpp"
 
 #include <climits>
 #include <cstddef>
@@ -206,7 +206,7 @@ class vector
         */
         friend const_iterator vector::cbegin() const;
         friend const_iterator vector::cend() const;
-        friend iterator;
+		friend class iterator;
         normal_ptr<const shared_ptr<T, true, true>> oriplace;
         size_t pos;
         const_iterator(size_t _pos, const shared_ptr<T, true, true>* _c)

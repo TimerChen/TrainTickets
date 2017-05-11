@@ -25,17 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         servermainwindow.cpp \
-    src_Timer/database_main.cpp \
-    src_Timer/database_base.cpp
+    src/database_base.cpp \
+    src/database_main.cpp
 
 HEADERS  += servermainwindow.h \
-    src_Timer/algorithm0.hpp \
-    src_MW/vector.hpp \
-    src_MW/smartpoint.hpp \
-    src_MW/exceptions.hpp \
-    src_Vegewong/DataBase_Log.hpp \
-    src_Timer/DataBase.h \
-    src_Timer/database_main.h
+    include/vector.hpp \
+    include/utility.hpp \
+    include/Train.h \
+    include/station.h \
+    include/smartpoint.hpp \
+    include/exceptions.hpp \
+    include/database_main.h \
+    include/DataBase.h \
+    include/algorithm0.hpp
 
-FORMS    += servermainwindow.ui \
-    server.ui
+FORMS    += servermainwindow.ui

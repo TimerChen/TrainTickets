@@ -1,3 +1,7 @@
+/*
+	Writed by Jingxiao Chen.
+*/
+
 #ifndef DATABASE_H
 #define DATABASE_H
 /*
@@ -10,9 +14,9 @@
 
 //A class for translate time more conveniently.
 //That is
-#include <string>
-#include "src_MW/vector.hpp"
-#include "src_MW/smartpoint.hpp"
+#include <QString>
+#include "include/vector.hpp"
+#include "include/smartpoint.hpp"
 
 namespace ttd {
 	template <class T>
@@ -36,14 +40,14 @@ public:
 	short hou,min,sec;
 	int to_int();
 	Time &set( const int &t=0 );
-	std::string to_string();
+	QString to_string();
 };
 
 class DataBase_Base
 {
 public:
-	std::string dataBase_name;
-	DataBase_Base( const std::string &Name = "Default" );
+	QString dataBase_name;
+	DataBase_Base( const QString &Name = "Default" );
 	~DataBase_Base();
 protected:
 	virtual void loadData();
@@ -57,13 +61,13 @@ class DataBase_User : public DataBase_Base             //前后端分离进行�
 {
 	friend class DataBase_Main;
 public:
-	DataBase_User( const std::string &Name = "Default" );
+	DataBase_User( const QString &Name = "Default" );
 	~DataBase_User();
 
 	// Login with your account id and password.
 	// return 0: failed
 	// return else : template id
-	int login( const std::string &ID, const std::string &password );
+	int login( const QString &ID, const QString &password );
 
 	//-1:not exist.
 	int query_identifyType( int UserId );
@@ -80,7 +84,7 @@ class DataBase_Account : public DataBase_Base
 	//Real information of one person.
 	struct IdentifyInformation
 	{
-		std::string name;
+		QString name;
 		int identificationCardNumber;
 		//0-normal 1-student
 		short 	identifyType,
@@ -90,13 +94,13 @@ class DataBase_Account : public DataBase_Base
 	struct Account
 	{
 		//Account(){}
-		Account( const std::string &Id, const short IdentifyType );
+		Account( const QString &Id, const short IdentifyType );
 
 		//Id for saving and finding quickly.
 		int id_number;
 
 		//Your id for register.
-		std::string	id,
+		QString	id,
 
 		//We only save the hash code of password.
 				passwordHash;
@@ -109,18 +113,18 @@ class DataBase_Account : public DataBase_Base
 		bool isAdmin;
 	};
 	//Get the hash code of a password.
-	std::string getPasswordHash( const std::string &Password );
+	QString getPasswordHash( const QString &Password );
 public:
-	DataBase_Account( const std::string &Name = "Default" );
+	DataBase_Account( const QString &Name = "Default" );
 	~DataBase_Account();
 
 	//Register or lead-in a NEW account.
 	//return 0:illegal 1:used-ID 2:succeed.
-	bool signUp( const Account &NewAccout, const std::string &Password = "000000" );
+	bool signUp( const Account &NewAccout, const QString &Password = "000000" );
 
 	//Get the in_number by your string Id ( in logn ).
 	//return 0:not find
-	int getIdNumber( const std::string &Id );
+	int getIdNumber( const QString &Id );
 
 private:
 
@@ -145,14 +149,14 @@ class DataBase_Train : public DataBase_Base
 		//Id for saving and finding quickly.
 		int id_number;
 		//
-		std::string trainNumber;
+		QString trainNumber;
 
 		//real ID of stations.
 		ttd::vector<int>stations;
 
 		//Numbers of different types of tickets.
 		int nType;
-		ttd::vector<std::string>ticketType;
+		ttd::vector<QString>ticketType;
 
 		//real price*100
 		//The price of tickets. price[i]-price[j]
@@ -171,13 +175,13 @@ class DataBase_Train : public DataBase_Base
 		//Id for saving and finding quickly.
 		int id_number;
 		//
-		std::string trainNumber;
+		QString trainNumber;
 
 		//Numbers of different types of tickets.
 		int nType,
 		//real ID of stations.
 			fromStation,toStation;
-		ttd::vector<std::string>ticketType;
+		ttd::vector<QString>ticketType;
 
 		//real price*100
 		ttd::vector<int>price;
@@ -189,7 +193,7 @@ class DataBase_Train : public DataBase_Base
 		int startTime;
 	};
 public:
-	DataBase_Train( const std::string &Name = "Default" );
+	DataBase_Train( const QString &Name = "Default" );
 	~DataBase_Train();
 	void addNewTrain( const Train &t );
 
@@ -209,11 +213,11 @@ class DataBase_Log : public DataBase_Base
 		ttd::vector<int>detail;
 	};
 public:
-	DataBase_Log( const std::string &Name = "Default" );
+	DataBase_Log( const QString &Name = "Default" );
 	~DataBase_Log();
 	void addNewLog( const Log &NewLog );
 	//Get logs of string.
-	ttd::vector<std::string> getLogs( int StartTime, int EndTime );
+	ttd::vector<QString> getLogs( int StartTime, int EndTime );
 
 	//Get logs of Log.
 	ttd::vector<Log> getLogs_raw( int StartTime, int EndTime );

@@ -1,7 +1,7 @@
 #include <cstdio>
 #include <iostream>
 
-#include "src_MW/smartpoint.hpp"
+#include "include/smartpoint.hpp"
 namespace ttd {
 
 template<class T>
@@ -49,7 +49,7 @@ TI lower_bound( TI data, TI end, const T &val )
 
 template<class TI, class T>
 TI upper_bound( TI data, TI end, const T &val )
-{ upper_bound( data, end, val, std::less<T>() ); }
+{ return upper_bound( data, end, val, std::less<T>() ); }
 
 template<class TI, class BinaryPredicate>
 TI unique( TI data, TI end, BinaryPredicate pred )

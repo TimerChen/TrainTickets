@@ -2,8 +2,8 @@
 #define SERVERMAINWINDOW_H
 
 #include <QMainWindow>
-#include "src_Timer/algorithm0.hpp"
-#include "src_MW/smartpoint.hpp"
+#include "include/algorithm0.hpp"
+#include "include/smartpoint.hpp"
 
 class DataBase_Main;
 namespace Ui {
@@ -19,7 +19,7 @@ public:
 	~ServerMainWindow();
 
 private:
-	shared_ptr<DataBase_Main>dataBase;
+	//shared_ptr<DataBase_Main>dataBase;
 	Ui::ServerMainWindow *ui;
 };
 

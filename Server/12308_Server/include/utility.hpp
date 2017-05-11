@@ -3,7 +3,7 @@
 
 #include <utility>
 
-namespace sjtu {
+namespace ttd {
 
 template<class T1, class T2>
 class pair {
