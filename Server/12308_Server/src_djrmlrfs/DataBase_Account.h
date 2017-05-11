@@ -8,25 +8,37 @@ class DataBase_Account : public DataBase_Base
 {
  
 	friend class DataBase_User;
+	struct ticLog{
+		std::string train, fromStation, toStation;
+		// I do not know which head file to include , It's in Qt 
+		QDateTime date;
+		int num;
+		ticLog(const std::string &tra, const std::string &fro, const std::string &to, const QDateTime &day, const int &buynum)
+		:train(tra), fromStation(fro), toStation(to), date(day), num(buynum){}
+	};
 	struct Account
 	{
 		//Your id for register.
 		std::string id;
+
 		//Id for saving and finding quickly.
 		int id_number;
-		//how much do you left
-		int money;
+
 		//Your name
 		std::string name;
+
 		//We only save the hash code of password.
 		std::string passwordHash;
+
 		//If this is a admin account.
 		bool isAdmin;
+
 		//the information in buying and refounding
-		ttd::vector<Ticket>log;
-		Account(const std::string &Id = "Default", const int &num = -1, const int &nam = "TimeMachine",
-		 const int &pwhash = "e1119c269cdb64f851aef6db68c49610", const bool &adm = 0):
-		id_number(num), id(Id), name(nam), passwordHash(pwhash), isAdmin(adm), money(0){log.clear();}
+		ttd::vector<ticLog> log;
+
+		Account(const std::string &Id = "Default", const int &num = -1, const std::string &nam = "TimeMachine",
+		 const std::string &pwhash = "e1119c269cdb64f851aef6db68c49610", const bool &adm = 0):
+		id_number(num), id(Id), name(nam), passwordHash(pwhash), isAdmin(adm){log.clear();}
 		Account operator=(const Account &acc);
 	};
 	struct Ticket
@@ -64,9 +76,9 @@ class DataBase_Account : public DataBase_Base
 			return (seatType < t1.seatType);
 		}
 		
-		bool operator == (const Ticket &t1) const {
-			if (userName == t1.userName && trainID == t1.trainID && loadStation == t1.loadStation && unLoadStation == t1.unLoadStation && seatType == t1.seatType) return true;
-			else return false;
+		bool operator == (const Ticket &t1) const{
+			return (accId==t1.accId && trainID==t1.trainID && seatType==t1.seatType
+			&& loadStation==t1.loadStation && unLoadStation==t1.unLoadStation && loadTime==t1.loadTime);
 		}
 		
 	};
@@ -92,19 +104,14 @@ public:
 	//please check weather valid, i means, logged and admin or change self
 	// and remember to check weather check password when modify password
 	void modify_account(const int &Id, const Account &AccountInfo );
-	void buyTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
-		const QDateTime &fromTime, const QdateTime &toTime, const int &price, const std::string &type, const int &num)
-	{
-		Ticket tmp(Id,accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
-		ticData[tmp] += num;
-	}
-	void returnTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
-		const QDateTime &fromTime, const QdateTime &toTime, const int &price, const std::string &type, const int &num)
-	{
-		Ticket tt(Id), tmp(Id,accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
-		
-	}
+	//return the total cost
+	int buyTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
+		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const std::string &type, const int &num);
 	
+	int returnTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
+		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const std::string &type, const int &num);
+	ttd::vector<ticLog> quiryLog(const int &Id);
+	ttd::vector<ticLog> ownedTicket(const int &Id);
 private:
 	int accNums;
 	ttd::map<std::string,int> Numbers;

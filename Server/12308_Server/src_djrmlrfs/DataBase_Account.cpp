@@ -6,10 +6,10 @@ unsigned int DataBase_Account::k[] = {0xd76aa478,0xe8c7b756,0x242070db,0xc1bdcee
 unsigned int DataBase_Account::s[] = {7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21};
 DataBase_Account::Account DataBase_Account::Account::operator=(const Account &acc)
 {
-	id_number = he.id_number;
-	id = he.id, name = he.name;
-	passwordHash = he.passwordHash;
-	isAdmin = he.isAdmin, log = he.log;
+	id_number = acc.id_number;
+	id = acc.id, name = acc.name;
+	passwordHash = acc.passwordHash;
+	isAdmin = acc.isAdmin, log = acc.log;
 }
 std::string DataBase_Account::Hex(int a)
 {
@@ -82,7 +82,7 @@ DataBase_Account::Account DataBase_Account::query_account(std::string ID)
 	return accData[temp];
 }
 
-void DataBase_Account::modify_account(int Id, const Account &AccountInfo )
+void DataBase_Account::modify_account(const int &Id, const Account &AccountInfo )
 {
 	accData[Id] = AccountInfo;
 }
@@ -90,6 +90,37 @@ void DataBase_Account::modify_account(int Id, const Account &AccountInfo )
 DataBase_Account::~DataBase_Account()
 {
 	
+}
+
+int DataBase_Account::buyTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
+	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const std::string &type, const int &num)
+{
+	//please cheak weather num < 0 or num > leftnum
+	Ticket tmp(Id,accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
+	ticData[tmp] += num, accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,num));
+	return price*num;
+}
+int DataBase_Account::returnTicket(const int &Id, const std::string &trainId, const std::string &from, const std::string &to,
+	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const std::string &type, const int &num)
+{
+	//please cheak weather num < 0 or num > leftnum
+	//the front can insure there is such ticket
+	Ticket tmp(Id,accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
+	ticData[tmp] -= num, accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,-num));
+	return price*num;
+}
+ttd::vector<DataBase_Account::ticLog> DataBase_Account::quiryLog(const int &Id)
+{
+	return accData[Id].log;
+}
+ttd::vector<DataBase_Account::ticLog> DataBase_Account::ownedTicket(const int &Id)
+{
+	Ticket tt(Id);
+	ttd::vector<DataBase_Account::ticLog> ans;	ans.clear();
+	for (ttd::map<Ticket,int>::iterator it = ticData.findN(tt); it!=ticData.end() && it->first.accId==Id; ++it)
+		ans.push_back(ticLog(it->first.trainID,it->first.loadStation,it->first.unLoadStation,it->first.loadTime,it->second));
+	return ans;	// maybe we can change the way like output directly 
+				// or I give the begin and end iterator of the map and set it public, you read information from it 
 }
 int main()
 {
