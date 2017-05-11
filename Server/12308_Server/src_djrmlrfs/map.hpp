@@ -522,6 +522,18 @@ public:
 		}
 		return End;
 	}
+	iterator findN(const Key &key)
+	{
+		node*now = root;	Compare cmp;
+		iterator tmp;	tmp.val = tmp.end = endnode;
+		while (now != NULL)
+		{
+			if (cmp(key,now->val->first))	tmp.val = now, now = now->ls;
+			else if (cmp(now->val->first,key))	now = now->rs;
+			else	{tmp.val = now;	break;}
+		}
+		return tmp;
+	}
 	const_iterator find(const Key &key) const
 	{
 		node*now = root;
