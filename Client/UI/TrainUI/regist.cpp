@@ -37,7 +37,7 @@ void Regist::on_loginBtn_clicked()
     }
 }
 
-void Regist::on_backtologinBtn_clicked()
+/*void Regist::on_backtologinBtn_clicked()
 {
     accept();
-}
+}*/

@@ -1,14 +1,16 @@
 #include "searchticket.h"
 #include "ui_searchticket.h"
 #include <QStandardItemModel>
-#include <QFile>
+//#include <QFile>
 #include <QTableView>
 #include <QMessageBox>
 //#include "toserverstructs.h"
 
-SearchTicket::SearchTicket(QWidget *parent) :
+SearchTicket::SearchTicket(QWidget *parent, int user,int search) :
     QDialog(parent),
-    ui(new Ui::SearchTicket)
+    ui(new Ui::SearchTicket),
+    userType(user),
+    searchType(search)
 {
     ui->setupUi(this);
 
@@ -45,7 +47,7 @@ SearchTicket::SearchTicket(QWidget *parent) :
     ui->ticketsTableView->setWordWrap(true);
     ui->ticketsTableView->setAlternatingRowColors(true);
     ui->ticketsTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-   // ui->ticketsTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->ticketsTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
 
     ///测试用
     model->setItem(0,0,new QStandardItem(tr("0")));
@@ -71,7 +73,8 @@ SearchTicket::SearchTicket(QWidget *parent) :
     model->setItem(1,9,new QStandardItem(tr("是")));
 
     ///将文件内的东西显示到ticketsTableView里
-/*
+  /*
+if (searchType == Ui::stationToStation){
     QFile tickets("searchres.txt");//change to correct name
     tickets.open(QIODevice::ReadOnly  |QIODevice::Text);
     Qtrain qtrain;
@@ -98,6 +101,7 @@ SearchTicket::SearchTicket(QWidget *parent) :
         ++deltaForSeat;
       }
       //  ++deltaForSeat;//用于不同车次间空行
+    }
     }
 */
 

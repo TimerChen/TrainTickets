@@ -18,7 +18,7 @@ public:
 private slots:
     void on_loginBtn_clicked();
 
-    void on_backtologinBtn_clicked();
+    //void on_backtologinBtn_clicked();
 
 private:
     Ui::Regist *ui;

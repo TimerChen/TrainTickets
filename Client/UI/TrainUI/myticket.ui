@@ -43,7 +43,7 @@
        <item>
         <widget class="QPushButton" name="modifyTicketBtn">
          <property name="text">
-          <string>退订/改签</string>
+          <string>退订</string>
          </property>
         </widget>
        </item>

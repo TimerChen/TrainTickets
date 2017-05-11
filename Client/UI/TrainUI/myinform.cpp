@@ -2,9 +2,10 @@
 #include "ui_myinform.h"
 #include <QMessageBox>
 
-Myinform::Myinform(QWidget *parent) :
+Myinform::Myinform(QWidget *parent, int user) :
     QDialog(parent),
-    ui(new Ui::Myinform)
+    ui(new Ui::Myinform),
+    userType(user)
 {
     ui->setupUi(this);
     QRegExp rx("^[0-9]+(X?)$");

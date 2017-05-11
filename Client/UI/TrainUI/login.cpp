@@ -3,9 +3,10 @@
 #include "regist.h"
 #include "ui_login.h"
 
-Login::Login(QWidget *parent) :
+Login::Login(QWidget *parent, int user) :
     QDialog(parent),
-    ui(new Ui::Login)
+    ui(new Ui::Login),
+    userType(user)
 {
     ui->setupUi(this);
     ui->pwdLineEdit->setEchoMode(QLineEdit::Password);
@@ -32,9 +33,11 @@ Login::~Login()
 
 void Login::on_loginBtn_clicked()
 {
-    if (ui->usrLineEdit->text() == "mw" && ui->pwdLineEdit->text()=="123456")//send ui->usrLineEdit->text() and ui->pwdLineEdit->text()
+    if (ui->usrLineEdit->text() == "mw" && ui->pwdLineEdit->text()=="123456"){//send ui->usrLineEdit->text() and ui->pwdLineEdit->text()
                                                                            //to the server to check normal account, change the thing in if()
+        userType = Ui::normal;
         accept();
+    }
     else {
       ui->pwdLineEdit->clear();
       ui->pwdLineEdit->setFocus();
@@ -44,9 +47,11 @@ void Login::on_loginBtn_clicked()
 
 void Login::on_auloginBtn_clicked()
 {//unavailable now
-    if (ui->usrLineEdit->text() == "mw" && ui->pwdLineEdit->text()=="123456")//send ui->usrLineEdit->text() and ui->pwdLineEdit->text()
+    if (ui->usrLineEdit->text() == "mw" && ui->pwdLineEdit->text()=="123456"){//send ui->usrLineEdit->text() and ui->pwdLineEdit->text()
                                                                    //to the server to check normal account, change the thing in if()
+        userType = Ui::admin;
         accept();
+    }
     else {
        QMessageBox::warning(this,tr("警告"),tr("用户名或密码错误！"),QMessageBox::Yes);
     }
@@ -54,8 +59,9 @@ void Login::on_auloginBtn_clicked()
 
 void Login::on_registBtn_clicked()
 {
-    Regist* reg = new Regist(this);
-    if (reg->exec() == QDialog::Accepted) {
-        delete reg;
-    }
+    Regist reg(this);
+    reg.exec();
+}
+int Login::getUserType() {
+    return userType;
 }
