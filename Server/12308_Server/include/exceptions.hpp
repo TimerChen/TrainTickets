@@ -24,7 +24,7 @@ public:
  * Please complete them.
  */
 class index_out_of_bound : public exception {
-	public:
+public:
 		index_out_of_bound()
 		{
 			detail = "OOB";
@@ -33,6 +33,7 @@ class index_out_of_bound : public exception {
 };
 
 class runtime_error : public exception {
+public:
 	runtime_error()
 	{
 		detail = "RE";
@@ -41,6 +42,7 @@ class runtime_error : public exception {
 };
 
 class invalid_iterator : public exception {
+public:
 	invalid_iterator()
 	{
 		detail = "II";
