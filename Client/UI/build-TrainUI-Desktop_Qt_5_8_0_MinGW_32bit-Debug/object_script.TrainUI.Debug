@@ -9,8 +9,8 @@ INPUT(
 ./debug\trainsearch.o
 ./debug\stationsearch.o
 ./debug\searchticket.o
-./debug\toserverstructs.o
 ./debug\adminwindow.o
+./debug\toserverstructs.o
 ./debug\qrc_pic.o
 ./debug\moc_mainwindow.o
 ./debug\moc_login.o

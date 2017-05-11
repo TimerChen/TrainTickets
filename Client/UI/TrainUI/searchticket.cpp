@@ -4,7 +4,8 @@
 //#include <QFile>
 #include <QTableView>
 #include <QMessageBox>
-//#include "toserverstructs.h"
+#include "../../../Server/12308_Server/include/Train.h"
+#include "../../../Server/12308_Server/include/vector.hpp"
 
 SearchTicket::SearchTicket(QWidget *parent, int user,int search) :
     QDialog(parent),
@@ -122,23 +123,24 @@ void SearchTicket::on_buyTicketBtn_clicked()
     QAbstractItemModel *modessl = ui->ticketsTableView->model();
     QModelIndex indextmp = modessl->index(curRow,0);
 */
-
-    /*ToServerStructs::buyTickets targetTicket;
-    int i = datatmp.toInt();
-    targetTicket.trainID = qtrains[i].trainID;
-    targetTicket.loadStation = qtrains[i].loadStation;
-    targetTicket.unLoadStation = qtrains[i].unLoadStation;
-    targetTicket.leaveTime = qtrains[i].leaveTime;
-    targetTicket.reachTime = qtrains[i].reachTime;
-    QString s= "您是否要购买以下车票：\n车次：" + QString::fromStdString(targetTicket.trainID) + "\n发站" +  QString::fromStdString(targetTicket.loadStation) +"\n到站:"
-            +  QString::fromStdString(targetTicket.unLoadStation) + "\n发车时间：" + targetTicket.leaveTime.toString() +"\n到站时间:"
-            +targetTicket.reachTime.toString() + "\n座位类型：" + modessl->data(modessl->index(curRow,5)).toString()
-            + "\n票价："+modessl->data(modessl->index(curRow,6)).toString();
-    QMessageBox::StandardButton qmb = QMessageBox::question(this,"确认购票",s, QMessageBox::Yes|QMessageBox::No);
-    if (qmb == QMessageBox::Yes){
-        if (true){//发送targetTicket到服务器请求购买该车票
-            QMessageBox::information(this,"成功","购票成功",QMessageBox::Yes);
-        }
-        else QMessageBox::warning(this,"失败","非常抱歉，购票失败",QMessageBox::Cancel);
-    }*/
+//    if (searchType == Ui::stationToStation){
+//        ToServerStructs::buyTickets targetTicket;
+//        int i = datatmp.toInt();
+//        targetTicket.trainID = qtrains[i].trainID;
+//        targetTicket.loadStation = qtrains[i].loadStation;
+//        targetTicket.unLoadStation = qtrains[i].unLoadStation;
+//        targetTicket.leaveTime = qtrains[i].leaveTime;
+//        targetTicket.reachTime = qtrains[i].reachTime;
+//        QString s= "您是否要购买以下车票：\n车次：" + QString::fromStdString(targetTicket.trainID) + "\n发站" +  QString::fromStdString(targetTicket.loadStation) +"\n到站:"
+//                +  QString::fromStdString(targetTicket.unLoadStation) + "\n发车时间：" + targetTicket.leaveTime.toString() +"\n到站时间:"
+//                +targetTicket.reachTime.toString() + "\n座位类型：" + modessl->data(modessl->index(curRow,5)).toString()
+//                + "\n票价："+modessl->data(modessl->index(curRow,6)).toString()+"\n总张数："+ui->ticketNumLineEdit->text();
+//        QMessageBox::StandardButton qmb = QMessageBox::question(this,"确认购票",s, QMessageBox::Yes|QMessageBox::No);
+//        if (qmb == QMessageBox::Yes){
+//            if (true){//发送targetTicket到服务器请求购买该车票
+//                QMessageBox::information(this,"成功","购票成功",QMessageBox::Yes);
+//            }
+//            else QMessageBox::warning(this,"失败","非常抱歉，购票失败",QMessageBox::Cancel);
+//        }
+//    }
 }
