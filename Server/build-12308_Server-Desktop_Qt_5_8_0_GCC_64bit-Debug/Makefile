@@ -50,12 +50,12 @@ OBJECTS_DIR   = ./
 
 SOURCES       = ../12308_Server/main.cpp \
 		../12308_Server/servermainwindow.cpp \
-		../12308_Server/src_Timer/database_main.cpp \
-		../12308_Server/src_Timer/database_base.cpp moc_servermainwindow.cpp
+		../12308_Server/src/database_base.cpp \
+		../12308_Server/src/database_main.cpp moc_servermainwindow.cpp
 OBJECTS       = main.o \
 		servermainwindow.o \
-		database_main.o \
 		database_base.o \
+		database_main.o \
 		moc_servermainwindow.o
 DIST          = ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/common/unix.conf \
@@ -228,16 +228,18 @@ DIST          = ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/lex.prf \
 		../12308_Server/12308_Server.pro ../12308_Server/servermainwindow.h \
-		../12308_Server/src_Timer/algorithm0.hpp \
-		../12308_Server/src_MW/vector.hpp \
-		../12308_Server/src_MW/smartpoint.hpp \
-		../12308_Server/src_MW/exceptions.hpp \
-		../12308_Server/src_Vegewong/DataBase_Log.hpp \
-		../12308_Server/src_Timer/DataBase.h \
-		../12308_Server/src_Timer/database_main.h ../12308_Server/main.cpp \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/utility.hpp \
+		../12308_Server/include/Train.h \
+		../12308_Server/include/station.h \
+		../12308_Server/include/smartpoint.hpp \
+		../12308_Server/include/exceptions.hpp \
+		../12308_Server/include/database_main.h \
+		../12308_Server/include/DataBase.h \
+		../12308_Server/include/algorithm0.hpp ../12308_Server/main.cpp \
 		../12308_Server/servermainwindow.cpp \
-		../12308_Server/src_Timer/database_main.cpp \
-		../12308_Server/src_Timer/database_base.cpp
+		../12308_Server/src/database_base.cpp \
+		../12308_Server/src/database_main.cpp
 QMAKE_TARGET  = 12308_Server
 DESTDIR       = 
 TARGET        = 12308_Server
@@ -246,7 +248,7 @@ TARGET        = 12308_Server
 first: all
 ####### Build rules
 
-$(TARGET): ui_servermainwindow.h ui_server.h $(OBJECTS)  
+$(TARGET): ui_servermainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: ../12308_Server/12308_Server.pro ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++/qmake.conf ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
@@ -613,9 +615,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../12308_Server/servermainwindow.h ../12308_Server/src_Timer/algorithm0.hpp ../12308_Server/src_MW/vector.hpp ../12308_Server/src_MW/smartpoint.hpp ../12308_Server/src_MW/exceptions.hpp ../12308_Server/src_Vegewong/DataBase_Log.hpp ../12308_Server/src_Timer/DataBase.h ../12308_Server/src_Timer/database_main.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../12308_Server/main.cpp ../12308_Server/servermainwindow.cpp ../12308_Server/src_Timer/database_main.cpp ../12308_Server/src_Timer/database_base.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../12308_Server/servermainwindow.ui ../12308_Server/server.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../12308_Server/servermainwindow.h ../12308_Server/include/vector.hpp ../12308_Server/include/utility.hpp ../12308_Server/include/Train.h ../12308_Server/include/station.h ../12308_Server/include/smartpoint.hpp ../12308_Server/include/exceptions.hpp ../12308_Server/include/database_main.h ../12308_Server/include/DataBase.h ../12308_Server/include/algorithm0.hpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../12308_Server/main.cpp ../12308_Server/servermainwindow.cpp ../12308_Server/src/database_base.cpp ../12308_Server/src/database_main.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../12308_Server/servermainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -754,8 +756,8 @@ moc_servermainwindow.cpp: ../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMain
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qicon.h \
-		../12308_Server/src_Timer/algorithm0.hpp \
-		../12308_Server/src_MW/smartpoint.hpp \
+		../12308_Server/include/algorithm0.hpp \
+		../12308_Server/include/smartpoint.hpp \
 		../12308_Server/servermainwindow.h \
 		moc_predefs.h \
 		../../../../Qt5.8.0/5.8/gcc_64/bin/moc
@@ -763,16 +765,12 @@ moc_servermainwindow.cpp: ../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMain
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_servermainwindow.h ui_server.h
+compiler_uic_make_all: ui_servermainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_servermainwindow.h ui_server.h
+	-$(DEL_FILE) ui_servermainwindow.h
 ui_servermainwindow.h: ../12308_Server/servermainwindow.ui \
 		../../../../Qt5.8.0/5.8/gcc_64/bin/uic
 	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/uic ../12308_Server/servermainwindow.ui -o ui_servermainwindow.h
-
-ui_server.h: ../12308_Server/server.ui \
-		../../../../Qt5.8.0/5.8/gcc_64/bin/uic
-	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/uic ../12308_Server/server.ui -o ui_server.h
 
 compiler_yacc_decl_make_all:
 compiler_yacc_decl_clean:
@@ -889,11 +887,11 @@ main.o: ../12308_Server/main.cpp ../12308_Server/servermainwindow.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qicon.h \
-		../12308_Server/src_Timer/algorithm0.hpp \
-		../12308_Server/src_MW/smartpoint.hpp \
-		../12308_Server/src_Timer/DataBase.h \
-		../12308_Server/src_MW/vector.hpp \
-		../12308_Server/src_MW/exceptions.hpp \
+		../12308_Server/include/algorithm0.hpp \
+		../12308_Server/include/smartpoint.hpp \
+		../12308_Server/include/DataBase.h \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/exceptions.hpp \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1008,8 +1006,8 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../12308_Server/serverm
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qicon.h \
-		../12308_Server/src_Timer/algorithm0.hpp \
-		../12308_Server/src_MW/smartpoint.hpp \
+		../12308_Server/include/algorithm0.hpp \
+		../12308_Server/include/smartpoint.hpp \
 		ui_servermainwindow.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QVariant \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QAction \
@@ -1062,22 +1060,23 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../12308_Server/serverm
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QToolBar \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtoolbar.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QWidget \
-		../12308_Server/src_Timer/DataBase.h \
-		../12308_Server/src_MW/vector.hpp \
-		../12308_Server/src_MW/exceptions.hpp
+		../12308_Server/include/DataBase.h \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/exceptions.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o servermainwindow.o ../12308_Server/servermainwindow.cpp
 
-database_main.o: ../12308_Server/src_Timer/database_main.cpp ../12308_Server/src_Timer/DataBase.h \
-		../12308_Server/src_MW/vector.hpp \
-		../12308_Server/src_MW/exceptions.hpp \
-		../12308_Server/src_MW/smartpoint.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_main.o ../12308_Server/src_Timer/database_main.cpp
+database_base.o: ../12308_Server/src/database_base.cpp ../12308_Server/include/DataBase.h \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/exceptions.hpp \
+		../12308_Server/include/smartpoint.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_base.o ../12308_Server/src/database_base.cpp
 
-database_base.o: ../12308_Server/src_Timer/database_base.cpp ../12308_Server/src_Timer/DataBase.h \
-		../12308_Server/src_MW/vector.hpp \
-		../12308_Server/src_MW/exceptions.hpp \
-		../12308_Server/src_MW/smartpoint.hpp
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_base.o ../12308_Server/src_Timer/database_base.cpp
+database_main.o: ../12308_Server/src/database_main.cpp ../12308_Server/include/DataBase.h \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/exceptions.hpp \
+		../12308_Server/include/smartpoint.hpp \
+		../12308_Server/include/database_main.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_main.o ../12308_Server/src/database_main.cpp
 
 moc_servermainwindow.o: moc_servermainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_servermainwindow.o moc_servermainwindow.cpp
