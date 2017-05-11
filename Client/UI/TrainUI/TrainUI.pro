@@ -44,9 +44,6 @@ HEADERS  += mainwindow.h \
     trainsearch.h \
     stationsearch.h \
     searchticket.h \
-    ../../../gitlearning/Timer/interface.h \
-    ../../../gitlearning/Timer/algorithm0.hpp \
-    ../../../gitlearning/Timer/tools.h \
     toserverstructs.h
 
 FORMS    += mainwindow.ui \
@@ -60,4 +57,6 @@ FORMS    += mainwindow.ui \
     searchticket.ui
 
 RESOURCES += \
-    ../../../../../../../mnt/hgfs/share/pic.qrc
+    pic.qrc
+
+DISTFILES +=

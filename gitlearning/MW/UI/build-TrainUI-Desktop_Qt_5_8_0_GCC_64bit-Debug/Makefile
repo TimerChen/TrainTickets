@@ -268,9 +268,6 @@ DIST          = /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Client/UI/TrainUI/trainsearch.h \
 		../../../../Client/UI/TrainUI/stationsearch.h \
 		../../../../Client/UI/TrainUI/searchticket.h \
-		../../../Timer/interface.h \
-		../../../Timer/algorithm0.hpp \
-		../../../Timer/tools.h \
 		../../../../Client/UI/TrainUI/toserverstructs.h ../../../../Client/UI/TrainUI/main.cpp \
 		../../../../Client/UI/TrainUI/mainwindow.cpp \
 		../../../../Client/UI/TrainUI/login.cpp \
@@ -464,7 +461,7 @@ Makefile: ../../../../Client/UI/TrainUI/TrainUI.pro /opt/Qt5.8.0/5.8/gcc_64/mksp
 		/opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/yacc.prf \
 		/opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/lex.prf \
 		../../../../Client/UI/TrainUI/TrainUI.pro \
-		/mnt/hgfs/share/pic.qrc \
+		../../../../Client/UI/TrainUI/pic.qrc \
 		/opt/Qt5.8.0/5.8/gcc_64/lib/libQt5Widgets.prl \
 		/opt/Qt5.8.0/5.8/gcc_64/lib/libQt5Gui.prl \
 		/opt/Qt5.8.0/5.8/gcc_64/lib/libQt5Core.prl
@@ -640,7 +637,7 @@ Makefile: ../../../../Client/UI/TrainUI/TrainUI.pro /opt/Qt5.8.0/5.8/gcc_64/mksp
 /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/yacc.prf:
 /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/lex.prf:
 ../../../../Client/UI/TrainUI/TrainUI.pro:
-/mnt/hgfs/share/pic.qrc:
+../../../../Client/UI/TrainUI/pic.qrc:
 /opt/Qt5.8.0/5.8/gcc_64/lib/libQt5Widgets.prl:
 /opt/Qt5.8.0/5.8/gcc_64/lib/libQt5Gui.prl:
 /opt/Qt5.8.0/5.8/gcc_64/lib/libQt5Core.prl:
@@ -658,9 +655,9 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents /mnt/hgfs/share/pic.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../../../../Client/UI/TrainUI/pic.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /opt/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../../../../Client/UI/TrainUI/mainwindow.h ../../../../Client/UI/TrainUI/login.h ../../../../Client/UI/TrainUI/regist.h ../../../../Client/UI/TrainUI/myticket.h ../../../../Client/UI/TrainUI/myinform.h ../../../../Client/UI/TrainUI/stationtostationsearch.h ../../../../Client/UI/TrainUI/trainsearch.h ../../../../Client/UI/TrainUI/stationsearch.h ../../../../Client/UI/TrainUI/searchticket.h ../../../Timer/interface.h ../../../Timer/algorithm0.hpp ../../../Timer/tools.h ../../../../Client/UI/TrainUI/toserverstructs.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../../../../Client/UI/TrainUI/mainwindow.h ../../../../Client/UI/TrainUI/login.h ../../../../Client/UI/TrainUI/regist.h ../../../../Client/UI/TrainUI/myticket.h ../../../../Client/UI/TrainUI/myinform.h ../../../../Client/UI/TrainUI/stationtostationsearch.h ../../../../Client/UI/TrainUI/trainsearch.h ../../../../Client/UI/TrainUI/stationsearch.h ../../../../Client/UI/TrainUI/searchticket.h ../../../../Client/UI/TrainUI/toserverstructs.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Client/UI/TrainUI/main.cpp ../../../../Client/UI/TrainUI/mainwindow.cpp ../../../../Client/UI/TrainUI/login.cpp ../../../../Client/UI/TrainUI/regist.cpp ../../../../Client/UI/TrainUI/myticket.cpp ../../../../Client/UI/TrainUI/myinform.cpp ../../../../Client/UI/TrainUI/stationtostationsearch.cpp ../../../../Client/UI/TrainUI/trainsearch.cpp ../../../../Client/UI/TrainUI/stationsearch.cpp ../../../../Client/UI/TrainUI/searchticket.cpp ../../../../Client/UI/TrainUI/toserverstructs.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Client/UI/TrainUI/mainwindow.ui ../../../../Client/UI/TrainUI/login.ui ../../../../Client/UI/TrainUI/regist.ui ../../../../Client/UI/TrainUI/myticket.ui ../../../../Client/UI/TrainUI/myinform.ui ../../../../Client/UI/TrainUI/stationtostationsearch.ui ../../../../Client/UI/TrainUI/trainsearch.ui ../../../../Client/UI/TrainUI/stationsearch.ui ../../../../Client/UI/TrainUI/searchticket.ui $(DISTDIR)/
 
@@ -689,10 +686,10 @@ benchmark: first
 compiler_rcc_make_all: qrc_pic.cpp
 compiler_rcc_clean:
 	-$(DEL_FILE) qrc_pic.cpp
-qrc_pic.cpp: /mnt/hgfs/share/pic.qrc \
+qrc_pic.cpp: ../../../../Client/UI/TrainUI/pic.qrc \
 		/opt/Qt5.8.0/5.8/gcc_64/bin/rcc \
-		/mnt/hgfs/share/12308.png
-	/opt/Qt5.8.0/5.8/gcc_64/bin/rcc -name pic /mnt/hgfs/share/pic.qrc -o qrc_pic.cpp
+		../../../../Client/UI/TrainUI/12308.png
+	/opt/Qt5.8.0/5.8/gcc_64/bin/rcc -name pic ../../../../Client/UI/TrainUI/pic.qrc -o qrc_pic.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
@@ -2122,13 +2119,12 @@ login.o: ../../../../Client/UI/TrainUI/login.cpp /opt/Qt5.8.0/5.8/gcc_64/include
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QFormLayout \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qformlayout.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHBoxLayout \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHeaderView \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2157,7 +2153,8 @@ login.o: ../../../../Client/UI/TrainUI/login.cpp /opt/Qt5.8.0/5.8/gcc_64/include
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextoption.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o login.o ../../../../Client/UI/TrainUI/login.cpp
 
 regist.o: ../../../../Client/UI/TrainUI/regist.cpp /opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMessageBox \
@@ -2280,6 +2277,11 @@ regist.o: ../../../../Client/UI/TrainUI/regist.cpp /opt/Qt5.8.0/5.8/gcc_64/inclu
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHeaderView \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2309,14 +2311,7 @@ regist.o: ../../../../Client/UI/TrainUI/regist.cpp /opt/Qt5.8.0/5.8/gcc_64/inclu
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QSplitter \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qsplitter.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QWidget
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o regist.o ../../../../Client/UI/TrainUI/regist.cpp
 
 myticket.o: ../../../../Client/UI/TrainUI/myticket.cpp ../../../../Client/UI/TrainUI/myticket.h \
@@ -2437,11 +2432,6 @@ myticket.o: ../../../../Client/UI/TrainUI/myticket.cpp ../../../../Client/UI/Tra
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qbuttongroup.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHBoxLayout \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHeaderView \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2463,14 +2453,15 @@ myticket.o: ../../../../Client/UI/TrainUI/myticket.cpp ../../../../Client/UI/Tra
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QTextEdit \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtextedit.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextdocument.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextoption.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextcursor.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextformat.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qpen.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QWidget
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QTableView \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/QStandardItem \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qstandarditemmodel.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myticket.o ../../../../Client/UI/TrainUI/myticket.cpp
 
 myinform.o: ../../../../Client/UI/TrainUI/myinform.cpp ../../../../Client/UI/TrainUI/myinform.h \
@@ -2758,6 +2749,11 @@ stationtostationsearch.o: ../../../../Client/UI/TrainUI/stationtostationsearch.c
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qvalidator.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHeaderView \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2784,8 +2780,7 @@ stationtostationsearch.o: ../../../../Client/UI/TrainUI/stationtostationsearch.c
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QSplitter \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qsplitter.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../../Client/UI/TrainUI/searchticket.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMessageBox \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmessagebox.h
@@ -2895,6 +2890,8 @@ trainsearch.o: ../../../../Client/UI/TrainUI/trainsearch.cpp ../../../../Client/
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qvector2d.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_trainsearch.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/QDate \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/QVariant \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QAction \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qaction.h \
@@ -2909,6 +2906,16 @@ trainsearch.o: ../../../../Client/UI/TrainUI/trainsearch.cpp ../../../../Client/
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QDateEdit \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qdatetimeedit.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHeaderView \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -2918,15 +2925,27 @@ trainsearch.o: ../../../../Client/UI/TrainUI/trainsearch.cpp ../../../../Client/
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qslider.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractslider.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qstyle.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qrubberband.h
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QLabel \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QLineEdit \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextcursor.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextformat.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qpen.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextoption.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../Client/UI/TrainUI/searchticket.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o trainsearch.o ../../../../Client/UI/TrainUI/trainsearch.cpp
 
 stationsearch.o: ../../../../Client/UI/TrainUI/stationsearch.cpp ../../../../Client/UI/TrainUI/stationsearch.h \
@@ -3033,6 +3052,8 @@ stationsearch.o: ../../../../Client/UI/TrainUI/stationsearch.cpp ../../../../Cli
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qvector2d.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
 		ui_stationsearch.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/QDate \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatetime.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/QVariant \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QAction \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qaction.h \
@@ -3047,6 +3068,16 @@ stationsearch.o: ../../../../Client/UI/TrainUI/stationsearch.cpp ../../../../Cli
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QButtonGroup \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QDateEdit \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qdatetimeedit.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qvalidator.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QGridLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHeaderView \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qheaderview.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -3056,15 +3087,27 @@ stationsearch.o: ../../../../Client/UI/TrainUI/stationsearch.cpp ../../../../Cli
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qitemselectionmodel.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemdelegate.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qstyleoption.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qvalidator.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qslider.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractslider.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qstyle.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabbar.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabwidget.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qrubberband.h
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qrubberband.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QLabel \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlabel.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QLineEdit \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlineedit.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextcursor.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextformat.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qpen.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qtextoption.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../../Client/UI/TrainUI/searchticket.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMessageBox \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o stationsearch.o ../../../../Client/UI/TrainUI/stationsearch.cpp
 
 searchticket.o: ../../../../Client/UI/TrainUI/searchticket.cpp ../../../../Client/UI/TrainUI/searchticket.h \
@@ -3206,10 +3249,13 @@ searchticket.o: ../../../../Client/UI/TrainUI/searchticket.cpp ../../../../Clien
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QSplitter \
-		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qsplitter.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QTableView \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtableview.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		/opt/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/QStandardItemModel \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtGui/qstandarditemmodel.h \
 		/opt/Qt5.8.0/5.8/gcc_64/include/QtCore/QFile \

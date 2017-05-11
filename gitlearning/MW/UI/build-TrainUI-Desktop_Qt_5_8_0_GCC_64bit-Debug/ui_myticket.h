@@ -78,7 +78,7 @@ public:
     void retranslateUi(QDialog *Myticket)
     {
         Myticket->setWindowTitle(QApplication::translate("Myticket", "\346\210\221\347\232\204\350\275\246\347\245\250", Q_NULLPTR));
-        modifyTicketBtn->setText(QApplication::translate("Myticket", "\351\200\200\350\256\242/\346\224\271\347\255\276", Q_NULLPTR));
+        modifyTicketBtn->setText(QApplication::translate("Myticket", "\351\200\200\350\256\242", Q_NULLPTR));
         exitBtn->setText(QApplication::translate("Myticket", "\350\277\224\345\233\236\346\237\245\350\257\242\347\252\227\345\217\243", Q_NULLPTR));
     } // retranslateUi
 

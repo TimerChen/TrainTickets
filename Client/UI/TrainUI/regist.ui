@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>603</width>
-    <height>249</height>
+    <width>789</width>
+    <height>338</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>603</width>
-    <height>249</height>
+    <width>789</width>
+    <height>338</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>603</width>
-    <height>249</height>
+    <width>789</width>
+    <height>338</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -72,13 +72,6 @@
         <widget class="QPushButton" name="loginBtn">
          <property name="text">
           <string>注册</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="backtologinBtn">
-         <property name="text">
-          <string>返回登陆界面</string>
          </property>
         </widget>
        </item>

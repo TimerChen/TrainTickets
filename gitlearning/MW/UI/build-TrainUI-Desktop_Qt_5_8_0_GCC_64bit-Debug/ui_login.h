@@ -45,9 +45,9 @@ public:
     {
         if (Login->objectName().isEmpty())
             Login->setObjectName(QStringLiteral("Login"));
-        Login->resize(598, 193);
-        Login->setMinimumSize(QSize(598, 193));
-        Login->setMaximumSize(QSize(598, 193));
+        Login->resize(783, 354);
+        Login->setMinimumSize(QSize(783, 354));
+        Login->setMaximumSize(QSize(783, 354));
         QIcon icon;
         icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Login->setWindowIcon(icon);
@@ -64,8 +64,6 @@ public:
 
         usrLineEdit = new QLineEdit(Login);
         usrLineEdit->setObjectName(QStringLiteral("usrLineEdit"));
-        usrLineEdit->setMinimumSize(QSize(487, 25));
-        usrLineEdit->setMaximumSize(QSize(487, 25));
 
         gridLayout->addWidget(usrLineEdit, 0, 1, 1, 1);
 
@@ -76,8 +74,6 @@ public:
 
         pwdLineEdit = new QLineEdit(Login);
         pwdLineEdit->setObjectName(QStringLiteral("pwdLineEdit"));
-        pwdLineEdit->setMinimumSize(QSize(487, 25));
-        pwdLineEdit->setMaximumSize(QSize(487, 25));
 
         gridLayout->addWidget(pwdLineEdit, 1, 1, 1, 1);
 
@@ -88,15 +84,11 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         auloginBtn = new QPushButton(Login);
         auloginBtn->setObjectName(QStringLiteral("auloginBtn"));
-        auloginBtn->setMinimumSize(QSize(83, 31));
-        auloginBtn->setMaximumSize(QSize(83, 31));
 
         horizontalLayout->addWidget(auloginBtn);
 
         loginBtn = new QPushButton(Login);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
-        loginBtn->setMinimumSize(QSize(487, 31));
-        loginBtn->setMaximumSize(QSize(487, 31));
 
         horizontalLayout->addWidget(loginBtn);
 
@@ -107,15 +99,11 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         registBtn = new QPushButton(Login);
         registBtn->setObjectName(QStringLiteral("registBtn"));
-        registBtn->setMinimumSize(QSize(576, 31));
-        registBtn->setMaximumSize(QSize(576, 31));
 
         verticalLayout->addWidget(registBtn);
 
         exitBtn = new QPushButton(Login);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
-        exitBtn->setMinimumSize(QSize(576, 31));
-        exitBtn->setMaximumSize(QSize(576, 31));
 
         verticalLayout->addWidget(exitBtn);
 

@@ -1,6 +1,7 @@
 #include "trainsearch.h"
 #include "ui_trainsearch.h"
 #include "searchticket.h"
+#include <QMessageBox>
 
 TrainSearch::TrainSearch(QWidget *parent) :
     QDialog(parent),

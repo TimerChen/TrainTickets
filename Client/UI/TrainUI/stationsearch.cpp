@@ -1,6 +1,7 @@
 #include "stationsearch.h"
 #include "ui_stationsearch.h"
 #include "searchticket.h"
+#include <QMessageBox>
 
 StationSearch::StationSearch(QWidget *parent) :
     QDialog(parent),
