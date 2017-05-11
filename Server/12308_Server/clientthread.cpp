@@ -1,6 +1,7 @@
 #include "clientthread.h"
 
-ClientThread::ClientThread()
+ClientThread::ClientThread(QObject *parent, QTcpSocket *Socket)
+	:QThread( parent ), socket(Socket)
 {
 
 }

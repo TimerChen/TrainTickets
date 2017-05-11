@@ -11,7 +11,7 @@ class ClientThread : public QThread
 	Q_OBJECT
 	QTcpSocket *socket;
 public:
-	explicit ClientThread(QObject *parent = NULL, QTcpSocket *Socket);
+	explicit ClientThread(QObject *parent = NULL, QTcpSocket *Socket = NULL);
 	virtual void run();
 };
 

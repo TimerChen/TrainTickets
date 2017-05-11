@@ -1,5 +1,5 @@
-#ifndef TTD_TRAIN_HPP
-#define TTD_TRAIN_HPP
+#ifndef TRAIN_HPP
+#define TRAIN_HPP
 
 #include <cstdio>
 #include <iostream>
@@ -17,7 +17,7 @@ struct Ticket
 	QDateTime loadTime, unLoadTime;
 	int price;
 	QString seatType;
-
+	Ticket ();
     Ticket (const QString &un, const QString &ls,
 			const QString &us, const QString &tID,
 			const QDateTime &lt, const QDateTime &ut,
