@@ -16,28 +16,30 @@
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDateEdit>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_StationToStationSearch
 {
 public:
-    QSplitter *splitter_3;
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout_2;
+    QGridLayout *gridLayout;
+    QLabel *label;
+    QLineEdit *fromLineEdit;
+    QLabel *label_2;
+    QLineEdit *toLineEdit;
+    QLabel *label_3;
+    QDateEdit *dateEdit;
+    QVBoxLayout *verticalLayout;
     QPushButton *searchbotton;
     QPushButton *exitBtn;
-    QSplitter *splitter;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QSplitter *splitter_2;
-    QLineEdit *fromLineEdit;
-    QLineEdit *toLineEdit;
-    QDateEdit *dateEdit;
 
     void setupUi(QDialog *StationToStationSearch)
     {
@@ -47,46 +49,67 @@ public:
         QIcon icon;
         icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         StationToStationSearch->setWindowIcon(icon);
-        splitter_3 = new QSplitter(StationToStationSearch);
-        splitter_3->setObjectName(QStringLiteral("splitter_3"));
-        splitter_3->setGeometry(QRect(20, 110, 541, 71));
-        splitter_3->setOrientation(Qt::Vertical);
-        searchbotton = new QPushButton(splitter_3);
-        searchbotton->setObjectName(QStringLiteral("searchbotton"));
-        splitter_3->addWidget(searchbotton);
-        exitBtn = new QPushButton(splitter_3);
-        exitBtn->setObjectName(QStringLiteral("exitBtn"));
-        splitter_3->addWidget(exitBtn);
-        splitter = new QSplitter(StationToStationSearch);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(20, 10, 61, 91));
-        splitter->setOrientation(Qt::Vertical);
-        label = new QLabel(splitter);
+        verticalLayout_3 = new QVBoxLayout(StationToStationSearch);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        label = new QLabel(StationToStationSearch);
         label->setObjectName(QStringLiteral("label"));
-        splitter->addWidget(label);
-        label_2 = new QLabel(splitter);
-        label_2->setObjectName(QStringLiteral("label_2"));
-        splitter->addWidget(label_2);
-        label_3 = new QLabel(splitter);
-        label_3->setObjectName(QStringLiteral("label_3"));
-        splitter->addWidget(label_3);
-        splitter_2 = new QSplitter(StationToStationSearch);
-        splitter_2->setObjectName(QStringLiteral("splitter_2"));
-        splitter_2->setGeometry(QRect(70, 10, 491, 91));
-        splitter_2->setOrientation(Qt::Vertical);
-        fromLineEdit = new QLineEdit(splitter_2);
+
+        gridLayout->addWidget(label, 0, 0, 1, 1);
+
+        fromLineEdit = new QLineEdit(StationToStationSearch);
         fromLineEdit->setObjectName(QStringLiteral("fromLineEdit"));
-        splitter_2->addWidget(fromLineEdit);
-        toLineEdit = new QLineEdit(splitter_2);
+
+        gridLayout->addWidget(fromLineEdit, 0, 1, 1, 1);
+
+        label_2 = new QLabel(StationToStationSearch);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        gridLayout->addWidget(label_2, 1, 0, 1, 1);
+
+        toLineEdit = new QLineEdit(StationToStationSearch);
         toLineEdit->setObjectName(QStringLiteral("toLineEdit"));
-        splitter_2->addWidget(toLineEdit);
-        dateEdit = new QDateEdit(splitter_2);
+
+        gridLayout->addWidget(toLineEdit, 1, 1, 1, 1);
+
+        label_3 = new QLabel(StationToStationSearch);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 2, 0, 1, 1);
+
+        dateEdit = new QDateEdit(StationToStationSearch);
         dateEdit->setObjectName(QStringLiteral("dateEdit"));
         dateEdit->setDateTime(QDateTime(QDate(2017, 1, 1), QTime(0, 0, 0)));
         dateEdit->setMaximumDateTime(QDateTime(QDate(2020, 12, 31), QTime(23, 59, 59)));
         dateEdit->setMaximumDate(QDate(2020, 12, 31));
         dateEdit->setMinimumDate(QDate(2015, 1, 1));
-        splitter_2->addWidget(dateEdit);
+
+        gridLayout->addWidget(dateEdit, 2, 1, 1, 1);
+
+
+        verticalLayout_2->addLayout(gridLayout);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        searchbotton = new QPushButton(StationToStationSearch);
+        searchbotton->setObjectName(QStringLiteral("searchbotton"));
+
+        verticalLayout->addWidget(searchbotton);
+
+        exitBtn = new QPushButton(StationToStationSearch);
+        exitBtn->setObjectName(QStringLiteral("exitBtn"));
+
+        verticalLayout->addWidget(exitBtn);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
 
         retranslateUi(StationToStationSearch);
         QObject::connect(exitBtn, SIGNAL(clicked()), StationToStationSearch, SLOT(close()));
@@ -97,11 +120,11 @@ public:
     void retranslateUi(QDialog *StationToStationSearch)
     {
         StationToStationSearch->setWindowTitle(QApplication::translate("StationToStationSearch", "\347\253\231\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
-        searchbotton->setText(QApplication::translate("StationToStationSearch", "\347\253\213\345\215\263\346\220\234\347\264\242", Q_NULLPTR));
-        exitBtn->setText(QApplication::translate("StationToStationSearch", "\350\277\224\345\233\236\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
         label->setText(QApplication::translate("StationToStationSearch", "\345\207\272\345\217\221", Q_NULLPTR));
         label_2->setText(QApplication::translate("StationToStationSearch", "\345\210\260\350\276\276", Q_NULLPTR));
         label_3->setText(QApplication::translate("StationToStationSearch", "\346\227\245\346\234\237", Q_NULLPTR));
+        searchbotton->setText(QApplication::translate("StationToStationSearch", "\347\253\213\345\215\263\346\220\234\347\264\242", Q_NULLPTR));
+        exitBtn->setText(QApplication::translate("StationToStationSearch", "\350\277\224\345\233\236\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
     } // retranslateUi
 
 };

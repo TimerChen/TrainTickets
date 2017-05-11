@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>727</width>
+    <width>1031</width>
     <height>564</height>
    </rect>
   </property>
@@ -17,50 +17,66 @@
    <iconset>
     <normaloff>12308.png</normaloff>12308.png</iconset>
   </property>
-  <widget class="QTextEdit" name="ticketsTextEdit">
-   <property name="geometry">
-    <rect>
-     <x>90</x>
-     <y>30</y>
-     <width>541</width>
-     <height>381</height>
-    </rect>
-   </property>
-  </widget>
-  <widget class="QWidget" name="layoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>60</x>
-     <y>430</y>
-     <width>601</width>
-     <height>60</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout">
-    <item>
-     <widget class="QPushButton" name="preTicketBtn">
-      <property name="text">
-       <string>前一张</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="nextTicketBtn">
-      <property name="text">
-       <string>后一张</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QPushButton" name="modifyTicketBtn">
-      <property name="text">
-       <string>退订/改签</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+  <layout class="QVBoxLayout" name="verticalLayout_3">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0">
+     <property name="spacing">
+      <number>6</number>
+     </property>
+     <property name="leftMargin">
+      <number>20</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
+     </property>
+     <property name="rightMargin">
+      <number>20</number>
+     </property>
+     <property name="bottomMargin">
+      <number>20</number>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QTableView" name="ticketsTableView"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="modifyTicketBtn">
+         <property name="text">
+          <string>退订/改签</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="exitBtn">
+         <property name="text">
+          <string>返回查询窗口</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>exitBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>Myticket</receiver>
+   <slot>close()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>515</x>
+     <y>518</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>281</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>

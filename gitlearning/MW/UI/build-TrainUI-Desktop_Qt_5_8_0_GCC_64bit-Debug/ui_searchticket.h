@@ -16,16 +16,18 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
 #include <QtWidgets/QTableView>
+#include <QtWidgets/QVBoxLayout>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_SearchTicket
 {
 public:
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout_2;
     QTableView *ticketsTableView;
-    QSplitter *splitter;
+    QVBoxLayout *verticalLayout;
     QPushButton *buyTicketBtn;
     QPushButton *exitBtn;
 
@@ -33,23 +35,39 @@ public:
     {
         if (SearchTicket->objectName().isEmpty())
             SearchTicket->setObjectName(QStringLiteral("SearchTicket"));
-        SearchTicket->resize(1053, 529);
+        SearchTicket->resize(1080, 506);
         QIcon icon;
         icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         SearchTicket->setWindowIcon(icon);
+        verticalLayout_3 = new QVBoxLayout(SearchTicket);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(20, 20, 20, 20);
         ticketsTableView = new QTableView(SearchTicket);
         ticketsTableView->setObjectName(QStringLiteral("ticketsTableView"));
-        ticketsTableView->setGeometry(QRect(30, 10, 991, 401));
-        splitter = new QSplitter(SearchTicket);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(30, 425, 991, 81));
-        splitter->setOrientation(Qt::Vertical);
-        buyTicketBtn = new QPushButton(splitter);
+
+        verticalLayout_2->addWidget(ticketsTableView);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        buyTicketBtn = new QPushButton(SearchTicket);
         buyTicketBtn->setObjectName(QStringLiteral("buyTicketBtn"));
-        splitter->addWidget(buyTicketBtn);
-        exitBtn = new QPushButton(splitter);
+
+        verticalLayout->addWidget(buyTicketBtn);
+
+        exitBtn = new QPushButton(SearchTicket);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
-        splitter->addWidget(exitBtn);
+
+        verticalLayout->addWidget(exitBtn);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
 
         retranslateUi(SearchTicket);
         QObject::connect(exitBtn, SIGNAL(clicked()), SearchTicket, SLOT(close()));

@@ -14,30 +14,28 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
 #include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Regist
 {
 public:
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
-    QLabel *label;
-    QLabel *label_2;
-    QLabel *label_3;
-    QWidget *layoutWidget1;
+    QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
+    QGridLayout *gridLayout;
+    QLabel *label;
     QLineEdit *usrLineEdit;
+    QLabel *label_2;
     QLineEdit *pwdLineEdit;
+    QLabel *label_3;
     QLineEdit *confirmpwdLineEdit;
-    QSplitter *splitter;
+    QVBoxLayout *verticalLayout;
     QPushButton *loginBtn;
     QPushButton *backtologinBtn;
     QPushButton *exitButton;
@@ -52,61 +50,68 @@ public:
         QIcon icon;
         icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Regist->setWindowIcon(icon);
-        layoutWidget = new QWidget(Regist);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(20, 10, 118, 121));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(layoutWidget);
+        verticalLayout_3 = new QVBoxLayout(Regist);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        label = new QLabel(Regist);
         label->setObjectName(QStringLiteral("label"));
 
-        verticalLayout->addWidget(label);
+        gridLayout->addWidget(label, 0, 0, 1, 1);
 
-        label_2 = new QLabel(layoutWidget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        verticalLayout->addWidget(label_2);
-
-        label_3 = new QLabel(layoutWidget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        verticalLayout->addWidget(label_3);
-
-        layoutWidget1 = new QWidget(Regist);
-        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(140, 10, 451, 121));
-        verticalLayout_2 = new QVBoxLayout(layoutWidget1);
-        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(0, 0, 0, 0);
-        usrLineEdit = new QLineEdit(layoutWidget1);
+        usrLineEdit = new QLineEdit(Regist);
         usrLineEdit->setObjectName(QStringLiteral("usrLineEdit"));
 
-        verticalLayout_2->addWidget(usrLineEdit);
+        gridLayout->addWidget(usrLineEdit, 0, 1, 1, 1);
 
-        pwdLineEdit = new QLineEdit(layoutWidget1);
+        label_2 = new QLabel(Regist);
+        label_2->setObjectName(QStringLiteral("label_2"));
+
+        gridLayout->addWidget(label_2, 1, 0, 1, 1);
+
+        pwdLineEdit = new QLineEdit(Regist);
         pwdLineEdit->setObjectName(QStringLiteral("pwdLineEdit"));
 
-        verticalLayout_2->addWidget(pwdLineEdit);
+        gridLayout->addWidget(pwdLineEdit, 1, 1, 1, 1);
 
-        confirmpwdLineEdit = new QLineEdit(layoutWidget1);
+        label_3 = new QLabel(Regist);
+        label_3->setObjectName(QStringLiteral("label_3"));
+
+        gridLayout->addWidget(label_3, 2, 0, 1, 1);
+
+        confirmpwdLineEdit = new QLineEdit(Regist);
         confirmpwdLineEdit->setObjectName(QStringLiteral("confirmpwdLineEdit"));
 
-        verticalLayout_2->addWidget(confirmpwdLineEdit);
+        gridLayout->addWidget(confirmpwdLineEdit, 2, 1, 1, 1);
 
-        splitter = new QSplitter(Regist);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(20, 140, 571, 93));
-        splitter->setOrientation(Qt::Vertical);
-        loginBtn = new QPushButton(splitter);
+
+        verticalLayout_2->addLayout(gridLayout);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        loginBtn = new QPushButton(Regist);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
-        splitter->addWidget(loginBtn);
-        backtologinBtn = new QPushButton(splitter);
+
+        verticalLayout->addWidget(loginBtn);
+
+        backtologinBtn = new QPushButton(Regist);
         backtologinBtn->setObjectName(QStringLiteral("backtologinBtn"));
-        splitter->addWidget(backtologinBtn);
-        exitButton = new QPushButton(splitter);
+
+        verticalLayout->addWidget(backtologinBtn);
+
+        exitButton = new QPushButton(Regist);
         exitButton->setObjectName(QStringLiteral("exitButton"));
-        splitter->addWidget(exitButton);
+
+        verticalLayout->addWidget(exitButton);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
 
         retranslateUi(Regist);
         QObject::connect(exitButton, SIGNAL(clicked()), Regist, SLOT(close()));
