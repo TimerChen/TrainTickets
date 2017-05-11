@@ -33,8 +33,8 @@ SOURCES += main.cpp\
     trainsearch.cpp \
     stationsearch.cpp \
     searchticket.cpp \
-    toserverstructs.cpp \
-    adminwindow.cpp
+    adminwindow.cpp \
+    toserverstructs.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -45,8 +45,8 @@ HEADERS  += mainwindow.h \
     trainsearch.h \
     stationsearch.h \
     searchticket.h \
-    toserverstructs.h \
-    adminwindow.h
+    adminwindow.h \
+    toserverstructs.h
 
 FORMS    += mainwindow.ui \
     login.ui \

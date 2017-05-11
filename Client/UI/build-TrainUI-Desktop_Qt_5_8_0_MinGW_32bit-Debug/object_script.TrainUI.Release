@@ -9,8 +9,8 @@ INPUT(
 ./release\trainsearch.o
 ./release\stationsearch.o
 ./release\searchticket.o
-./release\toserverstructs.o
 ./release\adminwindow.o
+./release\toserverstructs.o
 ./release\qrc_pic.o
 ./release\moc_mainwindow.o
 ./release\moc_login.o
