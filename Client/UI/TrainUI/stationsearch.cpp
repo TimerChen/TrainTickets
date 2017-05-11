@@ -3,9 +3,10 @@
 #include "searchticket.h"
 #include <QMessageBox>
 
-StationSearch::StationSearch(QWidget *parent) :
+StationSearch::StationSearch(QWidget *parent, int user) :
     QDialog(parent),
-    ui(new Ui::StationSearch)
+    ui(new Ui::StationSearch),
+    userType(user)
 {
     ui->setupUi(this);
 }

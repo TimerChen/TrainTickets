@@ -8,10 +8,12 @@
 #include "stationtostationsearch.h"
 #include "stationsearch.h"
 #include "trainsearch.h"
+#include "adminwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(QWidget *parent, int user) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    userType(user)
 {
     ui->setupUi(this);
     ui->myticketBtn->setEnabled(false);
@@ -29,11 +31,19 @@ void MainWindow::on_loginBtn_clicked()
     Login log(this);
     if (log.exec() == QDialog::Accepted) {
         //add something that show you have loged in
+        userType = log.getUserType();
         ui->loginBtn->setEnabled(false);
         ui->regBtn->setEnabled(false);
-        ui->myticketBtn->setEnabled(true);
         ui->myinformBtn->setEnabled(true);
         ui->logoutBtn->setEnabled(true);
+        ui->myticketBtn->setEnabled(true);
+       if (userType == Ui::admin) {
+            AdminWindow adw(this);
+            this->hide();
+            adw.exec();
+            this->show();
+            this->on_logoutBtn_clicked();
+        }
     }
 }
 
@@ -51,18 +61,19 @@ void MainWindow::on_logoutBtn_clicked()
     ui->logoutBtn->setEnabled(false);
     ui->loginBtn->setEnabled(true);
     ui->regBtn->setEnabled(true);
+    userType = Ui::annonymous;
 }
 
 void MainWindow::on_myticketBtn_clicked()
 {
-    Myticket myticket(this);
+    Myticket myticket(this,userType);
 
     myticket.exec();
 }
 
 void MainWindow::on_myinformBtn_clicked()
 {
-    Myinform myinform(this);
+    Myinform myinform(this,userType);
 
     myinform.exec();
 
@@ -70,14 +81,14 @@ void MainWindow::on_myinformBtn_clicked()
 
 void MainWindow::on_stationToStationSearchBtn_clicked()
 {
-    StationToStationSearch s(this);
+    StationToStationSearch s(this,userType);
 
     s.exec();
 }
 
 void MainWindow::on_trainSearchBtn_clicked()
 {
-    TrainSearch s(this);
+    TrainSearch s(this,userType);
 
     s.exec();
 
@@ -85,7 +96,7 @@ void MainWindow::on_trainSearchBtn_clicked()
 
 void MainWindow::on_stationSearchBtn_clicked()
 {
-    StationSearch s(this);
+    StationSearch s(this,userType);
 
     s.exec();
 

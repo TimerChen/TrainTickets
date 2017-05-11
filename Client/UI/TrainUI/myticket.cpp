@@ -3,9 +3,10 @@
 #include <QTableView>
 #include <QStandardItem>
 
-Myticket::Myticket(QWidget *parent) :
+Myticket::Myticket(QWidget *parent, int user) :
     QDialog(parent),
-    ui(new Ui::Myticket)
+    ui(new Ui::Myticket),
+    userType(user)
 {
     ui->setupUi(this);
     ///设置列宽和标签栏

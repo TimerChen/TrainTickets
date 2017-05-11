@@ -33,7 +33,8 @@ SOURCES += main.cpp\
     trainsearch.cpp \
     stationsearch.cpp \
     searchticket.cpp \
-    toserverstructs.cpp
+    toserverstructs.cpp \
+    adminwindow.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -44,7 +45,8 @@ HEADERS  += mainwindow.h \
     trainsearch.h \
     stationsearch.h \
     searchticket.h \
-    toserverstructs.h
+    toserverstructs.h \
+    adminwindow.h
 
 FORMS    += mainwindow.ui \
     login.ui \
@@ -54,7 +56,8 @@ FORMS    += mainwindow.ui \
     stationtostationsearch.ui \
     trainsearch.ui \
     stationsearch.ui \
-    searchticket.ui
+    searchticket.ui \
+    adminwindow.ui
 
 RESOURCES += \
     pic.qrc
