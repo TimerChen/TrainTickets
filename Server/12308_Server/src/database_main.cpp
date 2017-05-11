@@ -1,11 +1,11 @@
-#include "src_Timer/DataBase.h"
-#include "src_Timer/database_main.h"
+#include "include/DataBase.h"
+#include "include/database_main.h"
 //#include "DataBase_Train.h"
 //#include "DataBase_Accout.h"
 //#include "DataBase_User.h"
 //#include "src_Vegewong/DataBase_Log.h"
 
-DataBase_Main::DataBase_Main( const std::string &Name )
+DataBase_Main::DataBase_Main( const QString &Name )
 :DataBase_Base(Name)
 {
 	//dataBase_name = Name;
@@ -21,7 +21,7 @@ DataBase_Main::~DataBase_Main()
 
 }
 /*Unfinished*/
-void DataBase_Main::loadData_raw( const std::string &FileName )
+void DataBase_Main::loadData_raw( const QString &FileName )
 {
 
 }

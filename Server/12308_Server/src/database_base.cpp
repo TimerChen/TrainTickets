@@ -1,7 +1,7 @@
 
-#include "DataBase.h"
+#include "include/DataBase.h"
 
-DataBase_Base::DataBase_Base( const std::string &Name )
+DataBase_Base::DataBase_Base( const QString &Name )
 :dataBase_name( Name )
 {
 
