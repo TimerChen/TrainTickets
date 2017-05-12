@@ -10,6 +10,7 @@
 #include <cstdio>
 #include <iostream>
 #include "include/map.hpp"
+#include "include/vector.hpp"
 #include <QDateTime>
 
 //Tickets which have bought.

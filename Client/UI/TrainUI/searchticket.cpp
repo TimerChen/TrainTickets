@@ -1,10 +1,9 @@
 #include "searchticket.h"
 #include "ui_searchticket.h"
 #include <QStandardItemModel>
-//#include <QFile>
 #include <QTableView>
 #include <QMessageBox>
-#include "include/Train.h"
+//#include "include/Train.h"
 #include "include/vector.hpp"
 
 SearchTicket::SearchTicket(QWidget *parent, int user,int search) :
