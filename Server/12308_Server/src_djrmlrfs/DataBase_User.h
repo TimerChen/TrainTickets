@@ -13,10 +13,11 @@ public:
 	DataBase_User(const Qstring &Name = "Default");
 	~DataBase_User();
 	//very important, or you can choose you write or let me rewrite in account
-	void add_acc(shared_ptr<DataBase_Account> whichAcc);
+	void add_acc(normal_ptr<DataBase_Account> whichAcc);
 	// Login with your account id and password.
 	// return 0: failed
 	int login( const Qstring &ID, const Qstring &password );
+	bool logout( const int UserId );
 	bool logged(int UserId);
 	bool is_admin(int UserId);
 	int query_identifyType( int UserId );
@@ -24,10 +25,9 @@ public:
 	int account_id(int UserId);
 	//when operate tickets and train,please check weather it's admin
 private:
-	bool logout( const int UserId );
 	int nowTempId;
 	ttd::map<int,int> userData;//userData[userid] = accountId
-	shared_ptr<DataBase_Account> nowAccData;
+	normal_ptr<DataBase_Account> nowAccData;
 };
 #endif
 //

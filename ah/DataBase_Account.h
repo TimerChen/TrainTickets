@@ -1,6 +1,7 @@
 #ifndef DATABASE_ACCOUNT_H
 #define DATABASE_ACCOUNT_H
 #include <cstdio>
+#include <string>
 #include <QString>
 #include <QDateTime>
 #include "DataBase.h"
@@ -13,9 +14,9 @@ public:
 	struct ticLog{
 		QString train, fromStation, toStation;
 		// I do not know which head file to include , It's in Qt 
-		QDateTime date;
+		QDate date;
 		int num;
-		ticLog(const QString&tra, const QString&fro, const QString&to, const QDateTime &day, const int &buynum)
+		ticLog(const QString&tra, const QString&fro, const QString&to, const QDate &day, const int &buynum)
 		:train(tra), fromStation(fro), toStation(to), date(day), num(buynum){}
 	};
 	struct Ticket
@@ -24,10 +25,10 @@ public:
 		QString buyer;
 		QString loadStation, unLoadStation;
 		QString trainID;
-		QDateTime loadTime, unLoadTime;
+		QDate loadTime, unLoadTime;
 		QString seatType;
 		Ticket(const QString&name, const QString&st, const QString&ed,
-		 const QString&tra, const QDateTime &stt, const QDateTime &edt, const int &pri, const QString&stp)
+		 const QString&tra, const QDate &stt, const QDate &edt, const int &pri, const QString&stp)
 	:buyer(name), loadStation(st), unLoadStation(ed), trainID(tra), loadTime(stt), unLoadTime(edt), price(pri), seatType(stp){}
 		~Ticket(){}
 		
@@ -95,10 +96,10 @@ public:
 	void modifyAccount(const int &Id, const QString &newPassword, const QString &newName);
 	//return the total cost
 	int buyTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
-		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num);
+		const QDate &fromTime, const QDate &toTime, const int &price, const QString &type, const int &num);
 	
 	int returnTicket(const int &Id, const QString&trainId, const QString&from, const QString&to,
-		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString&type, const int &num);
+		const QDate &fromTime, const QDate &toTime, const int &price, const QString&type, const int &num);
 	ttd::vector<ticLog> quiryLog(const int &Id);
 	ttd::map<Ticket,int> ownedTicket(const int &Id);
 private:

@@ -1,3 +1,5 @@
+#include <ctime>
+#include <iostream>
 #include "DataBase_Account.h"
 char DataBase_Account::str16[]= "0123456789abcdef";
 unsigned int DataBase_Account::k[] = {0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,0x698098d8,0x8b44f7af,0xffff5bb1,0x895cd7be,0x6b901122,0xfd987193,0xa679438e,0x49b40821,0xf61e2562,0xc040b340,0x265e5a51,0xe9b6c7aa,0xd62f105d,0x02441453,0xd8a1e681,0xe7d3fbc8,0x21e1cde6,0xc33707d6,0xf4d50d87,0x455a14ed,0xa9e3e905,0xfcefa3f8,0x676f02d9,0x8d2a4c8a,0xfffa3942,0x8771f681,0x6d9d6122,0xfde5380c,0xa4beea44,0x4bdecfa9,0xf6bb4b60,0xbebfbc70,0x289b7ec6,0xeaa127fa,0xd4ef3085,0x04881d05,0xd9d4d039,0xe6db99e5,0x1fa27cf8,0xc4ac5665,0xf4292244,0x432aff97,0xab9423a7,0xfc93a039,0x655b59c3,0x8f0ccc92,0xffeff47d,0x85845dd1,0x6fa87e4f,0xfe2ce6e0,0xa3014314,0x4e0811a1,0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391};
@@ -94,7 +96,7 @@ DataBase_Account::~DataBase_Account()
 }
 
 int DataBase_Account::buyTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
-	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num)
+	const QDate &fromTime, const QDate &toTime, const int &price, const QString &type, const int &num)
 {
 	//please cheak weather num < 0 or num > leftnum
 	Ticket tmp(accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
@@ -102,7 +104,7 @@ int DataBase_Account::buyTicket(const int &Id, const QString &trainId, const QSt
 	return price*num;
 }
 int DataBase_Account::returnTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
-	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num)
+	const QDate &fromTime, const QDate &toTime, const int &price, const QString &type, const int &num)
 {
 	//please cheak weather num < 0 or num > leftnum
 	//the front can insure there is such ticket
@@ -123,4 +125,78 @@ ttd::vector<DataBase_Account::ticLog> DataBase_Account::quiryLog(const int &Id)
 ttd::map<DataBase_Account::Ticket,int> DataBase_Account::ownedTicket(const int &Id)
 {
 	return accData[Id].bought;
+}
+using namespace std;
+#define rep(i,j,k)	for (int i = j; i <= k; i++)
+int tmp[1000000], num[1000000];
+int main()
+{
+	puts("!!");
+	rep(i,0,999999)	tmp[i]=i;
+	rep(i,1,2000000)	swap(tmp[rand()%1000000],tmp[rand()%1000000]);
+	DataBase_Account now;
+	int t = clock();
+	const int N = 100000, M = 10000;
+	rep(i,0,N-1)
+	{
+		DataBase_Account::Account acc("ID"+to_string(tmp[i]));
+		now.Register(acc);
+	}
+	rep(i,0,N-1)	if (now.getIdNumber("ID"+to_string(tmp[i])) != i)
+		puts("failed");
+	rep(i,0,N-1)	if (now.queryAccount("ID"+to_string(tmp[i])).id_number != i)	puts("failed");
+	rep(i,0,N-1)	if (now.queryAccount(i).id_number != i)	puts("failed");
+	srand(19981031);
+	string zero = now.getPasswordHash("000000"), 
+	one = now.getPasswordHash("111111") ;
+	rep(i,1,100)
+	{
+		int z = rand()%N;
+		DataBase_Account::Account _(now.queryAccount(z));
+		if (_.name == "Timer")
+			{
+				if (_.passwordHash != one)	puts("fail");
+				continue;
+			}
+		num[++num[0]] = z;
+		if (_.passwordHash != zero)	cout<<_.passwordHash<<' '<<zero<<endl;
+		now.modifyAccount(z,"111111","Timer");
+	}
+	
+	rep(i,1,num[0])	if (now.queryAccount(num[i]).passwordHash != one)	puts("fai");
+	num[1]=0;
+	rep(i,0,N-1) if (now.queryAccount(i).passwordHash==zero)	num[1]++;
+	if(!(num[1]+num[0]==N))	puts("f");
+	rep(i,0,N-1)	num[i] = 0;
+	srand(19981031);
+	rep(i,1,N)
+	{
+		int z = rand()%1000+1, zz= rand()%2000+1;num[z]+=zz;
+		now.buyTicket(z,"train","from",to_string(z),0,z-1,1,"wuzuo",zz);
+	}
+	cout<<clock()-t<<endl, t = clock();
+	rep(i,1,M)
+	{
+		int z = rand()%1000+1;	int zz = rand();
+		zz=(num[z]?zz%num[z]+1:0);
+		num[z] -= zz;
+		if(zz)now.returnTicket(z,"train","from",to_string(z),0,z-1,1,"wuzuo",zz);
+	}
+	cout<<clock()-t<<endl, t = clock();
+	rep(i,1,1000)
+	{
+		ttd::map<DataBase_Account::Ticket,int> _(now.ownedTicket(i));
+		if (_.size() > 1)	puts("f");
+		else if (_.size() == 1)
+		{
+			if (_.begin()->second != num[i])
+				puts("f");
+		}
+		else if (_.size() == 0)
+			if (num[i] != 0)	puts("f");
+	}
+	cout<<clock()-t<<endl, t = clock();
+	rep(i,1,200)	rand()%2?now.buyTicket(0,"Z1","a","b",0,1,1,"noseat",100):now.returnTicket(0,"Z1","a","b",0,1,1,"noseat",1);
+	ttd::vector<DataBase_Account::ticLog> a(now.quiryLog(0));
+	rep(i,1,a.size())	cout << a[i-1].train <<' '<<a[i-1].fromStation<<' '<<a[i-1].toStation<<' '<<a[i-1].num<<endl;
 }

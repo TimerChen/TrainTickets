@@ -8,12 +8,11 @@ DataBase_Account::Account DataBase_Account::Account::operator=(const Account &ac
 	id = acc.id, name = acc.name;
 	passwordHash = acc.passwordHash;
 	isAdmin = acc.isAdmin, log = acc.log;
-	bought = acc.bought;
 }
-QString DataBase_Account::Hex(int a)
+Qstring DataBase_Account::Hex(int a)
 {
 	int b;
-	QString str1, Password = "";
+	Qstring str1, Password = "";
 	for (int i = 0; i < 4; ++i)
 	{
 		str1 = "";
@@ -24,7 +23,7 @@ QString DataBase_Account::Hex(int a)
 	return Password;
 }
 
-QString DataBase_Account::getPasswordHash( const QString &Password )
+Qstring DataBase_Account::getPasswordHash( const Qstring &Password )
 {
 	unsigned int strlength, atemp = 0x67452301, btemp = 0xefcdab89, ctemp = 0x98badcfe, dtemp = 0x10325476;
 	unsigned int strByte[16];
@@ -45,74 +44,71 @@ QString DataBase_Account::getPasswordHash( const QString &Password )
 	return Hex(atemp).append(Hex(btemp)).append(Hex(ctemp)).append(Hex(dtemp));
 }
 
-DataBase_Account::DataBase_Account( const QString &Name)
+DataBase_Account::DataBase_Account( const Qstring &Name)
 {
 	dataBase_name = Name;
 	accNums = 0;
 	Numbers.clear();
 	accData.clear();
 }
-int DataBase_Account::Register( const Account &NewAccout, const QString &Password)
+
+int DataBase_Account::Register( const Account &NewAccout, const Qstring &Password)
 {
-	QString Id = NewAccout.id;
+	Qstring Id = NewAccout.id;
 	if (Password.length()>16 || Id.length()>16)	return 0;//too long
 	if (Id == "Default")	return 1;					// we don't allow some call this name
 	if (getIdNumber(Id) != -1)	return 1;				// UserId used
 	Account tmp = NewAccout;
 	tmp.id_number = accNums;
-	if (Password!="000000")	tmp.passwordHash = getPasswordHash(Password);
+	tmp.passwordHash = getPasswordHash(Password);
 	Numbers[Id] = accNums++;
 	accData.push_back(tmp);
 	return 2;
 }
 	
-int DataBase_Account::getIdNumber( const QString &Id )
+int DataBase_Account::getIdNumber( const Qstring &Id )
 {
 	if (Numbers.find(Id) == Numbers.end())	return -1;	//not found
 	return Numbers[Id];
 }
 
 
-DataBase_Account::Account DataBase_Account::queryAccount(QString ID)
+DataBase_Account::Account DataBase_Account::query_account(Qstring ID)
 {
 	return accData[getIdNumber(ID)];
 }
 
-DataBase_Account::Account DataBase_Account::queryAccount(int ID)
+DataBase_Account::Account DataBase_Account::query_account(int ID)
 {
 	return accData[ID];
 }
 
-void DataBase_Account::modifyAccount(const int &Id, const QString &newPassword, const QString &newName)
+void DataBase_Account::modify_account(const int &Id, const Account &AccountInfo )
 {
-	accData[Id].name = newName;
-	accData[Id].passwordHash = getPasswordHash(newPassword);
+	accData[Id] = AccountInfo;
 }
 
 DataBase_Account::~DataBase_Account()
 {
+	
 }
 
-int DataBase_Account::buyTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
-	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num)
+int DataBase_Account::buyTicket(const int &Id, const Qstring &trainId, const Qstring &from, const Qstring &to,
+	const QDate &fromTime, const QDate &toTime, const int &price, const Qstring &type, const int &num)
 {
 	//please cheak weather num < 0 or num > leftnum
-	Ticket tmp(accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
-	accData[Id].bought[tmp] += num, accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,num));
+	Ticket tmp(Id,accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
+	ticData[tmp] += num, accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,num));
 	return price*num;
 }
-int DataBase_Account::returnTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
-	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num)
+int DataBase_Account::returnTicket(const int &Id, const Qstring &trainId, const Qstring &from, const Qstring &to,
+	const QDate &fromTime, const QDate &toTime, const int &price, const Qstring &type, const int &num)
 {
 	//please cheak weather num < 0 or num > leftnum
 	//the front can insure there is such ticket
-	Ticket tmp(accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
-	ttd::map<Ticket,int>::iterator it = accData[Id].bought.find(tmp);
-	it->second -= num;
-	if (0==it->second)
-	{
-		accData[Id].bought.erase(it);
-	}
+	Ticket tmp(Id,accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
+	ticData[tmp] -= num;
+	if (!ticData[tmp])	ticData.erase(ticData.find(tmp));
 	accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,-num));
 	return price*num;
 }
@@ -120,7 +116,12 @@ ttd::vector<DataBase_Account::ticLog> DataBase_Account::quiryLog(const int &Id)
 {
 	return accData[Id].log;
 }
-ttd::map<DataBase_Account::Ticket,int> DataBase_Account::ownedTicket(const int &Id)
+ttd::vector<DataBase_Account::ticLog> DataBase_Account::ownedTicket(const int &Id)
 {
-	return accData[Id].bought;
+	Ticket tt(Id);
+	ttd::vector<DataBase_Account::ticLog> ans;	ans.clear();
+	for (ttd::map<Ticket,int>::iterator it = ticData.findN(tt); it!=ticData.end() && it->first.accId==Id; ++it)
+		ans.push_back(ticLog(it->first.trainID,it->first.loadStation,it->first.unLoadStation,it->first.loadTime,it->second));
+	return ans;	// maybe we can change the way like output directly 
+				// or I give the begin and end iterator of the map and set it public, you read information from it 
 }

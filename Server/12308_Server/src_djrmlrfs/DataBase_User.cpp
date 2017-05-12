@@ -1,5 +1,5 @@
 #include "DataBase_User.h"
-DataBase_User::DataBase_User(const Qstring &Name)
+DataBase_User::DataBase_User(const QString &Name)
 {
 	nowTempId = 0;
 	dataBase_name = Name;
@@ -13,7 +13,7 @@ DataBase_User::~DataBase_User()
 	nowAccData = NULL;
 }
 
-int DataBase_User::login( const Qstring &ID, const Qstring &password )
+int DataBase_User::login( const QString &ID, const QString &password )
 {
 	if (nowAccData == NULL)	return 0;	// no account data
 	int Temp = nowAccData->getIdNumber(ID);//accountid
@@ -31,7 +31,7 @@ bool DataBase_User::logged(int UserId)
 	// not only ask train information
 }
 
-void DataBase_User::add_acc(shared_ptr<DataBase_Account> whichAcc)
+void DataBase_User::add_acc(normal_ptr<DataBase_Account> whichAcc)
 {
 	nowAccData = whichAcc;
 }
