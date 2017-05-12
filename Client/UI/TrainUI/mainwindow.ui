@@ -33,7 +33,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>50</x>
+      <x>70</x>
       <y>10</y>
       <width>241</width>
       <height>251</height>
@@ -55,7 +55,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="../../../../../../../mnt/hgfs/share/pic.qrc">:/new/prefix1/12308.png</pixmap>
+     <pixmap resource="pic.qrc">:/new/prefix1/12308.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -64,9 +64,9 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>150</x>
+      <x>145</x>
       <y>240</y>
-      <width>51</width>
+      <width>91</width>
       <height>41</height>
      </rect>
     </property>
@@ -76,58 +76,6 @@
     <property name="scaledContents">
      <bool>false</bool>
     </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>50</y>
-      <width>411</width>
-      <height>191</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_2">
-     <item>
-      <widget class="QPushButton" name="loginBtn">
-       <property name="minimumSize">
-        <size>
-         <width>409</width>
-         <height>58</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>409</width>
-         <height>58</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>登录</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="regBtn">
-       <property name="minimumSize">
-        <size>
-         <width>409</width>
-         <height>58</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>409</width>
-         <height>58</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>注册</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-    <zorder>regBtn</zorder>
-    <zorder>loginBtn</zorder>
    </widget>
    <widget class="QSplitter" name="splitter">
     <property name="geometry">
@@ -274,6 +222,88 @@
      </item>
     </layout>
    </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>30</y>
+      <width>413</width>
+      <height>181</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="0">
+        <widget class="QLabel" name="welcomeLabel">
+         <property name="text">
+          <string>欢迎！</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLabel" name="nameLabel">
+         <property name="text">
+          <string>name</string>
+         </property>
+         <property name="textFormat">
+          <enum>Qt::AutoText</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QPushButton" name="loginBtn">
+         <property name="minimumSize">
+          <size>
+           <width>409</width>
+           <height>58</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>409</width>
+           <height>58</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>登录</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="regBtn">
+         <property name="minimumSize">
+          <size>
+           <width>409</width>
+           <height>58</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>409</width>
+           <height>58</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>注册</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <zorder>layoutWidget</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>splitter</zorder>
    <zorder>layoutWidget</zorder>
@@ -284,7 +314,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="../../../../../../../mnt/hgfs/share/pic.qrc"/>
+  <include location="pic.qrc"/>
  </resources>
  <connections/>
 </ui>

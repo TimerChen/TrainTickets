@@ -32,17 +32,6 @@ class DataBase_User;
 class DataBase_Train;
 
 
-class Time
-{
-public:
-	Time( const int &t=0 );
-	short year,month,day;
-	short hou,min,sec;
-	int to_int();
-	Time &set( const int &t=0 );
-	QString to_string();
-};
-
 class DataBase_Base
 {
 public:

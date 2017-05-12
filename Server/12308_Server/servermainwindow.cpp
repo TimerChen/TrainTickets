@@ -1,7 +1,7 @@
 #include "servermainwindow.h"
 #include "ui_servermainwindow.h"
 
-#include "include/DataBase.h"
+#include "include/database.h"
 
 ServerMainWindow::ServerMainWindow(QWidget *parent) :
 	QMainWindow(parent),

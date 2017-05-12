@@ -1,11 +1,18 @@
-#ifndef TTD_TRAIN_HPP
-#define TTD_TRAIN_HPP
+/*
+ *	Writed by Yanxi Lin.
+ *	Modified by Jingxiao Chen.
+ *
+ */
+
+#ifndef TRAIN_HPP
+#define TRAIN_HPP
 
 #include <cstdio>
 #include <iostream>
 #include "include/map.hpp"
 #include <QDateTime>
 
+//Tickets which have bought.
 struct Ticket
 {
 	static long long ticketNumber = 0LL;
@@ -17,7 +24,7 @@ struct Ticket
 	QDateTime loadTime, unLoadTime;
 	int price;
 	QString seatType;
-
+	Ticket ();
     Ticket (const QString &un, const QString &ls,
 			const QString &us, const QString &tID,
 			const QDateTime &lt, const QDateTime &ut,
@@ -31,7 +38,7 @@ struct Ticket
 };
 
 
-
+//Reply of station-to-station  query.
 struct QTrain
 {
 	bool ableToBuy;
@@ -40,10 +47,11 @@ struct QTrain
 	QString loadStation, unLoadStation;
 	ttd::vector<QString> seatType;
 	ttd::vector<int> price;
-	ttd::vector<int> number;
+	ttd::vector<int> seatNumber;
 	QTime loadStationLeaveTime, unLoadStationReachTime;
 };
 
+//Reply of train query.
 struct TrainRoute
 {
 	QString trainID;
@@ -78,9 +86,28 @@ private:
 	ttd::map<QDate, TicketsPerDay> salingDate;
 
 
+	struct TrainPoint
+	{
+		int seatTypePoint;
+		int loadStationPoint;
+		int unLoadStationPoint;
+	};
+
+	TrainPoint getPoint (QString lsta, QString ulsta, QString set);
+
+	struct RestTicketsInformation
+	{
+		int restTicketsNumber;
+		int restTicketsPrice;
+		TrainPoint restTicketsPoint;
+	};
+
+	RestTicketsInformation showRestTickets (QDate dat, QString lsta,
+											QString ulsta, QString set);
+
 
 public:
-
+	Train (const QString &tID = "");
  	Train (const QString &tID, int setnr, int stanr,
 		const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
 		const ttd::vector<QTime> &rt, const ttd::vector<QTime> &lt,
@@ -102,25 +129,6 @@ public:
 
 	bool closeOneDay (QDate datc);
 
-	struct TrainPoint
-	{
-		int seatTypePoint;
-		int loadStationPoint;
-		int unLoadStationPoint;
-	};
-
-	TrainPoint getPoint (QString lsta, QString ulsta, QString set);
-
-	struct RestTicketsInformation
-	{
-		int restTicketsNumber;
-		int restTicketsPrice;
-		TrainPoint restTicketsPoint;
-	};
-
-	RestTicketsInformation showRestTickets (QDate dat, QString lsta,
-											QString ulsta, QString set);
-
 	int buyTickets (QDate dat, QString lsta, QString ulsta,
 					QString set, int num);
 
@@ -129,9 +137,9 @@ public:
 
 	bool openDate (QDate dat);
 
-	QTrain ask (QDate dat, QString lsta, QString ulsta);
+	QTrain query_stationToStation (QDate dat, QString lsta, QString ulsta);
 
-	TrainRoute ask ();
+	TrainRoute query_train ();
 
 };
 

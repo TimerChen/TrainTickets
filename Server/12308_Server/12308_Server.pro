@@ -5,8 +5,11 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+CONFIG += c++11
 
 TARGET = 12308_Server
 TEMPLATE = app
@@ -26,17 +29,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         servermainwindow.cpp \
     src/database_base.cpp \
-    src/database_main.cpp
+    src/database_main.cpp \
+    clientthread.cpp \
+    src/station.cpp \
+    src/datastream.cpp \
+    src/Train.cpp
 
 HEADERS  += servermainwindow.h \
     include/vector.hpp \
     include/utility.hpp \
-    include/Train.h \
     include/station.h \
     include/smartpoint.hpp \
     include/exceptions.hpp \
     include/database_main.h \
-    include/DataBase.h \
-    include/algorithm0.hpp
+    include/algorithm0.hpp \
+    clientthread.h \
+    include/train.h \
+    include/database.h \
+    include/map.hpp
 
 FORMS    += servermainwindow.ui

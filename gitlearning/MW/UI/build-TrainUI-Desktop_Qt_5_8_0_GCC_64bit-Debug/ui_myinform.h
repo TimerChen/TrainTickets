@@ -14,32 +14,31 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QSplitter>
 #include <QtWidgets/QVBoxLayout>
-#include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
 
 class Ui_Myinform
 {
 public:
-    QWidget *layoutWidget;
-    QVBoxLayout *verticalLayout;
+    QVBoxLayout *verticalLayout_3;
+    QVBoxLayout *verticalLayout_2;
+    QGridLayout *gridLayout;
     QHBoxLayout *horizontalLayout;
     QLabel *label;
     QLineEdit *nameLineEdit;
     QHBoxLayout *horizontalLayout_2;
     QLabel *label_2;
     QLineEdit *ageLineEdit;
-    QHBoxLayout *horizontalLayout_3;
     QLabel *label_3;
     QLineEdit *idnoLineEdit;
-    QSplitter *splitter;
+    QVBoxLayout *verticalLayout;
     QPushButton *pushButton;
     QPushButton *changepwdButton;
 
@@ -47,71 +46,79 @@ public:
     {
         if (Myinform->objectName().isEmpty())
             Myinform->setObjectName(QStringLiteral("Myinform"));
-        Myinform->resize(712, 686);
+        Myinform->resize(975, 380);
         QIcon icon;
         icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Myinform->setWindowIcon(icon);
-        layoutWidget = new QWidget(Myinform);
-        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
-        layoutWidget->setGeometry(QRect(50, 40, 621, 164));
-        verticalLayout = new QVBoxLayout(layoutWidget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout_3 = new QVBoxLayout(Myinform);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setSpacing(12);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        verticalLayout_2->setContentsMargins(20, 20, 20, 20);
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(layoutWidget);
+        label = new QLabel(Myinform);
         label->setObjectName(QStringLiteral("label"));
 
         horizontalLayout->addWidget(label);
 
-        nameLineEdit = new QLineEdit(layoutWidget);
+        nameLineEdit = new QLineEdit(Myinform);
         nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
 
         horizontalLayout->addWidget(nameLineEdit);
 
 
-        verticalLayout->addLayout(horizontalLayout);
+        gridLayout->addLayout(horizontalLayout, 0, 0, 1, 2);
 
         horizontalLayout_2 = new QHBoxLayout();
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_2 = new QLabel(layoutWidget);
+        label_2 = new QLabel(Myinform);
         label_2->setObjectName(QStringLiteral("label_2"));
 
         horizontalLayout_2->addWidget(label_2);
 
-        ageLineEdit = new QLineEdit(layoutWidget);
+        ageLineEdit = new QLineEdit(Myinform);
         ageLineEdit->setObjectName(QStringLiteral("ageLineEdit"));
 
         horizontalLayout_2->addWidget(ageLineEdit);
 
 
-        verticalLayout->addLayout(horizontalLayout_2);
+        gridLayout->addLayout(horizontalLayout_2, 1, 0, 1, 2);
 
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        label_3 = new QLabel(layoutWidget);
+        label_3 = new QLabel(Myinform);
         label_3->setObjectName(QStringLiteral("label_3"));
 
-        horizontalLayout_3->addWidget(label_3);
+        gridLayout->addWidget(label_3, 2, 0, 1, 1);
 
-        idnoLineEdit = new QLineEdit(layoutWidget);
+        idnoLineEdit = new QLineEdit(Myinform);
         idnoLineEdit->setObjectName(QStringLiteral("idnoLineEdit"));
 
-        horizontalLayout_3->addWidget(idnoLineEdit);
+        gridLayout->addWidget(idnoLineEdit, 2, 1, 1, 1);
 
 
-        verticalLayout->addLayout(horizontalLayout_3);
+        verticalLayout_2->addLayout(gridLayout);
 
-        splitter = new QSplitter(Myinform);
-        splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(50, 360, 581, 58));
-        splitter->setOrientation(Qt::Horizontal);
-        pushButton = new QPushButton(splitter);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        pushButton = new QPushButton(Myinform);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        splitter->addWidget(pushButton);
-        changepwdButton = new QPushButton(splitter);
+
+        verticalLayout->addWidget(pushButton);
+
+        changepwdButton = new QPushButton(Myinform);
         changepwdButton->setObjectName(QStringLiteral("changepwdButton"));
-        splitter->addWidget(changepwdButton);
+
+        verticalLayout->addWidget(changepwdButton);
+
+
+        verticalLayout_2->addLayout(verticalLayout);
+
+
+        verticalLayout_3->addLayout(verticalLayout_2);
+
 
         retranslateUi(Myinform);
 
