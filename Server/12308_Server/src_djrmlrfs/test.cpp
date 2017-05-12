@@ -7,6 +7,7 @@ ttd::map<int,int> a;
 int temp[1111111];
 int main()
 {
+	
 	int t1 = 0, t2 = 0, t = clock();
 	for (int i = 1; i < 1000000; ++i) {
 		temp[i] = i;
