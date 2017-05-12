@@ -4,8 +4,8 @@
 //#include <QFile>
 #include <QTableView>
 #include <QMessageBox>
-#include "../../../Server/12308_Server/include/Train.h"
-#include "../../../Server/12308_Server/include/vector.hpp"
+#include "include/Train.h"
+#include "include/vector.hpp"
 
 SearchTicket::SearchTicket(QWidget *parent, int user,int search) :
     QDialog(parent),

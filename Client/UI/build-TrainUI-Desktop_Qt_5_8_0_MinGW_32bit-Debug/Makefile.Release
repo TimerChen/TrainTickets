@@ -2905,9 +2905,13 @@ release/searchticket.o: ../TrainUI/searchticket.cpp ../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../../../Server/12308_Server/include/Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/utility.hpp \
+		../TrainUI/include/exceptions.hpp \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
-		../../../Server/12308_Server/include/vector.hpp
+		../../../Server/12308_Server/include/vector.hpp \
+		../TrainUI/include/smartpoint.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\searchticket.o ..\TrainUI\searchticket.cpp
 
 release/adminwindow.o: ../TrainUI/adminwindow.cpp ../TrainUI/adminwindow.h \
