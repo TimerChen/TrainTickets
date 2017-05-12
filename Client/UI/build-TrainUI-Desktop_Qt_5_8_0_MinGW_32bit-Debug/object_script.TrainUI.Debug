@@ -11,6 +11,7 @@ INPUT(
 ./debug\searchticket.o
 ./debug\adminwindow.o
 ./debug\toserverstructs.o
+./debug\uistructs.o
 ./debug\qrc_pic.o
 ./debug\moc_mainwindow.o
 ./debug\moc_login.o

@@ -10,7 +10,7 @@ frontask::stationToStationSearch::stationToStationSearch(const stationToStationS
 
 frontask::stationSearch::stationSearch(){}
 frontask::stationSearch::stationSearch(const stationSearch& rs):time(rs.time),station(rs.station){}
-frontask::stationSearch::stationSearch(QDate _time, QString _station = ""):time(_time),station(_station){}
+frontask::stationSearch::stationSearch(QDate _time, QString _station):time(_time),station(_station){}
 
 frontask::trainSearch::trainSearch(){}
 frontask::trainSearch::trainSearch(const trainSearch &rs):time(rs.time),trainID(rs.trainID){}
@@ -18,4 +18,4 @@ frontask::trainSearch::trainSearch(QDate _time, QString _train):time(_time),trai
 
 frontask::loginAccount::loginAccount(){}
 frontask::loginAccount::loginAccount(const loginAccount& rl):userID(rl.userID),pwd(rl.pwd){}
-frontask::loginAccount::loginAccount(QString _userID = "", QString _pwd = ""):userID(_userID),pwd(_pwd){}
+frontask::loginAccount::loginAccount(QString _userID, QString _pwd):userID(_userID),pwd(_pwd){}

@@ -1,27 +1,28 @@
 #ifndef TRAINSEARCH_H
 #define TRAINSEARCH_H
 
-#include <QDialog>
 #include "mainwindow.h"
+#include <QDialog>
 
 namespace Ui {
 class TrainSearch;
 }
 
-class TrainSearch : public QDialog
-{
+class TrainSearch : public QDialog {
     Q_OBJECT
 
-public:
-    explicit TrainSearch(QWidget *parent = 0, int user = Ui::annonymous);
+  public:
+    explicit TrainSearch(ttd::shared_ptr<uistructs::nowAccount> _now,
+                         QWidget *parent = 0);
     ~TrainSearch();
 
-private slots:
+  private slots:
     void on_searchbotton_clicked();
 
-private:
+  private:
     Ui::TrainSearch *ui;
-    int userType;
+    // int userType;
+    ttd::shared_ptr<uistructs::nowAccount> nowaccount;
 };
 
 #endif // TRAINSEARCH_H

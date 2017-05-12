@@ -11,6 +11,7 @@ INPUT(
 ./release\searchticket.o
 ./release\adminwindow.o
 ./release\toserverstructs.o
+./release\uistructs.o
 ./release\qrc_pic.o
 ./release\moc_mainwindow.o
 ./release\moc_login.o

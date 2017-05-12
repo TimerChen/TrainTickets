@@ -1,31 +1,26 @@
 #include "trainsearch.h"
-#include "ui_trainsearch.h"
 #include "searchticket.h"
+#include "ui_trainsearch.h"
 #include <QMessageBox>
 
-TrainSearch::TrainSearch(QWidget *parent, int user) :
-    QDialog(parent),
-    ui(new Ui::TrainSearch),
-    userType(user)
-{
+TrainSearch::TrainSearch(ttd::shared_ptr<uistructs::nowAccount> _now,
+                         QWidget *parent) :QDialog(parent), ui(new Ui::TrainSearch), nowaccount(_now) {
     ui->setupUi(this);
 }
 
-TrainSearch::~TrainSearch()
-{
-    delete ui;
-}
+TrainSearch::~TrainSearch() { delete ui; }
 
-void TrainSearch::on_searchbotton_clicked()
-{
-    if (true) {//保证输入合法
-        if (true){ //发送 ui->trainIDLineEdit->text(),ui->dateEdit->text()给服务器以查询车票
-            SearchTicket ticket(this);
+void TrainSearch::on_searchbotton_clicked() {
+    if (true) {     //保证输入合法
+        if (true) { //发送
+            // ui->trainIDLineEdit->text(),ui->dateEdit->text()给服务器以查询车票
+            SearchTicket ticket(nowaccount, this);
             ticket.exec();
-        }
-        else QMessageBox::warning(this,tr("警告"),tr("请输入有效字符"),QMessageBox::Yes);
-    }
-    else {
-       QMessageBox::warning(this,tr("警告"),tr("输入不合法"),QMessageBox::Yes);
+        } else
+            QMessageBox::warning(this, tr("警告"), tr("请输入有效字符"),
+                                 QMessageBox::Yes);
+    } else {
+        QMessageBox::warning(this, tr("警告"), tr("输入不合法"),
+                             QMessageBox::Yes);
     }
 }

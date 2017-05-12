@@ -16,16 +16,18 @@ struct stationToStationSearch {
 };
 
 struct stationSearch {
-    QString station;
     QDate time;
+    QString station;
+
     stationSearch();
     stationSearch(const stationSearch &rs);
     explicit stationSearch(QDate _time, QString _station = "");
 };
 
 struct trainSearch {
-    QString trainID;
     QDate time;
+    QString trainID;
+
     trainSearch();
     trainSearch(const trainSearch &rs);
     trainSearch(QDate _time, QString _train = "");
@@ -37,7 +39,7 @@ struct loginAccount {
     loginAccount();
     loginAccount(const loginAccount &rl);
     loginAccount(QString _userID = "", QString _pwd = "");
-}
+};
 }
 
 #endif // TOSERVERSTRUCTS_H
