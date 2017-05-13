@@ -27,6 +27,7 @@ private:
     Ui::Myinform *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
+
 };
 
 #endif // MYINFORM_H
