@@ -16,10 +16,11 @@ SearchTicket::SearchTicket(QDate _date,
     : QDialog(parent),
       ui(new Ui::SearchTicket),
       searchType(search),
-      ask1(_ask1),
-      ask2(_ask2),
       date(_date),
-      nowaccount(_now) {
+      nowaccount(_now),
+      ask1(_ask1),
+      ask2(_ask2)
+{
     ui->setupUi(this);
 
     ///设置列宽和标签栏
