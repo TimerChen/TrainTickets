@@ -3,6 +3,7 @@
 
 #include "mainwindow.h"
 #include <QDialog>
+#include <QStandardItemModel>
 
 namespace Ui {
 class SearchTicket;
@@ -24,7 +25,9 @@ class SearchTicket : public QDialog {
   private:
     Ui::SearchTicket *ui;
     int searchType;
+
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
+    ttd::shared_ptr<QStandardItemModel> model;
 };
 
 #endif // SEARCHTICKET_H

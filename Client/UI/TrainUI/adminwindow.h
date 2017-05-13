@@ -17,7 +17,12 @@ class AdminWindow : public QDialog {
                          QWidget *parent);
     ~AdminWindow();
 
-  private:
+private slots:
+    void on_addPlanBtn_clicked();
+
+    void on_trainSearchBtn_clicked();
+
+private:
     Ui::AdminWindow *ui;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
 };

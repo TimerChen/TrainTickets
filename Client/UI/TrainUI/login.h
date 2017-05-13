@@ -13,6 +13,7 @@ class Login : public QDialog {
 
   public:
     explicit Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent = 0);
+    void setAuloginEnable(bool flag);
 
     ~Login();
 

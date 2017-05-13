@@ -26,8 +26,8 @@
    <string>MainWindow</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>12308.png</normaloff>12308.png</iconset>
+   <iconset resource="pic.qrc">
+    <normaloff>:/new/prefix1/12308.png</normaloff>:/new/prefix1/12308.png</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
    <widget class="QLabel" name="label">
@@ -222,7 +222,7 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>340</x>
@@ -303,7 +303,6 @@
      </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>splitter</zorder>
    <zorder>layoutWidget</zorder>

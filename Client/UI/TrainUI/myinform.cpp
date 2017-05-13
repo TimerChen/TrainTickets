@@ -1,6 +1,7 @@
 #include "myinform.h"
 #include "ui_myinform.h"
 #include <QMessageBox>
+#include "uistructs.h"
 
 Myinform::Myinform(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
     : QDialog(parent), ui(new Ui::Myinform),
@@ -12,6 +13,7 @@ Myinform::Myinform(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
         new QRegExpValidator(rx, this); /// change to smart point
     ui->idnoLineEdit->setValidator(pReg);
     ui->idnoLineEdit->setMaxLength(18);
+    ui->IDlabel->setText("ID:"+nowaccount->userID);
 }
 
 Myinform::~Myinform() { delete ui; }

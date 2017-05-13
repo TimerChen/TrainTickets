@@ -5,7 +5,7 @@
 #include <QString>
 
 namespace frontask {
-enum { stationtostationsearch, stationsearch, trainsearch, login };
+enum { stationtostationsearch, stationsearch, trainsearch, login, aulogin };
 struct stationToStationSearch {
     QString fromStation, toStation;
     QDate time;
@@ -40,6 +40,13 @@ struct loginAccount {
     loginAccount(const loginAccount &rl);
     loginAccount(QString _userID = "", QString _pwd = "");
 };
+struct auLoginAccount {
+    QString userID;
+    QString pwd;
+    loginAccount();
+    loginAccount(const loginAccount &rl);
+    loginAccount(QString _userID = "", QString _pwd = "");
+};
 }
 
-#endif // TOSERVERSTRUCTS_H
+#endif  // TOSERVERSTRUCTS_H

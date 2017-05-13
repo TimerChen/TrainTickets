@@ -5,6 +5,8 @@
 #include <QTableView>
 //#include "include/Train.h"
 #include "include/vector.hpp"
+#include "modifyplanofatrain.h"
+#include "login.h"
 
 SearchTicket::SearchTicket(ttd::shared_ptr<uistructs::nowAccount> _now,
                            QWidget *parent,
@@ -14,9 +16,17 @@ SearchTicket::SearchTicket(ttd::shared_ptr<uistructs::nowAccount> _now,
     ui->setupUi(this);
 
     ///设置列宽和标签栏
-    QStandardItemModel *model = new QStandardItemModel();
-    model->setColumnCount(10);
 
+    if (nowaccount->userType == Ui::admin) {
+        ui->buyTicketBtn->setText(tr("修改计划"));
+    }
+    QRegExp rx("^[0-9]+$");
+    QRegExpValidator *pReg =
+        new QRegExpValidator(rx, this); /// change to smart point
+    ui->ticketNumLineEdit->setValidator(pReg);
+
+    model = new QStandardItemModel();
+    model->setColumnCount(10);
     model->setHeaderData(0, Qt::Horizontal, tr("编号"));
     model->setHeaderData(1, Qt::Horizontal, tr("车次"));
     model->setHeaderData(2, Qt::Horizontal, tr("发站"));
@@ -27,7 +37,7 @@ SearchTicket::SearchTicket(ttd::shared_ptr<uistructs::nowAccount> _now,
     model->setHeaderData(7, Qt::Horizontal, tr("票价"));
     model->setHeaderData(8, Qt::Horizontal, tr("余票量"));
     model->setHeaderData(9, Qt::Horizontal, tr("是否可购买"));
-    ui->ticketsTableView->setModel(model);
+    ui->ticketsTableView->setModel(model.getadress());
 
     ui->ticketsTableView->horizontalHeader()->setStretchLastSection(true);
     ui->ticketsTableView->setColumnWidth(0, 50);
@@ -117,6 +127,17 @@ SearchTicket::SearchTicket(ttd::shared_ptr<uistructs::nowAccount> _now,
 SearchTicket::~SearchTicket() { delete ui; }
 
 void SearchTicket::on_buyTicketBtn_clicked() {
+//    targetTicket.trainID = qtrains[i].trainID;
+//    targetTicket.loadStation = qtrains[i].loadStation;
+//    targetTicket.unLoadStation = qtrains[i].unLoadStation;
+//    targetTicket.leaveTime = qtrains[i].leaveTime;
+//    targetTicket.reachTime = qtrains[i].reachTime;
+    if (nowaccount->userType == Ui::annonymous) {
+        Login log(nowaccount, this);
+        log.setAuloginEnable(false);
+        log.exec();
+    }
+    else if(nowaccount->userType == Ui::normal){
     /*    int curRow = ui->ticketsTableView->currentIndex().row();
         QAbstractItemModel *modessl = ui->ticketsTableView->model();
         QModelIndex indextmp = modessl->index(curRow,0);
@@ -124,15 +145,11 @@ void SearchTicket::on_buyTicketBtn_clicked() {
     //    if (searchType == Ui::stationToStation){
     //        ToServerStructs::buyTickets targetTicket;
     //        int i = datatmp.toInt();
-    //        targetTicket.trainID = qtrains[i].trainID;
-    //        targetTicket.loadStation = qtrains[i].loadStation;
-    //        targetTicket.unLoadStation = qtrains[i].unLoadStation;
-    //        targetTicket.leaveTime = qtrains[i].leaveTime;
-    //        targetTicket.reachTime = qtrains[i].reachTime;
+
     //        QString s= "您是否要购买以下车票：\n车次：" +
-    //        QString::fromStdString(targetTicket.trainID) + "\n发站" +
-    //        QString::fromStdString(targetTicket.loadStation) +"\n到站:"
-    //                +  QString::fromStdString(targetTicket.unLoadStation) +
+    //        targetTicket.trainID + "\n发站" +
+    //        targetTicket.loadStation +"\n到站:"
+    //                +  targetTicket.unLoadStation +
     //                "\n发车时间：" + targetTicket.leaveTime.toString()
     //                +"\n到站时间:"
     //                +targetTicket.reachTime.toString() + "\n座位类型：" +
@@ -150,4 +167,11 @@ void SearchTicket::on_buyTicketBtn_clicked() {
     //            QMessageBox::warning(this,"失败","非常抱歉，购票失败",QMessageBox::Cancel);
     //        }
     //    }
+    } else {
+        modifyPlanOfATrain m(nowaccount, this);
+        //this->hide();
+        m.exec();///此处要加车次信息
+        ///此处发送给服务器重新查找该车次
+        //this->show();
+    }
 }
