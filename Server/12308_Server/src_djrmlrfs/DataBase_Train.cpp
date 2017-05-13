@@ -10,7 +10,10 @@ DataBase_Train::Train::Train (const QString &tID, int setnr, int stanr,
 	stationName = stan, mileAge = ma, reachTime = rt;
 	leaveTime = lt, seatType = set, seatNumber = senr, priceTable = ptb;
 }
-		
+DataBase_Train::Train::Train()
+{
+	
+}
 DataBase_Train::Train DataBase_Train::Train::operator=(const Train &a)
 {
 	trainID = a.trainID;
@@ -36,7 +39,7 @@ void DataBase_Train::Train::openOneDay (QDate dato)
 	for (int i = 0; i < seatTypeNumber; i++)
 	{
 		ttd::vector<int> a;
-		for (int j = 0; j < stationNumber - 1; j++) a.push_back(seatNumber[i]);
+		for (int j = 0; j < stationNumber; j++) a.push_back(seatNumber[i]);
 		salingDate[dato].restTickets.push_back(a);
 	}
 }
@@ -66,8 +69,8 @@ int DataBase_Train::Train::buyTickets (QDate dat, QString lsta, QString ulsta, Q
 			if (stationName[j] == ulsta)	break;
 		}				
 		if (j == stationNumber)	return -3;	// no such station
-		for(; j >= i; j--)
-			salingDate[dat].restTickets[sid][j] -= num;
+		for(int _=j; _ >= i; _--)
+			salingDate[dat].restTickets[sid][_] -= num;
 		started = 1;
 		return num*(priceTable[sid][j]-priceTable[sid][i]);
 	}
@@ -119,14 +122,14 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 		int k = leaveTime[i].date().day();
 		dat = dat.addDays(-k);
 		ans.ableToBuy = openDate(dat);
-
+		if (!ans.ableToBuy)	return ans;
 		ans.trainID = trainID;
 		ans.seatTypeNumber = seatTypeNumber;
 		ans.loadStation = lsta, ans.unLoadStation = ulsta;
 		ans.seatType = seatType;
-
-		ans.loadStationLeaveTime = leaveTime[i];
-		ans.unLoadStationReachTime = reachTime[j];
+										3 22:59:03  5.8
+		ans.loadStationLeaveTime = QDateTime(dat.addDays(leaveTime[i].date().day()),leaveTime[i].time());
+		ans.unLoadStationReachTime = QDateTime(dat.addDays(reachTime[j].date().day()),reachTime[j].time());
 		for (int _ = 0; _ < seatTypeNumber; _++)
 		{
 			ans.price.push_back(priceTable[_][j]-priceTable[_][i]);
@@ -138,8 +141,8 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 			}
 			ans.seatNumber.push_back(mn);
 		}
+		return ans;
 	}
-	return ans;
 }
 
 DataBase_Train::DataBase_Train()
@@ -158,7 +161,7 @@ bool DataBase_Train::createTrain(QString traId, int setnr, int stanr,
 	 const ttd::vector<QString> &set, const ttd::vector<int> &senr,
 	 const ttd::vector<ttd::vector<int> > &ptb)
 {
- 	if (trainExist(traId) || traData[traId].strated)	return 0;	//fail, train existed or have sold tickets
+ 	if (trainExist(traId))	return 0;	//fail, train existed or have sold tickets
  	traData[traId] = Train(traId,setnr,stanr,stan,ma,rt,lt,set,senr,ptb);
  	ttd::vector<QString>::iterator it = traData[traId].stationName.begin();
 	for (ttd::vector<QString>::iterator ed = traData[traId].stationName.end(); it != ed; ++it)
@@ -172,6 +175,7 @@ bool DataBase_Train::delTrain(QString traId)
 	ttd::vector<QString>::iterator it = traData[traId].stationName.begin();
 	for (ttd::vector<QString>::iterator ed = traData[traId].stationName.end(); it != ed; ++it)
 		remove(*it,traId);
+	traData.erase(traData.find(traId));
 	return 1;
 }
 QDateTime DataBase_Train::getLeaveTime(QString train, QString station)
@@ -229,8 +233,8 @@ DataBase_Train::TrainRoute DataBase_Train::query_train(QString tra)
 }
 bool DataBase_Train::insert(const QString&sta, const QString& add_ref)
 {
+	staData[sta];
 	ttd::map<QString,ttd::vector<QString> >::iterator it = staData.find(sta);
-	if (it == staData.end())	return 0;	//	no such station
 	for (ttd::vector<QString>::iterator rator = it->second.begin(); rator != it->second.end(); rator++)
 		if (*rator == add_ref)	return 0;	//	have exist
 	staData[sta].push_back(add_ref);
@@ -255,9 +259,13 @@ ttd::vector<DataBase_Train::TrainRoute> DataBase_Train::queryOne(const QString &
 	
 ttd::vector<DataBase_Train::QTrain> DataBase_Train::queryTwo(const QDate &dat, const QString &sta, const QString &stb)	
 {
-	ttd::vector<QTrain> tmp(bothPass(sta,stb));
-	for (ttd::vector<QString>::iterator it(staData[sta].begin()), ra(staData[sta].end());
-	 it != ra; ++it)	tmp.push_back(traData[*it].query_stationToStation(dat,sta,stb));
+	ttd::vector<QTrain> tmp;
+	ttd::vector<QString> a(bothPass(sta,stb));
+	for (ttd::vector<QString>::iterator it(a.begin()), ra(a.end()); it != ra; ++it)
+	{
+		tmp.push_back(traData[*it].query_stationToStation(dat,sta,stb));
+		if(!tmp[tmp.size()-1].ableToBuy)	tmp.pop_back();
+	}
 	return tmp;
 }
 ttd::vector<QString> DataBase_Train::bothPass(const QString &sta, const QString &stb)
@@ -269,7 +277,7 @@ ttd::vector<QString> DataBase_Train::bothPass(const QString &sta, const QString 
 		for (int j = tmp.size()-1; j >= 0 ;j--)
 			if (ans[i] == tmp[j])
 			{
-				for (int k = traData[ans[i]].stationNumber-1; k >= 0 ; k++)
+				for (int k = traData[ans[i]].stationNumber-1; k >= 0 ; k--)
 					if (traData[ans[i]].stationName[k] == sta)	break;
 					else if (traData[ans[i]].stationName[k] == stb)	{ok = 1;break;}
 				break;
