@@ -57,7 +57,7 @@ int DataBase_Train::Train::buyTickets (QDate dat, QString lsta, QString ulsta, Q
 	for (int i = 0; i < stationNumber; i++)	if (stationName[i] == lsta)
 	{
 		int k = leaveTime[i].date().day();
-		dat = dat.addDays(-k);
+		--k, dat = dat.addDays(-k);
 		if (!salingDate[dat].ableToBuy)	return -1;	//unable to buy that day;
 		int mn = seatNumber[sid];
 		int j = i;
@@ -84,7 +84,7 @@ int DataBase_Train::Train::cancelTickets (QDate dat, QString lsta, QString ulsta
 	for (int i = 0; i < stationNumber; i++)	if (stationName[i] == lsta)
 	{
 		int k = leaveTime[i].date().day();
-		dat = dat.addDays(-k);
+		--k, dat = dat.addDays(-k);
 		int mn = seatNumber[sid];
 		int j = i;
 		for(; stationName[j] != ulsta; j++)	salingDate[dat].restTickets[sid][j] += num;
@@ -120,7 +120,7 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 		for(; stationName[j] != ulsta; j++);
 
 		int k = leaveTime[i].date().day();
-		dat = dat.addDays(-k);
+		--k, dat = dat.addDays(-k);
 		ans.ableToBuy = openDate(dat);
 		if (!ans.ableToBuy)	return ans;
 		ans.trainID = trainID;
