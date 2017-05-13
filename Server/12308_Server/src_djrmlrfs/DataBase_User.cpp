@@ -23,6 +23,16 @@ int DataBase_User::login( const QString &ID, const QString &password )
 	userData[++nowTempId] = Temp;	//log him
 	return nowTempId;
 }
+int DataBase_User::adminLogin( const QString &ID, const QString &password )
+{
+	if (nowAccData == NULL)	return 0;	// no account data
+	int Temp = nowAccData->getIdNumber(ID);//accountid
+	if (Temp == -1)	return 0;			// no such id in data
+	if (nowAccData->getPasswordHash(password)
+	 != nowAccData->accData[Temp].passwordHash)	return 0;	//wrong password
+	userData[++nowTempId] = Temp;	//log him
+	return nowTempId;
+}
 
 bool DataBase_User::logged(int UserId)
 {
@@ -31,7 +41,7 @@ bool DataBase_User::logged(int UserId)
 	// not only ask train information
 }
 
-void DataBase_User::add_acc(normal_ptr<DataBase_Account> whichAcc)
+void DataBase_User::add_acc(shared_ptr<DataBase_Account> whichAcc)
 {
 	nowAccData = whichAcc;
 }
