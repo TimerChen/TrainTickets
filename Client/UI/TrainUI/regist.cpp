@@ -7,7 +7,7 @@ Regist::Regist(QWidget *parent) : QDialog(parent), ui(new Ui::Regist) {
     ui->setupUi(this);
     ui->pwdLineEdit->setEchoMode(QLineEdit::Password);
     ui->confirmpwdLineEdit->setEchoMode(QLineEdit::Password);
-    QRegExp rx("^[a-zA-Z0-9]+");
+    QRegExp rx("^[a-zA-Z0-9_]+");
     QRegExpValidator *pReg =
         new QRegExpValidator(rx, this);  /// change to smart point
     ui->confirmpwdLineEdit->setValidator(pReg);
@@ -28,7 +28,11 @@ Regist::~Regist() { delete ui; }
 void Regist::on_registBtn_clicked() {
     if (ui->confirmpwdLineEdit->text() == ui->pwdLineEdit->text()) {
         frontask::regist rac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
-        if (ui->pwdLineEdit->text().length() < 6) {
+        if (ui->usrLineEdit->text() == ""){
+            QMessageBox::warning(this, "注册失败", "用户名不得为空",
+                                 QMessageBox::Yes);
+        }
+        else if (ui->pwdLineEdit->text().length() < 6) {
             QMessageBox::warning(this, "注册失败", "密码长度应不小于6位",
                                  QMessageBox::Yes);
         } else if (true)  /// send rac to server to reg

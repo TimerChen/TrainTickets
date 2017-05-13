@@ -208,7 +208,7 @@ SearchTicket::SearchTicket(QDate _date,
             ui->calLabel->setText("始发日期： " + date.toString());
             model->setHeaderData(6, Qt::Horizontal, tr("发出第 天"));
             model->setHeaderData(7, Qt::Horizontal, tr("里程"));
-            model->setHeaderData(0,Qt::Horizontal,tr(""));
+            model->setHeaderData(8,Qt::Horizontal,tr(""));
             int deltaForSeat = 0;
             for (int i = 0; i < trainroute.stationNumber; ++i) {
                 if (i==0)model->setItem(i + deltaForSeat, 0,
@@ -218,7 +218,7 @@ SearchTicket::SearchTicket(QDate _date,
                 else model->setItem(i+deltaForSeat, 2,
                                      new QStandardItem(trainroute.stationName[i]));
                 model->setItem(i + deltaForSeat, 3,
-                               new QStandardItem(trainroute.leaveTime[i].toString("yyyy-MM-dd hh:mm:ss")));
+                               new QStandardItem(trainroute.leaveTime[i].toString("hh:mm:ss")));
                 model->setItem(
                     i + deltaForSeat, 4,
                     new QStandardItem(
@@ -238,6 +238,7 @@ SearchTicket::SearchTicket(QDate _date,
                                        new QStandardItem(trainroute.seatType[j]));
                         ++deltaForSeat;
                     }
+                    --deltaForSeat;
                 }
             }
 
@@ -255,7 +256,7 @@ SearchTicket::SearchTicket(QDate _date,
              ui->calLabel->setText("始发日期： " + date.toString());
             model->setHeaderData(6, Qt::Horizontal, tr("发出第 天"));
             model->setHeaderData(7, Qt::Horizontal, tr("里程"));
-            model->setHeaderData(0,Qt::Horizontal,tr(""));
+            model->setHeaderData(8,Qt::Horizontal,tr(""));
             int deltaForSeat = 0;
             for (size_t t = 0; t < vtrainroute.size();++t) {
                 model->setItem(t+deltaForSeat, 0,
