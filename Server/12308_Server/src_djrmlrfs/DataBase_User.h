@@ -21,8 +21,6 @@ public:
 	bool logout( const int UserId );
 	bool logged(int UserId);
 	bool is_admin(int UserId);
-	int query_identifyType( int UserId );
-	//you can use UserId to find Acccount Id, I allow more than one people to log same account
 	int account_id(int UserId);
 	//when operate tickets and train,please check weather it's admin
 private:
