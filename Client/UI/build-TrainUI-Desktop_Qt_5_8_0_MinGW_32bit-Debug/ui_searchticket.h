@@ -28,6 +28,7 @@ class Ui_SearchTicket
 {
 public:
     QVBoxLayout *verticalLayout_3;
+    QLabel *calLabel;
     QVBoxLayout *verticalLayout_2;
     QTableView *ticketsTableView;
     QVBoxLayout *verticalLayout;
@@ -47,6 +48,11 @@ public:
         SearchTicket->setWindowIcon(icon);
         verticalLayout_3 = new QVBoxLayout(SearchTicket);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
+        calLabel = new QLabel(SearchTicket);
+        calLabel->setObjectName(QStringLiteral("calLabel"));
+
+        verticalLayout_3->addWidget(calLabel);
+
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         ticketsTableView = new QTableView(SearchTicket);
@@ -112,6 +118,7 @@ public:
     void retranslateUi(QDialog *SearchTicket)
     {
         SearchTicket->setWindowTitle(QApplication::translate("SearchTicket", "\347\253\231\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
+        calLabel->setText(QApplication::translate("SearchTicket", "TextLabel", Q_NULLPTR));
         label->setText(QApplication::translate("SearchTicket", "\350\264\255\344\271\260\345\274\240\346\225\260", Q_NULLPTR));
         ticketNumLineEdit->setText(QApplication::translate("SearchTicket", "1", Q_NULLPTR));
         buyTicketBtn->setText(QApplication::translate("SearchTicket", "\350\264\255\347\245\250", Q_NULLPTR));

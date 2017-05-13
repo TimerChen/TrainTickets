@@ -17,9 +17,13 @@ class Myinform : public QDialog {
     ~Myinform();
 
   private slots:
-    void on_pushButton_clicked();
 
-  private:
+
+    void on_changenameBtn_clicked();
+
+    void on_changepwdButton_clicked();
+
+private:
     Ui::Myinform *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
