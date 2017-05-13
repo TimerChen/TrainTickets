@@ -1,14 +1,27 @@
 #include "adminwindow.h"
 #include "ui_adminwindow.h"
+#include "include/smartpoint.hpp"
+#include "uistructs.h"
+#include "addplan.h"
+#include "trainsearch.h"
 
-AdminWindow::AdminWindow(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::AdminWindow)
-{
+AdminWindow::AdminWindow(
+    ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
+    : QDialog(parent), ui(new Ui::AdminWindow), nowaccount(_now) {
     ui->setupUi(this);
+    ui->nameLabel->setText(nowaccount->name);
 }
 
-AdminWindow::~AdminWindow()
+AdminWindow::~AdminWindow() { delete ui; }
+
+void AdminWindow::on_addPlanBtn_clicked()
 {
-    delete ui;
+    addPlan ap(nowaccount, this);
+    ap.exec();
+}
+
+void AdminWindow::on_trainSearchBtn_clicked()
+{
+    TrainSearch s(nowaccount, this);
+    s.exec();
 }

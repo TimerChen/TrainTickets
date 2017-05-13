@@ -11,6 +11,9 @@ INPUT(
 ./debug\searchticket.o
 ./debug\adminwindow.o
 ./debug\toserverstructs.o
+./debug\uistructs.o
+./debug\modifyplanofatrain.o
+./debug\addplan.o
 ./debug\qrc_pic.o
 ./debug\moc_mainwindow.o
 ./debug\moc_login.o
@@ -22,4 +25,6 @@ INPUT(
 ./debug\moc_stationsearch.o
 ./debug\moc_searchticket.o
 ./debug\moc_adminwindow.o
+./debug\moc_modifyplanofatrain.o
+./debug\moc_addplan.o
 );

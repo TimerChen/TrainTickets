@@ -1,24 +1,23 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
-#include <QDialog>
 #include "mainwindow.h"
+#include <QDialog>
 
 namespace Ui {
 class Login;
 }
 
-class Login : public QDialog
-{
+class Login : public QDialog {
     Q_OBJECT
 
-public:
-    explicit Login(QWidget *parent = 0, int user = Ui::annonymous);
-    int getUserType();
+  public:
+    explicit Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent = 0);
+    void setAuloginEnable(bool flag);
 
     ~Login();
 
-private slots:
+  private slots:
 
     void on_loginBtn_clicked();
 
@@ -26,9 +25,10 @@ private slots:
 
     void on_registBtn_clicked();
 
-private:
+  private:
     Ui::Login *ui;
-    int userType;
+    // int userType;
+    ttd::shared_ptr<uistructs::nowAccount> nowaccount;
 };
 
 #endif // LOGIN_H

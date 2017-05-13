@@ -1,27 +1,28 @@
 #ifndef STATIONSEARCH_H
 #define STATIONSEARCH_H
 
-#include <QDialog>
 #include "mainwindow.h"
+#include <QDialog>
 
 namespace Ui {
 class StationSearch;
 }
 
-class StationSearch : public QDialog
-{
+class StationSearch : public QDialog {
     Q_OBJECT
 
-public:
-    explicit StationSearch(QWidget *parent = 0, int user = Ui::annonymous);
+  public:
+    explicit StationSearch(ttd::shared_ptr<uistructs::nowAccount> _now,
+                           QWidget *parent = 0);
     ~StationSearch();
 
-private slots:
+  private slots:
     void on_searchbotton_clicked();
 
-private:
+  private:
     Ui::StationSearch *ui;
-    int userType;
+    // int userType;
+    ttd::shared_ptr<uistructs::nowAccount> nowaccount;
 };
 
 #endif // STATIONSEARCH_H

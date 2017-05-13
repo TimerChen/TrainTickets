@@ -49,7 +49,7 @@ public:
         Login->setMinimumSize(QSize(783, 354));
         Login->setMaximumSize(QSize(783, 354));
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Login->setWindowIcon(icon);
         horizontalLayout_2 = new QHBoxLayout(Login);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));

@@ -11,6 +11,9 @@ INPUT(
 ./release\searchticket.o
 ./release\adminwindow.o
 ./release\toserverstructs.o
+./release\uistructs.o
+./release\modifyplanofatrain.o
+./release\addplan.o
 ./release\qrc_pic.o
 ./release\moc_mainwindow.o
 ./release\moc_login.o
@@ -22,4 +25,6 @@ INPUT(
 ./release\moc_stationsearch.o
 ./release\moc_searchticket.o
 ./release\moc_adminwindow.o
+./release\moc_modifyplanofatrain.o
+./release\moc_addplan.o
 );
