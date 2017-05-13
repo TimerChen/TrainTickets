@@ -42,7 +42,7 @@ public:
     {
         if (SearchTicket->objectName().isEmpty())
             SearchTicket->setObjectName(QStringLiteral("SearchTicket"));
-        SearchTicket->resize(1080, 506);
+        SearchTicket->resize(2200, 1050);
         QIcon icon;
         icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         SearchTicket->setWindowIcon(icon);

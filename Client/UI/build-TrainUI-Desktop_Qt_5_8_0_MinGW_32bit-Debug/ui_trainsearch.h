@@ -43,7 +43,7 @@ public:
     {
         if (TrainSearch->objectName().isEmpty())
             TrainSearch->setObjectName(QStringLiteral("TrainSearch"));
-        TrainSearch->resize(527, 212);
+        TrainSearch->resize(800, 300);
         QIcon icon;
         icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         TrainSearch->setWindowIcon(icon);
