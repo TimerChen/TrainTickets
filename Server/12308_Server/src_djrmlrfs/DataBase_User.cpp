@@ -28,6 +28,7 @@ int DataBase_User::adminLogin( const QString &ID, const QString &password )
 	if (nowAccData == NULL)	return 0;	// no account data
 	int Temp = nowAccData->getIdNumber(ID);//accountid
 	if (Temp == -1)	return 0;			// no such id in data
+	if (!nowAccData->accData[Temp].isAdmin)	return 0;	// not admin
 	if (nowAccData->getPasswordHash(password)
 	 != nowAccData->accData[Temp].passwordHash)	return 0;	//wrong password
 	userData[++nowTempId] = Temp;	//log him
