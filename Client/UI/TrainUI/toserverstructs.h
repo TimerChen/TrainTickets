@@ -40,6 +40,7 @@ struct loginAccount {
     loginAccount(const loginAccount &rl);
     loginAccount(QString _userID = "", QString _pwd = "");
 };
+
 struct auLoginAccount {
     QString userID;
     QString pwd;
