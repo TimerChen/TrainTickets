@@ -4,13 +4,12 @@
  *
  */
 
-#ifndef TRAIN_HPP
-#define TRAIN_HPP
-
 #include "include/train.h"
 #include "include/map.hpp"
 
 #include <QDateTime>
+
+long long Ticket::ticketNumber = 0LL;
 
 Ticket::Ticket(){}
 
@@ -33,25 +32,27 @@ Ticket::Ticket (const QString &un, const QString &ls,
 
 Ticket::~Ticket () {}
 
-bool operator < (const Ticket &t1) const {
-	if (userName < t1.userName) return true;
-	if (userName > t1.userName) return false;
-	if (trainID < t1.trainID) return true;
-	if (trainID > t1.trainID) return false;
-	if (loadStation < t1.loadStation) return true;
-	if (loadStation > t1.loadStation) return false;
-	if (unLoadStation < t1.unLoadStation) return true;
-	if (unLoadStation > t1.unLoadStation) return false;
-	if (seatType < t1.seatType) return true;
-	if (seatType > t1.seatType) return false;
+bool operator < (const Ticket &t1, const Ticket &t2)
+{
+	if (t1.userName < t2.userName) return true;
+	if (t1.userName > t2.userName) return false;
+	if (t1.trainID < t2.trainID) return true;
+	if (t1.trainID > t2.trainID) return false;
+	if (t1.loadStation < t2.loadStation) return true;
+	if (t1.loadStation > t2.loadStation) return false;
+	if (t1.unLoadStation < t2.unLoadStation) return true;
+	if (t1.unLoadStation > t2.unLoadStation) return false;
+	if (t1.seatType < t2.seatType) return true;
+	if (t1.seatType > t2.seatType) return false;
 }
 
-bool operator == (const Ticket &t1) const {
-	if (userName == t1.userName &&
-		trainID == t1.trainID &&
-		loadStation == t1.loadStation &&
-		unLoadStation == t1.unLoadStation &&
-		seatType == t1.seatType) return true;
+bool operator == (const Ticket &t1, const Ticket &t2)
+{
+	if (t1.userName == t2.userName &&
+		t1.trainID == t2.trainID &&
+		t1.loadStation == t2.loadStation &&
+		t1.unLoadStation == t2.unLoadStation &&
+		t1.seatType == t2.seatType) return true;
 	else return false;
 }
 
@@ -59,14 +60,19 @@ bool operator == (const Ticket &t1) const {
 
 
 
-Train::Train (const QString &tID = "")
+Train::Train (const QString &tID)
 :trainID(tID)
 {
 	tooLateToReconstructe = false;
 	seatTypeNumber = stationNumber = 0;
 }
 
-Train::Train (const QString &tID, int setnr, int stanr, const ttd::vector <QString> &stan, const ttd::vector <int> &ma, const ttd::vector <QTime> &rt, const ttd::vector <QTime> &lt, const ttd::vector <QString> &set, const ttd::vector <int> &senr, const ttd::vector < ttd::vector <int> > &ptb) {
+Train::Train (const QString &tID, int setnr, int stanr,
+			  const ttd::vector <QString> &stan, const ttd::vector <int> &ma,
+			  const ttd::vector <QDateTime> &rt, const ttd::vector <QDateTime> &lt,
+			  const ttd::vector <QString> &set, const ttd::vector <int> &senr,
+			  const ttd::vector < ttd::vector <int> > &ptb)
+{
 	tooLateToReconstructe = false;
 	trainID = tID;
 	seatTypeNumber = setnr;
@@ -86,7 +92,9 @@ bool Train::isItTooLateToReconstructe () {
 	return tooLateToReconstructe;
 }
 
-bool Train::reconstructe (int setnr, int stanr, const ttd::vector <QString> &stan, const ttd::vector <int> &ma, const ttd::vector <QTime> &rt, const ttd::vector <QTime> &lt, const ttd::vector <QString> &set, const ttd::vector <int> &senr, const ttd::vector <ttd::vector <int> > &ptb) {
+bool Train::reconstructe
+(int setnr, int stanr, const ttd::vector <QString> &stan, const ttd::vector <int> &ma, const ttd::vector <QDateTime> &rt, const ttd::vector <QDateTime> &lt, const ttd::vector <QString> &set, const ttd::vector <int> &senr, const ttd::vector <ttd::vector <int> > &ptb)
+{
 	if (tooLateToReconstructe) return false;
 
 	salingDate.clear ();
@@ -105,27 +113,32 @@ bool Train::reconstructe (int setnr, int stanr, const ttd::vector <QString> &sta
 }
 
 void Train::openOneDay (QDate dato) {
-	if (salingDate.find (dato)) {
+	if ( salingDate.find (dato) != salingDate.end() ) {
 		salingDate[dato].ableToBuy = true;
 		return;
 	}
 	salingDate[dato].ableToBuy = true;
+	salingDate[dato].restTickets = ttd::vector<ttd::vector<int> >(seatTypeNumber);
 	for (int i = 0; i < seatTypeNumber; i++) {
-		salingDate[dato].restTickets.push_back (ttd::vector <int>);
-		for (int j = 0; j < stationNumber - 1; j++) salingDate[dato].restTickets[i].push_back (seatNumber[i]);
+		salingDate[dato].restTickets[i] =  (ttd::vector <int>(stationNumber-1));
+		for (int j = 0; j < stationNumber - 1; j++)
+			salingDate[dato].restTickets[i][j] = seatNumber[i];
 	}
 }
 
-bool Train::closeOneDay (QDate datc) {
-	if (!salingDate.find (datc)) {
+bool Train::closeOneDay (QDate datc)
+{
+	if (salingDate.find (datc) == salingDate.end())
 		return false;
-	}
+
 	salingDate[datc].ableToBuy = false;
 	return true;
 }
 
 
-Train::TrainPoint getPoint (QString lsta, QString ulsta, QString set) {
+Train::TrainPoint Train::getPoint
+	(const QString &lsta, const QString &ulsta, const QString &set)
+{
 	TrainPoint tp;
 	tp.seatTypePoint = -1;
 	tp.loadStationPoint = -1;
@@ -158,10 +171,13 @@ Train::TrainPoint getPoint (QString lsta, QString ulsta, QString set) {
 	tp.seatTypePoint = x;
 	tp.loadStationPoint = y1;
 	tp.unLoadStationPoint = y2;
+	return tp;
 }
 
 
-RestTicketsInformation Train::howRestTickets (QDate dat, QString lsta, QString ulsta, QString set) {
+Train::RestTicketsInformation Train::showRestTickets
+	(const QDate &dat, const QString &lsta, const QString &ulsta, const QString &set)
+{
 	RestTicketsInformation rti;
 	rti.restTicketsNumber = -1;
 	rti.restTicketsPrice = -1;
@@ -171,7 +187,7 @@ RestTicketsInformation Train::howRestTickets (QDate dat, QString lsta, QString u
 	int y1 = rti.restTicketsPoint.loadStationPoint;
 	int y2 = rti.restTicketsPoint.unLoadStationPoint;
 	rti.restTicketsPrice = priceTable[x][y2] - priceTable[x][y1];
-	if (!salingDate.find (dat)) return rti;
+	if ( salingDate.find (dat) == salingDate.end() ) return rti;
 	if (!salingDate[dat].ableToBuy) return rti;
 	for (int i = y1; i < y2; i++) {
 		if (rti.restTicketsNumber == -1 ||
@@ -180,11 +196,13 @@ RestTicketsInformation Train::howRestTickets (QDate dat, QString lsta, QString u
 	}
 	return rti;
 }
-
+/*
 int Train::buyTickets (QDate dat, QString lsta, QString ulsta, QString set, int num) {
 	RestTicketsInformation rti = showRestTickets (dat, lsta, ulsta, set);
-	if (restTicketsPrice == -1 || restTicketsNumber <= num) return 0;
-	for (int i = rti.restTicketsPoint.loadStationPoint; i < rti.restTicketsPoint.unLoadStationPoint; i++) {
+	if (rti.restTicketsPrice == -1 || rti.restTicketsNumber <= num) return 0;
+	for (int i = rti.restTicketsPoint.loadStationPoint;
+		 i < rti.restTicketsPoint.unLoadStationPoint; i++)
+	{
 		salingDate[dat].restTickets[rti.restTicketsPoint.seatTypePoint][i] -= num;
 	}
 	return rti.restTicketsPrice * num;
@@ -192,21 +210,24 @@ int Train::buyTickets (QDate dat, QString lsta, QString ulsta, QString set, int 
 
 int Train::cancelTickets (QDate dat, QString lsta, QString ulsta, QString set, int num) {
 	RestTicketsInformation rti = showRestTickets (dat, lsta, ulsta, set);
-	for (int i = rti.restTicketsPoint.loadStationPoint; i < rti.restTicketsPoint.unLoadStationPoint; i++) {
+	for (int i = rti.restTicketsPoint.loadStationPoint;
+		 i < rti.restTicketsPoint.unLoadStationPoint; i++) {
 		salingDate[dat].restTickets[rti.restTicketsPoint.seatTypePoint][i] += num;
 	}
 	return rti.restTicketsPrice * num;
-}
+}*/
 
 bool Train::openDate (QDate dat) {
-	if (!salingDate.find (dat)) return false;
+	if (salingDate.find (dat) == salingDate.end() ) return false;
 	else return salingDate[dat].ableToBuy;
 }
 
+//Have problems.
+/*
 QTrain Train::query_stationToStation (QDate dat, QString lsta, QString ulsta) {
 	QTrain qt;
 	TrainPoint tp = getPoint (lsta, ulsta, seatType[0]);
-	if (!salingDate.find (dat)) qt.ableToBuy = false;
+	if (salingDate.find (dat) == salingDate.end()) qt.ableToBuy = false;
 	else qt.ableToBuy = salingDate[dat].ableToBuy;
 	qt.trainID = trainID;
 	qt.seatTypeNumber = seatTypeNumber;
@@ -222,7 +243,7 @@ QTrain Train::query_stationToStation (QDate dat, QString lsta, QString ulsta) {
 	qt.unLoadStationReachTime = reachTime[tp.unLoadStationPoint];
 	return qt;
 }
-
+*/
 TrainRoute Train::query_train () {
 	TrainRoute tr;
 
@@ -238,5 +259,3 @@ TrainRoute Train::query_train () {
 	return tr;
 }
 
-
-#endif

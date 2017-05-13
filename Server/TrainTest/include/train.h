@@ -67,12 +67,12 @@ struct TrainRoute
 };
 
 //for TEST
-//class TrainTestTest;
+class TrainTestTest;
 
 class Train
 {
 	//for TEST
-	//friend class TrainTestTest;
+	friend class TrainTestTest;
 
 	friend QDataStream& operator << (QDataStream& out, const Train &data);
 	friend QDataStream& operator >> (QDataStream& in, Train &data);

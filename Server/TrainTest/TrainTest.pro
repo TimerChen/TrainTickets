@@ -1,16 +1,17 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-04-30T11:01:52
+# Project created by QtCreator 2017-05-12T11:28:13
 #
 #-------------------------------------------------
 
-QT       += core gui
-QT       += network
+QT       += testlib
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+QT       -= gui
 
+TARGET = tst_traintesttest
+CONFIG   += console
+CONFIG   -= app_bundle
 
-TARGET = 12308_Server
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -25,26 +26,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 
-SOURCES += main.cpp\
-        servermainwindow.cpp \
-    src/database_base.cpp \
-    src/database_main.cpp \
-    clientthread.cpp \
-    src/station.cpp \
-    src/datastream.cpp \
-    src/train.cpp
+SOURCES += tst_traintesttest.cpp \
+    src/train.cpp \
+    src/station.cpp
+DEFINES += SRCDIR=\\\"$$PWD/\\\"
 
-HEADERS  += servermainwindow.h \
-    include/vector.hpp \
-    include/utility.hpp \
-    include/station.h \
-    include/smartpoint.hpp \
-    include/exceptions.hpp \
-    include/database_main.h \
-    include/algorithm0.hpp \
-    clientthread.h \
+HEADERS += \
     include/train.h \
-    include/database.h \
+    include/station.h \
+    include/vector.hpp \
     include/map.hpp
-
-FORMS    += servermainwindow.ui
