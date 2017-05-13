@@ -1,9 +1,7 @@
 #include "include/database.h"
 #include "include/database_main.h"
-//#include "DataBase_Train.h"
-//#include "DataBase_Accout.h"
-//#include "DataBase_User.h"
-//#include "src_Vegewong/DataBase_Log.h"
+
+
 
 DataBase_Main::DataBase_Main( const QString &Name )
 :DataBase_Base(Name)
@@ -11,6 +9,8 @@ DataBase_Main::DataBase_Main( const QString &Name )
 	dAccount = new DataBase_Account(Name);
 	dUser = new DataBase_User(Name);
 	dUser->add_acc(dAccount);
+	dTrain = new DataBase_Train(Name);
+	dLog = new DataBase_Log(Name);
 	/*
 	dblog = new DataBase_Log(Name);
 	dbaccount = new DataBase_Account(Name);
@@ -33,21 +33,21 @@ void DataBase_Main::loadData()
 {
 	dAccount->loadData();
 	dUser->loadData();
-	/*
-	dblog->loadData();
-
-
-	dbtrain->loadData();
-	*/
+	dTrain->loadData();
+	dLog->loadData();
 }
 void DataBase_Main::saveData()
 {
 	dAccount->saveData();
 	dUser->saveData();
-	/*
-	dblog->saveData();
-	dbtrain->saveData();
-	*/
+	dTrain->saveData();
+	dLog->saveData();
+}
+
+
+int DataBase_Main::regist( QString name, QString pwd )
+{
+
 }
 
 ttd::pair<int,QString> DataBase_Main::login

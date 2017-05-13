@@ -3,6 +3,7 @@
 
 #include "servermainwindow.h"
 #include "ui_servermainwindow.h"
+#include "toserverstructs.h"
 
 #include "include/database_main.h"
 
@@ -32,13 +33,13 @@ void ServerMainWindow::newConnection()
 	connect(clientConnection, &QAbstractSocket::disconnected,
 			clientConnection, &QObject::deleteLater);
 	connect(clientConnection, &QAbstractSocket::disconnected,
-			this, &ServerMainWindow::disconnet);
+			this, &ServerMainWindow::disconnect);
 	connect(clientConnection, &QAbstractSocket::readyRead,
 			this, &ServerMainWindow::newMessage);
 	currentConnection = clientConnection;
 	in.setDevice(currentConnection);
 }
-void ServerMainWindow::disconnet()
+void ServerMainWindow::disconnect()
 {
 
 }
@@ -47,12 +48,36 @@ void ServerMainWindow::newMessage()
 {
 	in.startTransaction();
 	QString message;
+	quint16 oType;
+	in >> oType;
+
+	if(!in.commitTransaction())
+		return;
+	frontask::loginAccount opt_login;
+	frontask::regist opt_reg;
+	in << opt_login;
+	switch (oType) {
+	case frontask::login:
+		in >> opt_login;
+		break;
+	case frontask::reg:
+		in >> opt_reg;
+		break;
+	default:
+		break;
+	}
 	if(!in.commitTransaction())
 		return;
 
-
-}
-void ServerMainWindow::sendBack()
-{
-
+	//do...
+	switch (oType) {
+	case frontask::login:
+		database->login( opt_login.userID, opt_login.pwd );
+		break;
+	case frontask::reg:
+		database->regist( opt_reg.name, opt_reg.pwd );
+		break;
+	default:
+		break;
+	}
 }

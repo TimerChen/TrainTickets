@@ -24,7 +24,7 @@ public:
 private slots:
 	void newConnection();
 	void newMessage();
-	void sendBack();
+	void disconnect();
 
 private:
 	Ui::ServerMainWindow *ui;

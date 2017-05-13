@@ -34,7 +34,10 @@ SOURCES += main.cpp\
     src/datastream.cpp \
     src/train.cpp \
     src/DataBase_User.cpp \
-    src/DataBase_Account.cpp
+    src/DataBase_Account.cpp \
+    toserverstructs.cpp \
+    src/DataBase_Log.cpp \
+    src/DataBase_Train.cpp
 
 HEADERS  += servermainwindow.h \
     include/vector.hpp \
@@ -50,6 +53,9 @@ HEADERS  += servermainwindow.h \
     include/map.hpp \
     include/DataBase_Account.h \
     include/DataBase_User.h \
-    include/datastream.h
+    include/datastream.h \
+    toserverstructs.h \
+    include/DataBase_Log.h \
+    include/DataBase_Train.h
 
 FORMS    += servermainwindow.ui

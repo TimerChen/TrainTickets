@@ -38,13 +38,14 @@ bool operator < (const DataBase_Account::Ticket &t1, const DataBase_Account::Tic
 
 void DataBase_Account::loadData()
 {
+
 	QFile file( dataBase_name + "_User" + ".dat" );
 	if(!file.open(QIODevice::ReadOnly))
 		return;
-	QDataStream out(&file);
-	out.setVersion(QDataStream::Qt_5_0);
-	out << accNums
-		<< Numbers << accData ;
+	QDataStream in(&file);
+	in.setVersion(QDataStream::Qt_5_0);
+	in >> accNums
+			>> Numbers >> accData;
 	file.close();
 }
 
@@ -52,10 +53,10 @@ void DataBase_Account::saveData()
 {
 	QFile file( dataBase_name + "_User" + ".dat" );
 	file.open(QIODevice::WriteOnly);
-	QDataStream in(&file);
-	in.setVersion(QDataStream::Qt_5_0);
-	in >> accNums
-			>> Numbers >> accData;
+	QDataStream out(&file);
+	out.setVersion(QDataStream::Qt_5_0);
+	out << accNums
+		<< Numbers << accData ;
 	file.close();
 }
 

@@ -66,6 +66,7 @@ template <typename T> class vector {
         friend iterator vector::erase(iterator pos);
         friend iterator vector::erase(const size_t &ind);
         friend class const_iterator;
+		friend class vector;
 
         // T *it;
         normal_ptr<const shared_ptr<T, true, true>> oriplace;
@@ -457,8 +458,8 @@ template <typename T> class vector {
      * throw index_out_of_bound if ind >= size
      */
     iterator erase(const size_t &ind) {
-        if (ind < 0 || ind >= size) throw index_out_of_bound();
-        return erase(iterator(ind, container));
+		if (ind < 0 || ind >= sz) throw index_out_of_bound();
+		return erase(iterator(ind, &container));
     }
     /**
      * adds an element to the end.

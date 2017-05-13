@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_ServerMainWindow_t {
     QByteArrayData data[5];
-    char stringdata0[52];
+    char stringdata0[54];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -35,11 +35,11 @@ QT_MOC_LITERAL(0, 0, 16), // "ServerMainWindow"
 QT_MOC_LITERAL(1, 17, 13), // "newConnection"
 QT_MOC_LITERAL(2, 31, 0), // ""
 QT_MOC_LITERAL(3, 32, 10), // "newMessage"
-QT_MOC_LITERAL(4, 43, 8) // "sendBack"
+QT_MOC_LITERAL(4, 43, 10) // "disconnect"
 
     },
     "ServerMainWindow\0newConnection\0\0"
-    "newMessage\0sendBack"
+    "newMessage\0disconnect"
 };
 #undef QT_MOC_LITERAL
 
@@ -77,7 +77,7 @@ void ServerMainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int
         switch (_id) {
         case 0: _t->newConnection(); break;
         case 1: _t->newMessage(); break;
-        case 2: _t->sendBack(); break;
+        case 2: _t->disconnect(); break;
         default: ;
         }
     }

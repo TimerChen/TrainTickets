@@ -6,17 +6,17 @@
 	I/O and other main things.
 */
 
+#include "DataBase_Train.h"
 #include "DataBase_Account.h"
 #include "DataBase_User.h"
-#include "train.h"
+#include "DataBase_Log.h"
 
 class DataBase_Main : public DataBase_Base
 {
 private:
-/*
-	shared_ptr<DataBase_Log>		dblog;
-	shared_ptr<DataBase_Train>		dbtrain;
-*/
+
+	ttd::shared_ptr<DataBase_Log>		dLog;
+	ttd::shared_ptr<DataBase_Train>		dTrain;
 	ttd::shared_ptr<DataBase_Account>	dAccount;
 	ttd::shared_ptr<DataBase_User>		dUser;
 
@@ -33,6 +33,7 @@ public:
 	void loadData_raw( const QString &FileName );
 
 	//Database_User
+	int regist( QString name, QString pwd );
 	ttd::pair<int,QString> login( const QString &ID, const QString &password );
 	bool logout( int UserId );
 
