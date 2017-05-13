@@ -5,15 +5,21 @@
 	The data base controll all types of databases.
 	I/O and other main things.
 */
-class DataBase_Main : public DataBase_Base             //对外接口
+
+#include "DataBase_Account.h"
+#include "DataBase_User.h"
+#include "train.h"
+
+class DataBase_Main : public DataBase_Base
 {
 private:
 /*
 	shared_ptr<DataBase_Log>		dblog;
-	shared_ptr<DataBase_Account>	dbaccount;
-	shared_ptr<DataBase_User>		dbuser;
 	shared_ptr<DataBase_Train>		dbtrain;
 */
+	ttd::shared_ptr<DataBase_Account>	dAccount;
+	ttd::shared_ptr<DataBase_User>		dUser;
+
 	void loadData();
 	//You can backup server data anytime.
 	void saveData();
@@ -25,6 +31,13 @@ public:
 
 	//Read information from external files.
 	void loadData_raw( const QString &FileName );
+
+	//Database_User
+	ttd::pair<int,QString> login( const QString &ID, const QString &password );
+	bool logout( int UserId );
+
+
+
 	//void User
 	//UserId is for identify your identification.
 	Train get_train( int UserId, QString Trainid );

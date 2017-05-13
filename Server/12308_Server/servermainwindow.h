@@ -5,6 +5,9 @@
 #include "include/algorithm0.hpp"
 #include "include/smartpoint.hpp"
 
+class QTcpServer;
+class QTcpSocket;
+
 class DataBase_Main;
 namespace Ui {
 class ServerMainWindow;
@@ -17,10 +20,18 @@ class ServerMainWindow : public QMainWindow
 public:
 	explicit ServerMainWindow(QWidget *parent = 0);
 	~ServerMainWindow();
+private slots:
+	void newConnection();
+	void newMessage();
+	void sendBack();
 
 private:
-	//shared_ptr<DataBase_Main>dataBase;
 	Ui::ServerMainWindow *ui;
+	QTcpServer *tcpServer;
+	QTcpSocket *currentConnection;
+
+	ttd::shared_ptr<DataBase_Main>dataBase;
+
 };
 
 #endif // SERVERMAINWINDOW_H

@@ -1,3 +1,5 @@
+#ifndef ALGORITHM0_HPP
+#define ALGORITHM0_HPP
 #include <cstdio>
 #include <iostream>
 
@@ -115,3 +117,5 @@ void sort( TI data, TI end )
 }
 
 }
+
+#endif

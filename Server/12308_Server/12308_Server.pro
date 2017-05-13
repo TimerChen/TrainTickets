@@ -32,7 +32,9 @@ SOURCES += main.cpp\
     clientthread.cpp \
     src/station.cpp \
     src/datastream.cpp \
-    src/train.cpp
+    src/train.cpp \
+    src/DataBase_User.cpp \
+    src/DataBase_Account.cpp
 
 HEADERS  += servermainwindow.h \
     include/vector.hpp \
@@ -45,6 +47,9 @@ HEADERS  += servermainwindow.h \
     clientthread.h \
     include/train.h \
     include/database.h \
-    include/map.hpp
+    include/map.hpp \
+    include/DataBase_Account.h \
+    include/DataBase_User.h \
+    include/datastream.h
 
 FORMS    += servermainwindow.ui

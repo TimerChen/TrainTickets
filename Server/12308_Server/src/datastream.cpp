@@ -6,26 +6,11 @@
 #include <include/vector.hpp>
 #include <include/station.h>
 #include <include/train.h>
+#include <include/DataBase_Account.h>
+#include <include/DataBase_User.h>
 
 
 
-QDataStream& operator << (QDataStream& out, const Ticket &data)
-{
-	out << data.ticketID
-		<< data.userName << data.loadStation << data.unLoadStation
-		<< data.trainID << data.loadTime << data.unLoadTime
-		<< data.price << data.seatType;
-	return out;
-}
-QDataStream& operator >> (QDataStream& in, Ticket &data)
-{
-	in  >> data.ticketID
-		>> data.userName >> data.loadStation >> data.unLoadStation
-		>> data.trainID >> data.loadTime >> data.unLoadTime
-		>> data.price >> data.seatType;
-
-	return in;
-}
 QDataStream& operator << (QDataStream& out, const QTrain &data)
 {
 	out << data.ableToBuy << data.trainID
@@ -96,3 +81,52 @@ QDataStream& operator >> (QDataStream& in, Train::TicketsPerDay &data)
 	in >> data.ableToBuy >> data.restTickets;
 	return in;
 }
+
+//Database_Account
+
+QDataStream& operator << (QDataStream& out, const DataBase_Account::Ticket &data)
+{
+	out	<< data.buyer << data.loadStation << data.unLoadStation
+		<< data.trainID << data.loadTime << data.unLoadTime
+		<< data.price << data.seatType;
+	return out;
+}
+QDataStream& operator >> (QDataStream& in, DataBase_Account::Ticket &data)
+{
+	in  >> data.buyer >> data.loadStation >> data.unLoadStation
+		>> data.trainID >> data.loadTime >> data.unLoadTime
+		>> data.price >> data.seatType;
+
+	return in;
+}
+
+QDataStream& operator << (QDataStream& out, const DataBase_Account::Account &data)
+{
+	out	<< data.id << data.id_number << data.name
+		<< data.passwordHash << data.isAdmin << data.log
+		<< data.bought;
+	return out;
+}
+
+QDataStream& operator >> (QDataStream& in, DataBase_Account::Account &data)
+{
+	in	>> data.id >> data.id_number >> data.name
+		>> data.passwordHash >> data.isAdmin >> data.log
+		>> data.bought;
+	return in;
+}
+
+QDataStream& operator << (QDataStream& out, const DataBase_Account::ticLog &data)
+{
+	out	<< data.train << data.fromStation << data.toStation
+		<< data.date << data.num ;
+	return out;
+}
+
+QDataStream& operator >> (QDataStream& in, DataBase_Account::ticLog &data)
+{
+	in	>> data.train >> data.fromStation >> data.toStation
+		>> data.date >> data.num ;
+	return in;
+}
+
