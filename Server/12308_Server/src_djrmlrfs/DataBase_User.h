@@ -16,8 +16,8 @@ public:
 	void add_acc(shared_ptr<DataBase_Account> whichAcc);
 	// Login with your account id and password.
 	// return 0: failed
-	int login( const Qstring &ID, const Qstring &password );
-	int adminLogin( const Qstring &ID, const Qstring &password );
+	ttd::pair<int,QString> login( const Qstring &ID, const Qstring &password );
+	ttd::pair<int,QString> adminLogin( const Qstring &ID, const Qstring &password );
 	bool logout( const int UserId );
 	bool logged(int UserId);
 	bool is_admin(int UserId);

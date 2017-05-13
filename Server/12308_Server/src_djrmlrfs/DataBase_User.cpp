@@ -13,26 +13,26 @@ DataBase_User::~DataBase_User()
 	nowAccData = NULL;
 }
 
-int DataBase_User::login( const QString &ID, const QString &password )
+ttd::pair<int,QString> DataBase_User::login( const QString &ID, const QString &password )
 {
-	if (nowAccData == NULL)	return 0;	// no account data
+	if (nowAccData == NULL)	return ttd::pair<int,QString>(0,"NoAccountData");	// no account data
 	int Temp = nowAccData->getIdNumber(ID);//accountid
-	if (Temp == -1)	return 0;			// no such id in data
+	if (Temp == -1)	return ttd::pair<int,QString>(0,"NoSuchAccount");			// no such id in data
 	if (nowAccData->getPasswordHash(password)
-	 != nowAccData->accData[Temp].passwordHash)	return 0;	//wrong password
+	 != nowAccData->accData[Temp].passwordHash)	return ttd::pair<int,QString>(0,"WrongPassword");	//wrong password
 	userData[++nowTempId] = Temp;	//log him
-	return nowTempId;
+	return ttd::pair<int,QString>(nowTempId,nowAccData->accData[Temp].name);
 }
-int DataBase_User::adminLogin( const QString &ID, const QString &password )
+ttd::pair<int,QString> DataBase_User::adminLogin( const QString &ID, const QString &password )
 {
-	if (nowAccData == NULL)	return 0;	// no account data
+	if (nowAccData == NULL)	return ttd::pair<int,QString>(0,"NoAccountData");	// no account data
 	int Temp = nowAccData->getIdNumber(ID);//accountid
-	if (Temp == -1)	return 0;			// no such id in data
-	if (!nowAccData->accData[Temp].isAdmin)	return 0;	// not admin
+	if (Temp == -1)	return ttd::pair<int,QString>(0,"NoSuchAccount");			// no such id in data
+	if (!nowAccData->accData[Temp].isAdmin)	return ttd::pair<int,QString>(0,"NotAdmin");	// not admin
 	if (nowAccData->getPasswordHash(password)
-	 != nowAccData->accData[Temp].passwordHash)	return 0;	//wrong password
+	 != nowAccData->accData[Temp].passwordHash)	return ttd::pair<int,QString>(0,"WrongPassword");	//wrong password
 	userData[++nowTempId] = Temp;	//log him
-	return nowTempId;
+	return ttd::pair<int,QString>(nowTempId,nowAccData->accData[Temp].name);
 }
 
 bool DataBase_User::logged(int UserId)
