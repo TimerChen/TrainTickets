@@ -44,8 +44,8 @@ public:
     QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
-    QLabel *welcomeLabel;
     QLabel *nameLabel;
+    QLabel *welcomeLabel;
     QVBoxLayout *verticalLayout_2;
     QPushButton *loginBtn;
     QPushButton *regBtn;
@@ -72,7 +72,7 @@ public:
         label->setScaledContents(true);
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(145, 240, 91, 41));
+        label_3->setGeometry(QRect(170, 240, 91, 41));
         label_3->setScaledContents(false);
         splitter = new QSplitter(centralWidget);
         splitter->setObjectName(QStringLiteral("splitter"));
@@ -126,7 +126,7 @@ public:
 
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(340, 30, 413, 181));
+        layoutWidget1->setGeometry(QRect(340, 30, 411, 211));
         verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -135,18 +135,18 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        welcomeLabel = new QLabel(layoutWidget1);
-        welcomeLabel->setObjectName(QStringLiteral("welcomeLabel"));
-        welcomeLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
-
-        gridLayout->addWidget(welcomeLabel, 0, 0, 1, 1);
-
         nameLabel = new QLabel(layoutWidget1);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
         nameLabel->setTextFormat(Qt::AutoText);
         nameLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         gridLayout->addWidget(nameLabel, 0, 1, 1, 1);
+
+        welcomeLabel = new QLabel(layoutWidget1);
+        welcomeLabel->setObjectName(QStringLiteral("welcomeLabel"));
+        welcomeLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
+
+        gridLayout->addWidget(welcomeLabel, 0, 0, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout);
@@ -156,15 +156,18 @@ public:
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         loginBtn = new QPushButton(layoutWidget1);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(loginBtn->sizePolicy().hasHeightForWidth());
+        loginBtn->setSizePolicy(sizePolicy);
         loginBtn->setMinimumSize(QSize(409, 58));
-        loginBtn->setMaximumSize(QSize(409, 58));
 
         verticalLayout_2->addWidget(loginBtn);
 
         regBtn = new QPushButton(layoutWidget1);
         regBtn->setObjectName(QStringLiteral("regBtn"));
         regBtn->setMinimumSize(QSize(409, 58));
-        regBtn->setMaximumSize(QSize(409, 58));
 
         verticalLayout_2->addWidget(regBtn);
 
@@ -197,8 +200,8 @@ public:
         myticketBtn->setText(QApplication::translate("MainWindow", "\346\210\221\347\232\204\350\275\246\347\245\250", Q_NULLPTR));
         myinformBtn->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\344\277\241\346\201\257", Q_NULLPTR));
         logoutBtn->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272\347\231\273\345\275\225", Q_NULLPTR));
-        welcomeLabel->setText(QApplication::translate("MainWindow", "\346\254\242\350\277\216\357\274\201", Q_NULLPTR));
         nameLabel->setText(QApplication::translate("MainWindow", "name", Q_NULLPTR));
+        welcomeLabel->setText(QApplication::translate("MainWindow", "\346\254\242\350\277\216\357\274\201", Q_NULLPTR));
         loginBtn->setText(QApplication::translate("MainWindow", "\347\231\273\345\275\225", Q_NULLPTR));
         regBtn->setText(QApplication::translate("MainWindow", "\346\263\250\345\206\214", Q_NULLPTR));
     } // retranslateUi

@@ -16,7 +16,7 @@ Login::Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
     setTabOrder(ui->auloginBtn, ui->registBtn);
     setTabOrder(ui->registBtn, ui->exitBtn);
     setTabOrder(ui->exitBtn, ui->usrLineEdit);
-    QRegExp rx("^[a-zA-Z0-9]+");
+    QRegExp rx("^[a-zA-Z0-9_]+");
     QRegExpValidator *pReg =
         new QRegExpValidator(rx, this); /// change to smart point
     ui->pwdLineEdit->setValidator(pReg);

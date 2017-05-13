@@ -6,16 +6,16 @@
 
 namespace frontask {
 enum {
-    stationtostationsearch,
-    stationsearch,
-    trainsearch,
-    login,
-    aulogin,
-    reg,
-    changeusrname,
-    changepwd,
-    modifymyticket,
-    buyTicket
+    stationtostationsearch,  // send stationToStationSearch
+    stationsearch,           // send stationSearch
+    trainsearch,             // send trainSearch
+    login,                   // send loginAccount
+    aulogin,                 // send auLoginAccount
+    reg,                     // send regist
+    changeusrname,           // send changeUsrName
+    changepwd,               // send changePwd
+    modifymyticket,          // send targetTicket
+    buyTicket                // send targetTicket
 };
 struct stationToStationSearch {
     QString fromStation, toStation;
