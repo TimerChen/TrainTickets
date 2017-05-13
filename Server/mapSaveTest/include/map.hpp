@@ -655,16 +655,17 @@ public:
 	*/
 private:
 
-	void bout( QDataStream& out, Node *r )
+	void bout( QDataStream& out, Node *r ) const
 	{
 		if( r == null )
 		{ out << true;	return;	}
 		out << false;
 		bout( out, r->ch[0] );
-		out << r->data;
+		out << r->data[0].first
+			<< r->data[0].second;
 		bout( out, r->ch[1] );
 	}
-	void bout( QDataStream& out )
+	void bout( QDataStream& out ) const
 	{ bout(out,ROOT); }
 
 	Node *bin( QDataStream &in, Node *&ro, Node *Fa, Node *pre)
@@ -672,8 +673,7 @@ private:
 		bool isnull;
 		in >> isnull;
 		if(isnull){ro=null;return pre;}
-		ro = new Node();
-		in >> ro->data;
+		ro = new Node(null);
 		SIZE++;
 		//printf("new%d\n",ro);
 		ro->nflag = null;
@@ -681,6 +681,11 @@ private:
 		ro->near[0] = bin(in, ro->ch[0],ro,pre);
 		if(ro->near[0]==null)BEGIN = ro;
 		else ro->near[0]->near[1] = ro;
+
+		Key key;T val;
+		in >> key >> val;
+		ro->data = new value_type( key, val );
+
 		return bin(in, ro->ch[1],ro,ro);
 	}
 
@@ -688,7 +693,7 @@ private:
 	{
 		clear();
 		ROOT = BEGIN = null;
-		END = bin_detail(in, ROOT,null,null);
+		END = bin(in, ROOT,null,null);
 		END->near[1] = null;
 
 	}

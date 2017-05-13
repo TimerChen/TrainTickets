@@ -28,3 +28,16 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += tst_mapsavetesttest.cpp
 DEFINES += SRCDIR=\\\"$$PWD/\\\"
+
+HEADERS += \
+    include/algorithm0.hpp \
+    include/database.h \
+    include/database_main.h \
+    include/datastream.h \
+    include/exceptions.hpp \
+    include/map.hpp \
+    include/smartpoint.hpp \
+    include/station.h \
+    include/train.h \
+    include/utility.hpp \
+    include/vector.hpp

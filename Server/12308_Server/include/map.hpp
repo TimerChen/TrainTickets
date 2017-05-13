@@ -1,6 +1,13 @@
-/**
- * implement a container like std::map
+
+/*
+ *
+ * Writed by Jingxiao Chen.
+ *
+ *  [Passed test]
+ *
  */
+
+
 #ifndef TTD_MAP_HPP
 #define TTD_MAP_HPP
 
