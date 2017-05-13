@@ -1,4 +1,5 @@
 #include "include/DataBase_Account.h"
+#include "include/datastream.h"
 #include <QIODevice>
 #include <QFile>
 
@@ -58,13 +59,26 @@ void DataBase_Account::saveData()
 }
 
 
-DataBase_Account::Account DataBase_Account::Account::operator=(const Account &acc)
+
+
+DataBase_Account::Account::Account
+(const QString&Id, const QString&nam,
+ const bool &adm, const QString&pwhash,
+ const int &num):
+id(Id), name(nam), isAdmin(adm), passwordHash(pwhash), id_number(num)
+{log.clear();bought.clear();}
+
+DataBase_Account::Account&
+DataBase_Account::Account::operator=
+	(const Account &acc)
 {
 	id_number = acc.id_number;
 	id = acc.id, name = acc.name;
 	passwordHash = acc.passwordHash;
 	isAdmin = acc.isAdmin, log = acc.log;
 	bought = acc.bought;
+
+	return *this;
 }
 
 QString DataBase_Account::Hex(int a)
@@ -84,7 +98,8 @@ QString DataBase_Account::Hex(int a)
 QString DataBase_Account::getPasswordHash( const QString &QPassword )
 {
 	std::string Password = QPassword.toStdString();
-	unsigned int strlength, atemp = 0x67452301, btemp = 0xefcdab89, ctemp = 0x98badcfe, dtemp = 0x10325476;
+	//an unused strlengh??
+	unsigned int atemp = 0x67452301, btemp = 0xefcdab89, ctemp = 0x98badcfe, dtemp = 0x10325476;
 	unsigned int strByte[16];
 	for (int i = 0; i < 16; ++i)	strByte[i] = 0;	int tmp = Password.length();	tmp--;
 	for (int i = 0; i <= tmp; ++i)	strByte[i>>2] |= (Password[i])<<((i%4)*8);

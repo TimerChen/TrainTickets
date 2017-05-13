@@ -44,6 +44,7 @@ bool operator < (const Ticket &t1, const Ticket &t2)
 	if (t1.unLoadStation > t2.unLoadStation) return false;
 	if (t1.seatType < t2.seatType) return true;
 	if (t1.seatType > t2.seatType) return false;
+	return 1 < 1;
 }
 
 bool operator == (const Ticket &t1, const Ticket &t2)

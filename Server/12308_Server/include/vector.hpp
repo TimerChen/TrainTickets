@@ -1,8 +1,10 @@
 #ifndef TTD_VECTOR_HPP
 #define TTD_VECTOR_HPP
 
-#include "exceptions.hpp"
-#include "smartpoint.hpp"
+#include "include/exceptions.hpp"
+#include "include/utility.hpp"
+#include "include/smartpoint.hpp"
+
 
 #include <climits>
 #include <cstddef>
@@ -485,31 +487,6 @@ template <typename T> class vector {
  *  [Passed test]
  *
  */
-#include <QDataStream>
-#include "include/datastream.h"
-
-namespace  ttd {
-	template<class T>
-	QDataStream& operator << (QDataStream& out, const ttd::vector<T>&v)
-	{
-		out << (quint32)(v.size());
-		for (size_t i = 0; i < v.size(); ++i)
-			out << v[i] ;
-		return out;
-	}
-
-	template<class T>
-	QDataStream& operator >> (QDataStream& in, ttd::vector<T>&v)
-	{
-		v.clear();
-		quint32 tmp_n;
-		in >> tmp_n;
-		v = ttd::vector<T>( tmp_n );
-		for( int i = 0; i < tmp_n; ++i )
-			in >> v[i];
-		return in;
-}
-}
 
 
 #endif

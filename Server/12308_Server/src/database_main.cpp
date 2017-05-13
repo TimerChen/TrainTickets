@@ -52,7 +52,7 @@ void DataBase_Main::saveData()
 
 ttd::pair<int,QString> DataBase_Main::login
 ( const QString &ID, const QString &password )
-	{ dUser->login( ID, password ); }
+	{ return dUser->login( ID, password ); }
 
 bool DataBase_Main::logout( int UserId )
 	{ return dUser->logout(UserId); }

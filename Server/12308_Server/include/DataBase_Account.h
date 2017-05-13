@@ -4,8 +4,9 @@
 #include <QString>
 #include <QDateTime>
 
-#include "database.h"
-#include "map.hpp"
+#include "include/database.h"
+#include "include/vector.hpp"
+#include "include/map.hpp"
 
 //A class to save Account's information.
 class DataBase_Account : public DataBase_Base
@@ -45,18 +46,17 @@ public:
 	{
 		//Your id for register.
 		QString id;
+		//Your name
+		QString name;
+
+		//If this is a admin account.
+		bool isAdmin;
+		//We only save the hash code of password.
+		QString passwordHash;
 
 		//Id for saving and finding quickly.
 		int id_number;
 
-		//Your name
-		QString name;
-
-		//We only save the hash code of password.
-		QString passwordHash;
-
-		//If this is a admin account.
-		bool isAdmin;
 
 		//the information in buying and refounding
 		ttd::vector<ticLog> log;
@@ -65,9 +65,8 @@ public:
 
 
 		Account(const QString&Id = "Default", const QString&nam = "TimeMachine", const bool &adm = 0,
-		 const QString&pwhash = "e45fdbb7dfc90eaabbc46e25ddecfad0", const int &num = -1):
-		id_number(num), id(Id), name(nam), passwordHash(pwhash), isAdmin(adm){log.clear();bought.clear();}
-		Account operator=(const Account &acc);
+		 const QString&pwhash = "e45fdbb7dfc90eaabbc46e25ddecfad0", const int &num = -1);
+		Account& operator=(const Account &acc);
 	};
 private:
 	static char str16[];

@@ -10,6 +10,27 @@
 #include <include/DataBase_User.h>
 
 
+template<class T>
+QDataStream& operator << (QDataStream& out, const ttd::vector<T>&v)
+{
+	out << (quint32)(v.size());
+	for (size_t i = 0; i < v.size(); ++i)
+		out << v[i] ;
+	return out;
+}
+
+template<class T>
+QDataStream& operator >> (QDataStream& in, ttd::vector<T>&v)
+{
+	v.clear();
+	quint32 tmp_n;
+	in >> tmp_n;
+	v = ttd::vector<T>( tmp_n );
+	for( size_t i = 0; i < tmp_n; ++i )
+		in >> v[i];
+	return in;
+}
+
 
 QDataStream& operator << (QDataStream& out, const QTrain &data)
 {
