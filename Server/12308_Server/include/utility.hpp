@@ -2,6 +2,7 @@
 #define SJTU_UTILITY_HPP
 
 #include <utility>
+#include <QDataStream>
 
 namespace ttd {
 
@@ -21,6 +22,19 @@ public:
 	template<class U1, class U2>
 	pair(pair<U1, U2> &&other) : first(other.first), second(other.second) {}
 };
+
+template<class T1,class T2>
+QDataStream& operator << (QDataStream& out, const pair<T1,T2> &data)
+{
+	out << data.first << data.second;
+	return out;
+}
+template<class T1,class T2>
+QDataStream& operator >> (QDataStream& in, const pair<T1,T2> &data)
+{
+	in >> data.first >> data.second;
+	return in;
+}
 
 }
 
