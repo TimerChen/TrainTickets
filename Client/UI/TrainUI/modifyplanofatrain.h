@@ -4,6 +4,7 @@
 #include "include/smartpoint.hpp"
 #include "uistructs.h"
 #include <QDialog>
+#include "toserverstructs.h"
 
 namespace Ui {
 class modifyPlanOfATrain;
@@ -13,8 +14,7 @@ class modifyPlanOfATrain : public QDialog {
     Q_OBJECT
 
   public:
-    explicit modifyPlanOfATrain(ttd::shared_ptr<uistructs::nowAccount> _now,
-                                QWidget *parent = 0);
+    explicit modifyPlanOfATrain(ttd::shared_ptr<uistructs::nowAccount> _now, frontask::targetTicket _targetticket, QString _traininform, QWidget *parent = 0);
     ~modifyPlanOfATrain();
 
 private slots:
@@ -27,6 +27,8 @@ private slots:
 private:
     Ui::modifyPlanOfATrain *ui;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
+    frontask::targetTicket targetticket;
+    QString trainInform;
 };
 
 #endif // MODIFYPLANOFATRAIN_H

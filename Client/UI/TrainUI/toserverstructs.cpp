@@ -45,8 +45,8 @@ frontask::changeUsrName::changeUsrName(const QString _newname):newname(_newname)
 frontask::changePwd::changePwd(const changePwd &rc):usrID(rc.usrID), oldpwd(rc.oldpwd),newpwd(rc.newpwd){}
 frontask::changePwd::changePwd(const QString _usrid, const QString _old, QString _new):usrID(_usrid), oldpwd(_old),newpwd(_new){}
 
-frontask::modifyMyTicket::modifyMyTicket(const int _ticketNum, const QString _trainID, const QString _usrID, const QString _load, const QString _unload):ticketNum(_ticketNum),trainID(_trainID),usrID(_usrID),loadStation(_load),unLoadStation(_unload){}
-frontask::modifyMyTicket::modifyMyTicket(const modifyMyTicket &m):ticketNum(m.ticketNum),trainID(m.ticketNum),usrID(m.usrID),loadStation(m.loadStation),unLoadStation(m.unLoadStation){}
+//frontask::modifyMyTicket::modifyMyTicket(const int _ticketNum, const QString _trainID, const QString _usrID, const QString _load, const QString _unload):ticketNum(_ticketNum),trainID(_trainID),usrID(_usrID),loadStation(_load),unLoadStation(_unload){}
+//frontask::modifyMyTicket::modifyMyTicket(const modifyMyTicket &m):ticketNum(m.ticketNum),trainID(m.ticketNum),usrID(m.usrID),loadStation(m.loadStation),unLoadStation(m.unLoadStation){}
 
 frontask::targetTicket::targetTicket(){}
 frontask::targetTicket::targetTicket(const targetTicket &rb):time(rb.time),buyNum(rb.buyNum),usrID(rb.usrID),trainID(rb.trainID),seatType(rb.seatType),loadStation(rb.loadStation),unLoadStation(rb.unLoadStation){}

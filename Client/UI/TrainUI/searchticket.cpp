@@ -128,11 +128,6 @@ SearchTicket::SearchTicket(QDate _date, ttd::shared_ptr<uistructs::nowAccount> _
 SearchTicket::~SearchTicket() { delete ui; }
 
 void SearchTicket::on_buyTicketBtn_clicked() {
-//    targetTicket.trainID = qtrains[i].trainID;
-//    targetTicket.loadStation = qtrains[i].loadStation;
-//    targetTicket.unLoadStation = qtrains[i].unLoadStation;
-//    targetTicket.leaveTime = qtrains[i].leaveTime;
-//    targetTicket.reachTime = qtrains[i].reachTime;
     int curRow = ui->ticketsTableView->currentIndex().row();
     QAbstractItemModel *modessl = ui->ticketsTableView->model();
 
@@ -148,6 +143,8 @@ void SearchTicket::on_buyTicketBtn_clicked() {
 
     frontask::targetTicket targetticket(date,buyNum,usrID,trainID,seatType,load,unload);
 
+    QString trainInform= "车次：" +
+    targetticket.trainID + "\n发站日期：" + date.toString();
     if (nowaccount->userType == Ui::annonymous) {
         Login log(nowaccount, this);
         log.setAuloginEnable(false);
@@ -159,18 +156,15 @@ void SearchTicket::on_buyTicketBtn_clicked() {
         }else if (buyNum > remaintickets) {
             QMessageBox::warning(this,"无法购买","余票不足",QMessageBox::Cancel);
         } else {
-                QString s= "您是否要购买以下车票：\n车次：" +
-                targetticket.trainID + "\n日期：" + date.toString() + "\n发站： " +
-                targetticket.loadStation +"\n到站： "
-                        +  targetticket.unLoadStation +
-                        "\n发车时间：" + modessl->data(modessl->index(curRow,4)).toString()
-                        +"\n到站时间： "
-                        +modessl->data(modessl->index(curRow,5)).toString() + "\n座位类型：" +
-                       targetticket.seatType
-                        +
-                        "\n票价："+ modessl->data(modessl->index(curRow,7)).toString()+"\n总张数："+ ui->ticketNumLineEdit->text();
+                trainInform += "\n发站： " +
+                        targetticket.loadStation +"\n到站： "
+                                +  targetticket.unLoadStation +
+                                "\n发车时间：" + modessl->data(modessl->index(curRow,4)).toString()
+                                +"\n到站时间： "
+                                +modessl->data(modessl->index(curRow,5)).toString()+"\n座位类型：" +
+                       targetticket.seatType + "\n票价："+ modessl->data(modessl->index(curRow,7)).toString()+"\n总张数："+ ui->ticketNumLineEdit->text();
                 QMessageBox::StandardButton qmb =
-                QMessageBox::question(this,"确认购票",s,
+                QMessageBox::question(this,"确认购票","您是否要购买以下车票：\n"+ trainInform,
                 QMessageBox::Yes|QMessageBox::No);
                 if (qmb == QMessageBox::Yes){
                     ///发送frontask::buyticket
@@ -183,10 +177,9 @@ void SearchTicket::on_buyTicketBtn_clicked() {
                 }
         }
     }else {
-        modifyPlanOfATrain m(nowaccount, this);
+        modifyPlanOfATrain m(nowaccount, targetticket, trainInform, this);
         //this->hide();
-        m.exec();///此处要加车次信息
-        ///此处发送给服务器重新查找该车次
-        //this->show();
+        m.exec();
+        this->close();
     }
 }

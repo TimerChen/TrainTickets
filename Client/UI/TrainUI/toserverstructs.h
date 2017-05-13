@@ -81,19 +81,6 @@ struct changePwd {
     changePwd(const QString _usrid, const QString _old, const QString _new);
 };
 
-struct modifyMyTicket {
-    int ticketNum;
-    QString trainID;
-    QString usrID;
-    QString loadStation;
-    QString unLoadStation;
-
-    modifyMyTicket(const int _ticketNum = 0, const QString _trainID = "",
-                   const QString _usrID = "", const QString _load = "",
-                   const QString _unload = "");
-    modifyMyTicket(const modifyMyTicket &m);
-};
-
 struct targetTicket {
     QDate time;
     int buyNum;
