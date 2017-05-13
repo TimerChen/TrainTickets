@@ -30,7 +30,7 @@ QDataStream& operator << (QDataStream& out, const pair<T1,T2> &data)
 	return out;
 }
 template<class T1,class T2>
-QDataStream& operator >> (QDataStream& in, pair<T1,T2> &data)
+QDataStream& operator >> (QDataStream& in, const pair<T1,T2> &data)
 {
 	in >> data.first >> data.second;
 	return in;
