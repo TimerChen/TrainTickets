@@ -65,3 +65,8 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
 }
 
 Myticket::~Myticket() { delete ui; }
+
+void Myticket::on_modifyTicketBtn_clicked()
+{
+
+}

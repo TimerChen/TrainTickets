@@ -7,16 +7,17 @@
 #include "include/vector.hpp"
 #include "modifyplanofatrain.h"
 #include "login.h"
+#include "toserverstructs.h"
 
-SearchTicket::SearchTicket(ttd::shared_ptr<uistructs::nowAccount> _now,
+SearchTicket::SearchTicket(QDate _date, ttd::shared_ptr<uistructs::nowAccount> _now,
                            QWidget *parent,
                            int search)
     : QDialog(parent), ui(new Ui::SearchTicket), searchType(search),
-      nowaccount(_now) {
-    ui->setupUi(this);
+      date(_date), nowaccount(_now) {
+       ui->setupUi(this);
 
     ///设置列宽和标签栏
-
+    ui->calLabel->setText("日期："+ date.toString());
     if (nowaccount->userType == Ui::admin) {
         ui->buyTicketBtn->setText(tr("修改计划"));
     }
@@ -79,7 +80,7 @@ SearchTicket::SearchTicket(ttd::shared_ptr<uistructs::nowAccount> _now,
     model->setItem(1, 6, new QStandardItem(tr("双脚")));
     model->setItem(1, 7, new QStandardItem(tr("999")));
     model->setItem(1, 8, new QStandardItem(tr("105")));
-    model->setItem(1, 9, new QStandardItem(tr("是")));
+    model->setItem(1, 9, new QStandardItem(tr("否")));
 
     ///将文件内的东西显示到ticketsTableView里
     /*
@@ -132,42 +133,56 @@ void SearchTicket::on_buyTicketBtn_clicked() {
 //    targetTicket.unLoadStation = qtrains[i].unLoadStation;
 //    targetTicket.leaveTime = qtrains[i].leaveTime;
 //    targetTicket.reachTime = qtrains[i].reachTime;
+    int curRow = ui->ticketsTableView->currentIndex().row();
+    QAbstractItemModel *modessl = ui->ticketsTableView->model();
+
+    int buyNum = ui->ticketNumLineEdit->text().toInt();
+    QString trainID = modessl->data(modessl->index(curRow,1)).toString();
+    QString usrID = nowaccount->userID;
+    QString seatType = modessl->data(modessl->index(curRow,6)).toString();
+    QString load = modessl->data(modessl->index(curRow,2)).toString();
+    QString unload = modessl->data(modessl->index(curRow,3)).toString();
+
+    int remaintickets = modessl->data(modessl->index(curRow,8)).toInt();
+    QString abletobuy = modessl->data(modessl->index(curRow,9)).toString();
+
+    frontask::targetTicket targetticket(date,buyNum,usrID,trainID,seatType,load,unload);
+
     if (nowaccount->userType == Ui::annonymous) {
         Login log(nowaccount, this);
         log.setAuloginEnable(false);
         log.exec();
     }
     else if(nowaccount->userType == Ui::normal){
-    /*    int curRow = ui->ticketsTableView->currentIndex().row();
-        QAbstractItemModel *modessl = ui->ticketsTableView->model();
-        QModelIndex indextmp = modessl->index(curRow,0);
-    */
-    //    if (searchType == Ui::stationToStation){
-    //        ToServerStructs::buyTickets targetTicket;
-    //        int i = datatmp.toInt();
-
-    //        QString s= "您是否要购买以下车票：\n车次：" +
-    //        targetTicket.trainID + "\n发站" +
-    //        targetTicket.loadStation +"\n到站:"
-    //                +  targetTicket.unLoadStation +
-    //                "\n发车时间：" + targetTicket.leaveTime.toString()
-    //                +"\n到站时间:"
-    //                +targetTicket.reachTime.toString() + "\n座位类型：" +
-    //                modessl->data(modessl->index(curRow,5)).toString()
-    //                +
-    //                "\n票价："+modessl->data(modessl->index(curRow,6)).toString()+"\n总张数："+ui->ticketNumLineEdit->text();
-    //        QMessageBox::StandardButton qmb =
-    //        QMessageBox::question(this,"确认购票",s,
-    //        QMessageBox::Yes|QMessageBox::No);
-    //        if (qmb == QMessageBox::Yes){
-    //            if (true){//发送targetTicket到服务器请求购买该车票
-    //                QMessageBox::information(this,"成功","购票成功",QMessageBox::Yes);
-    //            }
-    //            else
-    //            QMessageBox::warning(this,"失败","非常抱歉，购票失败",QMessageBox::Cancel);
-    //        }
-    //    }
-    } else {
+        if (abletobuy == tr("否")) {
+            QMessageBox::warning(this, "无法购买","该票还未发售",QMessageBox::Cancel);
+        }else if (buyNum > remaintickets) {
+            QMessageBox::warning(this,"无法购买","余票不足",QMessageBox::Cancel);
+        } else {
+                QString s= "您是否要购买以下车票：\n车次：" +
+                targetticket.trainID + "\n日期：" + date.toString() + "\n发站： " +
+                targetticket.loadStation +"\n到站： "
+                        +  targetticket.unLoadStation +
+                        "\n发车时间：" + modessl->data(modessl->index(curRow,4)).toString()
+                        +"\n到站时间： "
+                        +modessl->data(modessl->index(curRow,5)).toString() + "\n座位类型：" +
+                       targetticket.seatType
+                        +
+                        "\n票价："+ modessl->data(modessl->index(curRow,7)).toString()+"\n总张数："+ ui->ticketNumLineEdit->text();
+                QMessageBox::StandardButton qmb =
+                QMessageBox::question(this,"确认购票",s,
+                QMessageBox::Yes|QMessageBox::No);
+                if (qmb == QMessageBox::Yes){
+                    ///发送frontask::buyticket
+                    ///发送targetticket到服务器来买票
+                    if (true){
+                        QMessageBox::information(this,"成功","购票成功",QMessageBox::Yes);
+                    }
+                    else
+                    QMessageBox::warning(this,"失败","非常抱歉，购票失败",QMessageBox::Cancel);
+                }
+        }
+    }else {
         modifyPlanOfATrain m(nowaccount, this);
         //this->hide();
         m.exec();///此处要加车次信息

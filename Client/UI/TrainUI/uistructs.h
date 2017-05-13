@@ -10,10 +10,10 @@ struct nowAccount {
     int userType;
     QString name;
     QString userID;
-    QString IDcard;
+    // QString IDcard;
     nowAccount(int _userType = annonymous, QString _name = "",
-               QString _userID = "", QString _IDcard = "");
+               QString _userID = "");
 };
 }
 
-#endif // UISTRUCTS_H
+#endif  // UISTRUCTS_H

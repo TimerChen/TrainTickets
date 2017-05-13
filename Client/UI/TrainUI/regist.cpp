@@ -1,6 +1,7 @@
 #include <QMessageBox>
 #include "regist.h"
 #include "ui_regist.h"
+#include "toserverstructs.h"
 
 Regist::Regist(QWidget *parent) :
     QDialog(parent),
@@ -24,10 +25,16 @@ Regist::~Regist()
     delete ui;
 }
 
-void Regist::on_loginBtn_clicked()
+/*void Regist::on_backtologinBtn_clicked()
+{
+    accept();
+}*/
+
+void Regist::on_registBtn_clicked()
 {
     if (ui->confirmpwdLineEdit->text() == ui->pwdLineEdit->text()){
-        if (true)//server permits
+        frontask::regist rac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
+        if (true)///send rac to server to reg
             accept();
         else {
             QMessageBox::warning(this,"注册失败","用户名已存在或服务器拒绝本次注册",QMessageBox::Yes);
@@ -36,8 +43,3 @@ void Regist::on_loginBtn_clicked()
         QMessageBox::warning(this, "密码不匹配", "确认密码不相同",QMessageBox::Cancel);
     }
 }
-
-/*void Regist::on_backtologinBtn_clicked()
-{
-    accept();
-}*/
