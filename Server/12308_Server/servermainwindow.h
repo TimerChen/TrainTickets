@@ -2,6 +2,7 @@
 #define SERVERMAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDataStream>
 #include "include/algorithm0.hpp"
 #include "include/smartpoint.hpp"
 
@@ -29,8 +30,9 @@ private:
 	Ui::ServerMainWindow *ui;
 	QTcpServer *tcpServer;
 	QTcpSocket *currentConnection;
+	QDataStream in;
 
-	ttd::shared_ptr<DataBase_Main>dataBase;
+	ttd::shared_ptr<DataBase_Main>database;
 
 };
 

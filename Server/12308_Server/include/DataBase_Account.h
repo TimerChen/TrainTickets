@@ -108,4 +108,13 @@ private:
 	ttd::vector<Account> accData;
 };
 
+QDataStream& operator << (QDataStream& out, const DataBase_Account::Ticket &data);
+QDataStream& operator >> (QDataStream& in, DataBase_Account::Ticket &data);
+QDataStream& operator << (QDataStream& out, const DataBase_Account::Account &data);
+QDataStream& operator >> (QDataStream& in, DataBase_Account::Account &data);
+QDataStream& operator << (QDataStream& out, const DataBase_Account::ticLog &data);
+QDataStream& operator >> (QDataStream& in, DataBase_Account::ticLog &data);
+
+
+
 #endif

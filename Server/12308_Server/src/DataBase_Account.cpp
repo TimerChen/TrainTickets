@@ -39,7 +39,8 @@ bool operator < (const DataBase_Account::Ticket &t1, const DataBase_Account::Tic
 void DataBase_Account::loadData()
 {
 	QFile file( dataBase_name + "_User" + ".dat" );
-	file.open(QIODevice::ReadOnly);
+	if(!file.open(QIODevice::ReadOnly))
+		return;
 	QDataStream out(&file);
 	out.setVersion(QDataStream::Qt_5_0);
 	out << accNums
@@ -196,4 +197,52 @@ ttd::vector<DataBase_Account::ticLog> DataBase_Account::quiryLog(const int &Id)
 ttd::map<DataBase_Account::Ticket,int> DataBase_Account::ownedTicket(const int &Id)
 {
 	return accData[Id].bought;
+}
+
+//Database_Account
+
+QDataStream& operator << (QDataStream& out, const DataBase_Account::Ticket &data)
+{
+	out	<< data.buyer << data.loadStation << data.unLoadStation
+		<< data.trainID << data.loadTime << data.unLoadTime
+		<< data.price << data.seatType;
+	return out;
+}
+QDataStream& operator >> (QDataStream& in, DataBase_Account::Ticket &data)
+{
+	in  >> data.buyer >> data.loadStation >> data.unLoadStation
+		>> data.trainID >> data.loadTime >> data.unLoadTime
+		>> data.price >> data.seatType;
+
+	return in;
+}
+
+QDataStream& operator << (QDataStream& out, const DataBase_Account::Account &data)
+{
+	out	<< data.id << data.id_number << data.name
+		<< data.passwordHash << data.isAdmin << data.log
+		<< data.bought;
+	return out;
+}
+
+QDataStream& operator >> (QDataStream& in, DataBase_Account::Account &data)
+{
+	in	>> data.id >> data.id_number >> data.name
+		>> data.passwordHash >> data.isAdmin >> data.log
+		>> data.bought;
+	return in;
+}
+
+QDataStream& operator << (QDataStream& out, const DataBase_Account::ticLog &data)
+{
+	out	<< data.train << data.fromStation << data.toStation
+		<< data.date << data.num ;
+	return out;
+}
+
+QDataStream& operator >> (QDataStream& in, DataBase_Account::ticLog &data)
+{
+	in	>> data.train >> data.fromStation >> data.toStation
+		>> data.date >> data.num ;
+	return in;
 }
