@@ -302,9 +302,8 @@ template <typename T> class vector {
          }
      }*/
     vector(size_t n)
-        : sz(n), upbound(n),
-          container(reinterpret_cast<T *>(operator new(sizeof(T) * n))) {
-        for (int i = 0; i < n; ++i) {
+        : container(reinterpret_cast<T *>(operator new(sizeof(T) * n))), sz(n), upbound(n){
+        for (size_t i = 0; i < n; ++i) {
             new (static_cast<void *>(&container[i])) T();
         }
     }

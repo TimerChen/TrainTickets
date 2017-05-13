@@ -1,15 +1,15 @@
 #include "modifyplanofatrain.h"
 #include "ui_modifyplanofatrain.h"
 #include <QMessageBox>
+#include "toserverstructs.h"
 
 
 modifyPlanOfATrain::modifyPlanOfATrain(
-    ttd::shared_ptr<uistructs::nowAccount> _now,/*add train inform*/ QWidget *parent)
-    : QDialog(parent), ui(new Ui::modifyPlanOfATrain), nowaccount(_now) {
+    ttd::shared_ptr<uistructs::nowAccount> _now, frontask::targetTicket _targetticket, QString _traininform, QWidget *parent)
+    : QDialog(parent), ui(new Ui::modifyPlanOfATrain), nowaccount(_now), targetticket(_targetticket), trainInform(_traininform) {
     ui->setupUi(this);
-    QString trainInform = "";
     ui->accountLabel->setText("您好！"+ nowaccount->name);
-    ui->trainLabel->setText("车次信息如下：\n"+trainInform);
+    ui->trainLabel->setText("车次信息如下：\n" + trainInform);
 }
 
 modifyPlanOfATrain::~modifyPlanOfATrain() { delete ui; }

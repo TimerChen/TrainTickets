@@ -4,24 +4,18 @@
 namespace ttd {
 class not_an_array {};
 
-template <typename T>
-class const_normal_ptr;
-template <typename T, bool array, bool opnew>
-class shared_ptr;
-template <typename T>
-class normal_ptr;
-template <typename T, bool array, bool opnew>
-class const_shared_ptr;
-template <typename T, bool array, bool opnew>
-class const_shared_ptr_Base;
+template <typename T> class const_normal_ptr;
+template <typename T, bool array, bool opnew> class shared_ptr;
+template <typename T> class normal_ptr;
+template <typename T, bool array, bool opnew> class const_shared_ptr;
+template <typename T, bool array, bool opnew> class const_shared_ptr_Base;
 
-template <typename T, bool array, bool opnew>
-class shared_ptr_Base {
+template <typename T, bool array, bool opnew> class shared_ptr_Base {
     friend class shared_ptr<T, array, opnew>;
     friend class const_shared_ptr_Base<T, array, opnew>;
     friend class const_shared_ptr<T, array, opnew>;
 
-   private:
+  private:
     int cnt;
     T *baseptr;
     shared_ptr_Base(T *_ptr) : cnt(1), baseptr(_ptr) {}
@@ -45,7 +39,7 @@ template <typename T, bool array = false, bool opnew = false>
 class const_shared_ptr_Base {
     friend class const_shared_ptr<T, array, opnew>;
 
-   private:
+  private:
     shared_ptr_Base<T, array, opnew> *sb;
     const T *baseptr;
     const_shared_ptr_Base(T *_ptr,
@@ -62,18 +56,18 @@ class const_shared_ptr_Base {
     void AddNewPoint() { sb->AddNewPoint(); }
     void distruction() {
         sb->distruction();
-        if (sb->cnt <= 0) delete sb;
+        if (sb->cnt <= 0)
+            delete sb;
     }
     const T &operator[](int i) const { return baseptr[i]; }
     ~const_shared_ptr_Base() {}
 };
 
-template <typename T, bool array = false, bool opnew = false>
-class shared_ptr {
+template <typename T, bool array = false, bool opnew = false> class shared_ptr {
     friend class const_shared_ptr<T, array, opnew>;
     shared_ptr_Base<T, array, opnew> *base;
 
-   public:
+  public:
     shared_ptr() : base(nullptr) {}
     shared_ptr(T *const ptr)
         : base(new shared_ptr_Base<T, array, opnew>(ptr)) {}
@@ -93,7 +87,8 @@ class shared_ptr {
             base->AddNewPoint();
         } else {
             base->distruction();
-            if (base->cnt <= 0) delete base;
+            if (base->cnt <= 0)
+                delete base;
             base = rs.base;
             base->AddNewPoint();
         }
@@ -102,7 +97,8 @@ class shared_ptr {
     shared_ptr &operator=(T *rt) {
         if (base) {
             base->distruction();
-            if (base->cnt <= 0) delete base;
+            if (base->cnt <= 0)
+                delete base;
         }
         base = new shared_ptr_Base<T, array, opnew>(rt);
         return *this;
@@ -110,16 +106,19 @@ class shared_ptr {
     bool operator==(const shared_ptr &rt) const { return base == rt.base; }
     bool operator!=(const shared_ptr &rt) const { return base != rt.base; }
     normal_ptr<T> operator+(const int pos) {
-        if (!array) throw not_an_array();
+        if (!array)
+            throw not_an_array();
         return normal_ptr<T>(base->baseptr + pos);
     }
     const normal_ptr<T> operator+(const int pos) const {
-        if (!array) throw not_an_array();
+        if (!array)
+            throw not_an_array();
         return normal_ptr<T>(base->baseptr + pos);
     }
     ~shared_ptr() {
         base->distruction();
-        if (base->cnt <= 0) delete base;
+        if (base->cnt <= 0)
+            delete base;
     }
 };
 
@@ -127,7 +126,7 @@ template <typename T, bool array = false, bool opnew = false>
 class const_shared_ptr {
     const_shared_ptr_Base<T, array, opnew> *base;
 
-   public:
+  public:
     const_shared_ptr() : base(nullptr) {}
     const_shared_ptr(T *const ptr)
         : base(new const_shared_ptr_Base<T, array, opnew>(ptr)) {}
@@ -178,7 +177,8 @@ class const_shared_ptr {
         return base != rt.base;
     }
     const_normal_ptr<T> operator+(const int pos) const {
-        if (!array) throw not_an_array();
+        if (!array)
+            throw not_an_array();
         return const_normal_ptr<T>(base->baseptr + pos);
     }
     ~const_shared_ptr() {
@@ -187,12 +187,11 @@ class const_shared_ptr {
     }
 };
 
-template <typename T>
-class normal_ptr {
+template <typename T> class normal_ptr {
     friend class const_normal_ptr<T>;
     T *ptr;
 
-   public:
+  public:
     normal_ptr(T *rp = nullptr) : ptr(rp) {}
     normal_ptr &operator=(const normal_ptr &rp) {
         ptr = rp.ptr;
@@ -237,11 +236,10 @@ class normal_ptr {
     T *operator->() const { return ptr; }
 };
 
-template <typename T>
-class const_normal_ptr {
+template <typename T> class const_normal_ptr {
     const T *ptr;
 
-   public:
+  public:
     const_normal_ptr(const T *rp = nullptr) : ptr(rp) {}
     const_normal_ptr(const normal_ptr<T> &rp) : ptr(rp.ptr) {}
     const_normal_ptr &operator=(const const_normal_ptr &rp) { ptr = rp.ptr; }

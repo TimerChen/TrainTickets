@@ -115,7 +115,7 @@
       </size>
      </property>
      <property name="text">
-      <string>站站查询</string>
+      <string>站站查询（可购票）</string>
      </property>
     </widget>
     <widget class="QPushButton" name="trainSearchBtn">
@@ -132,7 +132,7 @@
       </size>
      </property>
      <property name="text">
-      <string>车次查询</string>
+      <string>车次查询（不可购票）</string>
      </property>
     </widget>
     <widget class="QPushButton" name="stationSearchBtn">
@@ -149,7 +149,7 @@
       </size>
      </property>
      <property name="text">
-      <string>车站查询</string>
+      <string>车站查询（不可购票)</string>
      </property>
     </widget>
    </widget>

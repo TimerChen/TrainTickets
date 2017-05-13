@@ -53,13 +53,6 @@ bool DataBase_User::is_admin(int UserId)
 	// when you use some admin_function, please use this first
 	// for example  if(a.isAdmin(UserId))	a.query_account(ID)
 }
-//I dont know what it use to
-int DataBase_User::query_identifyType( int UserId )
-{
-	if (nowAccData == NULL)	return -1;								// no account data
-	if (userData.find(UserId) == userData.end())	return -1;		// no such person 
-	return nowAccData->accData[userData[UserId]].self.identifyType; 
-}
 //you can use UserId to find Acccount Id, I allow more than one people to log same account
 int DataBase_User::account_id(int UserId)
 {

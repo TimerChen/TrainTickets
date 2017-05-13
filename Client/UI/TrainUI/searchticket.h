@@ -1,10 +1,10 @@
 #ifndef SEARCHTICKET_H
 #define SEARCHTICKET_H
 
-#include "mainwindow.h"
+#include <QDate>
 #include <QDialog>
 #include <QStandardItemModel>
-#include <QDate>
+#include "mainwindow.h"
 
 namespace Ui {
 class SearchTicket;
@@ -13,23 +13,25 @@ class SearchTicket;
 class SearchTicket : public QDialog {
     Q_OBJECT
 
-  public:
-    explicit SearchTicket(QDate _date, ttd::shared_ptr<uistructs::nowAccount> _now,
-                          QWidget *parent = 0,
-                          int search = Ui::stationToStation);
+   public:
+    explicit SearchTicket(QDate _date,
+                          ttd::shared_ptr<uistructs::nowAccount> _now,
+                          int search, QString _ask1, QWidget *parent = 0,
+                          QString _ask2 = "");
     ~SearchTicket();
 
-  private slots:
+   private slots:
 
     void on_buyTicketBtn_clicked();
 
-  private:
+   private:
     Ui::SearchTicket *ui;
     int searchType;
 
     QDate date;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
     ttd::shared_ptr<QStandardItemModel> model;
+    QString ask1, ask2;
 };
 
-#endif // SEARCHTICKET_H
+#endif  // SEARCHTICKET_H
