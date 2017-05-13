@@ -3,6 +3,7 @@
 #include "regist.h"
 #include "ui_login.h"
 #include <QMessageBox>
+#include "toserverstructs.h"
 
 Login::Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
     : QDialog(parent), ui(new Ui::Login), nowaccount(_now) {
@@ -28,9 +29,10 @@ Login::Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
 Login::~Login() { delete ui; }
 
 void Login::on_loginBtn_clicked() {
+    frontask::loginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
     if (ui->usrLineEdit->text() == "mw" &&
-        ui->pwdLineEdit->text() == "123456") { // send ui->usrLineEdit->text()
-                                               // and ui->pwdLineEdit->text()
+        ui->pwdLineEdit->text() == "123456") { /// send ac to server to login
+
         // to the server to check normal account, change the thing in if()
         // get the account detail from the server
 
@@ -38,6 +40,8 @@ void Login::on_loginBtn_clicked() {
         // nowaccount->name =
         nowaccount->userID = ui->usrLineEdit->text();
         // nowaccount->IDcard =
+
+
         accept();
     } else {
         ui->pwdLineEdit->clear();
@@ -47,11 +51,11 @@ void Login::on_loginBtn_clicked() {
     }
 }
 
-void Login::on_auloginBtn_clicked() { // unavailable now
+void Login::on_auloginBtn_clicked() {
+    frontask::auLoginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
     if (ui->usrLineEdit->text() == "mw" &&
-        ui->pwdLineEdit->text() == "123456") { // send ui->usrLineEdit->text()
-                                               // and ui->pwdLineEdit->text()
-        // to the server to check normal account, change the thing in if()
+        ui->pwdLineEdit->text() == "123456") { /// send ac to server
+        // to the server to check admin account, change the thing in if()
         // get the account detail from the server
 
         nowaccount->userType = Ui::admin;
@@ -68,4 +72,8 @@ void Login::on_auloginBtn_clicked() { // unavailable now
 void Login::on_registBtn_clicked() {
     Regist reg(this);
     reg.exec();
+}
+
+void Login::setAuloginEnable(bool flag){
+    ui->auloginBtn->setEnabled(flag);
 }

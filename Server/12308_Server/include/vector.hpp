@@ -492,4 +492,27 @@ template <typename T> class vector {
 };
 }
 
+#include <QDataStream>
+
+template<class T>
+QDataStream& operator << (QDataStream& out, const ttd::vector<T>&v)
+{
+	out << (quint16)v.size();
+	for (int i = 0; i < v.size(); ++i)
+		out << v[i] ;
+	return out;
+}
+
+template<class T>
+QDataStream& operator >> (QDataStream& in, ttd::vector<T>&v)
+{
+	v.clear();
+	int tmp_n;T d;
+	in >> tmp_n;
+	v = ttd::vector<T>( tmp_n );
+	for( int i = 0; i < tmp_n; ++i )
+		in >> v[i];
+	return in;
+}
+
 #endif

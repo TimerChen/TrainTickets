@@ -1,0 +1,8 @@
+BasedOnStyle: Google
+IndentWidth: 4
+AllowShortIfStatementsOnASingleLine: true
+AllowShortLoopsOnASingleLine: true
+IndentCaseLabels: false
+SpaceAfterControlStatementKeyword: true
+---  
+Language: Cpp  

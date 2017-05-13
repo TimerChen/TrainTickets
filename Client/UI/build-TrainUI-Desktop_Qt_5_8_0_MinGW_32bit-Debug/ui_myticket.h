@@ -37,7 +37,7 @@ public:
             Myticket->setObjectName(QStringLiteral("Myticket"));
         Myticket->resize(1031, 564);
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Myticket->setWindowIcon(icon);
         verticalLayout_3 = new QVBoxLayout(Myticket);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));

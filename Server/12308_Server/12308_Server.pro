@@ -9,7 +9,6 @@ QT       += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-CONFIG += c++11
 
 TARGET = 12308_Server
 TEMPLATE = app
@@ -33,7 +32,7 @@ SOURCES += main.cpp\
     clientthread.cpp \
     src/station.cpp \
     src/datastream.cpp \
-    src/Train.cpp
+    src/train.cpp
 
 HEADERS  += servermainwindow.h \
     include/vector.hpp \

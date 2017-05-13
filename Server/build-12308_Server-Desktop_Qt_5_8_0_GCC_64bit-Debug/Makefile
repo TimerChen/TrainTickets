@@ -55,7 +55,7 @@ SOURCES       = ../12308_Server/main.cpp \
 		../12308_Server/clientthread.cpp \
 		../12308_Server/src/station.cpp \
 		../12308_Server/src/datastream.cpp \
-		../12308_Server/src/Train.cpp moc_servermainwindow.cpp \
+		../12308_Server/src/train.cpp moc_servermainwindow.cpp \
 		moc_clientthread.cpp
 OBJECTS       = main.o \
 		servermainwindow.o \
@@ -64,7 +64,7 @@ OBJECTS       = main.o \
 		clientthread.o \
 		station.o \
 		datastream.o \
-		Train.o \
+		train.o \
 		moc_servermainwindow.o \
 		moc_clientthread.o
 DIST          = ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
@@ -255,7 +255,7 @@ DIST          = ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../12308_Server/clientthread.cpp \
 		../12308_Server/src/station.cpp \
 		../12308_Server/src/datastream.cpp \
-		../12308_Server/src/Train.cpp
+		../12308_Server/src/train.cpp
 QMAKE_TARGET  = 12308_Server
 DESTDIR       = 
 TARGET        = 12308_Server
@@ -634,7 +634,7 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../12308_Server/servermainwindow.h ../12308_Server/include/vector.hpp ../12308_Server/include/utility.hpp ../12308_Server/include/station.h ../12308_Server/include/smartpoint.hpp ../12308_Server/include/exceptions.hpp ../12308_Server/include/database_main.h ../12308_Server/include/algorithm0.hpp ../12308_Server/clientthread.h ../12308_Server/include/train.h ../12308_Server/include/database.h ../12308_Server/include/map.hpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../12308_Server/main.cpp ../12308_Server/servermainwindow.cpp ../12308_Server/src/database_base.cpp ../12308_Server/src/database_main.cpp ../12308_Server/clientthread.cpp ../12308_Server/src/station.cpp ../12308_Server/src/datastream.cpp ../12308_Server/src/Train.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../12308_Server/main.cpp ../12308_Server/servermainwindow.cpp ../12308_Server/src/database_base.cpp ../12308_Server/src/database_main.cpp ../12308_Server/clientthread.cpp ../12308_Server/src/station.cpp ../12308_Server/src/datastream.cpp ../12308_Server/src/train.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../12308_Server/servermainwindow.ui $(DISTDIR)/
 
 
@@ -1155,6 +1155,7 @@ main.o: ../12308_Server/main.cpp ../12308_Server/servermainwindow.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
 		../12308_Server/include/vector.hpp \
 		../12308_Server/include/exceptions.hpp \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qapplication.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreapplication.h \
@@ -1326,7 +1327,8 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../12308_Server/serverm
 		../12308_Server/include/database.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
 		../12308_Server/include/vector.hpp \
-		../12308_Server/include/exceptions.hpp
+		../12308_Server/include/exceptions.hpp \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o servermainwindow.o ../12308_Server/servermainwindow.cpp
 
 database_base.o: ../12308_Server/src/database_base.cpp ../12308_Server/include/database.h \
@@ -1362,7 +1364,28 @@ database_base.o: ../12308_Server/src/database_base.cpp ../12308_Server/include/d
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringbuilder.h \
 		../12308_Server/include/vector.hpp \
 		../12308_Server/include/exceptions.hpp \
-		../12308_Server/include/smartpoint.hpp
+		../12308_Server/include/smartpoint.hpp \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_base.o ../12308_Server/src/database_base.cpp
 
 database_main.o: ../12308_Server/src/database_main.cpp ../12308_Server/include/database.h \
@@ -1399,6 +1422,27 @@ database_main.o: ../12308_Server/src/database_main.cpp ../12308_Server/include/d
 		../12308_Server/include/vector.hpp \
 		../12308_Server/include/exceptions.hpp \
 		../12308_Server/include/smartpoint.hpp \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qlist.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qhashfunctions.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qpair.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraylist.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlist.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qregexp.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
 		../12308_Server/include/database_main.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_main.o ../12308_Server/src/database_main.cpp
 
@@ -1712,7 +1756,6 @@ station.o: ../12308_Server/src/station.cpp ../12308_Server/include/station.h \
 datastream.o: ../12308_Server/src/datastream.cpp ../12308_Server/include/vector.hpp \
 		../12308_Server/include/exceptions.hpp \
 		../12308_Server/include/smartpoint.hpp \
-		../12308_Server/include/station.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
@@ -1763,6 +1806,7 @@ datastream.o: ../12308_Server/src/datastream.cpp ../12308_Server/include/vector.
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
+		../12308_Server/include/station.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDateTime \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdatetime.h \
@@ -1776,14 +1820,15 @@ datastream.o: ../12308_Server/src/datastream.cpp ../12308_Server/include/vector.
 		../12308_Server/include/map.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o datastream.o ../12308_Server/src/datastream.cpp
 
-Train.o: ../12308_Server/src/Train.cpp ../12308_Server/include/train.h \
+train.o: ../12308_Server/src/train.cpp ../12308_Server/include/train.h \
 		../12308_Server/include/map.hpp \
 		../12308_Server/include/utility.hpp \
 		../12308_Server/include/exceptions.hpp \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDateTime \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdatetime.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstring.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qchar.h \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/smartpoint.hpp \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qglobal.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig.h \
@@ -1806,23 +1851,36 @@ Train.o: ../12308_Server/src/Train.cpp ../12308_Server/include/train.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qmutex.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qnumeric.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qversiontagging.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qiodevice.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qnamespace.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstring.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qchar.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearray.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qrefcount.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qnamespace.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qarraydata.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringbuilder.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qshareddata.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qhash.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qlist.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qhashfunctions.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qpair.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraylist.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlist.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qregexp.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o Train.o ../12308_Server/src/Train.cpp
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qmetatype.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDateTime \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdatetime.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qshareddata.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qhash.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o train.o ../12308_Server/src/train.cpp
 
 moc_servermainwindow.o: moc_servermainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_servermainwindow.o moc_servermainwindow.cpp

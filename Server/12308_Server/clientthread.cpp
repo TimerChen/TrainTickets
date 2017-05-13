@@ -5,3 +5,8 @@ ClientThread::ClientThread(QObject *parent, QTcpSocket *Socket)
 {
 
 }
+
+void ClientThread::run()
+{
+
+}
