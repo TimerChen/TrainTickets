@@ -1,8 +1,8 @@
 #ifndef TTD_VECTOR_HPP
 #define TTD_VECTOR_HPP
 
-#include "exceptions.hpp"
-#include "smartpoint.hpp"
+#include "include/exceptions.hpp"
+#include "include/smartpoint.hpp"
 
 #include <climits>
 #include <cstddef>
@@ -30,7 +30,7 @@ template <typename T> class vector {
             shared_ptr<T, true, true> tmp =
                 reinterpret_cast<T *>(operator new(sizeof(T) * up));
 
-            for (size_t i = 0; i != sz; ++i) {
+            for (int i = 0; i != sz; ++i) {
                 new (static_cast<void *>(&tmp[i])) T(container[i]);
                 container[i].~T();
             }
@@ -69,7 +69,7 @@ template <typename T> class vector {
         normal_ptr<const shared_ptr<T, true, true>> oriplace;
         size_t pos;
         iterator(size_t _pos, const shared_ptr<T, true, true> *_c)
-            : oriplace(_c), pos(_pos) {}
+            : pos(_pos), oriplace(_c) {}
 
       public:
         /**
@@ -94,12 +94,14 @@ template <typename T> class vector {
         // invaild_iterator.
         int operator-(const iterator &rhs) const {
             // TODO
-            if (*oriplace != *rhs.oriplace) throw invalid_iterator();
+            if (*oriplace != *rhs.oriplace)
+                throw invalid_iterator();
             return pos - rhs.pos;
         }
         int operator-(const const_iterator &rhs) const {
             // TODO
-            if (*oriplace != *rhs.oriplace) throw invalid_iterator();
+            if (*oriplace != *rhs.oriplace)
+                throw invalid_iterator();
             return int(pos) - rhs.pos;
         }
         iterator operator+=(const int &n) {
@@ -182,7 +184,7 @@ template <typename T> class vector {
         normal_ptr<const shared_ptr<T, true, true>> oriplace;
         size_t pos;
         const_iterator(size_t _pos, const shared_ptr<T, true, true> *_c)
-            : oriplace(_c), pos(_pos) {}
+            : pos(_pos), oriplace(_c) {}
 
       public:
         /**
@@ -207,12 +209,14 @@ template <typename T> class vector {
         // invaild_iterator.
         int operator-(const iterator &rhs) const {
             // TODO
-            if (*oriplace != *rhs.oriplace) throw invalid_iterator();
+            if (*oriplace != *rhs.oriplace)
+                throw invalid_iterator();
             return int(pos) - rhs.pos;
         }
         int operator-(const const_iterator &rhs) const {
             // TODO
-            if (*oriplace != *rhs.oriplace) throw invalid_iterator();
+            if (*oriplace != *rhs.oriplace)
+                throw invalid_iterator();
             return int(pos) - rhs.pos;
         }
         const_iterator operator+=(const int &n) {
@@ -284,12 +288,12 @@ template <typename T> class vector {
      * Atleast three: default constructor, copy constructor and a constructor
      * for std::vector
      */
-    vector() : container(nullptr), sz(0), upbound(0) {}
+    vector() : sz(0), upbound(0), container(nullptr) {}
     vector(const vector &other) {
         upbound = other.capacity();
         sz = other.size();
         container = reinterpret_cast<T *>(operator new(sizeof(T) * upbound));
-        for (size_t i = 0; i != sz; ++i) {
+        for (int i = 0; i != sz; ++i) {
             new (static_cast<void *>(&container[i])) T(other[i]);
         }
     }
@@ -313,7 +317,7 @@ template <typename T> class vector {
      */
     ~vector() {
         // size_t osz = sz;
-        for (size_t i = 0; i != sz; ++i) {
+        for (int i = 0; i != sz; ++i) {
             container[i].~T();
         }
     }
@@ -321,13 +325,13 @@ template <typename T> class vector {
      * TODO Assignment operator
      */
     vector &operator=(const vector &other) {
-        for (size_t i = 0; i != sz; ++i) {
+        for (int i = 0; i != sz; ++i) {
             container[i].~T();
         }
         upbound = other.capacity();
         sz = other.size();
         container = reinterpret_cast<T *>(operator new(sizeof(T) * upbound));
-        for (size_t i = 0; i != sz; ++i) {
+        for (int i = 0; i != sz; ++i) {
             new (static_cast<void *>(&container[i])) T(other[i]);
         }
         return *this;
@@ -337,11 +341,13 @@ template <typename T> class vector {
      * throw index_out_of_bound if pos is not in [0, size)
      */
     T &at(const size_t &pos) {
-        if (pos < 0 || pos >= sz) throw index_out_of_bound();
+        if (pos < 0 || pos >= sz)
+            throw index_out_of_bound();
         return container[pos];
     }
     const T &at(const size_t &pos) const {
-        if (pos < 0 || pos >= sz) throw index_out_of_bound();
+        if (pos < 0 || pos >= sz)
+            throw index_out_of_bound();
         return container[pos];
     }
     /**
@@ -351,11 +357,13 @@ template <typename T> class vector {
      *   In STL this operator does not check the boundary but I want you to do.
      */
     T &operator[](const size_t &pos) {
-        if (pos < 0 || pos > sz) throw index_out_of_bound();
+        if (pos < 0 || pos > sz)
+            throw index_out_of_bound();
         return container[pos];
     }
     const T &operator[](const size_t &pos) const {
-        if (pos < 0 || pos >= sz) throw index_out_of_bound();
+        if (pos < 0 || pos >= sz)
+            throw index_out_of_bound();
         return container[pos];
     }
     /**
@@ -363,7 +371,8 @@ template <typename T> class vector {
      * throw container_is_empty if size == 0
      */
     const T &front() const {
-        if (sz == 0) throw container_is_empty();
+        if (sz == 0)
+            throw container_is_empty();
         return container[0];
     }
     /**
@@ -371,7 +380,8 @@ template <typename T> class vector {
      * throw container_is_empty if size == 0
      */
     const T &back() const {
-        if (sz == 0) throw container_is_empty();
+        if (sz == 0)
+            throw container_is_empty();
         return container[sz - 1];
     }
     /**
@@ -401,7 +411,7 @@ template <typename T> class vector {
      * clears the contents
      */
     void clear() {
-        for (size_t i = 0; i != sz; ++i) {
+        for (int i = 0; i != sz; ++i) {
             container[i].~T();
         }
         container = nullptr;
@@ -415,7 +425,7 @@ template <typename T> class vector {
     iterator insert(iterator pos, const T &value) {
         doublespace();
         new (static_cast<void *>(&container[sz])) T(container[sz - 1]);
-        for (size_t i = sz - 1; i != pos.pos; --i) {
+        for (int i = sz - 1; i != pos.pos; --i) {
             container[i].~T();
             new (static_cast<void *>(&container[i])) T(container[i - 1]);
         }
@@ -432,7 +442,8 @@ template <typename T> class vector {
      * because after inserting the size will increase 1.)
      */
     iterator insert(const size_t &ind, const T &value) {
-        if (ind < 0 || ind > sz) throw index_out_of_bound();
+        if (ind < 0 || ind > sz)
+            throw index_out_of_bound();
         return insert(iterator(ind, container), value);
     }
     /**
@@ -442,7 +453,7 @@ template <typename T> class vector {
      * returned.
      */
     iterator erase(iterator pos) {
-        for (size_t i = pos.pos; i != sz - 1; ++i) {
+        for (int i = pos.pos; i != sz - 1; ++i) {
             container[i].~T();
             new (static_cast<void *>(&container[i])) T(container[i + 1]);
         }
@@ -456,7 +467,8 @@ template <typename T> class vector {
      * throw index_out_of_bound if ind >= size
      */
     iterator erase(const size_t &ind) {
-        if (ind < 0 || ind >= size) throw index_out_of_bound();
+        if (ind < 0 || ind >= size)
+            throw index_out_of_bound();
         return erase(iterator(ind, container));
     }
     /**
@@ -472,11 +484,42 @@ template <typename T> class vector {
      * throw container_is_empty if size() == 0
      */
     void pop_back() {
-        if (sz == 0) throw container_is_empty();
+        if (sz == 0)
+            throw container_is_empty();
         container[sz - 1].~T();
         --sz;
     }
 };
+}
+
+/*
+ *
+ * Writed by Jingxiao Chen.
+ *
+ *  [Passed test]
+ *
+ */
+#include <QDataStream>
+
+template<class T>
+QDataStream& operator << (QDataStream& out, const ttd::vector<T>&v)
+{
+	out << (quint32)(v.size());
+	for (size_t i = 0; i < v.size(); ++i)
+		out << v[i] ;
+	return out;
+}
+
+template<class T>
+QDataStream& operator >> (QDataStream& in, ttd::vector<T>&v)
+{
+	v.clear();
+	quint32 tmp_n;T d;
+	in >> tmp_n;
+	v = ttd::vector<T>( tmp_n );
+	for( int i = 0; i < tmp_n; ++i )
+		in >> v[i];
+	return in;
 }
 
 #endif

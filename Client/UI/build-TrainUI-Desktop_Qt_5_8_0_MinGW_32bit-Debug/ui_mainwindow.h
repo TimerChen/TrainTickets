@@ -191,9 +191,9 @@ public:
         MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
         label->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "12308", Q_NULLPTR));
-        stationToStationSearchBtn->setText(QApplication::translate("MainWindow", "\347\253\231\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
-        trainSearchBtn->setText(QApplication::translate("MainWindow", "\350\275\246\346\254\241\346\237\245\350\257\242", Q_NULLPTR));
-        stationSearchBtn->setText(QApplication::translate("MainWindow", "\350\275\246\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
+        stationToStationSearchBtn->setText(QApplication::translate("MainWindow", "\347\253\231\347\253\231\346\237\245\350\257\242\357\274\210\345\217\257\350\264\255\347\245\250\357\274\211", Q_NULLPTR));
+        trainSearchBtn->setText(QApplication::translate("MainWindow", "\350\275\246\346\254\241\346\237\245\350\257\242\357\274\210\344\270\215\345\217\257\350\264\255\347\245\250\357\274\211", Q_NULLPTR));
+        stationSearchBtn->setText(QApplication::translate("MainWindow", "\350\275\246\347\253\231\346\237\245\350\257\242\357\274\210\344\270\215\345\217\257\350\264\255\347\245\250)", Q_NULLPTR));
         myticketBtn->setText(QApplication::translate("MainWindow", "\346\210\221\347\232\204\350\275\246\347\245\250", Q_NULLPTR));
         myinformBtn->setText(QApplication::translate("MainWindow", "\347\224\250\346\210\267\344\277\241\346\201\257", Q_NULLPTR));
         logoutBtn->setText(QApplication::translate("MainWindow", "\351\200\200\345\207\272\347\231\273\345\275\225", Q_NULLPTR));

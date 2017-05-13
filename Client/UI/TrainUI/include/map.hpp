@@ -1,6 +1,13 @@
-/**
- * implement a container like std::map
+
+/*
+ *
+ * Writed by Jingxiao Chen.
+ *
+ *  [Passed test]
+ *
  */
+
+
 #ifndef TTD_MAP_HPP
 #define TTD_MAP_HPP
 
@@ -10,6 +17,8 @@
 #include "include/utility.hpp"
 #include "include/exceptions.hpp"
 
+
+#include <QDataStream>
 #include <iostream>
 
 namespace ttd {
@@ -28,6 +37,10 @@ template<
 	class Compare = std::less<Key>
 > class map {
 	//friend class Debuger_Map<Key,T,Compare>;
+	template<class k,class t,class c>
+	friend QDataStream& operator << (QDataStream& out, const map<k,t,c> &data);
+	template<class k,class t,class c>
+	friend QDataStream& operator >> (QDataStream& in, map<k,t,c> &data);
 public:
 	/**
 	 * the internal type of data.
@@ -394,7 +407,7 @@ private:
 	{
 		short stop=0,x;
 		if(i.add == null)throw(invalid_iterator());
-		if(r == null) return 1;
+		if(r == null) {return 1;}
 		else if( Compare()(i->first, r->data->first)){
 			stop = remove( i, r->ch[x=0] );
 		}else if( Compare()(r->data->first, i->first)){
@@ -647,13 +660,55 @@ public:
 		debug_p(ROOT);
 	}
 	*/
+private:
+
+	void bout( QDataStream& out, Node *r ) const
+	{
+		if( r == null )
+		{ out << true;	return;	}
+		out << false;
+		bout( out, r->ch[0] );
+		out << r->data[0].first
+			<< r->data[0].second;
+		bout( out, r->ch[1] );
+	}
+	void bout( QDataStream& out ) const
+	{ bout(out,ROOT); }
+
+	Node *bin( QDataStream &in, Node *&ro, Node *Fa, Node *pre)
+	{
+		bool isnull;
+		in >> isnull;
+		if(isnull){ro=null;return pre;}
+		ro = new Node(null);
+		SIZE++;
+		//printf("new%d\n",ro);
+		ro->nflag = null;
+		ro->fa = Fa;
+		ro->near[0] = bin(in, ro->ch[0],ro,pre);
+		if(ro->near[0]==null)BEGIN = ro;
+		else ro->near[0]->near[1] = ro;
+
+		Key key;T val;
+		in >> key >> val;
+		ro->data = new value_type( key, val );
+
+		return bin(in, ro->ch[1],ro,ro);
+	}
+
+	void bin( QDataStream& in )
+	{
+		clear();
+		ROOT = BEGIN = null;
+		END = bin(in, ROOT,null,null);
+		END->near[1] = null;
+
+	}
 
 };
-template<
-	class Key,
-	class T,
-	class Compare
->
+
+
+template<class Key,	class T,class Compare>
 map<Key,T,Compare>::Node::Node(Node *Null)
 :nflag(Null)
 {
@@ -663,17 +718,29 @@ map<Key,T,Compare>::Node::Node(Node *Null)
 	else height = -1;
 }
 
-template<
-	class Key,
-	class T,
-	class Compare
->
+
+template<class Key,	class T,class Compare>
 map<Key,T,Compare>::Node::Node(const Node &a)
 {
 	data = new value_type(*a.data);
 	ch[0]=ch[1]=near[0]=near[1]=fa=nflag=NULL;
 	height = a.height;
 }
+
+template<class Key,	class T,class Compare>
+QDataStream& operator << (QDataStream& out, const map<Key,T,Compare> &data)
+{
+	data.bout(out);
+	return out;
+}
+
+template<class Key,	class T,class Compare>
+QDataStream& operator >> (QDataStream& in, map<Key,T,Compare> &data)
+{
+	data.bin(in);
+	return in;
+}
+
 
 }
 
