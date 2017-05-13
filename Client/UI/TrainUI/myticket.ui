@@ -14,8 +14,8 @@
    <string>我的车票</string>
   </property>
   <property name="windowIcon">
-   <iconset>
-    <normaloff>12308.png</normaloff>12308.png</iconset>
+   <iconset resource="pic.qrc">
+    <normaloff>:/new/prefix1/12308.png</normaloff>:/new/prefix1/12308.png</iconset>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_3">
    <item>
@@ -60,7 +60,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="pic.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>exitBtn</sender>

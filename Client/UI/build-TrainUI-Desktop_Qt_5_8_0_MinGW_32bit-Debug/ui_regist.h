@@ -47,7 +47,7 @@ public:
         Regist->setMinimumSize(QSize(789, 338));
         Regist->setMaximumSize(QSize(789, 338));
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Regist->setWindowIcon(icon);
         verticalLayout_3 = new QVBoxLayout(Regist);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));

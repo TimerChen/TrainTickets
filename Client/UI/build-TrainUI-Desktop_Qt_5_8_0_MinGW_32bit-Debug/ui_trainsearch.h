@@ -45,7 +45,7 @@ public:
             TrainSearch->setObjectName(QStringLiteral("TrainSearch"));
         TrainSearch->resize(527, 212);
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         TrainSearch->setWindowIcon(icon);
         verticalLayout_3 = new QVBoxLayout(TrainSearch);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));

@@ -41,7 +41,7 @@ public:
     QPushButton *myticketBtn;
     QPushButton *myinformBtn;
     QPushButton *logoutBtn;
-    QWidget *widget;
+    QWidget *layoutWidget1;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout;
     QLabel *welcomeLabel;
@@ -59,7 +59,7 @@ public:
         MainWindow->setMinimumSize(QSize(826, 800));
         MainWindow->setMaximumSize(QSize(826, 800));
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
@@ -124,10 +124,10 @@ public:
 
         horizontalLayout->addWidget(logoutBtn);
 
-        widget = new QWidget(centralWidget);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(340, 30, 413, 181));
-        verticalLayout = new QVBoxLayout(widget);
+        layoutWidget1 = new QWidget(centralWidget);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        layoutWidget1->setGeometry(QRect(340, 30, 413, 181));
+        verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
@@ -135,14 +135,15 @@ public:
         gridLayout = new QGridLayout();
         gridLayout->setSpacing(6);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
-        welcomeLabel = new QLabel(widget);
+        welcomeLabel = new QLabel(layoutWidget1);
         welcomeLabel->setObjectName(QStringLiteral("welcomeLabel"));
         welcomeLabel->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
 
         gridLayout->addWidget(welcomeLabel, 0, 0, 1, 1);
 
-        nameLabel = new QLabel(widget);
+        nameLabel = new QLabel(layoutWidget1);
         nameLabel->setObjectName(QStringLiteral("nameLabel"));
+        nameLabel->setTextFormat(Qt::AutoText);
         nameLabel->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
 
         gridLayout->addWidget(nameLabel, 0, 1, 1, 1);
@@ -153,14 +154,14 @@ public:
         verticalLayout_2 = new QVBoxLayout();
         verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        loginBtn = new QPushButton(widget);
+        loginBtn = new QPushButton(layoutWidget1);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
         loginBtn->setMinimumSize(QSize(409, 58));
         loginBtn->setMaximumSize(QSize(409, 58));
 
         verticalLayout_2->addWidget(loginBtn);
 
-        regBtn = new QPushButton(widget);
+        regBtn = new QPushButton(layoutWidget1);
         regBtn->setObjectName(QStringLiteral("regBtn"));
         regBtn->setMinimumSize(QSize(409, 58));
         regBtn->setMaximumSize(QSize(409, 58));
@@ -171,7 +172,6 @@ public:
         verticalLayout->addLayout(verticalLayout_2);
 
         MainWindow->setCentralWidget(centralWidget);
-        layoutWidget->raise();
         layoutWidget->raise();
         splitter->raise();
         layoutWidget->raise();
