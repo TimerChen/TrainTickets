@@ -16,7 +16,10 @@ class Myticket : public QDialog {
                       QWidget *parent = 0);
     ~Myticket();
 
-  private:
+private slots:
+    void on_modifyTicketBtn_clicked();
+
+private:
     Ui::Myticket *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;

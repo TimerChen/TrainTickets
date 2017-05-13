@@ -492,13 +492,6 @@ template <typename T> class vector {
 };
 }
 
-/*
- *
- * Writed by Jingxiao Chen.
- *
- *  [Passed test]
- *
- */
 #include <QDataStream>
 
 template<class T>

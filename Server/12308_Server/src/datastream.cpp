@@ -8,6 +8,7 @@
 #include <include/train.h>
 
 
+
 QDataStream& operator << (QDataStream& out, const Ticket &data)
 {
 	out << data.ticketID

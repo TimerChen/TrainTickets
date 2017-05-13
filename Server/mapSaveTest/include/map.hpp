@@ -1,13 +1,6 @@
-
-/*
- *
- * Writed by Jingxiao Chen.
- *
- *  [Passed test]
- *
+/**
+ * implement a container like std::map
  */
-
-
 #ifndef TTD_MAP_HPP
 #define TTD_MAP_HPP
 

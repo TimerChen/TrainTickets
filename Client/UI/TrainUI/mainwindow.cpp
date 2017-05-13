@@ -37,7 +37,7 @@ void MainWindow::on_loginBtn_clicked() {
         ui->myticketBtn->setEnabled(true);
         ui->welcomeLabel->show();
         ui->nameLabel->show();
-        ui->nameLabel->setText(nowaccount->userID+"!!!!!");
+        ui->nameLabel->setText(nowaccount->name+"!!");
         if (userType == Ui::admin) {
             AdminWindow adw(nowaccount, this);
             this->hide();
@@ -63,7 +63,7 @@ void MainWindow::on_logoutBtn_clicked() {
     nowaccount->userType = Ui::annonymous;
     nowaccount->name = "";
     nowaccount->userID = "";
-    nowaccount->IDcard = "";
+    //nowaccount->IDcard = "";
     ui->nameLabel->hide();
     ui->welcomeLabel->hide();
 }
