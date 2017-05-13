@@ -16,6 +16,7 @@
 //That is
 #include <QString>
 #include "include/vector.hpp"
+#include "include/map.hpp"
 #include "include/smartpoint.hpp"
 
 namespace ttd {
@@ -39,86 +40,12 @@ public:
 	DataBase_Base( const QString &Name = "Default" );
 	~DataBase_Base();
 protected:
-	virtual void loadData();
-	virtual void saveData();
+	void loadData();
+	void saveData();
 };
 
 
-//A class for save the user who connect with server.
-//So it will never save data.
-class DataBase_User : public DataBase_Base             //前后端分离进行身份验证,
-{
-	friend class DataBase_Main;
-public:
-	DataBase_User( const QString &Name = "Default" );
-	~DataBase_User();
 
-	// Login with your account id and password.
-	// return 0: failed
-	// return else : template id
-	int login( const QString &ID, const QString &password );
-
-	//-1:not exist.
-	int query_identifyType( int UserId );
-private:
-	bool logout( const int id );
-
-};
-//A class to save Account's information.
-class DataBase_Account : public DataBase_Base
-{
-	friend class DataBase_Main;
-	friend class DataBase_User;
-
-	//Real information of one person.
-	struct IdentifyInformation
-	{
-		QString name;
-		int identificationCardNumber;
-		//0-normal 1-student
-		short 	identifyType,
-				age;
-	};
-	// some values have default value.
-	struct Account
-	{
-		//Account(){}
-		Account( const QString &Id, const short IdentifyType );
-
-		//Id for saving and finding quickly.
-		int id_number;
-
-		//Your id for register.
-		QString	id,
-
-		//We only save the hash code of password.
-				passwordHash;
-		IdentifyInformation self;
-
-		//You can buy tickets for your friends.
-		ttd::vector<IdentifyInformation>friends;
-
-		//If this is a admin account.
-		bool isAdmin;
-	};
-	//Get the hash code of a password.
-	QString getPasswordHash( const QString &Password );
-public:
-	DataBase_Account( const QString &Name = "Default" );
-	~DataBase_Account();
-
-	//Register or lead-in a NEW account.
-	//return 0:illegal 1:used-ID 2:succeed.
-	bool signUp( const Account &NewAccout, const QString &Password = "000000" );
-
-	//Get the in_number by your string Id ( in logn ).
-	//return 0:not find
-	int getIdNumber( const QString &Id );
-
-private:
-
-
-};
 //The data base of Train and Stations.
 class DataBase_Train : public DataBase_Base
 {

@@ -200,6 +200,7 @@ DIST          = ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_post.prf \
+		../mapSaveTest/.qmake.stash \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/default_pre.prf \
@@ -390,6 +391,7 @@ Makefile: ../mapSaveTest/mapSaveTest.pro ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++/qmake.conf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/toolchain.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/default_pre.prf \
@@ -562,6 +564,7 @@ Makefile: ../mapSaveTest/mapSaveTest.pro ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++/qmake.conf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/toolchain.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/default_pre.prf:
@@ -916,6 +919,12 @@ tst_mapsavetesttest.moc: ../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QMetaEnum \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtTest/qttestversion.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QCoreApplication \
+		../mapSaveTest/include/map.hpp \
+		../mapSaveTest/include/utility.hpp \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
+		../mapSaveTest/include/exceptions.hpp \
+		../mapSaveTest/include/vector.hpp \
+		../mapSaveTest/include/smartpoint.hpp \
 		../mapSaveTest/tst_mapsavetesttest.cpp \
 		moc_predefs.h \
 		../../../../Qt5.8.0/5.8/gcc_64/bin/moc
@@ -1211,6 +1220,12 @@ tst_mapsavetesttest.o: ../mapSaveTest/tst_mapsavetesttest.cpp ../../../../Qt5.8.
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QMetaEnum \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtTest/qttestversion.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QCoreApplication \
+		../mapSaveTest/include/map.hpp \
+		../mapSaveTest/include/utility.hpp \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
+		../mapSaveTest/include/exceptions.hpp \
+		../mapSaveTest/include/vector.hpp \
+		../mapSaveTest/include/smartpoint.hpp \
 		tst_mapsavetesttest.moc
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o tst_mapsavetesttest.o ../mapSaveTest/tst_mapsavetesttest.cpp
 
