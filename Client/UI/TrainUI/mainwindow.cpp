@@ -13,7 +13,6 @@
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow),
       nowaccount(new uistructs::nowAccount)
-// userType(user),
 {
     ui->setupUi(this);
     ui->myticketBtn->setEnabled(false);
@@ -28,7 +27,6 @@ MainWindow::~MainWindow() { delete ui; }
 void MainWindow::on_loginBtn_clicked() {
     Login log(nowaccount, this);
     if (log.exec() == QDialog::Accepted) {
-        // add something that show you have loged in
         int userType = nowaccount->userType;
         ui->loginBtn->setEnabled(false);
         ui->regBtn->setEnabled(false);

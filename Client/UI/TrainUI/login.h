@@ -3,6 +3,7 @@
 
 #include "mainwindow.h"
 #include <QDialog>
+#include <QRegExpValidator>
 
 namespace Ui {
 class Login;
@@ -29,6 +30,7 @@ class Login : public QDialog {
     Ui::Login *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
+    ttd::shared_ptr<QRegExpValidator> pReg;
 };
 
 #endif // LOGIN_H

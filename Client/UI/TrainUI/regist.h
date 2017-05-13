@@ -2,6 +2,8 @@
 #define REGIST_H
 
 #include <QDialog>
+#include "include/smartpoint.hpp"
+#include <QRegExpValidator>
 
 namespace Ui {
 class Regist;
@@ -23,6 +25,7 @@ private slots:
 
 private:
     Ui::Regist *ui;
+    ttd::shared_ptr<QRegExpValidator> pReg;
 };
 
 #endif // REGIST_H
