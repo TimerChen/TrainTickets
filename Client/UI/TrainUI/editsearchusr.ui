@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>editSearchUsr</class>
+ <widget class="QDialog" name="editSearchUsr">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>826</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>修改用户</string>
+  </property>
+  <widget class="QLabel" name="label_3">
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>250</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>12308</string>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QWidget" name="layoutWidget">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>690</y>
+     <width>691</width>
+     <height>60</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QPushButton" name="myticketBtn_2">
+      <property name="minimumSize">
+       <size>
+        <width>222</width>
+        <height>58</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>222</width>
+        <height>58</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>用户车票</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="myinformBtn_2">
+      <property name="minimumSize">
+       <size>
+        <width>221</width>
+        <height>58</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>221</width>
+        <height>58</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>用户信息</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="deleteUsrBtn">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="text">
+       <string>删除用户</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>20</y>
+     <width>241</width>
+     <height>251</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>241</width>
+     <height>251</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>241</width>
+     <height>251</height>
+    </size>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="pic.qrc">:/new/prefix1/12308.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QSplitter" name="splitter">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>310</y>
+     <width>691</width>
+     <height>351</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>691</width>
+     <height>351</height>
+    </size>
+   </property>
+   <property name="maximumSize">
+    <size>
+     <width>691</width>
+     <height>343</height>
+    </size>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+   <widget class="QPushButton" name="stationToStationSearchBtn_2">
+    <property name="minimumSize">
+     <size>
+      <width>691</width>
+      <height>112</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>691</width>
+      <height>112</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>站站查询（可修改用户车票）</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="trainSearchBtn_2">
+    <property name="minimumSize">
+     <size>
+      <width>691</width>
+      <height>111</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>691</width>
+      <height>111</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>车次查询（不可修改用户车票）</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="stationSearchBtn_2">
+    <property name="minimumSize">
+     <size>
+      <width>691</width>
+      <height>112</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>691</width>
+      <height>112</height>
+     </size>
+    </property>
+    <property name="text">
+     <string>车站查询（不可修改用户车票)</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>341</x>
+     <y>41</y>
+     <width>401</width>
+     <height>221</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <item row="1" column="1">
+     <widget class="QLabel" name="nameLabel_2">
+      <property name="text">
+       <string>name</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLabel" name="welcomeLabel_2">
+      <property name="text">
+       <string>欢迎！</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="pic.qrc"/>
+ </resources>
+ <connections/>
+</ui>

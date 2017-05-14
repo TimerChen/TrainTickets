@@ -15,10 +15,10 @@ class SearchTicket : public QDialog {
     Q_OBJECT
 
    public:
-    explicit SearchTicket(QDate _date,
+    explicit SearchTicket(QWidget *parent, QDate _date,
                           ttd::shared_ptr<uistructs::nowAccount> _now,
-                          int search, QString _ask1, QWidget *parent = 0,
-                          QString _ask2 = "");
+                          int search, QString _ask1, QString _ask2 = "",
+                          QString _adminID = "", QString _admianName = "");
     ~SearchTicket();
 
    private slots:
@@ -33,6 +33,7 @@ class SearchTicket : public QDialog {
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
     ttd::shared_ptr<QStandardItemModel> model;
     QString ask1, ask2;
+    QString adminID, adminName;
     ttd::shared_ptr<QRegExpValidator> pReg;
 };
 

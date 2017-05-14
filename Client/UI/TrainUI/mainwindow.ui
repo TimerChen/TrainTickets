@@ -227,7 +227,7 @@
      <rect>
       <x>340</x>
       <y>30</y>
-      <width>411</width>
+      <width>413</width>
       <height>211</height>
      </rect>
     </property>
@@ -297,12 +297,11 @@
      </item>
     </layout>
    </widget>
-   <zorder>layoutWidget</zorder>
    <zorder>splitter</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>label</zorder>
    <zorder>label_3</zorder>
-   <zorder></zorder>
+   <zorder>layoutWidget</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>

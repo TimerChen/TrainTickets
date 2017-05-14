@@ -96,7 +96,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>60</x>
@@ -177,7 +177,7 @@
      </sizepolicy>
     </property>
     <property name="text">
-     <string>用户信息</string>
+     <string>管理员信息</string>
     </property>
    </widget>
    <widget class="QPushButton" name="logoutBtn">
@@ -192,12 +192,10 @@
     </property>
    </widget>
   </widget>
+  <zorder>splitter_2</zorder>
   <zorder>layoutWidget</zorder>
-  <zorder>label_3</zorder>
   <zorder>layoutWidget_2</zorder>
   <zorder>splitter</zorder>
-  <zorder>label</zorder>
-  <zorder>welcomeLabel</zorder>
  </widget>
  <resources>
   <include location="pic.qrc"/>
@@ -207,7 +205,7 @@
    <sender>logoutBtn</sender>
    <signal>clicked()</signal>
    <receiver>AdminWindow</receiver>
-   <slot>close()</slot>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>621</x>

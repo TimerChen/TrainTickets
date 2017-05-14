@@ -16,7 +16,7 @@ StationSearch::~StationSearch() { delete ui; }
 void StationSearch::on_searchbotton_clicked() {
     if (true) {     //保证输入合法
 
-            SearchTicket ticket(ui->dateEdit->date(), nowaccount, Ui::stationSearch, ui->stationLineEdit->text(), this);
+            SearchTicket ticket(this, ui->dateEdit->date(), nowaccount, Ui::stationSearch, ui->stationLineEdit->text());
             ticket.exec();
 
     } else {

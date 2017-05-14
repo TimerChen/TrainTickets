@@ -28,17 +28,19 @@ void Regist::on_registBtn_clicked() {
     if (ui->confirmpwdLineEdit->text() == ui->pwdLineEdit->text()) {
         frontask::regist rac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
         if (ui->usrLineEdit->text() == ""){
-            QMessageBox::warning(this, "注册失败", "用户名不得为空",
+            QMessageBox::warning(this, "注册失败", "用户ID不得为空",
                                  QMessageBox::Cancel);
         }
         else if (ui->pwdLineEdit->text().length() < 6) {
             QMessageBox::warning(this, "注册失败", "密码长度应不小于6位",
                                  QMessageBox::Cancel);
-        } else if (true)  /// send rac to server to reg
+        } else if (true)
+            /// 发送reg
+            /// 发送rac
             accept();
-        else {
+        else if (false){
             QMessageBox::warning(this, "注册失败",
-                                 "用户名已存在或服务器拒绝本次注册",
+                                 "用户ID已存在或服务器拒绝本次注册",
                                  QMessageBox::Cancel);
         }
     } else {

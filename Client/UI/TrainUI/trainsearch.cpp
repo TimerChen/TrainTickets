@@ -15,7 +15,7 @@ TrainSearch::~TrainSearch() { delete ui; }
 void TrainSearch::on_searchbotton_clicked() {
     if (true) {     //保证输入合法
 
-            SearchTicket ticket(ui->dateEdit->date(), nowaccount, Ui::trainSearch, ui->trainIDLineEdit->text(), this);
+            SearchTicket ticket(this, ui->dateEdit->date(), nowaccount, Ui::trainSearch, ui->trainIDLineEdit->text());
             ticket.exec();
 
 

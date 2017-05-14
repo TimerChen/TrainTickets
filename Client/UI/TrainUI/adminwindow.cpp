@@ -5,6 +5,8 @@
 #include "addplan.h"
 #include "trainsearch.h"
 #include "addplansimple.h"
+#include "myinform.h"
+#include "searchusr.h"
 
 AdminWindow::AdminWindow(
     ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
@@ -25,4 +27,16 @@ void AdminWindow::on_trainSearchBtn_clicked()
 {
     TrainSearch s(nowaccount, this);
     s.exec();
+}
+
+void AdminWindow::on_myinformBtn_clicked()
+{
+    Myinform m(nowaccount, this);
+    m.exec();
+}
+
+void AdminWindow::on_searchAccountBtn_clicked()
+{
+    searchUsr su(nowaccount, this);
+    su.exec();
 }

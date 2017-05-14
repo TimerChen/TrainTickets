@@ -14,7 +14,8 @@ class Myticket : public QDialog {
 
    public:
     explicit Myticket(ttd::shared_ptr<uistructs::nowAccount> _now,
-                      QWidget *parent = 0);
+                      QWidget *parent = 0, QString _adminID = "",
+                      QString _adminName = "");
     ~Myticket();
 
    private slots:
@@ -24,6 +25,7 @@ class Myticket : public QDialog {
     Ui::Myticket *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
+    QString adminID, adminName;
     ttd::shared_ptr<QStandardItemModel> model;
 };
 

@@ -36,8 +36,10 @@ public:
     QHBoxLayout *horizontalLayout;
     QVBoxLayout *verticalLayout;
     QGridLayout *gridLayout_2;
+    QLabel *nownameLabel;
     QLineEdit *nameLineEdit;
     QLabel *label;
+    QLabel *label_2;
     QPushButton *changenameBtn;
     QVBoxLayout *verticalLayout_2;
     QGridLayout *gridLayout;
@@ -75,15 +77,34 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         gridLayout_2 = new QGridLayout();
         gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        nownameLabel = new QLabel(layoutWidget);
+        nownameLabel->setObjectName(QStringLiteral("nownameLabel"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Expanding);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(nownameLabel->sizePolicy().hasHeightForWidth());
+        nownameLabel->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(nownameLabel, 0, 1, 1, 1);
+
         nameLineEdit = new QLineEdit(layoutWidget);
         nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
 
-        gridLayout_2->addWidget(nameLineEdit, 0, 1, 1, 1);
+        gridLayout_2->addWidget(nameLineEdit, 1, 1, 1, 1);
 
         label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
+        sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
+        label->setSizePolicy(sizePolicy);
 
-        gridLayout_2->addWidget(label, 0, 0, 1, 1);
+        gridLayout_2->addWidget(label, 1, 0, 1, 1);
+
+        label_2 = new QLabel(layoutWidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        sizePolicy.setHeightForWidth(label_2->sizePolicy().hasHeightForWidth());
+        label_2->setSizePolicy(sizePolicy);
+
+        gridLayout_2->addWidget(label_2, 0, 0, 1, 1);
 
 
         verticalLayout->addLayout(gridLayout_2);
@@ -161,7 +182,9 @@ public:
     {
         Myinform->setWindowTitle(QApplication::translate("Myinform", "myinform", Q_NULLPTR));
         IDlabel->setText(QApplication::translate("Myinform", "ID:", Q_NULLPTR));
+        nownameLabel->setText(QString());
         label->setText(QApplication::translate("Myinform", "\347\224\250\346\210\267\345\220\215\357\274\232", Q_NULLPTR));
+        label_2->setText(QApplication::translate("Myinform", "\345\275\223\345\211\215\347\224\250\346\210\267\345\220\215", Q_NULLPTR));
         changenameBtn->setText(QApplication::translate("Myinform", "\344\277\235\345\255\230\344\277\256\346\224\271", Q_NULLPTR));
         label_5->setText(QApplication::translate("Myinform", "\346\226\260\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
         label_6->setText(QApplication::translate("Myinform", "\347\241\256\350\256\244\346\226\260\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
