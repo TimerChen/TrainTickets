@@ -40,7 +40,7 @@ SOURCES += main.cpp\
     uistructs.cpp \
     modifyplanofatrain.cpp \
     addplan.cpp \
-    addseattype.cpp
+    addplansimple.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -56,7 +56,7 @@ HEADERS  += mainwindow.h \
     uistructs.h \
     modifyplanofatrain.h \
     addplan.h \
-    addseattype.h
+    addplansimple.h
 
 FORMS    += mainwindow.ui \
     login.ui \
@@ -70,7 +70,7 @@ FORMS    += mainwindow.ui \
     adminwindow.ui \
     modifyplanofatrain.ui \
     addplan.ui \
-    addseattype.ui
+    addplansimple.ui
 
 RESOURCES += \
     pic.qrc

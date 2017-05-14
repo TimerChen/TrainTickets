@@ -58,7 +58,7 @@ addPlan::~addPlan()
     delete ui;
 }
 
-void addPlan::on_addSearTypeBtn_clicked()
+void addPlan::on_addSeatTypeBtn_clicked()
 {
 
 }

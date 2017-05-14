@@ -32,11 +32,11 @@ struct qt_meta_stringdata_addPlan_t {
 static const qt_meta_stringdata_addPlan_t qt_meta_stringdata_addPlan = {
     {
 QT_MOC_LITERAL(0, 0, 7), // "addPlan"
-QT_MOC_LITERAL(1, 8, 25), // "on_addSearTypeBtn_clicked"
+QT_MOC_LITERAL(1, 8, 25), // "on_addSeatTypeBtn_clicked"
 QT_MOC_LITERAL(2, 34, 0) // ""
 
     },
-    "addPlan\0on_addSearTypeBtn_clicked\0"
+    "addPlan\0on_addSeatTypeBtn_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +68,7 @@ void addPlan::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         addPlan *_t = static_cast<addPlan *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_addSearTypeBtn_clicked(); break;
+        case 0: _t->on_addSeatTypeBtn_clicked(); break;
         default: ;
         }
     }

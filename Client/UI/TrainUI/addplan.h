@@ -20,7 +20,7 @@ public:
     ~addPlan();
 
 private slots:
-    void on_addSearTypeBtn_clicked();
+    void on_addSeatTypeBtn_clicked();
 
 private:
     Ui::addPlan *ui;

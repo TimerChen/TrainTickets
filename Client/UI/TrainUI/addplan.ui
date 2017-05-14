@@ -78,16 +78,9 @@
         <widget class="QTableView" name="seatTypeTableView"/>
        </item>
        <item>
-        <widget class="QPushButton" name="addSearTypeBtn">
+        <widget class="QPushButton" name="addSeatTypeBtn">
          <property name="text">
           <string>添加座位类型</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="deleteSeatTypeBtn">
-         <property name="text">
-          <string>删除选中行</string>
          </property>
         </widget>
        </item>
@@ -98,13 +91,6 @@
         <widget class="QPushButton" name="addStationBtn">
          <property name="text">
           <string>添加经停站</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="deleteStationBtn">
-         <property name="text">
-          <string>删除选中行</string>
          </property>
         </widget>
        </item>
