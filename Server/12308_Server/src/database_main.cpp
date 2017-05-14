@@ -23,6 +23,10 @@ DataBase_Main::~DataBase_Main()
 {
 
 }
+
+ttd::normal_ptr<ttd::vector<QString> > DataBase_Main::getLog()
+{ return &(dLog->log); }
+
 /*Unfinished*/
 void DataBase_Main::loadData_raw( const QString &FileName )
 {
@@ -47,13 +51,25 @@ void DataBase_Main::saveData()
 
 int DataBase_Main::regist( QString name, QString pwd )
 {
+	dLog->newAccount( name, pwd );
+	return dAccount->Register(
+				DataBase_Account::Account(name),
+				pwd);
 
 }
 
 ttd::pair<int,QString> DataBase_Main::login
 ( const QString &ID, const QString &password )
-	{ return dUser->login( ID, password ); }
+{ return dLog->login
+			( ID, password, dUser->login( ID, password ) ); }
 
 bool DataBase_Main::logout( int UserId )
-	{ return dUser->logout(UserId); }
+{
+	return dLog->logout( UserId, dUser->logout(UserId) );
+}
 
+void DataBase_Main::newConnection( const QString &Ip )
+{ dLog->newConnection(Ip); }
+
+void DataBase_Main::disconnect(const QString &Ip)
+{ dLog->disconnect(Ip); }

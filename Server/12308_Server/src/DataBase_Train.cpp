@@ -89,7 +89,7 @@ int DataBase_Train::Train::cancelTickets (QDate dat, QString lsta, QString ulsta
 	{
 		int k = leaveTime[i].date().day();
 		--k, dat = dat.addDays(-k);
-		int mn = seatNumber[sid];
+		//int mn = seatNumber[sid];
 		int j = i;
 		for(; stationName[j] != ulsta; j++)	salingDate[dat].restTickets[sid][j] += num;
 		salingDate[dat].restTickets[sid][j] += num;
@@ -113,6 +113,8 @@ DataBase_Train::TrainRoute DataBase_Train::Train::query_train()
 	ans.reachTime = reachTime;
 	ans.leaveTime = leaveTime;
 	ans.seatType = seatType;
+	ans.seatNumber = seatNumber;
+	ans.priceTable = priceTable;
 	return ans;
 }
 DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, QString lsta, QString ulsta)
@@ -217,13 +219,19 @@ bool DataBase_Train::closeOneDay (QString traId, QDate datc)
 	return traData[traId].closeOneDay(datc);
 }
 	
-int DataBase_Train::buyTickets (QString traId, QDate dat, QString lsta, QString ulsta, QString set, int num)
+int DataBase_Train::buyTickets
+	(QString traId, QDate dat,
+	 QString lsta, QString ulsta,
+	 QString set, int num)
 {
 	if (num < 0 )	return -4;//num<0
 	return traData[traId].buyTickets(dat,lsta,ulsta,set,num);
 }
 	
-int DataBase_Train::cancelTickets (QString traId, QDate dat, QString lsta, QString ulsta, QString set, int num)
+int DataBase_Train::cancelTickets
+	(QString traId, QDate dat,
+	 QString lsta, QString ulsta,
+	 QString set, int num)
 {
 	return traData[traId].cancelTickets(dat,lsta,ulsta,set,num);
 }

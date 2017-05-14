@@ -30,9 +30,7 @@ SOURCES += main.cpp\
     src/database_base.cpp \
     src/database_main.cpp \
     clientthread.cpp \
-    src/station.cpp \
     src/datastream.cpp \
-    src/train.cpp \
     src/DataBase_User.cpp \
     src/DataBase_Account.cpp \
     toserverstructs.cpp \
@@ -42,13 +40,11 @@ SOURCES += main.cpp\
 HEADERS  += servermainwindow.h \
     include/vector.hpp \
     include/utility.hpp \
-    include/station.h \
     include/smartpoint.hpp \
     include/exceptions.hpp \
     include/database_main.h \
     include/algorithm0.hpp \
     clientthread.h \
-    include/train.h \
     include/database.h \
     include/map.hpp \
     include/DataBase_Account.h \

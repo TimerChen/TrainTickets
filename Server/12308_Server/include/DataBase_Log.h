@@ -34,8 +34,12 @@ public:
 	void openDay(/*const QDateTime &now,*/const QString &AccId, const QString &name, const QString &traID, const QDate &day);
 	void closeDay(/*const QDateTime &now,*/const QString &AccId, const QString &name, const QString &traID, const QDate &day);
 	
+	ttd::pair<int,QString> login( const QString &ID, const QString &pwd, const ttd::pair<int,QString> &re );
+	bool logout( const int &UserId, const bool &re );
+	void newConnection( const QString &Ip );
+	void disconnect( const QString &Ip );
 
-
+	ttd::vector<QString> log;
 private:
 	ttd::vector<QString> accLog, ticLog, traLog, qstLog;
 

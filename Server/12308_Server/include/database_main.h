@@ -29,13 +29,19 @@ public:
 	DataBase_Main( const QString &Name = "Default" );
 	~DataBase_Main();
 
+	ttd::normal_ptr<ttd::vector<QString> > getLog();
 	//Read information from external files.
 	void loadData_raw( const QString &FileName );
+
+	//Network
+	void newConnection( const QString &Ip );
+	void disconnect( const QString &Ip );
 
 	//Database_User
 	int regist( QString name, QString pwd );
 	ttd::pair<int,QString> login( const QString &ID, const QString &password );
 	bool logout( int UserId );
+
 
 
 

@@ -32,7 +32,7 @@ public:
     QAction *actionAbout;
     QWidget *centralWidget;
     QPushButton *restartPushButton;
-    QTextEdit *textEdit;
+    QTextEdit *console;
     QPushButton *stopPushButton;
     QLineEdit *lineEdit;
     QPushButton *pushButton;
@@ -53,10 +53,10 @@ public:
         restartPushButton = new QPushButton(centralWidget);
         restartPushButton->setObjectName(QStringLiteral("restartPushButton"));
         restartPushButton->setGeometry(QRect(280, 50, 85, 28));
-        textEdit = new QTextEdit(centralWidget);
-        textEdit->setObjectName(QStringLiteral("textEdit"));
-        textEdit->setGeometry(QRect(30, 40, 221, 101));
-        textEdit->setReadOnly(true);
+        console = new QTextEdit(centralWidget);
+        console->setObjectName(QStringLiteral("console"));
+        console->setGeometry(QRect(30, 40, 221, 101));
+        console->setReadOnly(true);
         stopPushButton = new QPushButton(centralWidget);
         stopPushButton->setObjectName(QStringLiteral("stopPushButton"));
         stopPushButton->setGeometry(QRect(280, 90, 85, 28));

@@ -27,7 +27,7 @@
      <string>Restart</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="console">
     <property name="geometry">
      <rect>
       <x>30</x>
