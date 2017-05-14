@@ -4,6 +4,7 @@
 #include "uistructs.h"
 #include "addplan.h"
 #include "trainsearch.h"
+#include "addplansimple.h"
 
 AdminWindow::AdminWindow(
     ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
@@ -16,7 +17,7 @@ AdminWindow::~AdminWindow() { delete ui; }
 
 void AdminWindow::on_addPlanBtn_clicked()
 {
-    addPlan ap(nowaccount, this);
+    addplansimple ap(nowaccount, this);
     ap.exec();
 }
 

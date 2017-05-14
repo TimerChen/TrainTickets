@@ -14,7 +14,7 @@ INPUT(
 ./release\uistructs.o
 ./release\modifyplanofatrain.o
 ./release\addplan.o
-./release\addseattype.o
+./release\addplansimple.o
 ./release\qrc_pic.o
 ./release\moc_mainwindow.o
 ./release\moc_login.o
@@ -28,5 +28,5 @@ INPUT(
 ./release\moc_adminwindow.o
 ./release\moc_modifyplanofatrain.o
 ./release\moc_addplan.o
-./release\moc_addseattype.o
+./release\moc_addplansimple.o
 );
