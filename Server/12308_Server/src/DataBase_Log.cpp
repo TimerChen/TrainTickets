@@ -127,10 +127,16 @@ void DataBase_Log::newConnection(const QString &Ip)
 	log.push_back( QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd")
 				   + "New connection: " + Ip );
 }
-void DataBase_Log::disconnect(const QString &Ip)
+void DataBase_Log::disconnect(const int &UserId)
 {
 	log.push_back( QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd")
-				   + "disconnect: " + Ip );
+				   + "disconnect: " + QString::number(UserId) );
+}
+
+void DataBase_Log::any(const QString &content)
+{
+	log.push_back( QDateTime::currentDateTime().toString("yyyy-MM-dd hh:mm:ss ddd")
+				   + content );
 }
 
 DataBase_Log::DataBase_Log(const QString &Name)

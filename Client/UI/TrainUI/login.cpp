@@ -3,6 +3,7 @@
 #include "regist.h"
 #include "ui_login.h"
 #include <QMessageBox>
+#include "include/utility.hpp"
 #include "toserverstructs.h"
 
 Login::Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
@@ -29,15 +30,22 @@ Login::~Login() { delete ui; }
 
 void Login::on_loginBtn_clicked() {
     frontask::loginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
-    if (ui->usrLineEdit->text() == "mw" &&
-        ui->pwdLineEdit->text() == "123456") {
+
+	ttd::pair<int, QString> serverReturn;
+	serverReturn = ((MainWindow*)parentWidget())->login_remote
+			(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
+
+
+	if ( serverReturn.first > 0 ||
+		(ui->usrLineEdit->text() == "mw" &&
+		ui->pwdLineEdit->text() == "123456") ) {
         ///发送login
         /// 发送ac
         // to the server to check normal account, change the thing in if()
         // get the account detail from the server
 
         nowaccount->userType = Ui::normal;
-        // nowaccount->name =
+		nowaccount->name = serverReturn.second;
         nowaccount->userID = ui->usrLineEdit->text();
         // nowaccount->IDcard =
 
@@ -46,7 +54,7 @@ void Login::on_loginBtn_clicked() {
     } else {
         ui->pwdLineEdit->clear();
         ui->pwdLineEdit->setFocus();
-        QMessageBox::warning(this, tr("警告"), tr("用户名或密码错误！"),
+		QMessageBox::warning(this, tr("警告"), serverReturn.second,
                              QMessageBox::Cancel);
     }
 }

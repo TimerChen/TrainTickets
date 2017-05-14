@@ -37,7 +37,9 @@ public:
 	ttd::pair<int,QString> login( const QString &ID, const QString &pwd, const ttd::pair<int,QString> &re );
 	bool logout( const int &UserId, const bool &re );
 	void newConnection( const QString &Ip );
-	void disconnect( const QString &Ip );
+	void disconnect( const int &UserId );
+
+	void any( const QString &content );
 
 	ttd::vector<QString> log;
 private:

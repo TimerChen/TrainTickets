@@ -35,14 +35,15 @@ public:
 
 	//Network
 	void newConnection( const QString &Ip );
-	void disconnect( const QString &Ip );
+	void disconnect( const int &UserId );
 
 	//Database_User
 	int regist( QString name, QString pwd );
 	ttd::pair<int,QString> login( const QString &ID, const QString &password );
 	bool logout( int UserId );
 
-
+	//Add Log
+	void addLog( const QString &content );
 
 
 	//void User

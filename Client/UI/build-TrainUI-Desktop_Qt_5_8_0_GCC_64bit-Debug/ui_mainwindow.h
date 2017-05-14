@@ -126,7 +126,7 @@ public:
 
         layoutWidget1 = new QWidget(centralWidget);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(340, 30, 411, 211));
+        layoutWidget1->setGeometry(QRect(340, 30, 413, 211));
         verticalLayout = new QVBoxLayout(layoutWidget1);
         verticalLayout->setSpacing(6);
         verticalLayout->setContentsMargins(11, 11, 11, 11);
@@ -175,11 +175,11 @@ public:
         verticalLayout->addLayout(verticalLayout_2);
 
         MainWindow->setCentralWidget(centralWidget);
-        layoutWidget->raise();
         splitter->raise();
         layoutWidget->raise();
         label->raise();
         label_3->raise();
+        layoutWidget->raise();
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);

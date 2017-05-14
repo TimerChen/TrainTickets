@@ -2,7 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QTcpSocket>
 #include "include/smartpoint.hpp"
+#include "include/utility.hpp"
 #include "uistructs.h"
 
 namespace Ui {
@@ -11,9 +13,13 @@ enum { stationToStation, stationSearch, trainSearch };
 class MainWindow;
 }
 
+
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
+
+	friend class Login;
+	friend class Regist;
    public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -35,10 +41,22 @@ class MainWindow : public QMainWindow {
 
     void on_stationSearchBtn_clicked();
 
+	void link();
+	void dealError(QAbstractSocket::SocketError socketError);
+
    private:
     Ui::MainWindow *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
+
+	QTcpSocket *serverSocket;
+	QDataStream serverIn;
+
+	int register_remote(const QString &UserId, const QString &pwd);
+	ttd::pair<int, QString> login_remote(const QString &UserId, const QString &pwd);
+	bool logout_remote();
+
+
 };
 
 #endif  // MAINWINDOW_H

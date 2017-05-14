@@ -1,6 +1,7 @@
 #include <QtNetwork>
 #include <QIODevice>
 #include <QMessageBox>
+#include <QScrollBar>
 
 #include "servermainwindow.h"
 #include "ui_servermainwindow.h"
@@ -25,10 +26,14 @@ ServerMainWindow::ServerMainWindow(QWidget *parent) :
 	//connect(ui->sendButton,SIGNAL(clicked()),this,SLOT(sendInfo()));
 	currentConnection = NULL;
 	in.setVersion(QDataStream::Qt_5_0);
+
+	database->addLog( "Server opened." );
+	refreshConsole();
 }
 
 ServerMainWindow::~ServerMainWindow()
 {
+	database->addLog( "Server closed." );
 	delete ui;
 }
 
@@ -42,25 +47,37 @@ void ServerMainWindow::newConnection()
 	connect(clientConnection, &QAbstractSocket::readyRead,
 			this, &ServerMainWindow::newMessage);
 	currentConnection = clientConnection;
-	in.setDevice(currentConnection);
+
+	in.setDevice(currentConnection);	
+	in.setVersion(QDataStream::Qt_5_0);
+
+	database->newConnection( currentConnection->peerAddress().toString() );
+	refreshConsole();
 }
 void ServerMainWindow::disconnect()
 {
 	QMessageBox::information(this,"Info","disconnect");
+	database->disconnect(currentUser);
+	database->logout(currentUser);
+	currentUser = -1;
+	refreshConsole();
 }
 
 void ServerMainWindow::newMessage()
 {
 	in.startTransaction();
-	QString message;
+
+	database->addLog( "Ready read." );
+	refreshConsole();
+
 	quint16 oType;
 	in >> oType;
 
-	if(!in.commitTransaction())
-		return;
+	database->addLog( "New opearte " + QString::number(oType) );
+	refreshConsole();
+
 	frontask::loginAccount opt_login;
 	frontask::regist opt_reg;
-	in << opt_login;
 	switch (oType) {
 	case frontask::login:
 		in >> opt_login;
@@ -77,8 +94,12 @@ void ServerMainWindow::newMessage()
 		break;
 	}
 	if(!in.commitTransaction())
+	{
+		database->addLog( "No enough Data." );
+		refreshConsole();
 		return;
-
+	}
+	database->addLog( "Return infomation." );
 	//do...
 	QByteArray block;
 	QDataStream out( &block, QIODevice::WriteOnly );
@@ -89,8 +110,10 @@ void ServerMainWindow::newMessage()
 	{
 		ttd::pair<int, QString> tmp
 			= database->login( opt_login.userID, opt_login.pwd );
-		out << tmp;
 		currentUser = tmp.first;
+		if(tmp.first > 0)
+			tmp.first = 1;
+		out << tmp;
 	}
 		break;
 	case frontask::logout:
@@ -104,7 +127,7 @@ void ServerMainWindow::newMessage()
 	case frontask::reg:
 	{
 		int tmp
-			= database->regist( opt_reg.name, opt_reg.pwd );
+			= database->regist( opt_reg.userID, opt_reg.pwd );
 		out << tmp;
 	}
 		break;
@@ -113,14 +136,22 @@ void ServerMainWindow::newMessage()
 	}
 
 	currentConnection->write(block);
+	currentConnection->waitForBytesWritten();
+
+	database->addLog( "Written back Ok." );
+
+	refreshConsole();
 }
 
 void ServerMainWindow::refreshConsole()
 {
 	QString content;
-	for(size_t i=0; i<5 && i<logs->size(); ++i)
+	for(size_t i=ttd::max((size_t)0,logs->size()-20); i<logs->size(); ++i)
 	{
 		content = content + (*logs)[i] + "\n";
 	}
 	ui->console->setText( content );
+	QScrollBar *scrollbar = ui->console->verticalScrollBar();
+	if (scrollbar)
+		scrollbar->setSliderPosition(scrollbar->maximum());
 }

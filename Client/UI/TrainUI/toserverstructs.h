@@ -3,6 +3,7 @@
 
 #include <QDate>
 #include <QString>
+#include <QDataStream>
 
 namespace frontask {
 enum {
@@ -11,6 +12,7 @@ enum {
     trainsearch,             // send trainSearch
     login,                   // send loginAccount
     aulogin,                 // send auLoginAccount
+	logout,
     reg,                     // send regist
     changeusrname,           // send changeUsrName
     changepwd,               // send changePwd
@@ -109,5 +111,11 @@ struct targetTicket {
                  const QString _unload = "");
 };
 }
+
+QDataStream &operator << (QDataStream &out, const frontask::loginAccount &data);
+QDataStream &operator >> (QDataStream &in, frontask::loginAccount &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::regist &data);
+QDataStream &operator >> (QDataStream &in, frontask::regist &data);
 
 #endif  // TOSERVERSTRUCTS_H

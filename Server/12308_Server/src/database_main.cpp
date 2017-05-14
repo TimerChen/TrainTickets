@@ -48,6 +48,10 @@ void DataBase_Main::saveData()
 	dLog->saveData();
 }
 
+void DataBase_Main::addLog( const QString &content)
+{
+	dLog->any( content );
+}
 
 int DataBase_Main::regist( QString name, QString pwd )
 {
@@ -71,5 +75,5 @@ bool DataBase_Main::logout( int UserId )
 void DataBase_Main::newConnection( const QString &Ip )
 { dLog->newConnection(Ip); }
 
-void DataBase_Main::disconnect(const QString &Ip)
-{ dLog->disconnect(Ip); }
+void DataBase_Main::disconnect(const int &Userid)
+{ dLog->disconnect(Userid); }
