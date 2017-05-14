@@ -85,12 +85,26 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="deleteSeatTypeBtn">
+         <property name="text">
+          <string>删除选中行</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QTableView" name="stationsTableView"/>
        </item>
        <item>
         <widget class="QPushButton" name="addStationBtn">
          <property name="text">
           <string>添加经停站</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="deleteStationBtn">
+         <property name="text">
+          <string>删除选中行</string>
          </property>
         </widget>
        </item>

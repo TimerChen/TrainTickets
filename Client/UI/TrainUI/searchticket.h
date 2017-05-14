@@ -3,6 +3,7 @@
 
 #include <QDate>
 #include <QDialog>
+#include <QRegExpValidator>
 #include <QStandardItemModel>
 #include "mainwindow.h"
 
@@ -32,6 +33,7 @@ class SearchTicket : public QDialog {
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
     ttd::shared_ptr<QStandardItemModel> model;
     QString ask1, ask2;
+    ttd::shared_ptr<QRegExpValidator> pReg;
 };
 
 #endif  // SEARCHTICKET_H

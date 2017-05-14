@@ -23,13 +23,12 @@ Myinform::Myinform(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
     ui->confirmNewPwdLindeEdit->setEchoMode(QLineEdit::Password);
 
     QRegExp rx("^[a-zA-Z0-9]+");
-    QRegExpValidator *pReg =
-        new QRegExpValidator(rx, this); /// change to smart point
-    ui->oldpwdLineEdit->setValidator(pReg);
+    pReg = new QRegExpValidator(rx, this);
+    ui->oldpwdLineEdit->setValidator(pReg.getadress());
     ui->oldpwdLineEdit->setMaxLength(12);
-    ui->newpwdLineEdit->setValidator(pReg);
+    ui->newpwdLineEdit->setValidator(pReg.getadress());
     ui->newpwdLineEdit->setMaxLength(12);
-    ui->confirmNewPwdLindeEdit->setValidator(pReg);
+    ui->confirmNewPwdLindeEdit->setValidator(pReg.getadress());
     ui->confirmNewPwdLindeEdit->setMaxLength(12);
 
 

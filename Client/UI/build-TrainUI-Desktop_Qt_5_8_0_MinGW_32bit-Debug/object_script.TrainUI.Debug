@@ -14,6 +14,7 @@ INPUT(
 ./debug\uistructs.o
 ./debug\modifyplanofatrain.o
 ./debug\addplan.o
+./debug\addseattype.o
 ./debug\qrc_pic.o
 ./debug\moc_mainwindow.o
 ./debug\moc_login.o
@@ -27,4 +28,5 @@ INPUT(
 ./debug\moc_adminwindow.o
 ./debug\moc_modifyplanofatrain.o
 ./debug\moc_addplan.o
+./debug\moc_addseattype.o
 );

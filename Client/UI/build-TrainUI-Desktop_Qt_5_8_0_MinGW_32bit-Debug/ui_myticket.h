@@ -39,7 +39,7 @@ public:
     {
         if (Myticket->objectName().isEmpty())
             Myticket->setObjectName(QStringLiteral("Myticket"));
-        Myticket->resize(1031, 564);
+        Myticket->resize(1600, 900);
         QIcon icon;
         icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Myticket->setWindowIcon(icon);

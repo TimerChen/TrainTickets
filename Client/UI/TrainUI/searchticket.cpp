@@ -33,9 +33,8 @@ SearchTicket::SearchTicket(QDate _date,
         ui->buyTicketBtn->setText(tr("修改计划"));
     }
     QRegExp rx("^[0-9]+$");
-    QRegExpValidator *pReg =
-        new QRegExpValidator(rx, this);  /// change to smart point
-    ui->ticketNumLineEdit->setValidator(pReg);
+    pReg = new QRegExpValidator(rx, this);  /// change to smart point
+    ui->ticketNumLineEdit->setValidator(pReg.getadress());
 
     model = new QStandardItemModel();
     model->setColumnCount(9);
@@ -52,14 +51,14 @@ SearchTicket::SearchTicket(QDate _date,
     ui->ticketsTableView->setModel(model.getadress());
 
     ui->ticketsTableView->horizontalHeader()->setStretchLastSection(true);
-    ui->ticketsTableView->setColumnWidth(0, 250);
-    ui->ticketsTableView->setColumnWidth(1, 250);
-    ui->ticketsTableView->setColumnWidth(2, 250);
-    ui->ticketsTableView->setColumnWidth(3, 300);
-    ui->ticketsTableView->setColumnWidth(4, 300);
-    ui->ticketsTableView->setColumnWidth(5, 200);
-    ui->ticketsTableView->setColumnWidth(6, 200);
-    ui->ticketsTableView->setColumnWidth(7, 200);
+    ui->ticketsTableView->setColumnWidth(0, 200);
+    ui->ticketsTableView->setColumnWidth(1, 200);
+    ui->ticketsTableView->setColumnWidth(2, 200);
+    ui->ticketsTableView->setColumnWidth(3, 200);
+    ui->ticketsTableView->setColumnWidth(4, 200);
+    ui->ticketsTableView->setColumnWidth(5, 150);
+    ui->ticketsTableView->setColumnWidth(6, 100);
+    ui->ticketsTableView->setColumnWidth(7, 100);
     ui->ticketsTableView->setColumnWidth(8, 150);
     //ui->ticketsTableView->setColumnWidth(9, 100);
     ui->ticketsTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
@@ -170,11 +169,11 @@ SearchTicket::SearchTicket(QDate _date,
                     model->setItem(
                         i + deltaForSeat, 3,
                         new QStandardItem(
-                            qtrains[i].loadStationLeaveTime.toString("yyyy-MM-dd hh:mm:ss")));
+                            qtrains[i].loadStationLeaveTime.toString("hh:mm:ss")));
                     model->setItem(
                         i + deltaForSeat, 4,
                         new QStandardItem(
-                            qtrains[i].unLoadStationReachTime.toString("yyyy-MM-dd hh:mm:ss")));
+                            qtrains[i].unLoadStationReachTime.toString("hh:mm:ss")));
 
 
                     model->setItem(i + deltaForSeat, 5,
@@ -256,6 +255,7 @@ SearchTicket::SearchTicket(QDate _date,
              ui->calLabel->setText("始发日期： " + date.toString());
             model->setHeaderData(6, Qt::Horizontal, tr("发出第 天"));
             model->setHeaderData(7, Qt::Horizontal, tr("里程"));
+            model->setHeaderData(1,Qt::Horizontal,tr("始发站"));
             model->setHeaderData(8,Qt::Horizontal,tr(""));
             int deltaForSeat = 0;
             for (size_t t = 0; t < vtrainroute.size();++t) {
