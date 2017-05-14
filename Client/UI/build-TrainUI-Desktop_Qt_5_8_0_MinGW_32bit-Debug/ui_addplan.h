@@ -43,10 +43,8 @@ public:
     QVBoxLayout *verticalLayout;
     QTableView *seatTypeTableView;
     QPushButton *addSeatTypeBtn;
-    QPushButton *deleteSeatTypeBtn;
     QTableView *stationsTableView;
     QPushButton *addStationBtn;
-    QPushButton *deleteStationBtn;
     QPushButton *setEndStationPriceBtn;
     QPushButton *completeBtn;
 
@@ -129,11 +127,6 @@ public:
 
         verticalLayout->addWidget(addSeatTypeBtn);
 
-        deleteSeatTypeBtn = new QPushButton(addPlan);
-        deleteSeatTypeBtn->setObjectName(QStringLiteral("deleteSeatTypeBtn"));
-
-        verticalLayout->addWidget(deleteSeatTypeBtn);
-
         stationsTableView = new QTableView(addPlan);
         stationsTableView->setObjectName(QStringLiteral("stationsTableView"));
 
@@ -143,11 +136,6 @@ public:
         addStationBtn->setObjectName(QStringLiteral("addStationBtn"));
 
         verticalLayout->addWidget(addStationBtn);
-
-        deleteStationBtn = new QPushButton(addPlan);
-        deleteStationBtn->setObjectName(QStringLiteral("deleteStationBtn"));
-
-        verticalLayout->addWidget(deleteStationBtn);
 
         setEndStationPriceBtn = new QPushButton(addPlan);
         setEndStationPriceBtn->setObjectName(QStringLiteral("setEndStationPriceBtn"));
@@ -179,9 +167,7 @@ public:
         label_3->setText(QApplication::translate("addPlan", "\347\273\210\347\202\271\347\253\231\357\274\232", Q_NULLPTR));
         label_5->setText(QApplication::translate("addPlan", "\344\275\231\347\245\250\345\274\240\346\225\260\357\274\232", Q_NULLPTR));
         addSeatTypeBtn->setText(QApplication::translate("addPlan", "\346\267\273\345\212\240\345\272\247\344\275\215\347\261\273\345\236\213", Q_NULLPTR));
-        deleteSeatTypeBtn->setText(QApplication::translate("addPlan", "\345\210\240\351\231\244\351\200\211\344\270\255\350\241\214", Q_NULLPTR));
         addStationBtn->setText(QApplication::translate("addPlan", "\346\267\273\345\212\240\347\273\217\345\201\234\347\253\231", Q_NULLPTR));
-        deleteStationBtn->setText(QApplication::translate("addPlan", "\345\210\240\351\231\244\351\200\211\344\270\255\350\241\214", Q_NULLPTR));
         setEndStationPriceBtn->setText(QApplication::translate("addPlan", "\350\256\276\347\275\256\347\273\210\347\202\271\347\253\231\347\245\250\344\273\267", Q_NULLPTR));
         completeBtn->setText(QApplication::translate("addPlan", "\346\267\273\345\212\240\350\256\241\345\210\222", Q_NULLPTR));
     } // retranslateUi

@@ -4,6 +4,8 @@
 #include <QTableView>
 #include "toserverstructs.h"
 #include <QMessageBox>
+#include "include/vector.hpp"
+#include "include/DataBase_Train.h"
 
 Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
     : QDialog(parent), ui(new Ui::Myticket), nowaccount(_now) {
@@ -46,26 +48,90 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
 
 
     ///测试用
-    model->setItem(0, 0, new QStandardItem(tr("233")));
-    model->setItem(0, 1, new QStandardItem(tr("闵行")));
-    model->setItem(0, 2, new QStandardItem(tr("升天")));
-    model->setItem(0, 3, new QStandardItem(tr("周日 1月1 2017")));
-    model->setItem(0, 4, new QStandardItem(tr("24：01")));
-    model->setItem(0, 5, new QStandardItem(tr("24：02")));
-    model->setItem(0, 6, new QStandardItem(tr("双脚")));
-    model->setItem(0, 7, new QStandardItem(tr("6")));
+//    model->setItem(0, 0, new QStandardItem(tr("233")));
+//    model->setItem(0, 1, new QStandardItem(tr("闵行")));
+//    model->setItem(0, 2, new QStandardItem(tr("升天")));
+//    model->setItem(0, 3, new QStandardItem(tr("周日 1月1 2017")));
+//    model->setItem(0, 4, new QStandardItem(tr("24：01")));
+//    model->setItem(0, 5, new QStandardItem(tr("24：02")));
+//    model->setItem(0, 6, new QStandardItem(tr("双脚")));
+//    model->setItem(0, 7, new QStandardItem(tr("6")));
 
-    model->setItem(1, 0, new QStandardItem(tr("33")));
-    model->setItem(1, 1, new QStandardItem(tr("升天")));
-    model->setItem(1, 2, new QStandardItem(tr("闵行")));
-    model->setItem(1, 3, new QStandardItem(tr("周日 1月1 2017")));
-    model->setItem(1, 4, new QStandardItem(tr("24：01")));
-    model->setItem(1, 5, new QStandardItem(tr("24：02")));
-    model->setItem(1, 6, new QStandardItem(tr("双脚")));
-    model->setItem(1, 7, new QStandardItem(tr("7")));
+//    model->setItem(1, 0, new QStandardItem(tr("33")));
+//    model->setItem(1, 1, new QStandardItem(tr("升天")));
+//    model->setItem(1, 2, new QStandardItem(tr("闵行")));
+//    model->setItem(1, 3, new QStandardItem(tr("周日 1月1 2017")));
+//    model->setItem(1, 4, new QStandardItem(tr("24：01")));
+//    model->setItem(1, 5, new QStandardItem(tr("24：02")));
+//    model->setItem(1, 6, new QStandardItem(tr("双脚")));
+//    model->setItem(1, 7, new QStandardItem(tr("7")));
+
+    // test
+    DataBase_Train::QTrain qtrain;
+    DataBase_Train::QTrain qtrain1;
+    qtrain.ableToBuy = true;
+    qtrain.trainID = "2502B";
+    qtrain.seatTypeNumber = 1;
+    qtrain.loadStation = "交大";
+    qtrain.unLoadStation="华师大";
+
+    qtrain1.ableToBuy = true;
+    qtrain1.trainID = "25002B";
+    qtrain1.seatTypeNumber = 1;
+    qtrain1.loadStation = "华师大";
+    qtrain1.unLoadStation="交大";
+
+    qtrain.price.push_back(100);
+    qtrain1.price.push_back(200);
+    qtrain.seatType.push_back("单腿");
+    qtrain1.seatType.push_back("三腿");
+
+    qtrain.seatNumber.push_back(10);
+    qtrain1.seatNumber.push_back(1);
+    qtrain.loadStationLeaveTime = QDateTime::fromString("2017-04-01 12:07:50", "yyyy-MM-dd hh:mm:ss");
+    qtrain.unLoadStationReachTime = QDateTime::fromString("2017-04-01 13:07:50", "yyyy-MM-dd hh:mm:ss");
+    qtrain1.loadStationLeaveTime = QDateTime::fromString("2017-04-12 12:07:50", "yyyy-MM-dd hh:mm:ss");
+    qtrain1.unLoadStationReachTime = QDateTime::fromString("2017-04-13 13:07:50", "yyyy-MM-dd hh:mm:ss");
+
+
 
     ///发送frontask::getmytickets
     ///发送nowaccount->usrID
+    ///获得QTrain的vector或者其他的结构
+    ttd::vector<DataBase_Train::QTrain> qtrains;
+    qtrains.push_back(qtrain);
+
+    int deltaForSeat = 0;
+    for (size_t i = 0; i < qtrains.size(); ++i) {
+        for (int j = 0; j < qtrains[i].seatTypeNumber; ++j) {
+            model->setItem(i + deltaForSeat, 0,
+                           new QStandardItem(qtrains[i].trainID));
+            model->setItem(i + deltaForSeat, 1,
+                           new QStandardItem(qtrains[i].loadStation));
+            model->setItem(i + deltaForSeat, 2,
+                           new QStandardItem(qtrains[i].unLoadStation));
+            model->setItem(
+                i + deltaForSeat, 3,
+                new QStandardItem(
+                    qtrains[i].loadStationLeaveTime.toString("yyyy-mm-dd hh:mm:ss")));
+            model->setItem(
+                i + deltaForSeat, 4,
+                new QStandardItem(
+                    qtrains[i].unLoadStationReachTime.toString("yyyy-mm-dd hh:mm:ss")));
+
+
+            model->setItem(i + deltaForSeat, 5,
+                           new QStandardItem(qtrains[i].seatType[j]));
+            model->setItem(i + deltaForSeat, 6,
+                           new QStandardItem(QString::number(
+                               qtrains[i].price[j], 10)));
+            model->setItem(i + deltaForSeat, 7,
+                           new QStandardItem(QString::number(
+                               qtrains[i].seatNumber[j], 10)));
+            ++deltaForSeat;
+        }
+    }
+
 }
 
 Myticket::~Myticket() { delete ui; }

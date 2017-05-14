@@ -1,3 +1,4 @@
+///此文件目前没有用了，如果需要完善功能可以把addplansimple改成这个文件
 #ifndef ADDPLAN_H
 #define ADDPLAN_H
 

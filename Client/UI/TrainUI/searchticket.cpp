@@ -91,7 +91,7 @@ SearchTicket::SearchTicket(QDate _date,
     qtrain.seatNumber.push_back(1);
     qtrain.loadStationLeaveTime = QDateTime::fromString("2017-04-01 12:07:50", "yyyy-MM-dd hh:mm:ss");
     qtrain.unLoadStationReachTime = QDateTime::fromString("2017-04-01 13:07:50", "yyyy-MM-dd hh:mm:ss");
-
+    //test
     DataBase_Train::TrainRoute ttrainrout;
     ttrainrout.trainID = "360SB";
     ttrainrout.seatTypeNumber = 3;
@@ -111,6 +111,14 @@ SearchTicket::SearchTicket(QDate _date,
     ttrainrout.seatType.push_back("k");
     ttrainrout.seatType.push_back("y");
     ttrainrout.seatType.push_back("o");
+    ttd::vector<int> v1(3),v2(3),v3(3);
+    v1[0] = 22,v1[1] = 33, v1[2] = 44;
+    v2[0] = 122,v2[1] = 133, v2[2] = 144;
+    v3[0] = 222,v3[1] = 233, v3[2] = 244;
+    ttrainrout.priceTable.push_back(v1);
+    ttrainrout.priceTable.push_back(v2);
+    ttrainrout.priceTable.push_back(v3);
+
 
 
 
@@ -187,7 +195,7 @@ SearchTicket::SearchTicket(QDate _date,
             model->setHeaderData(8,Qt::Horizontal,tr(""));
             int deltaForSeat = 0;
             for (int i = 0; i < trainroute.stationNumber; ++i) {
-                if (i==0)model->setItem(i + deltaForSeat, 0,
+                model->setItem(i + deltaForSeat, 0,
                                new QStandardItem(trainroute.trainID));
                 if(i == 0) model->setItem(i+deltaForSeat, 1,
                                new QStandardItem(trainroute.stationName[i]));
@@ -209,7 +217,8 @@ SearchTicket::SearchTicket(QDate _date,
                         QString::number(trainroute.mileAge[i],10)));
                 if (i == 0) {
                     for (int j = 0; j < trainroute.seatTypeNumber; ++j) {
-
+                        model->setItem(i + deltaForSeat, 0,
+                                       new QStandardItem(trainroute.trainID));
                         model->setItem(i + deltaForSeat, 5,
                                        new QStandardItem(trainroute.seatType[j]));
                         ++deltaForSeat;
@@ -282,14 +291,14 @@ void SearchTicket::on_buyTicketBtn_clicked() {
     QAbstractItemModel *modessl = ui->ticketsTableView->model();
 
     int buyNum = ui->ticketNumLineEdit->text().toInt();
-    QString trainID = modessl->data(modessl->index(curRow, 1)).toString();
+    QString trainID = modessl->data(modessl->index(curRow, 0)).toString();
     QString usrID = nowaccount->userID;
-    QString seatType = modessl->data(modessl->index(curRow, 6)).toString();
-    QString load = modessl->data(modessl->index(curRow, 2)).toString();
-    QString unload = modessl->data(modessl->index(curRow, 3)).toString();
+    QString seatType = modessl->data(modessl->index(curRow, 5)).toString();
+    QString load = modessl->data(modessl->index(curRow, 1)).toString();
+    QString unload = modessl->data(modessl->index(curRow, 2)).toString();
 
-    int remaintickets = modessl->data(modessl->index(curRow, 8)).toInt();
-    QString abletobuy = modessl->data(modessl->index(curRow, 9)).toString();
+    int remaintickets = modessl->data(modessl->index(curRow, 7)).toInt();
+    QString abletobuy = modessl->data(modessl->index(curRow, 8)).toString();
 
     frontask::targetTicket targetticket(date, buyNum, usrID, trainID, seatType,
                                         load, unload);
@@ -311,11 +320,11 @@ void SearchTicket::on_buyTicketBtn_clicked() {
             trainInform += "\n发站： " + targetticket.loadStation +
                            "\n到站： " + targetticket.unLoadStation +
                            "\n发车时间：" +
-                           modessl->data(modessl->index(curRow, 4)).toString() +
+                           modessl->data(modessl->index(curRow, 3)).toString() +
                            "\n到站时间： " +
-                           modessl->data(modessl->index(curRow, 5)).toString() +
+                           modessl->data(modessl->index(curRow, 4)).toString() +
                            "\n座位类型：" + targetticket.seatType + "\n票价：" +
-                           modessl->data(modessl->index(curRow, 7)).toString() +
+                           modessl->data(modessl->index(curRow, 6)).toString() +
                            "\n总张数：" + ui->ticketNumLineEdit->text();
             QMessageBox::StandardButton qmb = QMessageBox::question(
                 this, "确认购票", "您是否要购买以下车票：\n" + trainInform,

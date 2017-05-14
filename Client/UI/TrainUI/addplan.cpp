@@ -1,3 +1,4 @@
+///此文件目前没有用了，如果需要完善功能可以把addplansimple改成这个文件
 #include "addplan.h"
 #include "ui_addplan.h"
 
