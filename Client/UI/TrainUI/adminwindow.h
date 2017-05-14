@@ -22,6 +22,10 @@ private slots:
 
     void on_trainSearchBtn_clicked();
 
+    void on_myinformBtn_clicked();
+
+    void on_searchAccountBtn_clicked();
+
 private:
     Ui::AdminWindow *ui;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;

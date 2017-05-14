@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include <QMessageBox>
 #include "adminwindow.h"
 #include "login.h"
 #include "myinform.h"
@@ -8,18 +9,18 @@
 #include "stationtostationsearch.h"
 #include "trainsearch.h"
 #include "ui_mainwindow.h"
-#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
-    : QMainWindow(parent), ui(new Ui::MainWindow),
-      nowaccount(new uistructs::nowAccount)
-{
+    : QMainWindow(parent),
+      ui(new Ui::MainWindow),
+      nowaccount(new uistructs::nowAccount) {
     ui->setupUi(this);
     ui->myticketBtn->setEnabled(false);
     ui->myinformBtn->setEnabled(false);
     ui->logoutBtn->setEnabled(false);
     ui->nameLabel->hide();
     ui->welcomeLabel->hide();
+
 }
 
 MainWindow::~MainWindow() { delete ui; }
@@ -35,12 +36,12 @@ void MainWindow::on_loginBtn_clicked() {
         ui->myticketBtn->setEnabled(true);
         ui->welcomeLabel->show();
         ui->nameLabel->show();
-        ui->nameLabel->setText(nowaccount->name+"!!");
+        ui->nameLabel->setText(nowaccount->name + "!!");
         if (userType == Ui::admin) {
             AdminWindow adw(nowaccount, this);
             this->hide();
-            adw.exec();
-            this->show();
+            if(adw.exec() == QDialog::Accepted) this->show();
+            else qApp->quit();
             this->on_logoutBtn_clicked();
         }
     }
@@ -61,7 +62,7 @@ void MainWindow::on_logoutBtn_clicked() {
     nowaccount->userType = Ui::annonymous;
     nowaccount->name = "";
     nowaccount->userID = "";
-    //nowaccount->IDcard = "";
+    // nowaccount->IDcard = "";
     ui->nameLabel->hide();
     ui->welcomeLabel->hide();
 }

@@ -15,6 +15,8 @@ INPUT(
 ./debug\modifyplanofatrain.o
 ./debug\addplan.o
 ./debug\addplansimple.o
+./debug\searchusr.o
+./debug\editsearchusr.o
 ./debug\qrc_pic.o
 ./debug\moc_mainwindow.o
 ./debug\moc_login.o
@@ -29,4 +31,6 @@ INPUT(
 ./debug\moc_modifyplanofatrain.o
 ./debug\moc_addplan.o
 ./debug\moc_addplansimple.o
+./debug\moc_searchusr.o
+./debug\moc_editsearchusr.o
 );

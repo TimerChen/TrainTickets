@@ -21,7 +21,9 @@ void modifyPlanOfATrain::on_deleteTrainBtn_clicked()
     QMessageBox::question(this,"确认删除",trainInform,
     QMessageBox::Yes|QMessageBox::No);
     if (qmb == QMessageBox::Yes){
-      if (true){///向服务器发送删除车次
+      if (true){
+          ///发送frontask::deletetrain
+          ///向服务器发送pair(targetticket.trainID, adminID)
           QMessageBox::information(this,"成功","删除车次成功",QMessageBox::Yes);
       }
       else
@@ -36,7 +38,9 @@ void modifyPlanOfATrain::on_stopSellBtn_clicked()
     QMessageBox::question(this,tr("确认停止售票"),trainInform,
     QMessageBox::Yes|QMessageBox::No);
     if (qmb == QMessageBox::Yes){
-      if (true){///向服务器发送删除车次
+      if (true){
+          ///发送frontask::stopsellticket
+          ///向服务器发送pair(targetticket.trainID,aminID)
           QMessageBox::information(this,"成功","停售成功",QMessageBox::Yes);
       }
       else
@@ -51,7 +55,9 @@ void modifyPlanOfATrain::on_startsellBtn_clicked()
     QMessageBox::question(this,tr("确认开始售票"),trainInform,
     QMessageBox::Yes|QMessageBox::No);
     if (qmb == QMessageBox::Yes){
-      if (true){///向服务器发送发售车次
+      if (true){
+          ///发送startselltrain
+          ///向服务器发送pair(targetticket,adminID)
           QMessageBox::information(this,"成功","发售成功",QMessageBox::Yes);
       }
       else

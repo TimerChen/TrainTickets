@@ -30,8 +30,9 @@ Login::~Login() { delete ui; }
 void Login::on_loginBtn_clicked() {
     frontask::loginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
     if (ui->usrLineEdit->text() == "mw" &&
-        ui->pwdLineEdit->text() == "123456") { /// send ac to server to login
-
+        ui->pwdLineEdit->text() == "123456") {
+        ///发送login
+        /// 发送ac
         // to the server to check normal account, change the thing in if()
         // get the account detail from the server
 
@@ -53,7 +54,9 @@ void Login::on_loginBtn_clicked() {
 void Login::on_auloginBtn_clicked() {
     frontask::auLoginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
     if (ui->usrLineEdit->text() == "mw" &&
-        ui->pwdLineEdit->text() == "123456") { /// send ac to server
+        ui->pwdLineEdit->text() == "123456") {
+        ///发送aulogin
+        /// 发送ac
         // to the server to check admin account, change the thing in if()
         // get the account detail from the server
 

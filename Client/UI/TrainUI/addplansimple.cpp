@@ -22,8 +22,7 @@ void addplansimple::on_addPlanBtn_clicked()
         QMessageBox::warning(this,"内容不得为空", "对不起，编辑内容不得为空",QMessageBox::Cancel);
     }
     ///发送frontask::addplan
-    ///发送newPlan给服务器
-    ///如果需要用户信息可以在nowaccount.usrID中获得ID号
+  ///发送pair(newPlan, nowaccount->userID
     else{
         if(true){///服务器返回是否成功
             QMessageBox::information(this, "添加计划成功","恭喜，您已成功添加一个运行计划",QMessageBox::Yes);
