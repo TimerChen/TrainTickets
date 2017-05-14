@@ -790,6 +790,9 @@ moc_servermainwindow.cpp: ../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMain
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
 		../12308_Server/include/algorithm0.hpp \
 		../12308_Server/include/smartpoint.hpp \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/exceptions.hpp \
+		../12308_Server/include/utility.hpp \
 		../12308_Server/servermainwindow.h \
 		moc_predefs.h \
 		../../../../Qt5.8.0/5.8/gcc_64/bin/moc
@@ -1166,11 +1169,11 @@ main.o: ../12308_Server/main.cpp ../12308_Server/servermainwindow.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
 		../12308_Server/include/algorithm0.hpp \
 		../12308_Server/include/smartpoint.hpp \
-		../12308_Server/include/database.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
 		../12308_Server/include/vector.hpp \
 		../12308_Server/include/exceptions.hpp \
 		../12308_Server/include/utility.hpp \
+		../12308_Server/include/database.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
 		../12308_Server/include/map.hpp \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QApplication \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qapplication.h \
@@ -1419,13 +1422,13 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtNetwork/qsslkey.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtNetwork/qudpsocket.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtNetwork/qtnetworkversion.h \
-		../12308_Server/servermainwindow.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMainWindow \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmainwindow.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMessageBox \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtguiglobal.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtgui-config.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qdialog.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qwidget.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qwindowdefs.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qwindowdefs_win.h \
@@ -1452,11 +1455,17 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qevent.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
+		../12308_Server/servermainwindow.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMainWindow \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabwidget.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qicon.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
 		../12308_Server/include/algorithm0.hpp \
 		../12308_Server/include/smartpoint.hpp \
+		../12308_Server/include/vector.hpp \
+		../12308_Server/include/exceptions.hpp \
+		../12308_Server/include/utility.hpp \
 		ui_servermainwindow.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QAction \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qaction.h \
@@ -1508,10 +1517,7 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../12308_Server/include/database_main.h \
 		../12308_Server/include/DataBase_Train.h \
 		../12308_Server/include/map.hpp \
-		../12308_Server/include/utility.hpp \
-		../12308_Server/include/exceptions.hpp \
 		../12308_Server/include/database.h \
-		../12308_Server/include/vector.hpp \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDateTime \
 		../12308_Server/include/DataBase_Account.h \
 		../12308_Server/include/DataBase_User.h \
@@ -2149,7 +2155,10 @@ DataBase_Log.o: ../12308_Server/src/DataBase_Log.cpp ../12308_Server/include/Dat
 		../12308_Server/include/smartpoint.hpp \
 		../12308_Server/include/map.hpp \
 		../12308_Server/include/algorithm0.hpp \
-		../12308_Server/include/DataBase_Account.h
+		../12308_Server/include/DataBase_Account.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qfiledevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DataBase_Log.o ../12308_Server/src/DataBase_Log.cpp
 
 DataBase_Train.o: ../12308_Server/src/DataBase_Train.cpp ../12308_Server/include/DataBase_Train.h \

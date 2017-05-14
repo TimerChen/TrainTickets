@@ -45,31 +45,31 @@ public:
     {
         if (ServerMainWindow->objectName().isEmpty())
             ServerMainWindow->setObjectName(QStringLiteral("ServerMainWindow"));
-        ServerMainWindow->resize(400, 300);
+        ServerMainWindow->resize(822, 493);
         actionAbout = new QAction(ServerMainWindow);
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
         centralWidget = new QWidget(ServerMainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         restartPushButton = new QPushButton(centralWidget);
         restartPushButton->setObjectName(QStringLiteral("restartPushButton"));
-        restartPushButton->setGeometry(QRect(280, 50, 85, 28));
+        restartPushButton->setGeometry(QRect(660, 20, 85, 28));
         console = new QTextEdit(centralWidget);
         console->setObjectName(QStringLiteral("console"));
-        console->setGeometry(QRect(30, 40, 221, 101));
+        console->setGeometry(QRect(20, 20, 621, 361));
         console->setReadOnly(true);
         stopPushButton = new QPushButton(centralWidget);
         stopPushButton->setObjectName(QStringLiteral("stopPushButton"));
-        stopPushButton->setGeometry(QRect(280, 90, 85, 28));
+        stopPushButton->setGeometry(QRect(660, 60, 85, 28));
         lineEdit = new QLineEdit(centralWidget);
         lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(30, 180, 221, 31));
+        lineEdit->setGeometry(QRect(20, 390, 621, 31));
         pushButton = new QPushButton(centralWidget);
         pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(270, 180, 121, 31));
+        pushButton->setGeometry(QRect(660, 390, 121, 31));
         ServerMainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ServerMainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 400, 28));
+        menuBar->setGeometry(QRect(0, 0, 822, 28));
         menuSetting = new QMenu(menuBar);
         menuSetting->setObjectName(QStringLiteral("menuSetting"));
         ServerMainWindow->setMenuBar(menuBar);
