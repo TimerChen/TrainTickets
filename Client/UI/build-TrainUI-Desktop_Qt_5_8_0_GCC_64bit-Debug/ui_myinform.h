@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QGridLayout>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
@@ -28,89 +29,130 @@ QT_BEGIN_NAMESPACE
 class Ui_Myinform
 {
 public:
-    QWidget *widget;
-    QVBoxLayout *verticalLayout;
-    QHBoxLayout *horizontalLayout;
-    QLabel *label;
-    QLineEdit *nameLineEdit;
-    QHBoxLayout *horizontalLayout_2;
-    QLabel *label_2;
-    QLineEdit *ageLineEdit;
-    QHBoxLayout *horizontalLayout_3;
-    QLabel *label_3;
-    QLineEdit *idnoLineEdit;
+    QVBoxLayout *verticalLayout_3;
     QSplitter *splitter;
-    QPushButton *pushButton;
+    QLabel *IDlabel;
+    QWidget *layoutWidget;
+    QHBoxLayout *horizontalLayout;
+    QVBoxLayout *verticalLayout;
+    QGridLayout *gridLayout_2;
+    QLineEdit *nameLineEdit;
+    QLabel *label;
+    QPushButton *changenameBtn;
+    QVBoxLayout *verticalLayout_2;
+    QGridLayout *gridLayout;
+    QLabel *label_5;
+    QLineEdit *oldpwdLineEdit;
+    QLabel *label_6;
+    QLineEdit *confirmNewPwdLindeEdit;
+    QLineEdit *newpwdLineEdit;
+    QLabel *label_4;
     QPushButton *changepwdButton;
+    QPushButton *exitBtn;
 
     void setupUi(QDialog *Myinform)
     {
         if (Myinform->objectName().isEmpty())
             Myinform->setObjectName(QStringLiteral("Myinform"));
-        Myinform->resize(712, 686);
-        widget = new QWidget(Myinform);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(50, 40, 621, 164));
-        verticalLayout = new QVBoxLayout(widget);
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        verticalLayout->setContentsMargins(0, 0, 0, 0);
-        horizontalLayout = new QHBoxLayout();
-        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
-        label = new QLabel(widget);
-        label->setObjectName(QStringLiteral("label"));
-
-        horizontalLayout->addWidget(label);
-
-        nameLineEdit = new QLineEdit(widget);
-        nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
-
-        horizontalLayout->addWidget(nameLineEdit);
-
-
-        verticalLayout->addLayout(horizontalLayout);
-
-        horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
-        label_2 = new QLabel(widget);
-        label_2->setObjectName(QStringLiteral("label_2"));
-
-        horizontalLayout_2->addWidget(label_2);
-
-        ageLineEdit = new QLineEdit(widget);
-        ageLineEdit->setObjectName(QStringLiteral("ageLineEdit"));
-
-        horizontalLayout_2->addWidget(ageLineEdit);
-
-
-        verticalLayout->addLayout(horizontalLayout_2);
-
-        horizontalLayout_3 = new QHBoxLayout();
-        horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        label_3 = new QLabel(widget);
-        label_3->setObjectName(QStringLiteral("label_3"));
-
-        horizontalLayout_3->addWidget(label_3);
-
-        idnoLineEdit = new QLineEdit(widget);
-        idnoLineEdit->setObjectName(QStringLiteral("idnoLineEdit"));
-
-        horizontalLayout_3->addWidget(idnoLineEdit);
-
-
-        verticalLayout->addLayout(horizontalLayout_3);
-
+        Myinform->resize(595, 380);
+        QIcon icon;
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        Myinform->setWindowIcon(icon);
+        verticalLayout_3 = new QVBoxLayout(Myinform);
+        verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         splitter = new QSplitter(Myinform);
         splitter->setObjectName(QStringLiteral("splitter"));
-        splitter->setGeometry(QRect(50, 360, 581, 58));
-        splitter->setOrientation(Qt::Horizontal);
-        pushButton = new QPushButton(splitter);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        splitter->addWidget(pushButton);
-        changepwdButton = new QPushButton(splitter);
+        splitter->setOrientation(Qt::Vertical);
+        IDlabel = new QLabel(splitter);
+        IDlabel->setObjectName(QStringLiteral("IDlabel"));
+        splitter->addWidget(IDlabel);
+        layoutWidget = new QWidget(splitter);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        horizontalLayout = new QHBoxLayout(layoutWidget);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        gridLayout_2 = new QGridLayout();
+        gridLayout_2->setObjectName(QStringLiteral("gridLayout_2"));
+        nameLineEdit = new QLineEdit(layoutWidget);
+        nameLineEdit->setObjectName(QStringLiteral("nameLineEdit"));
+
+        gridLayout_2->addWidget(nameLineEdit, 0, 1, 1, 1);
+
+        label = new QLabel(layoutWidget);
+        label->setObjectName(QStringLiteral("label"));
+
+        gridLayout_2->addWidget(label, 0, 0, 1, 1);
+
+
+        verticalLayout->addLayout(gridLayout_2);
+
+        changenameBtn = new QPushButton(layoutWidget);
+        changenameBtn->setObjectName(QStringLiteral("changenameBtn"));
+
+        verticalLayout->addWidget(changenameBtn);
+
+
+        horizontalLayout->addLayout(verticalLayout);
+
+        verticalLayout_2 = new QVBoxLayout();
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        gridLayout = new QGridLayout();
+        gridLayout->setObjectName(QStringLiteral("gridLayout"));
+        label_5 = new QLabel(layoutWidget);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        gridLayout->addWidget(label_5, 1, 0, 1, 1);
+
+        oldpwdLineEdit = new QLineEdit(layoutWidget);
+        oldpwdLineEdit->setObjectName(QStringLiteral("oldpwdLineEdit"));
+
+        gridLayout->addWidget(oldpwdLineEdit, 0, 1, 1, 1);
+
+        label_6 = new QLabel(layoutWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout->addWidget(label_6, 2, 0, 1, 1);
+
+        confirmNewPwdLindeEdit = new QLineEdit(layoutWidget);
+        confirmNewPwdLindeEdit->setObjectName(QStringLiteral("confirmNewPwdLindeEdit"));
+
+        gridLayout->addWidget(confirmNewPwdLindeEdit, 2, 1, 1, 1);
+
+        newpwdLineEdit = new QLineEdit(layoutWidget);
+        newpwdLineEdit->setObjectName(QStringLiteral("newpwdLineEdit"));
+
+        gridLayout->addWidget(newpwdLineEdit, 1, 1, 1, 1);
+
+        label_4 = new QLabel(layoutWidget);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        gridLayout->addWidget(label_4, 0, 0, 1, 1);
+
+
+        verticalLayout_2->addLayout(gridLayout);
+
+        changepwdButton = new QPushButton(layoutWidget);
         changepwdButton->setObjectName(QStringLiteral("changepwdButton"));
-        splitter->addWidget(changepwdButton);
+
+        verticalLayout_2->addWidget(changepwdButton);
+
+
+        horizontalLayout->addLayout(verticalLayout_2);
+
+        splitter->addWidget(layoutWidget);
+
+        verticalLayout_3->addWidget(splitter);
+
+        exitBtn = new QPushButton(Myinform);
+        exitBtn->setObjectName(QStringLiteral("exitBtn"));
+
+        verticalLayout_3->addWidget(exitBtn);
+
 
         retranslateUi(Myinform);
+        QObject::connect(exitBtn, SIGNAL(clicked()), Myinform, SLOT(close()));
 
         QMetaObject::connectSlotsByName(Myinform);
     } // setupUi
@@ -118,11 +160,14 @@ public:
     void retranslateUi(QDialog *Myinform)
     {
         Myinform->setWindowTitle(QApplication::translate("Myinform", "myinform", Q_NULLPTR));
-        label->setText(QApplication::translate("Myinform", "\345\247\223\345\220\215\357\274\232         ", Q_NULLPTR));
-        label_2->setText(QApplication::translate("Myinform", "\345\271\264\351\276\204\357\274\232         ", Q_NULLPTR));
-        label_3->setText(QApplication::translate("Myinform", "\350\272\253\344\273\275\350\257\201\345\217\267\357\274\232", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("Myinform", "\344\277\235\345\255\230\344\277\256\346\224\271", Q_NULLPTR));
+        IDlabel->setText(QApplication::translate("Myinform", "ID:", Q_NULLPTR));
+        label->setText(QApplication::translate("Myinform", "\347\224\250\346\210\267\345\220\215\357\274\232", Q_NULLPTR));
+        changenameBtn->setText(QApplication::translate("Myinform", "\344\277\235\345\255\230\344\277\256\346\224\271", Q_NULLPTR));
+        label_5->setText(QApplication::translate("Myinform", "\346\226\260\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
+        label_6->setText(QApplication::translate("Myinform", "\347\241\256\350\256\244\346\226\260\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
+        label_4->setText(QApplication::translate("Myinform", "\346\227\247\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
         changepwdButton->setText(QApplication::translate("Myinform", "\344\277\256\346\224\271\345\257\206\347\240\201", Q_NULLPTR));
+        exitBtn->setText(QApplication::translate("Myinform", "\350\277\224\345\233\236\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
     } // retranslateUi
 
 };

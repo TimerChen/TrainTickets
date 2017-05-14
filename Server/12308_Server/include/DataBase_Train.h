@@ -34,6 +34,8 @@ public:
 		ttd::vector<QDateTime> reachTime;
 		ttd::vector<QDateTime> leaveTime;
 		ttd::vector<QString> seatType;
+		ttd::vector<int> seatNumber;
+		ttd::vector<ttd::vector<int> > priceTable;
 	};
 
 	class Train
@@ -43,8 +45,8 @@ public:
 		QString trainID;
 		bool started;
 		int seatTypeNumber, stationNumber;
-		ttd::vector<int> mileAge;
 		ttd::vector<QString>stationName;
+		ttd::vector<int> mileAge;
 		ttd::vector<QDateTime> reachTime;
 		ttd::vector<QDateTime> leaveTime;
 		ttd::vector<QString> seatType;
