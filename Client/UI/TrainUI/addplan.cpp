@@ -9,18 +9,24 @@ addPlan::addPlan(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent) :
     ui->setupUi(this);
 
     modelSeatType = new QStandardItemModel();
-    modelSeatType->setColumnCount(3);
-    modelSeatType->setHeaderData(0,Qt::Horizontal,tr("编号"));
-    modelSeatType->setHeaderData(1,Qt::Horizontal,tr("座位类型"));
-    modelSeatType->setHeaderData(2,Qt::Horizontal,tr("数量"));
+    modelSeatType->setColumnCount(2);
+   // modelSeatType->setHeaderData(0,Qt::Horizontal,tr("编号"));
+    modelSeatType->setHeaderData(0,Qt::Horizontal,tr("座位类型"));
+    modelSeatType->setHeaderData(1,Qt::Horizontal,tr("数量"));
+
     ui->seatTypeTableView->setModel(modelSeatType.getadress());
+
+    ui->seatTypeTableView->setColumnWidth(0, 150);
+    ui->seatTypeTableView->setColumnWidth(1, 150);
 
     ui->seatTypeTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->seatTypeTableView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->seatTypeTableView->setWordWrap(true);
     ui->seatTypeTableView->setAlternatingRowColors(true);
     ui->seatTypeTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->seatTypeTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->seatTypeTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+
+
 
 
     modelStation = new QStandardItemModel();
@@ -30,13 +36,19 @@ addPlan::addPlan(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent) :
     modelStation->setHeaderData(2,Qt::Horizontal,tr("座位类型"));
     modelStation->setHeaderData(3, Qt::Horizontal, tr("票价"));
     ui->stationsTableView->setModel(modelStation.getadress());
+    ui->stationsTableView->setColumnWidth(0, 150);
+    ui->stationsTableView->setColumnWidth(1, 150);
+    ui->stationsTableView->setColumnWidth(2, 150);
+    ui->stationsTableView->setColumnWidth(3, 150);
 
     ui->stationsTableView->setSelectionBehavior(QAbstractItemView::SelectRows);
     ui->stationsTableView->setSelectionMode(QAbstractItemView::SingleSelection);
     ui->stationsTableView->setWordWrap(true);
     ui->stationsTableView->setAlternatingRowColors(true);
     ui->stationsTableView->setEditTriggers(QAbstractItemView::NoEditTriggers);
-    ui->stationsTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::ResizeToContents);
+    ui->stationsTableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Fixed);
+
+
 
 
 }
@@ -44,4 +56,9 @@ addPlan::addPlan(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent) :
 addPlan::~addPlan()
 {
     delete ui;
+}
+
+void addPlan::on_addSearTypeBtn_clicked()
+{
+
 }

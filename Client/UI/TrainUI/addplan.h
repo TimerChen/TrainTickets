@@ -19,6 +19,9 @@ public:
     explicit addPlan(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent = 0);
     ~addPlan();
 
+private slots:
+    void on_addSearTypeBtn_clicked();
+
 private:
     Ui::addPlan *ui;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;

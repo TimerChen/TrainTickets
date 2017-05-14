@@ -17,13 +17,12 @@ Login::Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
     setTabOrder(ui->registBtn, ui->exitBtn);
     setTabOrder(ui->exitBtn, ui->usrLineEdit);
     QRegExp rx("^[a-zA-Z0-9_]+");
-    QRegExpValidator *pReg =
-        new QRegExpValidator(rx, this); /// change to smart point
-    ui->pwdLineEdit->setValidator(pReg);
+    pReg = new QRegExpValidator(rx, this);
+    ui->pwdLineEdit->setValidator(pReg.getadress());
     ui->pwdLineEdit->setMaxLength(12);
 
     ui->usrLineEdit->setMaxLength(12);
-    ui->usrLineEdit->setValidator(pReg);
+    ui->usrLineEdit->setValidator(pReg.getadress());
 }
 
 Login::~Login() { delete ui; }
@@ -47,7 +46,7 @@ void Login::on_loginBtn_clicked() {
         ui->pwdLineEdit->clear();
         ui->pwdLineEdit->setFocus();
         QMessageBox::warning(this, tr("警告"), tr("用户名或密码错误！"),
-                             QMessageBox::Yes);
+                             QMessageBox::Cancel);
     }
 }
 
@@ -65,7 +64,7 @@ void Login::on_auloginBtn_clicked() {
         accept();
     } else {
         QMessageBox::warning(this, tr("警告"), tr("用户名或密码错误！"),
-                             QMessageBox::Yes);
+                             QMessageBox::Cancel);
     }
 }
 

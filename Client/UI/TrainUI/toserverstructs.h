@@ -15,7 +15,8 @@ enum {
     changeusrname,           // send changeUsrName
     changepwd,               // send changePwd
     modifymyticket,          // send targetTicket
-    buyTicket                // send targetTicket
+    buyTicket,               // send targetTicket
+    getmytickets             // send usrID
 };
 struct stationToStationSearch {
     QString fromStation, toStation;
@@ -97,6 +98,7 @@ struct targetTicket {
                  const QString _seatType = "", const QString _load = "",
                  const QString _unload = "");
 };
+
 }
 
 #endif  // TOSERVERSTRUCTS_H
