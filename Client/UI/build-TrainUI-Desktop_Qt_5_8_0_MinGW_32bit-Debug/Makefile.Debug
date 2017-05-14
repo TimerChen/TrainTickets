@@ -648,12 +648,10 @@ debug/moc_myticket.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
 	C:\Qt\Qt5.8.0\5.8\mingw53_32\bin\moc.exe $(DEFINES) --include debug/moc_predefs.h -IC:/Qt/Qt5.8.0/5.8/mingw53_32/mkspecs/win32-g++ -IC:/local_test/train/TrainTickets/Client/UI/TrainUI -IC:/Qt/Qt5.8.0/5.8/mingw53_32/include -IC:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets -IC:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui -IC:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtANGLE -IC:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore -I. -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Qt5.8.0/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward ..\TrainUI\myticket.h -o debug\moc_myticket.cpp
 
-debug/moc_myinform.cpp: ../TrainUI/mainwindow.h \
-		../TrainUI/include/smartpoint.hpp \
-		../TrainUI/uistructs.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstring.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qchar.h \
+debug/moc_myinform.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qconfig.h \
@@ -676,23 +674,21 @@ debug/moc_myinform.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qmutex.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnumeric.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qversiontagging.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qbytearray.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qrefcount.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qarraydata.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstringbuilder.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs_impl.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qchar.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qbytearray.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qrefcount.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qarraydata.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstringbuilder.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qlist.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qalgorithms.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qiterator.h \
@@ -754,10 +750,17 @@ debug/moc_myinform.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../TrainUI/mainwindow.h \
+		../TrainUI/include/smartpoint.hpp \
+		../TrainUI/uistructs.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		../TrainUI/myinform.h \
 		debug/moc_predefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -1212,6 +1215,9 @@ debug/moc_searchticket.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -1556,6 +1562,8 @@ debug/moc_addplan.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		../TrainUI/include/smartpoint.hpp \
 		../TrainUI/include/vector.hpp \
 		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/utility.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
@@ -2541,12 +2549,10 @@ debug/myticket.o: ../TrainUI/myticket.cpp ../TrainUI/myticket.h \
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\myticket.o ..\TrainUI\myticket.cpp
 
 debug/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
-		../TrainUI/mainwindow.h \
-		../TrainUI/include/smartpoint.hpp \
-		../TrainUI/uistructs.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstring.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qchar.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qconfig.h \
@@ -2569,23 +2575,21 @@ debug/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qmutex.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnumeric.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qversiontagging.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qbytearray.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qrefcount.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qarraydata.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstringbuilder.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtguiglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtgui-config.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgets-config.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qwidget.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs_impl.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qwindowdefs_win.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qchar.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qbytearray.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qrefcount.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qarraydata.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstringbuilder.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qlist.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qalgorithms.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qiterator.h \
@@ -2647,10 +2651,17 @@ debug/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../TrainUI/mainwindow.h \
+		../TrainUI/include/smartpoint.hpp \
+		../TrainUI/uistructs.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		ui_myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
@@ -2681,8 +2692,6 @@ debug/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
@@ -2824,6 +2833,9 @@ debug/stationtostationsearch.o: ../TrainUI/stationtostationsearch.cpp ../TrainUI
 		../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -2844,8 +2856,6 @@ debug/stationtostationsearch.o: ../TrainUI/stationtostationsearch.cpp ../TrainUI
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDateEdit \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
@@ -2995,6 +3005,9 @@ debug/trainsearch.o: ../TrainUI/trainsearch.cpp ../TrainUI/trainsearch.h \
 		../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -3015,8 +3028,6 @@ debug/trainsearch.o: ../TrainUI/trainsearch.cpp ../TrainUI/trainsearch.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDateEdit \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
@@ -3166,6 +3177,9 @@ debug/stationsearch.o: ../TrainUI/stationsearch.cpp ../TrainUI/stationsearch.h \
 		../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -3186,8 +3200,6 @@ debug/stationsearch.o: ../TrainUI/stationsearch.cpp ../TrainUI/stationsearch.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDateEdit \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
@@ -3328,6 +3340,9 @@ debug/searchticket.o: ../TrainUI/searchticket.cpp ../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
@@ -3350,22 +3365,21 @@ debug/searchticket.o: ../TrainUI/searchticket.cpp ../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		../TrainUI/include/train.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		../TrainUI/include/DataBase_Train.h \
 		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
 		../TrainUI/include/utility.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
 		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		../TrainUI/login.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
 		../TrainUI/modifyplanofatrain.h \
 		../TrainUI/toserverstructs.h \
 		ui_searchticket.h \
@@ -3559,6 +3573,8 @@ debug/adminwindow.o: ../TrainUI/adminwindow.cpp ../TrainUI/adminwindow.h \
 		../TrainUI/addplan.h \
 		../TrainUI/include/vector.hpp \
 		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/utility.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		../TrainUI/trainsearch.h \
@@ -3910,6 +3926,8 @@ debug/addplan.o: ../TrainUI/addplan.cpp ../TrainUI/addplan.h \
 		../TrainUI/include/smartpoint.hpp \
 		../TrainUI/include/vector.hpp \
 		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/utility.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
@@ -4071,7 +4089,45 @@ debug/addseattype.o: ../TrainUI/addseattype.cpp ../TrainUI/addseattype.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtouchdevice.h \
-		ui_addseattype.h
+		ui_addseattype.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\addseattype.o ..\TrainUI\addseattype.cpp
 
 debug/qrc_pic.o: debug/qrc_pic.cpp 

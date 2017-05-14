@@ -14,6 +14,7 @@
 // only for std::less<T>
 #include <functional>
 #include <cstddef>
+#include "include/algorithm0.hpp"
 #include "include/utility.hpp"
 #include "include/exceptions.hpp"
 
@@ -22,14 +23,6 @@
 #include <iostream>
 
 namespace ttd {
-	template<class T>
-	void swap( T &a, T &b )
-	{ T c(a); a=b;b=c; }
-	template<class T>
-	T min(const T &a, const T &b){return a<b?a:b;}
-	template<class T>
-	T max(const T &a, const T &b){return a>b?a:b;}
-
 
 template<
 	class Key,
