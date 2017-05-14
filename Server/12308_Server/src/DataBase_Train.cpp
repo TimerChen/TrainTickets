@@ -318,26 +318,29 @@ QDataStream& operator << (QDataStream& out, const DataBase_Train::TrainRoute &da
 		<< data.seatTypeNumber << data.stationNumber
 		<< data.stationName << data.mileAge
 		<< data.reachTime << data.leaveTime
-		<< data.seatType;
+		<< data.seatType << data.seatNumber
+		<< data.priceTable;
 	return out;
 }
 QDataStream& operator >> (QDataStream& in, DataBase_Train::TrainRoute &data)
 {
 	in >> data.trainID
 			>> data.seatTypeNumber >> data.stationNumber
-			>> data.mileAge >> data.stationName
+			>> data.stationName >> data.mileAge
 			>> data.reachTime >> data.leaveTime
-			>> data.seatType;
+			>> data.seatType >> data.seatNumber
+			>> data.priceTable;
+	return in;
 	return in;
 }
 QDataStream& operator << (QDataStream& out, const DataBase_Train::Train &data)
 {
 	out << data.trainID << data.started
 		<< data.seatTypeNumber << data.stationNumber
-		<< data.mileAge << data.stationName
+		<< data.stationName << data.mileAge
 		<< data.reachTime << data.leaveTime
 		<< data.seatType << data.seatNumber
-		<< data.priceTable;
+		<< data.priceTable << data.salingDate;
 	return out;
 }
 
@@ -345,10 +348,10 @@ QDataStream& operator >> (QDataStream& in, DataBase_Train::Train &data)
 {
 	in >> data.trainID >> data.started
 			>> data.seatTypeNumber >> data.stationNumber
-			>> data.mileAge >> data.stationName
+			>> data.stationName >> data.mileAge
 			>> data.reachTime >> data.leaveTime
 			>> data.seatType >> data.seatNumber
-			>> data.priceTable;
+			>> data.priceTable << data.salingDate;
 	return in;
 }
 

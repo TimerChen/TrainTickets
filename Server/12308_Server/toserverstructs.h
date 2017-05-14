@@ -12,6 +12,7 @@ enum {
     trainsearch,             // send trainSearch
     login,                   // send loginAccount
     aulogin,                 // send auLoginAccount
+	logout,
     reg,                     // send regist
     changeusrname,           // send changeUsrName
     changepwd,               // send changePwd
