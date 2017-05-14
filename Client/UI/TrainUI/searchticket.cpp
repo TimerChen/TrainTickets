@@ -2,7 +2,7 @@
 #include <QMessageBox>
 #include <QStandardItemModel>
 #include <QTableView>
-#include "include/train.h"
+#include "include/DataBase_Train.h"
 #include "include/vector.hpp"
 #include "login.h"
 #include "modifyplanofatrain.h"
@@ -71,33 +71,10 @@ SearchTicket::SearchTicket(QDate _date,
     model->setItem(0, 0, new QStandardItem(tr("无")));
 
 
-    ///测试用
-//    model->setItem(0, 0, new QStandardItem(tr("0")));
-//    model->setItem(0, 1, new QStandardItem(tr("233")));
-//    model->setItem(0, 2, new QStandardItem(tr("闵行")));
-//    model->setItem(0, 3, new QStandardItem(tr("升天")));
-//    model->setItem(0, 4, new QStandardItem(tr("24：01")));
-//    model->setItem(0, 5, new QStandardItem(tr("24：02")));
-//    model->setItem(0, 6, new QStandardItem(tr("双脚")));
-//    model->setItem(0, 7, new QStandardItem(tr("666")));
-//    model->setItem(0, 8, new QStandardItem(tr("100")));
-//    model->setItem(0, 9, new QStandardItem(tr("是")));
-
-//    model->setItem(0, 0, new QStandardItem(tr("1")));
-//    model->setItem(1, 1, new QStandardItem(tr("33")));
-//    model->setItem(1, 2, new QStandardItem(tr("升天")));
-//    model->setItem(1, 3, new QStandardItem(tr("闵行")));
-//    model->setItem(1, 4, new QStandardItem(tr("24：01")));
-//    model->setItem(1, 5, new QStandardItem(tr("24：02")));
-//    model->setItem(1, 6, new QStandardItem(tr("双脚")));
-//    model->setItem(1, 7, new QStandardItem(tr("999")));
-//    model->setItem(1, 8, new QStandardItem(tr("105")));
-//    model->setItem(1, 9, new QStandardItem(tr("否")));
-
     ///将文件内的东西显示到ticketsTableView里
 
     // test
-    QTrain qtrain;
+    DataBase_Train::QTrain qtrain;
     qtrain.ableToBuy = true;
     qtrain.trainID = "2502B";
     qtrain.seatTypeNumber = 3;
@@ -115,7 +92,7 @@ SearchTicket::SearchTicket(QDate _date,
     qtrain.loadStationLeaveTime = QDateTime::fromString("2017-04-01 12:07:50", "yyyy-MM-dd hh:mm:ss");
     qtrain.unLoadStationReachTime = QDateTime::fromString("2017-04-01 13:07:50", "yyyy-MM-dd hh:mm:ss");
 
-    TrainRoute ttrainrout;
+    DataBase_Train::TrainRoute ttrainrout;
     ttrainrout.trainID = "360SB";
     ttrainrout.seatTypeNumber = 3;
     ttrainrout.stationNumber = 3;
@@ -137,16 +114,16 @@ SearchTicket::SearchTicket(QDate _date,
 
 
 
-    ttd::vector<QTrain> qtrains;
+    ttd::vector<DataBase_Train::QTrain> qtrains;
     //test
     qtrains.push_back(qtrain);
     qtrains.push_back(qtrain);
 
-    TrainRoute trainroute;
+    DataBase_Train::TrainRoute trainroute;
     //test
     trainroute = ttrainrout;
 
-    ttd::vector<TrainRoute> vtrainroute;
+    ttd::vector<DataBase_Train::TrainRoute> vtrainroute;
     //test
     vtrainroute.push_back(ttrainrout);
     vtrainroute.push_back(ttrainrout);
