@@ -112,6 +112,15 @@ struct targetTicket {
 };
 }
 
+QDataStream &operator << (QDataStream &out, const frontask::stationToStationSearch &data);
+QDataStream &operator >> (QDataStream &in, frontask::stationToStationSearch &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::stationSearch &data);
+QDataStream &operator >> (QDataStream &in, frontask::stationSearch &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::trainSearch &data);
+QDataStream &operator >> (QDataStream &in, frontask::trainSearch &data);
+
 QDataStream &operator << (QDataStream &out, const frontask::loginAccount &data);
 QDataStream &operator >> (QDataStream &in, frontask::loginAccount &data);
 

@@ -7,6 +7,18 @@ frontask::stationToStationSearch::stationToStationSearch(const QDate _time,
                                                          const QString _from,
                                                         const  QString _to)
     : fromStation(_from), toStation(_to), time(_time) {}
+QDataStream &operator << (QDataStream &out, const frontask::stationToStationSearch &data)
+{
+	out << data.fromStation << data.toStation << data.time;
+	return out;
+}
+QDataStream &operator >> (QDataStream &in, frontask::stationToStationSearch &data)
+{
+	in >> data.fromStation >> data.toStation >> data.time;
+	return in;
+}
+
+
 //frontask::stationToStationSearch::stationToStationSearch(
 //    const stationToStationSearch& rs)
 //    : fromStation(rs.fromStation), toStation(rs.toStation), time(rs.time) {}
@@ -17,11 +29,36 @@ frontask::stationSearch::stationSearch() {}
 frontask::stationSearch::stationSearch(const QDate _time, const QString _station)
     : time(_time), station(_station) {}
 
+QDataStream &operator << (QDataStream &out, const frontask::stationSearch &data)
+{
+	out << data.time << data.station;
+	return out;
+}
+QDataStream &operator >> (QDataStream &in, frontask::stationSearch &data)
+{
+	in >> data.time >> data.station;
+	return in;
+}
+
+
+
 frontask::trainSearch::trainSearch() {}
 //frontask::trainSearch::trainSearch(const trainSearch& rs)
 //    : time(rs.time), trainID(rs.trainID) {}
 frontask::trainSearch::trainSearch(const QDate _time, const QString _train)
     : time(_time), trainID(_train) {}
+
+QDataStream &operator << (QDataStream &out, const frontask::trainSearch &data)
+{
+	out << data.time << data.trainID;
+	return out;
+}
+
+QDataStream &operator >> (QDataStream &in, frontask::trainSearch &data)
+{
+	in >> data.time >> data.trainID;
+	return in;
+}
 
 //frontask::loginAccount::loginAccount(const loginAccount& rl)
 //    : userID(rl.userID), pwd(rl.pwd) {}
@@ -46,7 +83,7 @@ frontask::regist::regist(const QString _userID, const QString _pwd)
 
 
 QDataStream &operator << (QDataStream &out, const frontask::regist &data)
-{ out << data.userID << data.pwd;	return out; }
+{ out << data.userID << data.pwd; return out; }
 QDataStream &operator >> (QDataStream &in, frontask::regist &data)
 { in >> data.userID >> data.pwd; return in; }
 

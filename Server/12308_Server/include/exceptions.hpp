@@ -58,6 +58,15 @@ public:
 	}
 	/* __________________________ */
 };
+
+//Database Error
+class no_authority : public exception
+{
+public:
+	no_authority()
+	{ detail = "NoAuthority."; }
+};
+
 }
 
 #endif

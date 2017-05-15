@@ -121,6 +121,12 @@ public:
 	ttd::vector<QString> bothPass(const QString &sta, const QString &stb);
 };
 
+QDataStream &operator <<(QDataStream &out, const DataBase_Train::QTrain &data);
+QDataStream &operator >>(QDataStream &in, DataBase_Train::QTrain &data);
+
+QDataStream &operator <<(QDataStream &out, const DataBase_Train::TrainRoute &data);
+QDataStream &operator >>(QDataStream &in, DataBase_Train::TrainRoute &data);
+
 QDataStream &operator <<(QDataStream &out, const DataBase_Train::Train &data);
 QDataStream &operator >>(QDataStream &in, DataBase_Train::Train &data);
 
