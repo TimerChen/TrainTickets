@@ -61,7 +61,22 @@ HEADERS  += mainwindow.h \
     addplan.h \
     addplansimple.h \
     searchusr.h \
-    editsearchusr.h
+    editsearchusr.h \
+    include/algorithm0.hpp \
+    include/database.h \
+    include/DataBase_Account.h \
+    include/DataBase_Log.h \
+    include/database_main.h \
+    include/DataBase_Train.h \
+    include/DataBase_User.h \
+    include/datastream.h \
+    include/exceptions.hpp \
+    include/map.hpp \
+    include/smartpoint.hpp \
+    include/station.h \
+    include/train.h \
+    include/utility.hpp \
+    include/vector.hpp
 
 FORMS    += mainwindow.ui \
     login.ui \

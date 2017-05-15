@@ -146,8 +146,20 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
     if (searchType == Ui::stationToStation) {
 
         frontask::stationToStationSearch sss(date, ask1, ask2);
-        if (true) {  ///发送sss到服务器
+		bool no_error = true;
+		try{
+			qtrains =
+			((MainWindow*)(parentWidget()->parentWidget()))->query_sts_remote
+								(sss);
+		}catch(...){
+			no_error = false;
+		}
+
+		if (no_error) {  ///发送sss到服务器
             ///获得qtrains
+
+
+
             int deltaForSeat = 0;
             for (size_t i = 0; i < qtrains.size(); ++i) {
                 for (int j = 0; j < qtrains[i].seatTypeNumber; ++j) {
@@ -191,7 +203,17 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
         }
     } else if (searchType == Ui::trainSearch) {
         frontask::trainSearch sss(date, ask1);
-        if (true) {
+
+		bool no_error = true;
+		try{
+			trainroute =
+			((MainWindow*)(parentWidget()->parentWidget()))->query_t_remote
+								(sss);
+		}catch(...){
+			no_error = false;
+		}
+
+		if (no_error) {
             ///发送frontask::trainsearch
             ///发送sss到服务器
             ///获得trainroute
@@ -244,7 +266,17 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
         }
     } else {
         frontask::stationSearch sss(date, ask1);
-        if (true) {
+
+		bool no_error = true;
+		try{
+			vtrainroute =
+			((MainWindow*)(parentWidget()->parentWidget()))->query_s_remote
+								(sss);
+		}catch(...){
+			no_error = false;
+		}
+
+		if (no_error) {
             ///发送frontask::stationsearch
             ///发送sss到服务器
             ///获得vtrainroute
