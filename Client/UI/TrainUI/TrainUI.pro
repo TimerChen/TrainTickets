@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT       += network
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -80,6 +80,7 @@ FORMS    += mainwindow.ui \
     editsearchusr.ui
 
 RESOURCES += \
-    pic.qrc
+    pic.qrc \
+    completer.qrc
 
 DISTFILES +=

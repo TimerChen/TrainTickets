@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/src">
+        <file alias="stationfile">names.out</file>
+    </qresource>
+</RCC>

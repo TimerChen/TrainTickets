@@ -18,6 +18,7 @@ INPUT(
 ./release\searchusr.o
 ./release\editsearchusr.o
 ./release\qrc_pic.o
+./release\qrc_completer.o
 ./release\moc_mainwindow.o
 ./release\moc_login.o
 ./release\moc_regist.o
