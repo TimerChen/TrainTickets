@@ -45,9 +45,9 @@ public:
     {
         if (StationToStationSearch->objectName().isEmpty())
             StationToStationSearch->setObjectName(QStringLiteral("StationToStationSearch"));
-        StationToStationSearch->resize(570, 206);
+        StationToStationSearch->resize(800, 300);
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         StationToStationSearch->setWindowIcon(icon);
         verticalLayout_3 = new QVBoxLayout(StationToStationSearch);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));

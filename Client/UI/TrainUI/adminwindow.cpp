@@ -7,6 +7,7 @@
 #include "addplansimple.h"
 #include "myinform.h"
 #include "searchusr.h"
+#include "syslog.h"
 
 AdminWindow::AdminWindow(
     ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
@@ -39,4 +40,10 @@ void AdminWindow::on_searchAccountBtn_clicked()
 {
     searchUsr su(nowaccount, this);
     su.exec();
+}
+
+void AdminWindow::on_pushButton_clicked()
+{
+    sysLog sl(nowaccount->userID, this);
+    sl.exec();
 }

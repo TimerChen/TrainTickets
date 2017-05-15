@@ -27,7 +27,20 @@ frontask::stationSearch::stationSearch() {}
 //frontask::stationSearch::stationSearch(const stationSearch& rs)
 //    : time(rs.time), station(rs.station) {}
 frontask::stationSearch::stationSearch(const QDate _time, const QString _station)
-    : time(_time), station(_station) {}
+	: time(_time), station(_station) {}
+
+QDataStream &operator << (QDataStream &out, const frontask::stationSearch &data)
+{
+	out << data.time << data.station;
+	return out;
+}
+QDataStream &operator >> (QDataStream &in, frontask::stationSearch &data)
+{
+	in >> data.time >> data.station;
+	return in;
+}
+
+
 
 QDataStream &operator << (QDataStream &out, const frontask::stationSearch &data)
 {
@@ -46,7 +59,19 @@ frontask::trainSearch::trainSearch() {}
 //frontask::trainSearch::trainSearch(const trainSearch& rs)
 //    : time(rs.time), trainID(rs.trainID) {}
 frontask::trainSearch::trainSearch(const QDate _time, const QString _train)
-    : time(_time), trainID(_train) {}
+	: time(_time), trainID(_train) {}
+
+QDataStream &operator << (QDataStream &out, const frontask::trainSearch &data)
+{
+	out << data.time << data.trainID;
+	return out;
+}
+
+QDataStream &operator >> (QDataStream &in, frontask::trainSearch &data)
+{
+	in >> data.time >> data.trainID;
+	return in;
+}
 
 QDataStream &operator << (QDataStream &out, const frontask::trainSearch &data)
 {
@@ -63,7 +88,7 @@ QDataStream &operator >> (QDataStream &in, frontask::trainSearch &data)
 //frontask::loginAccount::loginAccount(const loginAccount& rl)
 //    : userID(rl.userID), pwd(rl.pwd) {}
 frontask::loginAccount::loginAccount(const QString _userID, const QString _pwd)
-    : userID(_userID), pwd(_pwd) {}
+	: userID(_userID), pwd(_pwd) {}
 
 QDataStream &operator << (QDataStream &out, const frontask::loginAccount &data)
 { out << data.userID << data.pwd; return out; }
@@ -75,7 +100,7 @@ QDataStream &operator >> (QDataStream &in, frontask::loginAccount &data)
 //frontask::regist::regist(const regist& rl)
 //    : name(rl.name), pwd(rl.pwd) {}
 frontask::regist::regist(const QString _userID, const QString _pwd)
-    : userID(_userID), pwd(_pwd) {}
+	: userID(_userID), pwd(_pwd) {}
 
 
 QDataStream &operator << (QDataStream &out, const frontask::regist &data)

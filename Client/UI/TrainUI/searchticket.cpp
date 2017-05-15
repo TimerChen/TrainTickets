@@ -28,10 +28,15 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
 
     ///设置列宽和标签栏
     ui->calLabel->setText("日期：" + date.toString());
-    if (searchType != Ui::stationToStation) ui->buyTicketBtn->setEnabled(false);
+    if (searchType != Ui::stationToStation)
+    {
+        ui->buyTicketBtn->setEnabled(false);
+        ui->ticketNumLineEdit->setEnabled(false);
+    }
     if (nowaccount->userType == Ui::admin) {
         ui->buyTicketBtn->setEnabled(true);
         ui->buyTicketBtn->setText(tr("修改计划"));
+        ui->label->setText("");
     }else if (nowaccount->userType == Ui::searchusr) {
         ui->buyTicketBtn->setText("为用户添加该车票");
     }

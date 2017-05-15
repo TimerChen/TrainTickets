@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Regist_t {
     QByteArrayData data[3];
-    char stringdata0[28];
+    char stringdata0[29];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,11 +32,11 @@ struct qt_meta_stringdata_Regist_t {
 static const qt_meta_stringdata_Regist_t qt_meta_stringdata_Regist = {
     {
 QT_MOC_LITERAL(0, 0, 6), // "Regist"
-QT_MOC_LITERAL(1, 7, 19), // "on_loginBtn_clicked"
-QT_MOC_LITERAL(2, 27, 0) // ""
+QT_MOC_LITERAL(1, 7, 20), // "on_registBtn_clicked"
+QT_MOC_LITERAL(2, 28, 0) // ""
 
     },
-    "Regist\0on_loginBtn_clicked\0"
+    "Regist\0on_registBtn_clicked\0"
 };
 #undef QT_MOC_LITERAL
 
@@ -68,7 +68,7 @@ void Regist::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Regist *_t = static_cast<Regist *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->on_loginBtn_clicked(); break;
+        case 0: _t->on_registBtn_clicked(); break;
         default: ;
         }
     }

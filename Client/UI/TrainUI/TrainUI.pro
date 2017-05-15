@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     addplan.cpp \
     addplansimple.cpp \
     searchusr.cpp \
-    editsearchusr.cpp
+    editsearchusr.cpp \
+    syslog.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -76,7 +77,8 @@ HEADERS  += mainwindow.h \
     include/station.h \
     include/train.h \
     include/utility.hpp \
-    include/vector.hpp
+    include/vector.hpp \
+    syslog.h
 
 FORMS    += mainwindow.ui \
     login.ui \
@@ -92,7 +94,8 @@ FORMS    += mainwindow.ui \
     addplan.ui \
     addplansimple.ui \
     searchusr.ui \
-    editsearchusr.ui
+    editsearchusr.ui \
+    syslog.ui
 
 RESOURCES += \
     pic.qrc \

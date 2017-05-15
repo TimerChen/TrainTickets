@@ -26,11 +26,11 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
     model->setHeaderData(0, Qt::Horizontal, tr("车次"));
     model->setHeaderData(1, Qt::Horizontal, tr("发站"));
     model->setHeaderData(2, Qt::Horizontal, tr("到站"));
-    model->setHeaderData(3, Qt::Horizontal, tr("发车日期"));
-    model->setHeaderData(4, Qt::Horizontal, tr("发站时刻"));
-    model->setHeaderData(5, Qt::Horizontal, tr("到站时刻"));
-    model->setHeaderData(6, Qt::Horizontal, tr("座位类型"));
-    model->setHeaderData(7, Qt::Horizontal, tr("张数"));
+    model->setHeaderData(3, Qt::Horizontal, tr("发站时刻"));
+    model->setHeaderData(4, Qt::Horizontal, tr("到站时刻"));
+    model->setHeaderData(5, Qt::Horizontal, tr("座位类型"));
+    model->setHeaderData(6, Qt::Horizontal, tr("张数"));
+    model->setHeaderData(7, Qt::Horizontal, tr("价格"));
 
     ui->ticketsTableView->setModel(model.getadress());
 
@@ -145,24 +145,25 @@ void Myticket::on_modifyTicketBtn_clicked() {
     int curRow = ui->ticketsTableView->currentIndex().row();
     QAbstractItemModel *modessl = ui->ticketsTableView->model();
 
-    QDate date = modessl->data(modessl->index(curRow, 4)).toDate();
-    int totalNum = modessl->data(modessl->index(curRow, 7)).toInt();
+    QDate date = modessl->data(modessl->index(curRow, 3)).toDate();
+    int totalNum = modessl->data(modessl->index(curRow, 6)).toInt();
     int tuiNum = ui->numLineEdit->text().toInt();
-    QString trainID = modessl->data(modessl->index(curRow, 1)).toString();
+    QString trainID = modessl->data(modessl->index(curRow, 0)).toString();
     QString usrID = nowaccount->userID;
-    QString seatType = modessl->data(modessl->index(curRow, 6)).toString();
-    QString load = modessl->data(modessl->index(curRow, 2)).toString();
-    QString unload = modessl->data(modessl->index(curRow, 3)).toString();
+    QString seatType = modessl->data(modessl->index(curRow, 5)).toString();
+    QString load = modessl->data(modessl->index(curRow, 1)).toString();
+    QString unload = modessl->data(modessl->index(curRow, 2)).toString();
+    //int price = modessl->data(modessl->index(curRow,7)).toInt();
 
     frontask::targetTicket targetticket(date, tuiNum, usrID, trainID, seatType,
                                         load, unload);
 
     QString trainInform =
-        "车次：" + targetticket.trainID + "\n发站日期：" + date.toString() +
+        "车次：" + targetticket.trainID + /*"\n发站日期：" + date.toString() +*/
         "\n发站： " + targetticket.loadStation + "\n到站： " +
         targetticket.unLoadStation + "\n发车时间：" +
-        modessl->data(modessl->index(curRow, 4)).toString() + "\n到站时间： " +
-        modessl->data(modessl->index(curRow, 5)).toString() + "\n座位类型：" +
+        modessl->data(modessl->index(curRow, 3)).toString() + "\n到站时间： " +
+        modessl->data(modessl->index(curRow, 4)).toString() + "\n座位类型：" +
         targetticket.seatType + "\n票价：" +
         modessl->data(modessl->index(curRow, 7)).toString() + "\n退票张数：" +
         QString::number(targetticket.buyNum, 10) + "\n原张数： " +

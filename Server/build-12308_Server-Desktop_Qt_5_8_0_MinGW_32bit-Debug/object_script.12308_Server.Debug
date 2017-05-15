@@ -1,0 +1,15 @@
+INPUT(
+./debug\main.o
+./debug\servermainwindow.o
+./debug\database_base.o
+./debug\database_main.o
+./debug\clientthread.o
+./debug\datastream.o
+./debug\DataBase_User.o
+./debug\DataBase_Account.o
+./debug\toserverstructs.o
+./debug\DataBase_Log.o
+./debug\DataBase_Train.o
+./debug\moc_servermainwindow.o
+./debug\moc_clientthread.o
+);

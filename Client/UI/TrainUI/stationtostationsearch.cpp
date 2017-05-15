@@ -17,9 +17,10 @@ StationToStationSearch::StationToStationSearch(
     ui->setupUi(this);
     ui->dateEdit->setCalendarPopup(true);
 
-    QFile stationName(":src/stationfile");
+    QFile stationName(":/src/names.txt");
     stationName.open(QIODevice::ReadOnly);
     QTextStream in(&stationName);
+    in.setCodec("UTF-8");
     QStringList word_list;
     QString tmps;
     while (!in.atEnd()) {

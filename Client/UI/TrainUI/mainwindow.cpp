@@ -45,7 +45,7 @@ MainWindow::~MainWindow() { delete ui; }
 void MainWindow::link()
 {
 	serverSocket->abort();
-	serverSocket->connectToHost("0.0.0.0",12308);
+    serverSocket->connectToHost("59.78.47.219",12308);
 }
 
 void MainWindow::dealError(QAbstractSocket::SocketError socketError)
@@ -107,7 +107,7 @@ void MainWindow::on_regBtn_clicked() {
 
 void MainWindow::on_logoutBtn_clicked() {
     /// send a package to server to log out
-	if(!logout_remote())
+    if(!logout_remote())
 		return;
 
     ui->myticketBtn->setEnabled(false);
