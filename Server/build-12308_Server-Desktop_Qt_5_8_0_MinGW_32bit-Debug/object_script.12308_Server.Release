@@ -1,0 +1,15 @@
+INPUT(
+./release\main.o
+./release\servermainwindow.o
+./release\database_base.o
+./release\database_main.o
+./release\clientthread.o
+./release\datastream.o
+./release\DataBase_User.o
+./release\DataBase_Account.o
+./release\toserverstructs.o
+./release\DataBase_Log.o
+./release\DataBase_Train.o
+./release\moc_servermainwindow.o
+./release\moc_clientthread.o
+);
