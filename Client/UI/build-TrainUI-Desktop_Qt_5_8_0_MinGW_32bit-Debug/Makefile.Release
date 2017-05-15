@@ -202,7 +202,7 @@ release/qrc_pic.cpp: ../TrainUI/pic.qrc \
 
 release/qrc_completer.cpp: ../TrainUI/completer.qrc \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/rcc.exe \
-		../TrainUI/names.out
+		../TrainUI/names.txt
 	C:\Qt\Qt5.8.0\5.8\mingw53_32\bin\rcc.exe -name completer ..\TrainUI\completer.qrc -o release\qrc_completer.cpp
 
 compiler_moc_predefs_make_all: release/moc_predefs.h
@@ -328,6 +328,14 @@ release/moc_mainwindow.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMain
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		../TrainUI/mainwindow.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -448,6 +456,14 @@ release/moc_login.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
@@ -689,6 +705,14 @@ release/moc_myticket.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		../TrainUI/myticket.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -814,6 +838,14 @@ release/moc_myinform.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		../TrainUI/myinform.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -936,6 +968,14 @@ release/moc_stationtostationsearch.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtW
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		../TrainUI/stationtostationsearch.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -1056,6 +1096,14 @@ release/moc_trainsearch.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		../TrainUI/trainsearch.h \
@@ -1178,6 +1226,14 @@ release/moc_stationsearch.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		../TrainUI/stationsearch.h \
@@ -1310,6 +1366,13 @@ release/moc_searchticket.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate 
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		../TrainUI/searchticket.h \
 		release/moc_predefs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/moc.exe
@@ -2298,6 +2361,14 @@ release/main.o: ../TrainUI/main.cpp C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidge
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
@@ -2420,6 +2491,14 @@ release/mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
@@ -2439,59 +2518,15 @@ release/mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
 		../TrainUI/stationtostationsearch.h \
 		../TrainUI/trainsearch.h \
 		ui_mainwindow.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QSplitter \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QStatusBar \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstatusbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/QtNetwork \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/QtNetworkDepends \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtCore \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtCoreDepends \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractanimation.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstracteventdispatcher.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractnativeeventfilter.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractproxymodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractstate.h \
@@ -2507,6 +2542,7 @@ release/mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcollator.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineoption.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcommandlineparser.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcryptographichash.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdeadlinetimer.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qelapsedtimer.h \
@@ -2532,6 +2568,7 @@ release/mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qhistorystate.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qidentityproxymodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qisenum.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qjsonarray.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qjsonvalue.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qjsondocument.h \
@@ -2598,6 +2635,7 @@ release/mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qnetworkrequest.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QSharedDataPointer \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QUrl \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qauthenticator.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qdnslookup.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qhostaddress.h \
@@ -2760,6 +2798,14 @@ release/login.o: ../TrainUI/login.cpp ../TrainUI/login.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
@@ -2767,57 +2813,10 @@ release/login.o: ../TrainUI/login.cpp ../TrainUI/login.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		../TrainUI/regist.h \
 		ui_login.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../TrainUI/toserverstructs.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\login.o ..\TrainUI\login.cpp
 
 release/regist.o: ../TrainUI/regist.cpp ../TrainUI/regist.h \
@@ -2935,63 +2934,25 @@ release/regist.o: ../TrainUI/regist.cpp ../TrainUI/regist.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		ui_regist.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
 		../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/QTcpSocket \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtnetwork-config.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
 		../TrainUI/include/utility.hpp \
-		../TrainUI/uistructs.h
+		../TrainUI/uistructs.h \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\regist.o ..\TrainUI\regist.cpp
 
 release/myticket.o: ../TrainUI/myticket.cpp ../TrainUI/myticket.h \
@@ -3115,6 +3076,14 @@ release/myticket.o: ../TrainUI/myticket.cpp ../TrainUI/myticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItem \
@@ -3134,47 +3103,9 @@ release/myticket.o: ../TrainUI/myticket.cpp ../TrainUI/myticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		../TrainUI/include/DataBase_Train.h \
-		../TrainUI/include/map.hpp \
-		../TrainUI/include/algorithm0.hpp \
-		../TrainUI/include/exceptions.hpp \
-		../TrainUI/include/database.h \
-		../TrainUI/include/vector.hpp \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
-		ui_myticket.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout
+		ui_myticket.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\myticket.o ..\TrainUI\myticket.cpp
 
 release/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
@@ -3298,61 +3229,19 @@ release/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
-		ui_myinform.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QSplitter \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget
+		ui_myinform.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\myinform.o ..\TrainUI\myinform.cpp
 
 release/stationtostationsearch.o: ../TrainUI/stationtostationsearch.cpp ../TrainUI/stationtostationsearch.h \
@@ -3473,11 +3362,18 @@ release/stationtostationsearch.o: ../TrainUI/stationtostationsearch.cpp ../Train
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
@@ -3486,52 +3382,6 @@ release/stationtostationsearch.o: ../TrainUI/stationtostationsearch.cpp ../Train
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		../TrainUI/toserverstructs.h \
 		ui_stationtostationsearch.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDateEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QFile \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QCompleter \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qcompleter.h
@@ -3653,11 +3503,18 @@ release/trainsearch.o: ../TrainUI/trainsearch.cpp ../TrainUI/trainsearch.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
@@ -3665,52 +3522,6 @@ release/trainsearch.o: ../TrainUI/trainsearch.cpp ../TrainUI/trainsearch.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		ui_trainsearch.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDateEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../TrainUI/toserverstructs.h
@@ -3832,11 +3643,18 @@ release/stationsearch.o: ../TrainUI/stationsearch.cpp ../TrainUI/stationsearch.h
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
@@ -3844,52 +3662,6 @@ release/stationsearch.o: ../TrainUI/stationsearch.cpp ../TrainUI/stationsearch.h
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		ui_stationsearch.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDateEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdatetimeedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../TrainUI/toserverstructs.h \
@@ -4024,6 +3796,13 @@ release/searchticket.o: ../TrainUI/searchticket.cpp ../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableView \
@@ -4040,49 +3819,10 @@ release/searchticket.o: ../TrainUI/searchticket.cpp ../TrainUI/searchticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		../TrainUI/include/DataBase_Train.h \
-		../TrainUI/include/map.hpp \
-		../TrainUI/include/algorithm0.hpp \
-		../TrainUI/include/exceptions.hpp \
-		../TrainUI/include/database.h \
-		../TrainUI/include/vector.hpp \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		../TrainUI/login.h \
 		../TrainUI/modifyplanofatrain.h \
 		../TrainUI/toserverstructs.h \
-		ui_searchticket.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout
+		ui_searchticket.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\searchticket.o ..\TrainUI\searchticket.cpp
 
 release/adminwindow.o: ../TrainUI/adminwindow.cpp ../TrainUI/adminwindow.h \
@@ -4192,52 +3932,6 @@ release/adminwindow.o: ../TrainUI/adminwindow.cpp ../TrainUI/adminwindow.h \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		ui_adminwindow.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QSplitter \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget \
 		../TrainUI/addplan.h \
 		../TrainUI/include/vector.hpp \
 		../TrainUI/include/exceptions.hpp \
@@ -4245,19 +3939,31 @@ release/adminwindow.o: ../TrainUI/adminwindow.cpp ../TrainUI/adminwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
 		../TrainUI/trainsearch.h \
 		../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/QTcpSocket \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtnetwork-config.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/database.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		../TrainUI/addplansimple.h \
 		../TrainUI/myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
-		../TrainUI/searchusr.h
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		../TrainUI/searchusr.h \
+		../TrainUI/syslog.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\adminwindow.o ..\TrainUI\adminwindow.cpp
 
 release/toserverstructs.o: ../TrainUI/toserverstructs.cpp ../TrainUI/toserverstructs.h \
@@ -4462,50 +4168,6 @@ release/modifyplanofatrain.o: ../TrainUI/modifyplanofatrain.cpp ../TrainUI/modif
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		ui_modifyplanofatrain.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QSplitter \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\modifyplanofatrain.o ..\TrainUI\modifyplanofatrain.cpp
@@ -4624,56 +4286,7 @@ release/addplan.o: ../TrainUI/addplan.cpp ../TrainUI/addplan.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		ui_addplan.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTableView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtableview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout
+		ui_addplan.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\addplan.o ..\TrainUI\addplan.cpp
 
 release/addplansimple.o: ../TrainUI/addplansimple.cpp ../TrainUI/addplansimple.h \
@@ -4783,57 +4396,6 @@ release/addplansimple.o: ../TrainUI/addplansimple.cpp ../TrainUI/addplansimple.h
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		ui_addplansimple.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextBrowser \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextbrowser.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextdocument.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\addplansimple.o ..\TrainUI\addplansimple.cpp
@@ -4945,58 +4507,11 @@ release/searchusr.o: ../TrainUI/searchusr.cpp ../TrainUI/searchusr.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		../TrainUI/include/smartpoint.hpp \
 		ui_searchusr.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLineEdit \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlineedit.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextcursor.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextformat.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qtextoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
 		../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/QTcpSocket \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
@@ -5004,6 +4519,14 @@ release/searchusr.o: ../TrainUI/searchusr.cpp ../TrainUI/searchusr.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
 		../TrainUI/include/utility.hpp \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmessagebox.h \
 		../TrainUI/editsearchusr.h
@@ -5116,58 +4639,15 @@ release/editsearchusr.o: ../TrainUI/editsearchusr.cpp ../TrainUI/editsearchusr.h
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		ui_editsearchusr.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QVariant \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QAction \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qaction.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qactiongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QApplication \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qeventloop.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdesktopwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qguiapplication.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qinputmethod.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QButtonGroup \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qbuttongroup.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QGridLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qgridlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlayoutitem.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qboxlayout.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHBoxLayout \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QHeaderView \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qheaderview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemview.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractscrollarea.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qframe.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qitemselectionmodel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractitemdelegate.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyleoption.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractspinbox.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractslider.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qstyle.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabbar.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qrubberband.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QLabel \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qlabel.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QSplitter \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qsplitter.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QWidget \
 		../TrainUI/myticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QStandardItemModel \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qstandarditemmodel.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qabstractitemmodel.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qicon.h \
 		../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWindow \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qmainwindow.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtabwidget.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/QTcpSocket \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtcpsocket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qtnetworkglobal.h \
@@ -5175,8 +4655,18 @@ release/editsearchusr.o: ../TrainUI/editsearchusr.cpp ../TrainUI/editsearchusr.h
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtNetwork/qabstractsocket.h \
 		../TrainUI/include/utility.hpp \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
+		../TrainUI/include/DataBase_Train.h \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
 		../TrainUI/myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
 		../TrainUI/stationsearch.h \
 		../TrainUI/stationtostationsearch.h \
 		../TrainUI/trainsearch.h
