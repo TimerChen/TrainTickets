@@ -148,6 +148,7 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 		}
 		return ans;
 	}
+	throw(0);
 }
 
 
@@ -190,12 +191,14 @@ QDateTime DataBase_Train::getLeaveTime(QString train, QString station)
 	int i = 0;
 	for (ttd::vector<QString>::iterator it = traData[train].stationName.begin(), ra = traData[train].stationName.end();
 		it != ra; i++, it++)	if (*it == station)	return traData[train].leaveTime[i];
+	throw(0);
 }
 QDateTime DataBase_Train::getReachTime(QString train, QString station)
 {
 	int i = 0;
 	for (ttd::vector<QString>::iterator it = traData[train].stationName.begin(), ra = traData[train].stationName.end();
 		it != ra; i++, it++)	if (*it == station)	return traData[train].reachTime[i];
+	throw(0);
 }
 bool DataBase_Train::modifyTrain(QString traId, int setnr, int stanr,
 	 const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
@@ -297,6 +300,7 @@ ttd::vector<QString> DataBase_Train::bothPass(const QString &sta, const QString 
 			}
 		if (!ok)	ans.erase(i--);
 	}
+	return ans;
 }
 
 

@@ -11,11 +11,6 @@ DataBase_Main::DataBase_Main( const QString &Name )
 	dUser->add_acc(dAccount);
 	dTrain = new DataBase_Train(Name);
 	dLog = new DataBase_Log(Name);
-	/*
-	dblog = new DataBase_Log(Name);
-	dbaccount = new DataBase_Account(Name);
-	dbuser = new DataBase_User(Name);
-	dbtrain = new DataBase_Train(Name);*/
 	loadData();
 }
 
