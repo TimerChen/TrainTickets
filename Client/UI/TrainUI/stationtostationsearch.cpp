@@ -17,7 +17,7 @@ StationToStationSearch::StationToStationSearch(
     ui->setupUi(this);
     ui->dateEdit->setCalendarPopup(true);
 
-    QFile stationName(":src/stationfile");
+    QFile stationName(":/src/stationfile");
     stationName.open(QIODevice::ReadOnly);
     QTextStream in(&stationName);
     QStringList word_list;
