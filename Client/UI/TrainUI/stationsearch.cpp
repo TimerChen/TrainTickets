@@ -14,13 +14,15 @@ StationSearch::StationSearch(ttd::shared_ptr<uistructs::nowAccount> _now,
 
     QFile stationName(":/src/names.txt");
     stationName.open(QIODevice::ReadOnly);
+
     QTextStream in(&stationName);
+    //in.setCodec(QTextCodec::codecForName("utf-8"));
     QStringList word_list;
     QString tmps;
     while (!in.atEnd()) {
         in >> tmps;
         word_list<< tmps;
-        //qDebug() << tmps << endl;
+        qDebug() << tmps << endl;
     }
     //word_list<<"Java"<<"C++"<<"C#"<<"PHP"<<"Perl"<<"Python"<<"Delphi"<<"Ruby";
     QCompleter *completer = new QCompleter(word_list, this);
