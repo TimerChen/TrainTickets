@@ -84,6 +84,7 @@ public:
 	DataBase_Train( const QString&Name = "Default" );
 
 	void loadData();
+	void loadData_raw(const QString &FileName);
 	void saveData();
 
 	bool trainExist(QString traId);

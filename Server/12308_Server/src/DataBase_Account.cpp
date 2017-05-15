@@ -166,6 +166,7 @@ void DataBase_Account::modifyAccount(const int &Id, const QString &newPassword, 
 
 DataBase_Account::~DataBase_Account()
 {
+	saveData();
 }
 
 int DataBase_Account::buyTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,

@@ -36,7 +36,7 @@ public:
     QPushButton *trainSearchBtn;
     QPushButton *addPlanBtn;
     QPushButton *searchAccountBtn;
-    QWidget *widget;
+    QWidget *layoutWidget;
     QVBoxLayout *verticalLayout_3;
     QLabel *label;
     QLabel *label_3;
@@ -92,13 +92,13 @@ public:
         searchAccountBtn = new QPushButton(splitter);
         searchAccountBtn->setObjectName(QStringLiteral("searchAccountBtn"));
         splitter->addWidget(searchAccountBtn);
-        widget = new QWidget(AdminWindow);
-        widget->setObjectName(QStringLiteral("widget"));
-        widget->setGeometry(QRect(60, 20, 251, 271));
-        verticalLayout_3 = new QVBoxLayout(widget);
+        layoutWidget = new QWidget(AdminWindow);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        layoutWidget->setGeometry(QRect(60, 20, 251, 271));
+        verticalLayout_3 = new QVBoxLayout(layoutWidget);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_3->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(widget);
+        label = new QLabel(layoutWidget);
         label->setObjectName(QStringLiteral("label"));
         label->setMinimumSize(QSize(241, 251));
         label->setMaximumSize(QSize(241, 251));
@@ -107,7 +107,7 @@ public:
 
         verticalLayout_3->addWidget(label);
 
-        label_3 = new QLabel(widget);
+        label_3 = new QLabel(layoutWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setScaledContents(false);
         label_3->setAlignment(Qt::AlignCenter);
@@ -136,14 +136,13 @@ public:
         sizePolicy.setHeightForWidth(logoutBtn->sizePolicy().hasHeightForWidth());
         logoutBtn->setSizePolicy(sizePolicy);
         splitter_2->addWidget(logoutBtn);
-        label_3->raise();
+        splitter_2->raise();
+        layoutWidget->raise();
         layoutWidget_2->raise();
         splitter->raise();
-        label->raise();
-        welcomeLabel->raise();
 
         retranslateUi(AdminWindow);
-        QObject::connect(logoutBtn, SIGNAL(clicked()), AdminWindow, SLOT(close()));
+        QObject::connect(logoutBtn, SIGNAL(clicked()), AdminWindow, SLOT(accept()));
 
         QMetaObject::connectSlotsByName(AdminWindow);
     } // setupUi
@@ -159,7 +158,7 @@ public:
         label->setText(QString());
         label_3->setText(QApplication::translate("AdminWindow", "12308", Q_NULLPTR));
         pushButton->setText(QApplication::translate("AdminWindow", "\346\237\245\350\257\242\347\263\273\347\273\237\346\227\245\345\277\227", Q_NULLPTR));
-        myinformBtn->setText(QApplication::translate("AdminWindow", "\347\224\250\346\210\267\344\277\241\346\201\257", Q_NULLPTR));
+        myinformBtn->setText(QApplication::translate("AdminWindow", "\347\256\241\347\220\206\345\221\230\344\277\241\346\201\257", Q_NULLPTR));
         logoutBtn->setText(QApplication::translate("AdminWindow", "\351\200\200\345\207\272\347\231\273\345\275\225", Q_NULLPTR));
     } // retranslateUi
 

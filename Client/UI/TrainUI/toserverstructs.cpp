@@ -28,6 +28,11 @@ frontask::trainSearch::trainSearch(const QDate _time, const QString _train)
 frontask::loginAccount::loginAccount(const QString _userID, const QString _pwd)
     : userID(_userID), pwd(_pwd) {}
 
+QDataStream &operator << (QDataStream &out, const frontask::loginAccount &data)
+{ out << data.userID << data.pwd; return out; }
+QDataStream &operator >> (QDataStream &in, frontask::loginAccount &data)
+{ in >> data.userID >> data.pwd; return in;}
+
 //frontask::auLoginAccount::auLoginAccount(const auLoginAccount& rl)
 //    : userID(rl.userID), pwd(rl.pwd) {}
 frontask::auLoginAccount::auLoginAccount(const QString _userID, const QString _pwd)
@@ -38,6 +43,12 @@ frontask::auLoginAccount::auLoginAccount(const QString _userID, const QString _p
 //    : name(rl.name), pwd(rl.pwd) {}
 frontask::regist::regist(const QString _userID, const QString _pwd)
     : userID(_userID), pwd(_pwd) {}
+
+
+QDataStream &operator << (QDataStream &out, const frontask::regist &data)
+{ out << data.userID << data.pwd;	return out; }
+QDataStream &operator >> (QDataStream &in, frontask::regist &data)
+{ in >> data.userID >> data.pwd; return in; }
 
 //frontask::changeUsrName::changeUsrName(const changeUsrName &_rc):newname(_rc.newname){}
 frontask::changeUsrName::changeUsrName(const QString _newname):newname(_newname){}

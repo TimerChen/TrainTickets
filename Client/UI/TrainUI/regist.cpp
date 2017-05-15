@@ -2,6 +2,7 @@
 #include <QMessageBox>
 #include "toserverstructs.h"
 #include "ui_regist.h"
+#include "mainwindow.h"
 
 Regist::Regist(QWidget *parent) : QDialog(parent), ui(new Ui::Regist) {
     ui->setupUi(this);
@@ -34,11 +35,23 @@ void Regist::on_registBtn_clicked() {
         else if (ui->pwdLineEdit->text().length() < 6) {
             QMessageBox::warning(this, "注册失败", "密码长度应不小于6位",
                                  QMessageBox::Cancel);
-        } else if (true)
+		} else if (true){
             /// 发送reg
             /// 发送rac
-            accept();
-        else if (false){
+			int serverReturn
+				= ((MainWindow*)parentWidget())->register_remote
+					(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
+
+			if(serverReturn == 2)
+				accept();
+			else if(serverReturn == 1)
+				QMessageBox::warning(this, "注册失败", "存在的用户名",
+									 QMessageBox::Cancel);
+			else
+				QMessageBox::warning(this, "注册失败", "非法操作",
+									 QMessageBox::Cancel);
+
+		}else if (false){
             QMessageBox::warning(this, "注册失败",
                                  "用户ID已存在或服务器拒绝本次注册",
                                  QMessageBox::Cancel);

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>822</width>
+    <height>493</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="restartPushButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>50</y>
+      <x>660</x>
+      <y>20</y>
       <width>85</width>
       <height>28</height>
      </rect>
@@ -27,13 +27,13 @@
      <string>Restart</string>
     </property>
    </widget>
-   <widget class="QTextEdit" name="textEdit">
+   <widget class="QTextEdit" name="console">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>40</y>
-      <width>221</width>
-      <height>101</height>
+      <x>20</x>
+      <y>20</y>
+      <width>621</width>
+      <height>361</height>
      </rect>
     </property>
     <property name="readOnly">
@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="stopPushButton">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>90</y>
+      <x>660</x>
+      <y>60</y>
       <width>85</width>
       <height>28</height>
      </rect>
@@ -56,9 +56,9 @@
    <widget class="QLineEdit" name="lineEdit">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>180</y>
-      <width>221</width>
+      <x>20</x>
+      <y>390</y>
+      <width>621</width>
       <height>31</height>
      </rect>
     </property>
@@ -66,8 +66,8 @@
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>180</y>
+      <x>660</x>
+      <y>390</y>
       <width>121</width>
       <height>31</height>
      </rect>
@@ -82,7 +82,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>400</width>
+     <width>822</width>
      <height>28</height>
     </rect>
    </property>
