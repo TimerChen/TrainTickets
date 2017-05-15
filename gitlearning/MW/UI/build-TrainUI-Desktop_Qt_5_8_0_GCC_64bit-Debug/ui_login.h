@@ -49,7 +49,7 @@ public:
         Login->setMinimumSize(QSize(783, 354));
         Login->setMaximumSize(QSize(783, 354));
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Login->setWindowIcon(icon);
         horizontalLayout_2 = new QHBoxLayout(Login);
         horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
@@ -125,7 +125,7 @@ public:
     void retranslateUi(QDialog *Login)
     {
         Login->setWindowTitle(QApplication::translate("Login", "\347\231\273\345\275\225\347\201\253\350\275\246\350\256\242\347\245\250\347\263\273\347\273\237", Q_NULLPTR));
-        label->setText(QApplication::translate("Login", "\347\224\250\346\210\267\345\220\215", Q_NULLPTR));
+        label->setText(QApplication::translate("Login", "\347\224\250\346\210\267ID", Q_NULLPTR));
         label_2->setText(QApplication::translate("Login", "\345\257\206\347\240\201", Q_NULLPTR));
         auloginBtn->setText(QApplication::translate("Login", "\347\256\241\347\220\206\345\221\230\347\231\273\345\275\225", Q_NULLPTR));
         loginBtn->setText(QApplication::translate("Login", "\347\224\250\346\210\267\347\231\273\345\275\225", Q_NULLPTR));

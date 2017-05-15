@@ -36,7 +36,7 @@ public:
     QLabel *label_3;
     QLineEdit *confirmpwdLineEdit;
     QVBoxLayout *verticalLayout;
-    QPushButton *loginBtn;
+    QPushButton *registBtn;
     QPushButton *exitButton;
 
     void setupUi(QDialog *Regist)
@@ -47,7 +47,7 @@ public:
         Regist->setMinimumSize(QSize(789, 338));
         Regist->setMaximumSize(QSize(789, 338));
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Regist->setWindowIcon(icon);
         verticalLayout_3 = new QVBoxLayout(Regist);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
@@ -90,10 +90,10 @@ public:
 
         verticalLayout = new QVBoxLayout();
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
-        loginBtn = new QPushButton(Regist);
-        loginBtn->setObjectName(QStringLiteral("loginBtn"));
+        registBtn = new QPushButton(Regist);
+        registBtn->setObjectName(QStringLiteral("registBtn"));
 
-        verticalLayout->addWidget(loginBtn);
+        verticalLayout->addWidget(registBtn);
 
         exitButton = new QPushButton(Regist);
         exitButton->setObjectName(QStringLiteral("exitButton"));
@@ -116,10 +116,10 @@ public:
     void retranslateUi(QDialog *Regist)
     {
         Regist->setWindowTitle(QApplication::translate("Regist", "\346\263\250\345\206\214", Q_NULLPTR));
-        label->setText(QApplication::translate("Regist", "\347\224\250\346\210\267\345\220\215", Q_NULLPTR));
+        label->setText(QApplication::translate("Regist", "\347\224\250\346\210\267ID", Q_NULLPTR));
         label_2->setText(QApplication::translate("Regist", "\345\257\206\347\240\201", Q_NULLPTR));
         label_3->setText(QApplication::translate("Regist", "\347\241\256\350\256\244\345\257\206\347\240\201", Q_NULLPTR));
-        loginBtn->setText(QApplication::translate("Regist", "\346\263\250\345\206\214", Q_NULLPTR));
+        registBtn->setText(QApplication::translate("Regist", "\346\263\250\345\206\214", Q_NULLPTR));
         exitButton->setText(QApplication::translate("Regist", "\351\200\200\345\207\272", Q_NULLPTR));
     } // retranslateUi
 
