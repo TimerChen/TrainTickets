@@ -60,7 +60,7 @@ void Login::on_loginBtn_clicked() {
 }
 
 void Login::on_auloginBtn_clicked() {
-    frontask::auLoginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
+	frontask::loginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
     if (ui->usrLineEdit->text() == "mw" &&
         ui->pwdLineEdit->text() == "123456") {
         ///发送aulogin

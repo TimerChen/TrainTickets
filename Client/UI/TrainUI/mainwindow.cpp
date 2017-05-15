@@ -45,7 +45,7 @@ MainWindow::~MainWindow() { delete ui; }
 void MainWindow::link()
 {
 	serverSocket->abort();
-    serverSocket->connectToHost("59.78.47.219",12308);
+	serverSocket->connectToHost("0.0.0.0",12308);
 }
 
 void MainWindow::dealError(QAbstractSocket::SocketError socketError)

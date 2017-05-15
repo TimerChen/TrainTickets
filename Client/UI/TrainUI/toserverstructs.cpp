@@ -42,36 +42,11 @@ QDataStream &operator >> (QDataStream &in, frontask::stationSearch &data)
 
 
 
-QDataStream &operator << (QDataStream &out, const frontask::stationSearch &data)
-{
-	out << data.time << data.station;
-	return out;
-}
-QDataStream &operator >> (QDataStream &in, frontask::stationSearch &data)
-{
-	in >> data.time >> data.station;
-	return in;
-}
-
-
-
 frontask::trainSearch::trainSearch() {}
 //frontask::trainSearch::trainSearch(const trainSearch& rs)
 //    : time(rs.time), trainID(rs.trainID) {}
 frontask::trainSearch::trainSearch(const QDate _time, const QString _train)
 	: time(_time), trainID(_train) {}
-
-QDataStream &operator << (QDataStream &out, const frontask::trainSearch &data)
-{
-	out << data.time << data.trainID;
-	return out;
-}
-
-QDataStream &operator >> (QDataStream &in, frontask::trainSearch &data)
-{
-	in >> data.time >> data.trainID;
-	return in;
-}
 
 QDataStream &operator << (QDataStream &out, const frontask::trainSearch &data)
 {
@@ -114,7 +89,7 @@ QDataStream &operator << (QDataStream &out, const frontask::changeUsrName &data)
 { out << data.usrID << data.newname; return out; }
 
 QDataStream &operator >> (QDataStream &in, frontask::changeUsrName &data)
-{ in >> data.usrID >> data.newname; return out; }
+{ in >> data.usrID >> data.newname; return in; }
 
 //frontask::changePwd::changePwd(const changePwd &rc):usrID(rc.usrID), oldpwd(rc.oldpwd),newpwd(rc.newpwd){}
 frontask::changePwd::changePwd(const QString _usrid, const QString _old, QString _new):usrID(_usrid), oldpwd(_old),newpwd(_new){}
@@ -138,7 +113,7 @@ QDataStream &operator << (QDataStream &out, const frontask::targetTicket &data)
 
 QDataStream &operator >> (QDataStream &in, frontask::targetTicket &data)
 {
-	in >> data.time >> data.buyNum >> data.ussID
+	in >> data.time >> data.buyNum >> data.usrID
 		>> data.trainID >> data.seatType
 		>> data.loadStation >> data.unLoadStation;
 	return in;

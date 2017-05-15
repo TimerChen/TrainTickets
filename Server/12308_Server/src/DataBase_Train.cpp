@@ -2,6 +2,7 @@
 
 #include <QFile>
 #include <QDataStream>
+#include <QTextStream>
 
 DataBase_Train::Train::Train (const QString &tID, int setnr, int stanr,
 	const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
@@ -401,7 +402,6 @@ void DataBase_Train::saveData()
 
 void DataBase_Train::loadData_raw(const QString &FileName)
 {
-	/*
 	int total = 0;
 	QFile file(FileName);	//file
 	if (!file.open(QFile::ReadOnly|QFile::Text))	throw(0);//open failed
@@ -417,71 +417,61 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 
 	ttd::vector<ttd::vector<int> > ptb;//price table
 
+	QStringList qslist;
 	bool ok;
 	QString line, now;
-	while (getline(in,traId))
+	while (!in.atEnd())
 	{
+
 		ok = 0;
 		stanr = setnr = 0;
 		set.clear(), ptb.clear();
 		stan.clear(), lt.clear();
-		ma.clear();sen.clear();rt.clear()
+		ma.clear();sen.clear();rt.clear();
 
-		getline(in,line);
-		istringstream sin(line);
-		while (getline(sin,now,','))
+		traId = in.readLine();
+		qslist = in.readLine().split(',');
+		setnr = qslist.size()-5;
+		for(int i=6;i<qslist.size();++i)
 		{
-			setnr++;
-			if (setnr > 4)	set.push_back(now), ptb.push_back(ma), sen.push_back(2000);
+			set.push_back(qslist[i]);
+			ptb.push_back(ttd::vector<int>() );
+			sen.push_back(2000);
 		}
-		setnr -= 5;
-		while (!ok)
+		while (!in.atEnd() && !ok)
 		{
+			qslist = in.readLine().split(',');
+
 			stanr++;
 
-			getline(in,now,',');
-			stan.push_back(now);
+			stan.push_back(qslist[0]);
 
-			getline(in,now,',');
-			QDate day = QDate::fromString(now,"yyyy-mm-dd");
+			QDate day = QDate::fromString(qslist[1],"yyyy-mm-dd");
 			day.addDays(-27);			//yy and mm is useless
 
-			getline(in,now,',');
-			QTime goTime = QTime::fromString(now,"hh:mm");
-			rt.push_back(QDateTime(day,gotTime));
+			if(qslist[2] == "起点站")
+				rt.push_back(QDateTime(day));
+			else
+				rt.push_back(QDateTime(day,QTime::fromString(qslist[2],"hh:mm") ));
 
-			getline(in,now,',');
-			if (now == "终点站")	ok = 1;
-			QTime goTime = QTime::fromString(now,"hh:mm");
-			lt.push_back(QDateTime(day,gotTime));
 
-			getline(in,now,',');
-			int x = 0;for (int _=0;_<now.length()-2;_++)	x = x*10+now[_]-'0';
-			ma.push_back(x);
+			if(qslist[3] == "终点站")
+				rt.push_back(QDateTime(day)),ok = 1;
+			else
+				lt.push_back(QDateTime(day,QTime::fromString(qslist[3],"hh:mm")));
 
-			for (int ns = 0; ns < setnr-1; ns++)
-			{
-				getline(in,now,',');
-				if (now == "-")	x = -1;
-				else
-				{
-					now.remove(0,2);
-					double db = now.toDouble()*100;
-					ptb[ns].push_back((int)db);
-				}
-			}
+			ma.push_back(
+				( qslist[4].left(qslist[4].size()-2) ).toInt()
+				);
 
-				getline(in,now);
-				if (now == "-")	x = -1;
-				else
-				{
-					now.remove(0,2);
-					double db = now.toDouble()*100;
-					ptb[ns].push_back((int)db);
-				}
+			for( int i = 0; i < setnr; ++i )
+			if(qslist[i+5].size()==1)
+				ptb[i].push_back(-1);
+			else
+				ptb[i].push_back( int(qslist[i+5].mid(1).toDouble() * 100) );
 		}
-		if createTrain(traId,setnr,stanr,stan,ma,rt,lt,set,senr,ptb)
-		total++;
+		if ( createTrain(traId,setnr,stanr,stan,ma,rt,lt,set,sen,ptb) )
+			total++;
 	}
 	file.close();
 	/*

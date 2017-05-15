@@ -44,7 +44,8 @@ SOURCES += main.cpp\
     addplansimple.cpp \
     searchusr.cpp \
     editsearchusr.cpp \
-    syslog.cpp
+    syslog.cpp \
+    src/DataBase_Train.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
