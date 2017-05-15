@@ -1,4 +1,142 @@
-#include "DataBase_Train.h"
+#include "include/DataBase_Train.h"
+//in buy tickets, checked weathe the price is -1;
+// add load file
+#include <QFile>
+#include <QDataStream>
+void DataBase_Train::loadData_raw(const QString &FileName)
+{
+	int total = 0;
+	QFile file(FileName);	//file
+	if (!file.open(QFile::ReadOnly|QFile::Text))	throw(0);//open failed
+	QTextStream in(&file);
+		
+	QString traId;
+	int setnr, stanr;
+	ttd::vector<QString> stan,//station name
+						set;//stetypename;
+	ttd::vector<int> ma,//miles
+					sen;//seat number of all kinds of tickets, initally 2000
+	ttd::vector<QDateTime> rt, lt;//reach and leave time
+	
+	ttd::vector<ttd::vector<int> > ptb;//price table
+	
+	bool ok;
+	QString line, now;
+	while (getline(in,traId))
+	{
+		ok = 0;
+		stanr = setnr = 0;
+		set.clear(), ptb.clear();
+		stan.clear(), lt.clear();
+		ma.clear();sen.clear();rt.clear()
+				
+		getline(in,line);
+		istringstream sin(line);
+		while (getline(sin,now,','))
+		{
+			setnr++;
+			if (setnr > 4)	set.push_back(now), ptb.push_back(ma), sen.push_back(2000);
+		}
+		setnr -= 5;
+		while (!ok)
+		{
+			stanr++;
+			
+			getline(in,now,',');
+			stan.push_back(now);
+			
+			getline(in,now,',');
+			QDate day = QDate::fromString(now,"yyyy-mm-dd");
+			day.addDays(-27);			//yy and mm is useless
+
+			getline(in,now,',');
+			QTime goTime = QTime::fromString(now,"hh:mm");
+			rt.push_back(QDateTime(day,gotTime));
+			
+			getline(in,now,',');
+			if (now == "жу╣╫у╬")	ok = 1;
+			QTime goTime = QTime::fromString(now,"hh:mm");
+			lt.push_back(QDateTime(day,gotTime));
+			
+			getline(in,now,',');
+			int x = 0;for (int _=0;_<now.length()-2;_++)	x = x*10+now[_]-'0';
+			ma.push_back(x);
+			
+			for (int ns = 0; ns < setnr-1; ns++)
+			{
+				getline(in,now,',');
+				if (now == "-")	x = -1;
+				else
+				{
+					now.remove(0,2);
+					double db = now.toDouble()*100;
+					ptb[ns].push_back((int)db);
+				}
+			}
+			
+				getline(in,now);
+				if (now == "-")	x = -1;
+				else
+				{
+					now.remove(0,2);
+					double db = now.toDouble()*100;
+					ptb[ns].push_back((int)db);
+				}
+		}
+		if createTrain(traId,setnr,stanr,stan,ma,rt,lt,set,senr,ptb)
+		total++;
+	}
+	file.close();
+	/*
+		8398 IN TOTAL
+		10 repeated
+		D295/D298	G2331/G2334		G7575/G7578		C1031		C1034
+		Z1			Z9				Z54				Z62			Z63
+	
+		all train have 2 or 3 seat types
+						at most 40 stations
+						2:775
+						3:794
+						4:989
+						5:997
+						6:970
+						7:670
+						8:555
+						9:483
+						10:391
+						11:287
+						12:271
+						13:198
+						14:158
+						15:126
+						16:104
+						17:80
+						18:66
+						19:72
+						20:66
+						21:59
+						22:52
+						23:36
+						24:35
+						25:33
+						26:30
+						27:17
+						28:17
+						29:16
+						30:11
+						31:3
+						32:8
+						33:6
+						34:5
+						35:0
+						36:4
+						37:1
+						38:2
+						39:0
+						40:1
+
+	*/
+}
 DataBase_Train::Train::Train (const QString &tID, int setnr, int stanr,
 	const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
 	const ttd::vector<QDateTime> &rt, const ttd::vector<QDateTime> &lt,
@@ -69,10 +207,14 @@ int DataBase_Train::Train::buyTickets (QDate dat, QString lsta, QString ulsta, Q
 			if (stationName[j] == ulsta)	break;
 		}				
 		if (j == stationNumber)	return -3;	// no such station
+		if (priceTable[sid][j]==-1 || priceTable[sid][i]==-1)
+			retuen -9;	// at least one station ,price = -1
+		int pricebetween = priceTable[sid][j]-priceTable[sid][i];
+		if (pricebetween < 0)	return -8;	//though i don't know why, the price is less than 0
 		for(int _=j; _ >= i; _--)
 			salingDate[dat].restTickets[sid][_] -= num;
 		started = 1;
-		return num*(priceTable[sid][j]-priceTable[sid][i]);
+		return num*pricebetween;
 	}
 	return -3;	// no such station;
 }
@@ -85,7 +227,7 @@ int DataBase_Train::Train::cancelTickets (QDate dat, QString lsta, QString ulsta
 	{
 		int k = leaveTime[i].date().day();
 		--k, dat = dat.addDays(-k);
-		int mn = seatNumber[sid];
+		//int mn = seatNumber[sid];
 		int j = i;
 		for(; stationName[j] != ulsta; j++)	salingDate[dat].restTickets[sid][j] += num;
 		salingDate[dat].restTickets[sid][j] += num;
@@ -109,6 +251,8 @@ DataBase_Train::TrainRoute DataBase_Train::Train::query_train()
 	ans.reachTime = reachTime;
 	ans.leaveTime = leaveTime;
 	ans.seatType = seatType;
+	ans.seatNumber = seatNumber;
+	ans.priceTable = priceTable;
 	return ans;
 }
 DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, QString lsta, QString ulsta)
@@ -127,7 +271,6 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 		ans.seatTypeNumber = seatTypeNumber;
 		ans.loadStation = lsta, ans.unLoadStation = ulsta;
 		ans.seatType = seatType;
-										3 22:59:03  5.8
 		ans.loadStationLeaveTime = QDateTime(dat.addDays(leaveTime[i].date().day()),leaveTime[i].time());
 		ans.unLoadStationReachTime = QDateTime(dat.addDays(reachTime[j].date().day()),reachTime[j].time());
 		for (int _ = 0; _ < seatTypeNumber; _++)
@@ -143,9 +286,12 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 		}
 		return ans;
 	}
+	throw(0);
 }
 
-DataBase_Train::DataBase_Train()
+
+DataBase_Train::DataBase_Train(const QString &Name)
+	:DataBase_Base(Name)
 {
 	traData.clear();
 	staData.clear();
@@ -183,12 +329,14 @@ QDateTime DataBase_Train::getLeaveTime(QString train, QString station)
 	int i = 0;
 	for (ttd::vector<QString>::iterator it = traData[train].stationName.begin(), ra = traData[train].stationName.end();
 		it != ra; i++, it++)	if (*it == station)	return traData[train].leaveTime[i];
+	throw(0);
 }
 QDateTime DataBase_Train::getReachTime(QString train, QString station)
 {
 	int i = 0;
 	for (ttd::vector<QString>::iterator it = traData[train].stationName.begin(), ra = traData[train].stationName.end();
 		it != ra; i++, it++)	if (*it == station)	return traData[train].reachTime[i];
+	throw(0);
 }
 bool DataBase_Train::modifyTrain(QString traId, int setnr, int stanr,
 	 const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
@@ -212,13 +360,19 @@ bool DataBase_Train::closeOneDay (QString traId, QDate datc)
 	return traData[traId].closeOneDay(datc);
 }
 	
-int DataBase_Train::buyTickets (QString traId, QDate dat, QString lsta, QString ulsta, QString set, int num)
+int DataBase_Train::buyTickets
+	(QString traId, QDate dat,
+	 QString lsta, QString ulsta,
+	 QString set, int num)
 {
 	if (num < 0 )	return -4;//num<0
 	return traData[traId].buyTickets(dat,lsta,ulsta,set,num);
 }
 	
-int DataBase_Train::cancelTickets (QString traId, QDate dat, QString lsta, QString ulsta, QString set, int num)
+int DataBase_Train::cancelTickets
+	(QString traId, QDate dat,
+	 QString lsta, QString ulsta,
+	 QString set, int num)
 {
 	return traData[traId].cancelTickets(dat,lsta,ulsta,set,num);
 }
@@ -284,4 +438,101 @@ ttd::vector<QString> DataBase_Train::bothPass(const QString &sta, const QString 
 			}
 		if (!ok)	ans.erase(i--);
 	}
+	return ans;
+}
+
+
+
+QDataStream& operator << (QDataStream& out, const DataBase_Train::QTrain &data)
+{
+	out << data.ableToBuy << data.trainID
+		<< data.seatTypeNumber
+		<< data.loadStation << data.unLoadStation
+		<< data.seatType << data.price << data.seatNumber
+		<< data.loadStationLeaveTime << data.unLoadStationReachTime;
+
+	return out;
+}
+QDataStream& operator >> (QDataStream& in, DataBase_Train::QTrain &data)
+{
+	in >> data.ableToBuy >> data.trainID
+			>> data.seatTypeNumber
+			>> data.loadStation >> data.unLoadStation
+			>> data.seatType >> data.price >> data.seatNumber
+			>> data.loadStationLeaveTime >> data.unLoadStationReachTime;
+	return in;
+}
+QDataStream& operator << (QDataStream& out, const DataBase_Train::TrainRoute &data)
+{
+	out << data.trainID
+		<< data.seatTypeNumber << data.stationNumber
+		<< data.stationName << data.mileAge
+		<< data.reachTime << data.leaveTime
+		<< data.seatType << data.seatNumber
+		<< data.priceTable;
+	return out;
+}
+QDataStream& operator >> (QDataStream& in, DataBase_Train::TrainRoute &data)
+{
+	in >> data.trainID
+			>> data.seatTypeNumber >> data.stationNumber
+			>> data.stationName >> data.mileAge
+			>> data.reachTime >> data.leaveTime
+			>> data.seatType >> data.seatNumber
+			>> data.priceTable;
+	return in;
+	return in;
+}
+QDataStream& operator << (QDataStream& out, const DataBase_Train::Train &data)
+{
+	out << data.trainID << data.started
+		<< data.seatTypeNumber << data.stationNumber
+		<< data.stationName << data.mileAge
+		<< data.reachTime << data.leaveTime
+		<< data.seatType << data.seatNumber
+		<< data.priceTable << data.salingDate;
+	return out;
+}
+
+QDataStream& operator >> (QDataStream& in, DataBase_Train::Train &data)
+{
+	in >> data.trainID >> data.started
+			>> data.seatTypeNumber >> data.stationNumber
+			>> data.stationName >> data.mileAge
+			>> data.reachTime >> data.leaveTime
+			>> data.seatType >> data.seatNumber
+			>> data.priceTable << data.salingDate;
+	return in;
+}
+
+QDataStream& operator << (QDataStream& out, const DataBase_Train::Train::TicketsPerDay &data)
+{
+	out << data.ableToBuy << data.restTickets;
+	return out;
+}
+
+QDataStream& operator >> (QDataStream& in, DataBase_Train::Train::TicketsPerDay &data)
+{
+	in >> data.ableToBuy >> data.restTickets;
+	return in;
+}
+
+void DataBase_Train::loadData()
+{
+	QFile file( dataBase_name + "_Train" + ".dat" );
+	if(!file.open(QIODevice::ReadOnly))
+		return;
+	QDataStream in(&file);
+	in.setVersion(QDataStream::Qt_5_0);
+	in >> traData >> staData;
+	file.close();
+}
+void DataBase_Train::saveData()
+{
+	QFile file( dataBase_name + "_Train" + ".dat" );
+	file.open(QIODevice::WriteOnly);
+	QDataStream out(&file);
+	out.setVersion(QDataStream::Qt_5_0);
+	out << traData << staData;
+	file.close();
 }
