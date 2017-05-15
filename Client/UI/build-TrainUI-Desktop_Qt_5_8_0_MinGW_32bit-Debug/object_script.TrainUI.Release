@@ -17,6 +17,7 @@ INPUT(
 ./release\addplansimple.o
 ./release\searchusr.o
 ./release\editsearchusr.o
+./release\syslog.o
 ./release\qrc_pic.o
 ./release\qrc_completer.o
 ./release\moc_mainwindow.o
@@ -34,4 +35,5 @@ INPUT(
 ./release\moc_addplansimple.o
 ./release\moc_searchusr.o
 ./release\moc_editsearchusr.o
+./release\moc_syslog.o
 );

@@ -11,8 +11,8 @@ editSearchUsr::editSearchUsr(
     : QDialog(parent), ui(new Ui::editSearchUsr), editaccount(_editaccount), adminID(_adminID),adminName(_adminName) {
     ui->setupUi(this);
     ui->welcomeLabel_2->setText("管理员：" + adminName + "， 您好！");
-    ui->nameLabel_2->setText("您正在修改用户:\tID: " + editaccount->userID +
-                           "\t用户名：" + editaccount->userID + "的信息");
+    ui->nameLabel_2->setText("您正在修改用户:\nID: " + editaccount->userID +
+                           "\n用户名：" + editaccount->userID + "的信息");
 }
 
 editSearchUsr::~editSearchUsr() { delete ui; }
