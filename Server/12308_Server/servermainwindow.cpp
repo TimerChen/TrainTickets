@@ -56,7 +56,7 @@ void ServerMainWindow::newConnection()
 }
 void ServerMainWindow::disconnect()
 {
-	QMessageBox::information(this,"Info","disconnect");
+	//QMessageBox::information(this,"Info","disconnect");
 	database->disconnect(currentUser);
 	database->logout(currentUser);
 	currentUser = -1;
@@ -76,9 +76,21 @@ void ServerMainWindow::newMessage()
 	database->addLog( "New opearte " + QString::number(oType) );
 	refreshConsole();
 
+	frontask::stationToStationSearch opt_qsts;
+	frontask::stationSearch opt_qs;
+	frontask::trainSearch opt_qt;
 	frontask::loginAccount opt_login;
 	frontask::regist opt_reg;
 	switch (oType) {
+	case frontask::stationtostationsearch:
+		in >> opt_qsts;
+		break;
+	case frontask::stationsearch:
+		in >> opt_qs;
+		break;
+	case frontask::trainsearch:
+		in >> opt_qt;
+		break;
 	case frontask::login:
 		in >> opt_login;
 		break;
@@ -106,6 +118,48 @@ void ServerMainWindow::newMessage()
 	out.setVersion( QDataStream::Qt_5_0 );
 
 	switch (oType) {
+	case frontask::stationtostationsearch:
+	{
+		ttd::vector<DataBase_Train::QTrain> tmp;
+		try{
+			tmp = database->query_stationToStation
+				( currentUser, opt_qsts.time, opt_qsts.fromStation, opt_qsts.toStation);
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
+	case frontask::stationsearch:
+	{
+		ttd::vector<DataBase_Train::TrainRoute> tmp;
+		try{
+			//Not used opt_**.time
+			tmp = database->query_station( currentUser, opt_qs.station );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
+	case frontask::trainsearch:
+	{
+		DataBase_Train::TrainRoute tmp;
+		try{
+			//Not used opt_**.time
+			tmp = database->query_train( currentUser, opt_qt.trainID );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
 	case frontask::login:
 	{
 		ttd::pair<int, QString> tmp

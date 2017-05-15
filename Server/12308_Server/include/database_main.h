@@ -26,7 +26,6 @@ private:
 	//You can backup server data anytime.
 	void saveData();
 public:
-	//DataBase_Account a;
 
 	DataBase_Main( const QString &Name = "Default" );
 	~DataBase_Main();
@@ -45,32 +44,44 @@ public:
 	bool logout( int UserId );
 
 	//Database_Account
+	DataBase_Account::Account queryAccount( const int &UserId, QString ID);
+	void modifyAccount( const int &UserId, const int &Id,
+					   const QString &newPassword, const QString &newName);
+	ttd::map<DataBase_Account::Ticket,int>
+		ownedTicket( const int &UserId, const int &Id );
+	/*
 	int buyTickets( const int &UserId, const int &Id,
 					const QString &trainId, const QString &from, const QString &to,
 					const QDateTime &fromTime, const QDateTime &toTime,
 					const int &price, const QString &type, const int &num);
-	int returnTicket(const int &UserId, const int &Id, const QString&trainId, const QString&from, const QString&to,
-					 const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString&type, const int &num);
-	ttd::map<DataBase_Account::Ticket,int>
-		ownedTicket( const int &UserId, const int &Id );
+	int returnTicket(const int &UserId, const int &Id, const QString&trainId,
+					 const QString&from, const QString&to,
+					 const QDateTime &fromTime, const QDateTime &toTime,
+					 const int &price, const QString&type, const int &num);
+	*/
+
+	//Database_Train
+	int buyTickets (const int &UserId, QString traId, QDate dat,
+					QString lsta, QString ulsta,
+					QString set, int num);
+	ttd::vector<DataBase_Train::TrainRoute>
+		query_station(const int &UserId, QString Station);
+	ttd::vector<DataBase_Train::QTrain>
+		query_stationToStation (const int &UserId,
+			QDate dat, QString lsta, QString ulsta);
+	DataBase_Train::TrainRoute
+		query_train(const int &UserId, QString tra);
+
+
 	//Add Log
 	void addLog( const QString &content );
 
 
 	//void User
 	//UserId is for identify your identification.
-	Train get_train( int UserId, QString Trainid );
-	ttd::vector<QTrain> query_train( int UserId, QString TrainId, int DayTime );
-	//Query one station.
-	ttd::vector<QTrain> query_station( int UserId, QString Station, short StationType );
-	//Query two stations.
-	ttd::vector<QTrain> query_stations( int UserId,
-		QString FromStation, QString ToStation,
-		int DayTime );
-	Account query_account( int UserId, QString ID );
+
 	void modify_train( int UserId, int TrainId, const Train &TrainInfo );
 	void modify_ticket( int UserId, int TrainId, int DayTime, const Ticket &TicketInfo );
-	void modify_account( int UserId, int AccountId, const Account &AccountInfo );
 
 	//This will return a TrainId.
 	int add_train( int UserId, const Train &TrainInfo );
