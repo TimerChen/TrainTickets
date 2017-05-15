@@ -167,8 +167,8 @@ int MainWindow::register_remote(const QString &UserId, const QString &pwd)
 	//QMessageBox::information(this,"Info","write_OK");
 	while(1)
 	{
-		//serverSocket->waitForReadyRead();
-		QMessageBox::information(this,"Info","ReadReady_OK");
+		serverSocket->waitForReadyRead();
+		//QMessageBox::information(this,"Info","ReadReady_OK");
 		serverIn.startTransaction();
 		serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
@@ -191,7 +191,8 @@ ttd::pair<int,QString> MainWindow::login_remote(const QString &UserId, const QSt
 	serverSocket->waitForBytesWritten();
 	while(1)
 	{
-		QMessageBox::information(this,"Info","ReadReady_OK");
+		serverSocket->waitForReadyRead();
+		//QMessageBox::information(this,"Info","ReadReady_OK");
 		serverIn.startTransaction();
 		serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
@@ -214,7 +215,8 @@ bool MainWindow::logout_remote()
 	//QMessageBox::information(this,"Info","write_OK");
 	while(1)
 	{
-		QMessageBox::information(this,"Info","ReadReady_OK");
+		serverSocket->waitForReadyRead();
+		//QMessageBox::information(this,"Info","ReadReady_OK");
 		serverIn.startTransaction();
 		serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
