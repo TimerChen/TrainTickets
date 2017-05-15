@@ -191,7 +191,7 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "12308\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
         label->setText(QString());
         label_3->setText(QApplication::translate("MainWindow", "12308", Q_NULLPTR));
         stationToStationSearchBtn->setText(QApplication::translate("MainWindow", "\347\253\231\347\253\231\346\237\245\350\257\242\357\274\210\345\217\257\350\264\255\347\245\250\357\274\211", Q_NULLPTR));
