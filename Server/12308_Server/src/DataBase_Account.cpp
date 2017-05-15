@@ -30,6 +30,9 @@ bool operator < (const DataBase_Account::Ticket &t1, const DataBase_Account::Tic
 	if (t1.buyer > t2.buyer)	return 0;
 	if (t1.trainID < t2.trainID)	return 1;
 	if (t1.trainID > t2.trainID)	return 0;
+
+	return 1 < 1;
+
 	if (t1.loadTime < t2.loadTime)	return 1;
 	if (t1.loadTime > t2.loadTime)	return 0;
 	return (t1.unLoadTime < t2.unLoadTime);
@@ -175,7 +178,7 @@ int DataBase_Account::buyTicket(const int &Id, const QString &trainId, const QSt
 	//please cheak weather num < 0 or num > leftnum
 	Ticket tmp(accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
 	accData[Id].bought[tmp] += num, accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,num));
-	return price*num;
+	return price;
 }
 int DataBase_Account::returnTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
 	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num)

@@ -3,6 +3,9 @@
 
 #include "include/exceptions.hpp"
 
+#include <QFile>
+#include <QTextStream>
+
 DataBase_Main::DataBase_Main( const QString &Name )
 :DataBase_Base(Name)
 {
@@ -25,7 +28,31 @@ ttd::normal_ptr<ttd::vector<QString> > DataBase_Main::getLog()
 /*Unfinished*/
 void DataBase_Main::loadData_raw( const QString &FileName )
 {
+	QFile file(FileName);	//file
+	if (!file.open(QFile::ReadOnly|QFile::Text))	throw(0);//open failed
+	QTextStream in(&file);
 
+	int total = 0;
+	int num;
+	QString name, id, traId;
+	QString sta, stb, type;
+	QString bor, tmp;	QDate day;
+	while (!in.atEnd())
+	{
+		in>>name>>id;
+		in>>bor>>num;
+		in>>type;
+		in>>tmp>>tmp>>traId;
+		in>>tmp>>sta;
+		in>>tmp>>stb;
+		in>>tmp>>tmp;
+		day = QDate::fromString(tmp,"yyyy-mm-dd");
+		regist(id,QString("000000"),name);
+		if (bor == "bought")	buyTickets(0,id,traId,day,sta,stb,type,num);	//  of the two functions
+		else	returnTickets(0,id,traId,day,sta,stb,type,num);
+		total++;
+	}
+	//unrepeated user: 484468(means 484468 accounts)
 }
 
 void DataBase_Main::loadData()
@@ -45,11 +72,11 @@ void DataBase_Main::saveData()
 
 
 //Database_User
-int DataBase_Main::regist( QString name, QString pwd )
+int DataBase_Main::regist( const QString &Id, const QString &pwd, const QString &name )
 {
-	dLog->newAccount( name, pwd );
+	dLog->newAccount( Id, name );
 	return dAccount->Register(
-				DataBase_Account::Account(name),
+				DataBase_Account::Account(Id,name),
 				pwd);
 
 }
@@ -111,17 +138,54 @@ ttd::map<DataBase_Account::Ticket,int> DataBase_Main::ownedTicket
 }
 //Database_Train
 
-int DataBase_Main::buyTickets
-(const int &UserId, QString traId,
- QDate dat, QString lsta, QString ulsta,
- QString set, int num)
+void DataBase_Main::buyTickets
+	(const int &UserId, const QString &accId,
+	const QString &traId, const QDate &dat,
+	const QString &lsta, const QString &ulsta,
+	const QString &set, const int &num)
 {
-	if(UserId <=0)
+	if(UserId <0)
 		throw ttd::no_authority();
-	int tmp
-			= dTrain->buyTickets(traId,dat,lsta,ulsta,set,num);
-	dLog->buyTicket(UserId, traId, dat, lsta, ulsta, set, num);
-	return tmp;
+
+	int id = dAccount->getIdNumber(accId);
+
+	if(dUser->account_id(UserId) != id &&
+			!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	QDateTime st,et;
+	st = dTrain->getLeaveTime(traId, lsta);
+	et = dTrain->getReachTime(traId, ulsta);
+	int price;
+	price = dTrain->buyTickets(traId,dat,lsta,ulsta,set,num);
+	dAccount->buyTicket(id, traId, lsta, ulsta, st, et, price, set, num);
+
+	dLog->buyTicket(UserId, accId, traId, dat, lsta, ulsta, set, num);
+}
+
+void DataBase_Main::returnTickets
+	(const int &UserId, const QString &accId,
+	const QString &traId, const QDate &dat,
+	const QString &lsta, const QString &ulsta,
+	const QString &set, const int &num)
+{
+	if(UserId <0)
+		throw ttd::no_authority();
+
+	int id = dAccount->getIdNumber(accId);
+
+	if(dUser->account_id(UserId) != id &&
+			!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	QDateTime st,et;
+	st = dTrain->getLeaveTime(traId, lsta);
+	et = dTrain->getReachTime(traId, ulsta);
+	int price;
+	price = dTrain->cancelTickets(traId,dat,lsta,ulsta,set,num);
+	dAccount->returnTicket(id, traId, lsta, ulsta, st, et, price, set, num);
+
+	dLog->returnTicket(UserId, accId, traId, dat, lsta, ulsta, set, num);
 }
 
 ttd::vector<DataBase_Train::TrainRoute> DataBase_Main::query_station(const int &UserId, QString Station)

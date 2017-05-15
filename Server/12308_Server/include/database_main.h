@@ -39,7 +39,7 @@ public:
 	void disconnect( const int &UserId );
 
 	//Database_User
-	int regist( QString name, QString pwd );
+	int regist( const QString &Id, const QString &pwd, const QString &name="Unknown" );
 	ttd::pair<int,QString> login( const QString &ID, const QString &password );
 	bool logout( int UserId );
 
@@ -49,6 +49,7 @@ public:
 					   const QString &newPassword, const QString &newName);
 	ttd::map<DataBase_Account::Ticket,int>
 		ownedTicket( const int &UserId, const int &Id );
+
 	/*
 	int buyTickets( const int &UserId, const int &Id,
 					const QString &trainId, const QString &from, const QString &to,
@@ -61,9 +62,14 @@ public:
 	*/
 
 	//Database_Train
-	int buyTickets (const int &UserId, QString traId, QDate dat,
-					QString lsta, QString ulsta,
-					QString set, int num);
+	void buyTickets (const int &UserId, const QString &accId,
+					 const QString &traId, const QDate &dat,
+					 const QString &lsta, const QString &ulsta,
+					 const QString &set, const int &num);
+	void returnTickets (const int &UserId, const QString &accId,
+						const QString &traId, const QDate &dat,
+						const QString &lsta, const QString &ulsta,
+						const QString &set, const int &num);
 	ttd::vector<DataBase_Train::TrainRoute>
 		query_station(const int &UserId, QString Station);
 	ttd::vector<DataBase_Train::QTrain>

@@ -4,19 +4,18 @@
 #include <QDataStream>
 #include <QDateTime>
 
-void DataBase_Log::buyTicket(/*const QDateTime &now,*/const int &UserId, const QString &traId,
+void DataBase_Log::buyTicket(/*const QDateTime &now,*/const int &UserId, const QString &AccId, const QString &traId,
  const QDate &dat, const QString &lsta, const QString &ulsta, const QString &set, const int &num)
 {
 	log.push_back( QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss ddd]  ")
-				   + QString::number(UserId) +" bought "+QString::number(num)+
+			+ "UserId:"+QString::number(UserId) + " "+AccId+" bought "+QString::number(num)+
 	" Tickets("+set+") from "+lsta+" to "+ulsta+" in Train "+traId+" at "+dat.toString());
 }
-void DataBase_Log::returnTicket(/*const QDateTime &now,+*/const QString &AccId, const QString &name, const QString &traId,
+void DataBase_Log::returnTicket(/*const QDateTime &now,+*/const int &UserId, const QString &AccId, const QString &traId,
  const QDate &dat, const QString &lsta, const QString &ulsta, const QString &set, const int &num)
 {
-	log.push_back( QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss ddd]  ") + name+"("+AccId+") returned "+QString::number(num)+
-	" of his Tickets("+set+") from "+lsta+" to "+ulsta+" in Train "+traId+" at "+dat.toString());
-	ticLog.push_back( QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss ddd]  ") + name+"("+AccId+") returned "+QString::number(num)+
+	log.push_back( QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss ddd]  ")
+			+ "UserId:"+QString::number(UserId) + " "+AccId+" returned "+QString::number(num)+
 	" of his Tickets("+set+") from "+lsta+" to "+ulsta+" in Train "+traId+" at "+dat.toString());
 }
 

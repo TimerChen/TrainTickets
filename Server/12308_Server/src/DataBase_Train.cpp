@@ -76,7 +76,7 @@ int DataBase_Train::Train::buyTickets (QDate dat, QString lsta, QString ulsta, Q
 		for(int _=j; _ >= i; _--)
 			salingDate[dat].restTickets[sid][_] -= num;
 		started = 1;
-		return num*(priceTable[sid][j]-priceTable[sid][i]);
+		return (priceTable[sid][j]-priceTable[sid][i]);
 	}
 	return -3;	// no such station;
 }
@@ -397,4 +397,140 @@ void DataBase_Train::saveData()
 	out.setVersion(QDataStream::Qt_5_0);
 	out << traData << staData;
 	file.close();
+}
+
+void DataBase_Train::loadData_raw(const QString &FileName)
+{
+	/*
+	int total = 0;
+	QFile file(FileName);	//file
+	if (!file.open(QFile::ReadOnly|QFile::Text))	throw(0);//open failed
+	QTextStream in(&file);
+	in.setCodec("UTF-8");
+	QString traId;
+	int setnr, stanr;
+	ttd::vector<QString> stan,//station name
+						set;//stetypename;
+	ttd::vector<int> ma,//miles
+					sen;//seat number of all kinds of tickets, initally 2000
+	ttd::vector<QDateTime> rt, lt;//reach and leave time
+
+	ttd::vector<ttd::vector<int> > ptb;//price table
+
+	bool ok;
+	QString line, now;
+	while (getline(in,traId))
+	{
+		ok = 0;
+		stanr = setnr = 0;
+		set.clear(), ptb.clear();
+		stan.clear(), lt.clear();
+		ma.clear();sen.clear();rt.clear()
+
+		getline(in,line);
+		istringstream sin(line);
+		while (getline(sin,now,','))
+		{
+			setnr++;
+			if (setnr > 4)	set.push_back(now), ptb.push_back(ma), sen.push_back(2000);
+		}
+		setnr -= 5;
+		while (!ok)
+		{
+			stanr++;
+
+			getline(in,now,',');
+			stan.push_back(now);
+
+			getline(in,now,',');
+			QDate day = QDate::fromString(now,"yyyy-mm-dd");
+			day.addDays(-27);			//yy and mm is useless
+
+			getline(in,now,',');
+			QTime goTime = QTime::fromString(now,"hh:mm");
+			rt.push_back(QDateTime(day,gotTime));
+
+			getline(in,now,',');
+			if (now == "终点站")	ok = 1;
+			QTime goTime = QTime::fromString(now,"hh:mm");
+			lt.push_back(QDateTime(day,gotTime));
+
+			getline(in,now,',');
+			int x = 0;for (int _=0;_<now.length()-2;_++)	x = x*10+now[_]-'0';
+			ma.push_back(x);
+
+			for (int ns = 0; ns < setnr-1; ns++)
+			{
+				getline(in,now,',');
+				if (now == "-")	x = -1;
+				else
+				{
+					now.remove(0,2);
+					double db = now.toDouble()*100;
+					ptb[ns].push_back((int)db);
+				}
+			}
+
+				getline(in,now);
+				if (now == "-")	x = -1;
+				else
+				{
+					now.remove(0,2);
+					double db = now.toDouble()*100;
+					ptb[ns].push_back((int)db);
+				}
+		}
+		if createTrain(traId,setnr,stanr,stan,ma,rt,lt,set,senr,ptb)
+		total++;
+	}
+	file.close();
+	/*
+		8398 IN TOTAL
+		10 repeated
+		D295/D298	G2331/G2334		G7575/G7578		C1031		C1034
+		Z1			Z9				Z54				Z62			Z63
+
+		all train have 2 or 3 seat types
+						at most 40 stations
+						2:775
+						3:794
+						4:989
+						5:997
+						6:970
+						7:670
+						8:555
+						9:483
+						10:391
+						11:287
+						12:271
+						13:198
+						14:158
+						15:126
+						16:104
+						17:80
+						18:66
+						19:72
+						20:66
+						21:59
+						22:52
+						23:36
+						24:35
+						25:33
+						26:30
+						27:17
+						28:17
+						29:16
+						30:11
+						31:3
+						32:8
+						33:6
+						34:5
+						35:0
+						36:4
+						37:1
+						38:2
+						39:0
+						40:1
+
+	*/
 }

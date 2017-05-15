@@ -64,14 +64,6 @@ struct loginAccount {
     loginAccount(const QString _userID = "", const QString _pwd = "");
 };
 
-struct auLoginAccount {
-    QString userID;
-    QString pwd;
-
-    // auLoginAccount(const auLoginAccount &rl);
-    auLoginAccount(const QString _userID = "", const QString _pwd = "");
-};
-
 struct regist {
     QString userID;
     QString pwd;
@@ -80,9 +72,11 @@ struct regist {
 };
 
 struct changeUsrName {
+	QString usrID;
     QString newname;
     // changeUsrName(const changeUsrName &rc);
-    changeUsrName(const QString _newname = "");
+	changeUsrName(const QString _usrid = "",
+				  const QString _newname = "");
 };
 
 struct changePwd {
@@ -126,5 +120,15 @@ QDataStream &operator >> (QDataStream &in, frontask::loginAccount &data);
 
 QDataStream &operator << (QDataStream &out, const frontask::regist &data);
 QDataStream &operator >> (QDataStream &in, frontask::regist &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::changeUsrName &data);
+QDataStream &operator >> (QDataStream &in, frontask::changeUsrName &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::changePwd &data);
+QDataStream &operator >> (QDataStream &in, frontask::changePwd &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::targetTicket &data);
+QDataStream &operator >> (QDataStream &in, frontask::targetTicket &data);
+
 
 #endif  // TOSERVERSTRUCTS_H
