@@ -107,7 +107,7 @@ void MainWindow::on_regBtn_clicked() {
 
 void MainWindow::on_logoutBtn_clicked() {
     /// send a package to server to log out
-	if(!logout_remote())
+    if(!logout_remote())
 		return;
 
     ui->myticketBtn->setEnabled(false);

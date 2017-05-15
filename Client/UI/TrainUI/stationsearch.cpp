@@ -14,7 +14,9 @@ StationSearch::StationSearch(ttd::shared_ptr<uistructs::nowAccount> _now,
 
     QFile stationName(":/src/names.txt");
     stationName.open(QIODevice::ReadOnly);
+
     QTextStream in(&stationName);
+    in.setCodec("UTF-8");
     QStringList word_list;
     QString tmps;
     while (!in.atEnd()) {
