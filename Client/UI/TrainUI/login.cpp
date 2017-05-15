@@ -14,8 +14,9 @@ Login::Login(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent)
     setTabOrder(ui->usrLineEdit, ui->pwdLineEdit);
     setTabOrder(ui->pwdLineEdit, ui->loginBtn);
     setTabOrder(ui->loginBtn, ui->auloginBtn);
-    setTabOrder(ui->auloginBtn, ui->registBtn);
-    setTabOrder(ui->registBtn, ui->exitBtn);
+    //setTabOrder(ui->auloginBtn, ui->registBtn);
+    //setTabOrder(ui->registBtn, ui->exitBtn);
+    setTabOrder(ui->auloginBtn,ui->exitBtn);
     setTabOrder(ui->exitBtn, ui->usrLineEdit);
     QRegExp rx("^[a-zA-Z0-9_]+");
     pReg = new QRegExpValidator(rx, this);
@@ -79,10 +80,10 @@ void Login::on_auloginBtn_clicked() {
     }
 }
 
-void Login::on_registBtn_clicked() {
-    Regist reg(this);
-    reg.exec();
-}
+//void Login::on_registBtn_clicked() {
+//    Regist reg(this);
+//    reg.exec();
+//}
 
 void Login::setAuloginEnable(bool flag){
     ui->auloginBtn->setEnabled(flag);

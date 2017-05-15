@@ -77,13 +77,6 @@
      <item>
       <layout class="QVBoxLayout" name="verticalLayout">
        <item>
-        <widget class="QPushButton" name="registBtn">
-         <property name="text">
-          <string>注册</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="exitBtn">
          <property name="text">
           <string>取消</string>
