@@ -12,10 +12,10 @@ MAKEFILE      = Makefile
 
 CC            = gcc
 CXX           = g++
-DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_CORE_LIB
+DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_QML_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_NETWORK_LIB -DQT_TESTLIB_LIB -DQT_CORE_LIB -DQT_TESTCASE_BUILDDIR='"/home/timemachine/Desktop/TrainTickets/Server/build-12308_Server-Desktop_Qt_5_8_0_GCC_64bit-Debug"'
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -g -std=gnu++11 -Wall -W -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I../12308_Server -I. -I../../../../Qt5.8.0/5.8/gcc_64/include -I../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets -I../../../../Qt5.8.0/5.8/gcc_64/include/QtGui -I../../../../Qt5.8.0/5.8/gcc_64/include/QtNetwork -I../../../../Qt5.8.0/5.8/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../../Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++
+INCPATH       = -I../12308_Server -I. -I../../../../Qt5.8.0/5.8/gcc_64/include -I../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets -I../../../../Qt5.8.0/5.8/gcc_64/include/QtGui -I../../../../Qt5.8.0/5.8/gcc_64/include/QtNetwork -I../../../../Qt5.8.0/5.8/gcc_64/include/QtTest -I../../../../Qt5.8.0/5.8/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I. -I../../../../Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++
 QMAKE         = /home/timemachine/Qt5.8.0/5.8/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -36,7 +36,7 @@ DISTNAME      = 12308_Server1.0.0
 DISTDIR = /home/timemachine/Desktop/TrainTickets/Server/build-12308_Server-Desktop_Qt_5_8_0_GCC_64bit-Debug/.tmp/12308_Server1.0.0
 LINK          = g++
 LFLAGS        = -Wl,-rpath,/home/timemachine/Qt5.8.0/5.8/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/home/timemachine/Qt5.8.0/5.8/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Core -lGL -lpthread 
+LIBS          = $(SUBLIBS) -L/home/timemachine/Qt5.8.0/5.8/gcc_64/lib -lQt5Widgets -lQt5Gui -lQt5Network -lQt5Test -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -234,6 +234,7 @@ DIST          = ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/qt.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/resources.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/moc.prf \
+		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/testlib_defines.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/unix/opengl.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/uic.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/unix/thread.prf \
@@ -441,6 +442,7 @@ Makefile: ../12308_Server/12308_Server.pro ../../../../Qt5.8.0/5.8/gcc_64/mkspec
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/qt.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/resources.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/moc.prf \
+		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/testlib_defines.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/unix/opengl.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/uic.prf \
 		../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/unix/thread.prf \
@@ -454,6 +456,7 @@ Makefile: ../12308_Server/12308_Server.pro ../../../../Qt5.8.0/5.8/gcc_64/mkspec
 		../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Widgets.prl \
 		../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Gui.prl \
 		../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Network.prl \
+		../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Test.prl \
 		../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Core.prl
 	$(QMAKE) -o Makefile ../12308_Server/12308_Server.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.prf:
@@ -617,6 +620,7 @@ Makefile: ../12308_Server/12308_Server.pro ../../../../Qt5.8.0/5.8/gcc_64/mkspec
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/qt.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/resources.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/moc.prf:
+../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/testlib_defines.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/unix/opengl.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/uic.prf:
 ../../../../Qt5.8.0/5.8/gcc_64/mkspecs/features/unix/thread.prf:
@@ -630,6 +634,7 @@ Makefile: ../12308_Server/12308_Server.pro ../../../../Qt5.8.0/5.8/gcc_64/mkspec
 ../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Widgets.prl:
 ../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Gui.prl:
 ../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Network.prl:
+../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Test.prl:
 ../../../../Qt5.8.0/5.8/gcc_64/lib/libQt5Core.prl:
 qmake: FORCE
 	@$(QMAKE) -o Makefile ../12308_Server/12308_Server.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
@@ -796,7 +801,7 @@ moc_servermainwindow.cpp: ../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMain
 		../12308_Server/servermainwindow.h \
 		moc_predefs.h \
 		../../../../Qt5.8.0/5.8/gcc_64/bin/moc
-	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I/home/timemachine/Desktop/TrainTickets/Server/12308_Server -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../12308_Server/servermainwindow.h -o moc_servermainwindow.cpp
+	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I/home/timemachine/Desktop/TrainTickets/Server/12308_Server -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtTest -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../12308_Server/servermainwindow.h -o moc_servermainwindow.cpp
 
 moc_clientthread.cpp: ../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QThread \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qthread.h \
@@ -1040,7 +1045,7 @@ moc_clientthread.cpp: ../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QThread \
 		../12308_Server/clientthread.h \
 		moc_predefs.h \
 		../../../../Qt5.8.0/5.8/gcc_64/bin/moc
-	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I/home/timemachine/Desktop/TrainTickets/Server/12308_Server -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../12308_Server/clientthread.h -o moc_clientthread.cpp
+	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I/home/timemachine/Desktop/TrainTickets/Server/12308_Server -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtTest -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -I/usr/include/c++/5 -I/usr/include/x86_64-linux-gnu/c++/5 -I/usr/include/c++/5/backward -I/usr/lib/gcc/x86_64-linux-gnu/5/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../12308_Server/clientthread.h -o moc_clientthread.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -1455,6 +1460,9 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qevent.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qvector2d.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QScrollBar \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qscrollbar.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractslider.h \
 		../12308_Server/servermainwindow.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMainWindow \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmainwindow.h \
@@ -1477,6 +1485,11 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qinputmethod.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QButtonGroup \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qbuttongroup.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHBoxLayout \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayout.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QHeaderView \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qheaderview.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -1487,7 +1500,6 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractspinbox.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qvalidator.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qslider.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractslider.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qstyle.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtabbar.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qrubberband.h \
@@ -1504,6 +1516,8 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QSplitter \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qsplitter.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QStatusBar \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QTextEdit \
@@ -1511,6 +1525,7 @@ servermainwindow.o: ../12308_Server/servermainwindow.cpp ../../../../Qt5.8.0/5.8
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtGui/qtextdocument.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QToolBar \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtoolbar.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtWidgets/QWidget \
 		../12308_Server/toserverstructs.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QDate \
@@ -1650,7 +1665,22 @@ database_main.o: ../12308_Server/src/database_main.cpp ../12308_Server/include/d
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qhash.h \
 		../12308_Server/include/DataBase_Account.h \
 		../12308_Server/include/DataBase_User.h \
-		../12308_Server/include/DataBase_Log.h
+		../12308_Server/include/DataBase_Log.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QFile \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qfile.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QTextStream \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_main.o ../12308_Server/src/database_main.cpp
 
 clientthread.o: ../12308_Server/clientthread.cpp ../12308_Server/clientthread.h \
@@ -2226,7 +2256,19 @@ DataBase_Train.o: ../12308_Server/src/DataBase_Train.cpp ../12308_Server/include
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qhash.h \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QFile \
 		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qfile.h \
-		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qfiledevice.h
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qfiledevice.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/QTextStream \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qtextstream.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qlocale.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvariant.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qmap.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qdebug.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qvector.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qpoint.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qset.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qcontiguouscache.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qsharedpointer.h \
+		../../../../Qt5.8.0/5.8/gcc_64/include/QtCore/qsharedpointer_impl.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DataBase_Train.o ../12308_Server/src/DataBase_Train.cpp
 
 moc_servermainwindow.o: moc_servermainwindow.cpp 

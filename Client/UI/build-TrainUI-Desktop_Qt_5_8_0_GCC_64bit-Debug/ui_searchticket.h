@@ -66,31 +66,34 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         label = new QLabel(SearchTicket);
         label->setObjectName(QStringLiteral("label"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(label->sizePolicy().hasHeightForWidth());
         label->setSizePolicy(sizePolicy);
+        label->setMinimumSize(QSize(0, 70));
 
         horizontalLayout->addWidget(label);
 
         ticketNumLineEdit = new QLineEdit(SearchTicket);
         ticketNumLineEdit->setObjectName(QStringLiteral("ticketNumLineEdit"));
-        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy1.setHorizontalStretch(0);
         sizePolicy1.setVerticalStretch(0);
         sizePolicy1.setHeightForWidth(ticketNumLineEdit->sizePolicy().hasHeightForWidth());
         ticketNumLineEdit->setSizePolicy(sizePolicy1);
+        ticketNumLineEdit->setMinimumSize(QSize(0, 70));
 
         horizontalLayout->addWidget(ticketNumLineEdit);
 
         buyTicketBtn = new QPushButton(SearchTicket);
         buyTicketBtn->setObjectName(QStringLiteral("buyTicketBtn"));
-        QSizePolicy sizePolicy2(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy2(QSizePolicy::MinimumExpanding, QSizePolicy::Maximum);
         sizePolicy2.setHorizontalStretch(0);
         sizePolicy2.setVerticalStretch(0);
         sizePolicy2.setHeightForWidth(buyTicketBtn->sizePolicy().hasHeightForWidth());
         buyTicketBtn->setSizePolicy(sizePolicy2);
+        buyTicketBtn->setMinimumSize(QSize(0, 70));
 
         horizontalLayout->addWidget(buyTicketBtn);
 
@@ -99,6 +102,7 @@ public:
 
         exitBtn = new QPushButton(SearchTicket);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
+        exitBtn->setMinimumSize(QSize(0, 70));
 
         verticalLayout->addWidget(exitBtn);
 

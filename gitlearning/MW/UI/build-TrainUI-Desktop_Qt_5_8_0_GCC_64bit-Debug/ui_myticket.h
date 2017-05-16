@@ -14,7 +14,9 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QDialog>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
@@ -26,8 +28,10 @@ class Ui_Myticket
 public:
     QVBoxLayout *verticalLayout_3;
     QVBoxLayout *verticalLayout_2;
-    QVBoxLayout *verticalLayout;
     QTableView *ticketsTableView;
+    QVBoxLayout *verticalLayout;
+    QHBoxLayout *horizontalLayout;
+    QLineEdit *numLineEdit;
     QPushButton *modifyTicketBtn;
     QPushButton *exitBtn;
 
@@ -35,27 +39,45 @@ public:
     {
         if (Myticket->objectName().isEmpty())
             Myticket->setObjectName(QStringLiteral("Myticket"));
-        Myticket->resize(1031, 564);
+        Myticket->resize(1600, 900);
         QIcon icon;
-        icon.addFile(QStringLiteral("12308.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/new/prefix1/12308.png"), QSize(), QIcon::Normal, QIcon::Off);
         Myticket->setWindowIcon(icon);
         verticalLayout_3 = new QVBoxLayout(Myticket);
         verticalLayout_3->setObjectName(QStringLiteral("verticalLayout_3"));
         verticalLayout_2 = new QVBoxLayout();
-        verticalLayout_2->setSpacing(6);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
-        verticalLayout_2->setContentsMargins(20, 20, 20, 20);
-        verticalLayout = new QVBoxLayout();
-        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         ticketsTableView = new QTableView(Myticket);
         ticketsTableView->setObjectName(QStringLiteral("ticketsTableView"));
 
-        verticalLayout->addWidget(ticketsTableView);
+        verticalLayout_2->addWidget(ticketsTableView);
+
+        verticalLayout = new QVBoxLayout();
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        numLineEdit = new QLineEdit(Myticket);
+        numLineEdit->setObjectName(QStringLiteral("numLineEdit"));
+        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(numLineEdit->sizePolicy().hasHeightForWidth());
+        numLineEdit->setSizePolicy(sizePolicy);
+
+        horizontalLayout->addWidget(numLineEdit);
 
         modifyTicketBtn = new QPushButton(Myticket);
         modifyTicketBtn->setObjectName(QStringLiteral("modifyTicketBtn"));
+        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(modifyTicketBtn->sizePolicy().hasHeightForWidth());
+        modifyTicketBtn->setSizePolicy(sizePolicy1);
 
-        verticalLayout->addWidget(modifyTicketBtn);
+        horizontalLayout->addWidget(modifyTicketBtn);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
         exitBtn = new QPushButton(Myticket);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));

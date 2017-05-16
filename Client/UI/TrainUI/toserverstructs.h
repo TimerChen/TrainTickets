@@ -1,9 +1,9 @@
 #ifndef TOSERVERSTRUCTS_H
 #define TOSERVERSTRUCTS_H
 
+#include <QDataStream>
 #include <QDate>
 #include <QString>
-#include <QDataStream>
 
 namespace frontask {
 enum {
@@ -12,22 +12,23 @@ enum {
     trainsearch,             // send trainSearch
     login,                   // send loginAccount
     aulogin,                 // send auLoginAccount
-	logout,
-    reg,                     // send regist
-    changeusrname,           // send changeUsrName
-    changepwd,               // send changePwd
-    modifymyticket,          // send targetTicket
-    buyTicket,               // send targetTicket
-    getmytickets,            // send usrID
-    adminmodifyusrtickets,   // send pair(targetTicket, adminID)
-    adminaddusrtickets,      // send pair(targetTicket, adminID)
-    adminchangeusrpwd,       // send pair(changePwd,adminID)
-    adminchangeusrname,      // send pair(changeUsrName, adminID)
-    admindeleteusr,          // send pair(usrID, usrID)
-    stopsellticket,          // send pair(targetTicket, adminID)
-    deletetrain,             // send pair(targetTicket, adminID)
-    startselltrain,          // send pair(targetTicket, adminID)
-    addplane                 // send pair(QString, adminID)
+    logout,
+    reg,                    // send regist
+    changeusrname,          // send changeUsrName
+    changepwd,              // send changePwd
+    modifymyticket,         // send targetTicket
+    buyTicket,              // send targetTicket
+    getmytickets,           // send usrID
+    adminmodifyusrtickets,  // send pair(targetTicket, adminID)
+    adminaddusrtickets,     // send pair(targetTicket, adminID)
+    adminchangeusrpwd,      // send pair(changePwd,adminID)
+    adminchangeusrname,     // send pair(changeUsrName, adminID)
+    admindeleteusr,         // send pair(usrID, usrID)
+    stopsellticket,         // send pair(targetTicket, adminID)
+    deletetrain,            // send pair(targetTicket, adminID)
+    startselltrain,         // send pair(targetTicket, adminID)
+    addplan,                // send pair(QString, adminID)
+    getsyslog               // send adminID
 };
 struct stationToStationSearch {
     QString fromStation, toStation;
@@ -64,14 +65,6 @@ struct loginAccount {
     loginAccount(const QString _userID = "", const QString _pwd = "");
 };
 
-struct auLoginAccount {
-    QString userID;
-    QString pwd;
-
-    // auLoginAccount(const auLoginAccount &rl);
-    auLoginAccount(const QString _userID = "", const QString _pwd = "");
-};
-
 struct regist {
     QString userID;
     QString pwd;
@@ -80,9 +73,11 @@ struct regist {
 };
 
 struct changeUsrName {
+	QString usrID;
     QString newname;
     // changeUsrName(const changeUsrName &rc);
-    changeUsrName(const QString _newname = "");
+	changeUsrName(const QString _usrid = "",
+				  const QString _newname = "");
 };
 
 struct changePwd {
@@ -112,10 +107,29 @@ struct targetTicket {
 };
 }
 
+QDataStream &operator << (QDataStream &out, const frontask::stationToStationSearch &data);
+QDataStream &operator >> (QDataStream &in, frontask::stationToStationSearch &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::stationSearch &data);
+QDataStream &operator >> (QDataStream &in, frontask::stationSearch &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::trainSearch &data);
+QDataStream &operator >> (QDataStream &in, frontask::trainSearch &data);
+
 QDataStream &operator << (QDataStream &out, const frontask::loginAccount &data);
 QDataStream &operator >> (QDataStream &in, frontask::loginAccount &data);
 
-QDataStream &operator << (QDataStream &out, const frontask::regist &data);
-QDataStream &operator >> (QDataStream &in, frontask::regist &data);
+QDataStream &operator<<(QDataStream &out, const frontask::regist &data);
+QDataStream &operator>>(QDataStream &in, frontask::regist &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::changeUsrName &data);
+QDataStream &operator >> (QDataStream &in, frontask::changeUsrName &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::changePwd &data);
+QDataStream &operator >> (QDataStream &in, frontask::changePwd &data);
+
+QDataStream &operator << (QDataStream &out, const frontask::targetTicket &data);
+QDataStream &operator >> (QDataStream &in, frontask::targetTicket &data);
+
 
 #endif  // TOSERVERSTRUCTS_H

@@ -26,6 +26,8 @@ private slots:
 
     void on_searchAccountBtn_clicked();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::AdminWindow *ui;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;

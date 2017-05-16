@@ -17,7 +17,10 @@ INPUT(
 ./debug\addplansimple.o
 ./debug\searchusr.o
 ./debug\editsearchusr.o
+./debug\syslog.o
+./debug\DataBase_Account.o
 ./debug\qrc_pic.o
+./debug\qrc_completer.o
 ./debug\moc_mainwindow.o
 ./debug\moc_login.o
 ./debug\moc_regist.o
@@ -33,4 +36,5 @@ INPUT(
 ./debug\moc_addplansimple.o
 ./debug\moc_searchusr.o
 ./debug\moc_editsearchusr.o
+./debug\moc_syslog.o
 );

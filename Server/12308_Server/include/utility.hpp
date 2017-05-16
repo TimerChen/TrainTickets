@@ -25,6 +25,9 @@ public:
 };
 
 template<class T1,class T2>
+pair<T1,T2> make_pair(const T1 &a,const T2 &b){return pair<T1,T2>(a,b);}
+
+template<class T1,class T2>
 QDataStream& operator << (QDataStream& out, const pair<T1,T2> &data)
 {
 	out << data.first << data.second;

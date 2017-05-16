@@ -5,7 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
-QT       += network
+QT += network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -43,7 +43,10 @@ SOURCES += main.cpp\
     addplan.cpp \
     addplansimple.cpp \
     searchusr.cpp \
-    editsearchusr.cpp
+    editsearchusr.cpp \
+    syslog.cpp \
+    src/DataBase_Account.cpp \
+    src/DataBase_Train.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -61,7 +64,24 @@ HEADERS  += mainwindow.h \
     addplan.h \
     addplansimple.h \
     searchusr.h \
-    editsearchusr.h
+    editsearchusr.h \
+    syslog.h \
+    include/algorithm0.hpp \
+    include/database.h \
+    include/DataBase_Account.h \
+    include/DataBase_Log.h \
+    include/database_main.h \
+    include/DataBase_Train.h \
+    include/DataBase_User.h \
+    include/datastream.h \
+    include/exceptions.hpp \
+    include/map.hpp \
+    include/smartpoint.hpp \
+    include/station.h \
+    include/train.h \
+    include/utility.hpp \
+    include/vector.hpp \
+    syslog.h
 
 FORMS    += mainwindow.ui \
     login.ui \
@@ -77,9 +97,11 @@ FORMS    += mainwindow.ui \
     addplan.ui \
     addplansimple.ui \
     searchusr.ui \
-    editsearchusr.ui
+    editsearchusr.ui \
+    syslog.ui
 
 RESOURCES += \
-    pic.qrc
+    pic.qrc \
+    completer.qrc
 
 DISTFILES +=

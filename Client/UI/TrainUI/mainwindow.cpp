@@ -107,7 +107,7 @@ void MainWindow::on_regBtn_clicked() {
 
 void MainWindow::on_logoutBtn_clicked() {
     /// send a package to server to log out
-	if(!logout_remote())
+    if(!logout_remote())
 		return;
 
     ui->myticketBtn->setEnabled(false);
@@ -131,8 +131,8 @@ void MainWindow::on_myticketBtn_clicked() {
 
 void MainWindow::on_myinformBtn_clicked() {
     Myinform myinform(nowaccount, this);
-
     myinform.exec();
+    ui->nameLabel->setText(nowaccount->name);
 }
 
 void MainWindow::on_stationToStationSearchBtn_clicked() {
@@ -167,8 +167,8 @@ int MainWindow::register_remote(const QString &UserId, const QString &pwd)
 	//QMessageBox::information(this,"Info","write_OK");
 	while(1)
 	{
-		//serverSocket->waitForReadyRead();
-		QMessageBox::information(this,"Info","ReadReady_OK");
+		serverSocket->waitForReadyRead();
+		//QMessageBox::information(this,"Info","ReadReady_OK");
 		serverIn.startTransaction();
 		serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
@@ -191,7 +191,8 @@ ttd::pair<int,QString> MainWindow::login_remote(const QString &UserId, const QSt
 	serverSocket->waitForBytesWritten();
 	while(1)
 	{
-		QMessageBox::information(this,"Info","ReadReady_OK");
+		serverSocket->waitForReadyRead();
+		//QMessageBox::information(this,"Info","ReadReady_OK");
 		serverIn.startTransaction();
 		serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
@@ -214,11 +215,100 @@ bool MainWindow::logout_remote()
 	//QMessageBox::information(this,"Info","write_OK");
 	while(1)
 	{
-		QMessageBox::information(this,"Info","ReadReady_OK");
+		serverSocket->waitForReadyRead();
+		//QMessageBox::information(this,"Info","ReadReady_OK");
 		serverIn.startTransaction();
 		serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
 			break;
 	}
+	return serverReturn;
+}
+
+
+ttd::vector<DataBase_Train::QTrain>
+	MainWindow::query_sts_remote
+	( const frontask::stationToStationSearch &fask )
+{
+	QByteArray block;
+	ttd::vector<DataBase_Train::QTrain> serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::stationtostationsearch
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+ttd::vector<DataBase_Train::TrainRoute>
+	MainWindow::query_s_remote
+	( const frontask::stationSearch &fask )
+{
+	QByteArray block;
+	ttd::vector<DataBase_Train::TrainRoute> serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::stationsearch
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+DataBase_Train::TrainRoute
+	MainWindow::query_t_remote
+	( const frontask::trainSearch &fask )
+{
+	QByteArray block;
+	DataBase_Train::TrainRoute serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::trainsearch
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
 	return serverReturn;
 }

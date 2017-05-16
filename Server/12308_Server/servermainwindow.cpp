@@ -23,6 +23,7 @@ ServerMainWindow::ServerMainWindow(QWidget *parent) :
 	tcpServer = new QTcpServer(this);
 	tcpServer->listen(QHostAddress::Any,12308);
 	connect(tcpServer,SIGNAL(newConnection()),this,SLOT(newConnection()));
+	connect(ui->commandButton,SIGNAL(clicked()),this,SLOT(newCommand()));
 	//connect(ui->sendButton,SIGNAL(clicked()),this,SLOT(sendInfo()));
 	currentConnection = NULL;
 	in.setVersion(QDataStream::Qt_5_0);
@@ -35,6 +36,35 @@ ServerMainWindow::~ServerMainWindow()
 {
 	database->addLog( "Server closed." );
 	delete ui;
+}
+
+void ServerMainWindow::newCommand()
+{
+	QStringList qlist = ui->commandEdit->text().split(' ');
+	if(qlist.size()==0)return;
+	ui->commandButton->setEnabled(false);
+	database->addLog("> " + ui->commandEdit->text());
+	refreshConsole();
+	if( qlist[0] == QString("read") && qlist.size() > 1 )
+	{
+		if(qlist[1] == QString("train"))
+		{
+			if(qlist.size() < 3)
+				database->loadData_raw_train("onerawdata.csv");
+			else
+				database->loadData_raw_train(qlist[2]);
+		}else if(qlist[2] == QString("buy")){
+			if(qlist.size() < 3)
+				database->loadData_raw_buy("rawbuy.in");
+			else
+				database->loadData_raw_buy(qlist[2]);
+		}
+	}else if(qlist[0] == QString("test")){
+		database->query_stationToStation(-1,QDate(2017,3,28),"恩施","宜昌东");
+	}
+	refreshConsole();
+	ui->commandEdit->setText("");
+	ui->commandButton->setEnabled(true);
 }
 
 void ServerMainWindow::newConnection()
@@ -56,7 +86,7 @@ void ServerMainWindow::newConnection()
 }
 void ServerMainWindow::disconnect()
 {
-	QMessageBox::information(this,"Info","disconnect");
+	//QMessageBox::information(this,"Info","disconnect");
 	database->disconnect(currentUser);
 	database->logout(currentUser);
 	currentUser = -1;
@@ -76,9 +106,21 @@ void ServerMainWindow::newMessage()
 	database->addLog( "New opearte " + QString::number(oType) );
 	refreshConsole();
 
+	frontask::stationToStationSearch opt_qsts;
+	frontask::stationSearch opt_qs;
+	frontask::trainSearch opt_qt;
 	frontask::loginAccount opt_login;
 	frontask::regist opt_reg;
 	switch (oType) {
+	case frontask::stationtostationsearch:
+		in >> opt_qsts;
+		break;
+	case frontask::stationsearch:
+		in >> opt_qs;
+		break;
+	case frontask::trainsearch:
+		in >> opt_qt;
+		break;
 	case frontask::login:
 		in >> opt_login;
 		break;
@@ -106,6 +148,48 @@ void ServerMainWindow::newMessage()
 	out.setVersion( QDataStream::Qt_5_0 );
 
 	switch (oType) {
+	case frontask::stationtostationsearch:
+	{
+		ttd::vector<DataBase_Train::QTrain> tmp;
+		try{
+			tmp = database->query_stationToStation
+				( currentUser, opt_qsts.time, opt_qsts.fromStation, opt_qsts.toStation);
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
+	case frontask::stationsearch:
+	{
+		ttd::vector<DataBase_Train::TrainRoute> tmp;
+		try{
+			//Not used opt_**.time
+			tmp = database->query_station( currentUser, opt_qs.station );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
+	case frontask::trainsearch:
+	{
+		DataBase_Train::TrainRoute tmp;
+		try{
+			//Not used opt_**.time
+			tmp = database->query_train( currentUser, opt_qt.trainID );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
 	case frontask::login:
 	{
 		ttd::pair<int, QString> tmp
