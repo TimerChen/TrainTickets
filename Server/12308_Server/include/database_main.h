@@ -49,7 +49,7 @@ public:
 	void modifyAccount( const int &UserId, const int &Id,
 					   const QString &newPassword, const QString &newName);
 	ttd::map<DataBase_Account::Ticket,int>
-		ownedTicket( const int &UserId, const int &Id );
+		ownedTicket( const int &UserId, const QString &Id );
 
 	/*
 	int buyTickets( const int &UserId, const int &Id,

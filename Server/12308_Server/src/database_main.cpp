@@ -6,6 +6,8 @@
 #include <QFile>
 #include <QTextStream>
 
+#include <QTest>
+
 DataBase_Main::DataBase_Main( const QString &Name )
 :DataBase_Base(Name)
 {
@@ -40,18 +42,23 @@ void DataBase_Main::loadData_raw_buy( const QString &FileName )
 	QString bor, tmp;	QDate day;
 	while (!in.atEnd())
 	{
+		total++;
 		in>>name>>id;
+		if(name.isNull())break;
+
 		in>>bor>>num;
 		in>>type;
 		in>>tmp>>tmp>>traId;
 		in>>tmp>>sta;
 		in>>tmp>>stb;
 		in>>tmp>>tmp;
-		day = QDate::fromString(tmp,"yyyy-MM-dd");
+		//qDebug() << total << name << id << bor;
+		if(total % 10000 == 0)
+			qDebug() << total;
+		day = QDate::fromString(tmp,"yyyy-M-d");
 		regist(id,QString("000000"),name);
 		if (bor == "bought")	buyTickets(0,id,traId,day,sta,stb,type,num);	//  of the two functions
 		else	returnTickets(0,id,traId,day,sta,stb,type,num);
-		total++;
 	}
 	dLog->any("Finished load raw-buy-data.");
 	//unrepeated user: 484468(means 484468 accounts)
@@ -65,10 +72,16 @@ void DataBase_Main::loadData_raw_train(const QString &FileName)
 
 void DataBase_Main::loadData()
 {
-	dAccount->loadData();
-	dUser->loadData();
-	dTrain->loadData();
+	//qDebug() << QTime::currentTime().toString( "h-m-s");
 	dLog->loadData();
+	//dLog->any("Datab");
+	dLog->any("Database Account Loading...");
+	dAccount->loadData();
+	dLog->any("Database User Loading...");
+	dUser->loadData();
+	dLog->any("Database Train Loading...");
+	dTrain->loadData();
+
 }
 void DataBase_Main::saveData()
 {
@@ -133,9 +146,9 @@ void DataBase_Main::modifyAccount
 	return;
 }
 ttd::map<DataBase_Account::Ticket,int> DataBase_Main::ownedTicket
-	(const int &UserId, const int &Id)
+	(const int &UserId, const QString &Id)
 {
-	int id = Id;
+	int id = dAccount->getIdNumber(Id);
 	if(dUser->account_id(UserId) != id &&
 			!dUser->is_admin(UserId))
 		throw ttd::no_authority();
@@ -166,6 +179,13 @@ void DataBase_Main::buyTickets
 	et = dTrain->getReachTime(traId, ulsta);
 	int price;
 	price = dTrain->buyTickets(traId,dat,lsta,ulsta,set,num);
+	int stt,ett;
+	stt = st.date().day() - 1;
+	ett = et.date().day() - 1;
+	st.setDate(dat);
+	et.setDate(dat);
+	st.addDays(stt);
+	et.addDays(ett);
 	dAccount->buyTicket(id, traId, lsta, ulsta, st, et, price, set, num);
 
 	dLog->buyTicket(UserId, accId, traId, dat, lsta, ulsta, set, num);
@@ -191,6 +211,13 @@ void DataBase_Main::returnTickets
 	et = dTrain->getReachTime(traId, ulsta);
 	int price;
 	price = dTrain->cancelTickets(traId,dat,lsta,ulsta,set,num);
+	int stt,ett;
+	stt = st.date().day() - 1;
+	ett = et.date().day() - 1;
+	st.setDate(dat);
+	et.setDate(dat);
+	st.addDays(stt);
+	et.addDays(ett);
 	dAccount->returnTicket(id, traId, lsta, ulsta, st, et, price, set, num);
 
 	dLog->returnTicket(UserId, accId, traId, dat, lsta, ulsta, set, num);
