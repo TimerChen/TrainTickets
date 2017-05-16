@@ -7,10 +7,10 @@
 #include "include/utility.hpp"
 #include "include/vector.hpp"
 #include "include/DataBase_Train.h"
+#include "include/DataBase_Account.h"
 #include "toserverstructs.h"
 #include "uistructs.h"
 
-#include "include/DataBase_Train.h"
 
 namespace Ui {
 enum { annonymous, normal, admin, searchusr };
@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow {
 	friend class Login;
 	friend class Regist;
 	friend class SearchTicket;
+	friend class Myticket;
    public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -80,7 +81,7 @@ class MainWindow : public QMainWindow {
 		( const frontask::targetTicket &fask);
 	void buyTickets_remote
 		( const frontask::targetTicket &fask);
-	ttd::map<DataBase_Account::Ticket,int> askTickets_remote
+	ttd::map< DataBase_Account::Ticket , int> askTickets_remote
 		( const QString &fask );
 
 

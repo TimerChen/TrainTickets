@@ -482,7 +482,7 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 					= traData.find(traId);
 			QDate firstDay(2017,3,20);
 			//30day?
-			for(int i=0; i<50;++i)
+			for(int i=0; i<60;++i)
 			{
 				ti->second.openOneDay(firstDay);
 				firstDay = firstDay.addDays(1);

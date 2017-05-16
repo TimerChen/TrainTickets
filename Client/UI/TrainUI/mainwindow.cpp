@@ -11,6 +11,8 @@
 #include "ui_mainwindow.h"
 #include "toserverstructs.h"
 
+#include "include/DataBase_Account.h"
+
 #include <QtNetwork>
 #include <QDataStream>
 #include <QIODevice>
@@ -369,7 +371,6 @@ void MainWindow::returnTickets_remote
 			break;
 	}
 	if(!no_error) throw(0);
-	return serverReturn;
 }
 
 void MainWindow::buyTickets_remote
@@ -397,7 +398,6 @@ void MainWindow::buyTickets_remote
 			break;
 	}
 	if(!no_error) throw(0);
-	return serverReturn;
 }
 
 ttd::map<DataBase_Account::Ticket,int>

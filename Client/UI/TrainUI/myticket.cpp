@@ -101,8 +101,15 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
     ///发送frontask::getmytickets
     ///发送nowaccount->usrID
     ///获得ttd::map< , int> qtrain
-    ttd::map<DataBase_Account::Ticket, int> qtrains;
-    //qtrains.push_back(qtrain);
+	///
+	ttd::map<DataBase_Account::Ticket, int> qtrains;
+	bool no_error = true;
+	try{
+		qtrains = ((MainWindow*)(parentWidget()))->
+				askTickets_remote(nowaccount->userID);
+	}catch(...){
+		no_error = false;
+	}
 
     int deltaForSeat = 0;
     int i = 0;
@@ -117,11 +124,11 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
             model->setItem(
                 i + deltaForSeat, 3,
                 new QStandardItem(it->first.loadTime.toString(
-                    "yyyy-mm-dd hh:mm:ss")));
+					"yyyy-MM-dd hh:mm:ss")));
             model->setItem(
                 i + deltaForSeat, 4,
                 new QStandardItem(it->first.unLoadTime.toString(
-                    "yyyy-mm-dd hh:mm:ss")));
+					"yyyy-MM-dd hh:mm:ss")));
 
             model->setItem(i + deltaForSeat, 5,
                            new QStandardItem(it->first.seatType));
@@ -173,14 +180,22 @@ void Myticket::on_modifyTicketBtn_clicked() {
             this, "确认退票", "您是否要退订以下车票：\n" + trainInform,
             QMessageBox::Yes | QMessageBox::No);
         if (qmb == QMessageBox::Yes) {
+
+			bool no_error = true;
             if (nowaccount->userType == Ui::searchusr) {
                 ///发送adminmodifyusrticket
                 ///发送pair(targetticket, adminID)
             }else {
             ///发送frontask::modifyticket
-            ///发送targetticket到服务器来买票
+			///发送targetticket到服务器来买票
+				try{
+					((MainWindow*)(parentWidget()))->
+							returnTickets_remote(targetticket);
+				}catch(...){
+					no_error = false;
+				}
             }
-            if (true) {
+			if (no_error) {
                 QMessageBox::information(this, "成功", "退票成功",
                                          QMessageBox::Yes);
                 this->close();

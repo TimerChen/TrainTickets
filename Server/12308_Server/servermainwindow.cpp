@@ -50,10 +50,10 @@ void ServerMainWindow::newCommand()
 		if(qlist[1] == QString("train"))
 		{
 			if(qlist.size() < 3)
-				database->loadData_raw_train("onerawdata.csv");
+				database->loadData_raw_train("rawdata.csv");
 			else
 				database->loadData_raw_train(qlist[2]);
-		}else if(qlist[2] == QString("buy")){
+		}else if(qlist[1] == QString("buy")){
 			if(qlist.size() < 3)
 				database->loadData_raw_buy("rawbuy.in");
 			else
@@ -294,7 +294,7 @@ void ServerMainWindow::newMessage()
 void ServerMainWindow::refreshConsole()
 {
 	QString content;
-	for(size_t i=ttd::max((size_t)0,logs->size()-20); i<logs->size(); ++i)
+	for(size_t i=ttd::max(0,int(logs->size())-20); i<logs->size(); ++i)
 	{
 		content = content + (*logs)[i] + "\n";
 	}

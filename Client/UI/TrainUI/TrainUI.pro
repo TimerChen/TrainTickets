@@ -46,7 +46,8 @@ SOURCES += main.cpp\
     editsearchusr.cpp \
     syslog.cpp \
     src/DataBase_Account.cpp \
-    src/DataBase_Train.cpp
+    src/DataBase_Train.cpp \
+    src/database_base.cpp
 
 HEADERS  += mainwindow.h \
     login.h \

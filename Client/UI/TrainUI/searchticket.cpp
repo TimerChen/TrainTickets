@@ -391,14 +391,23 @@ void SearchTicket::on_buyTicketBtn_clicked() {
                 this, "确认购票", "您是否要购买以下车票：\n" + trainInform,
                 QMessageBox::Yes | QMessageBox::No);
             if (qmb == QMessageBox::Yes) {
+				bool no_error = true;
                 if (nowaccount->userType == Ui::searchusr) {
                     ///发送frontask::adminaddusrticket
                     /// 发送pair(targetticket, adminID)
+					///
                 }else {
+					try{
+						((MainWindow*)(parentWidget()->parentWidget()))->
+								buyTickets_remote(targetticket);
+
+					}catch(...){
+						no_error = false;
+					}
                 ///发送frontask::buyticket
                 ///发送targetticket到服务器来买票
                 }
-                if (true) {
+				if (no_error) {
                     QMessageBox::information(this, "成功", "购票成功",
                                              QMessageBox::Yes);
                 } else

@@ -41,7 +41,7 @@ public:
 
 	//Database_User
 	int regist( const QString &Id, const QString &pwd, const QString &name="Unknown" );
-	ttd::pair<int,QString> login( const QString &ID, const QString &password, const short &type=1 );
+	ttd::pair<int,QString> login( const QString &ID, const QString &password, const short &type=0 );
 	bool logout( int UserId );
 
 	//Database_Account
