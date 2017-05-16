@@ -67,6 +67,7 @@ SOURCES       = ../TrainUI/main.cpp \
 		../TrainUI/searchusr.cpp \
 		../TrainUI/editsearchusr.cpp \
 		../TrainUI/syslog.cpp \
+		../TrainUI/src/DataBase_Account.cpp \
 		../TrainUI/src/DataBase_Train.cpp qrc_pic.cpp \
 		qrc_completer.cpp \
 		moc_mainwindow.cpp \
@@ -104,6 +105,7 @@ OBJECTS       = main.o \
 		searchusr.o \
 		editsearchusr.o \
 		syslog.o \
+		DataBase_Account.o \
 		DataBase_Train.o \
 		qrc_pic.o \
 		qrc_completer.o \
@@ -310,6 +312,7 @@ DIST          = /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.p
 		../TrainUI/addplansimple.h \
 		../TrainUI/searchusr.h \
 		../TrainUI/editsearchusr.h \
+		../TrainUI/syslog.h \
 		../TrainUI/include/algorithm0.hpp \
 		../TrainUI/include/database.h \
 		../TrainUI/include/DataBase_Account.h \
@@ -344,6 +347,7 @@ DIST          = /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/features/spec_pre.p
 		../TrainUI/searchusr.cpp \
 		../TrainUI/editsearchusr.cpp \
 		../TrainUI/syslog.cpp \
+		../TrainUI/src/DataBase_Account.cpp \
 		../TrainUI/src/DataBase_Train.cpp
 QMAKE_TARGET  = TrainUI
 DESTDIR       = 
@@ -727,8 +731,8 @@ distdir: FORCE
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../TrainUI/pic.qrc ../TrainUI/completer.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../TrainUI/mainwindow.h ../TrainUI/login.h ../TrainUI/regist.h ../TrainUI/myticket.h ../TrainUI/myinform.h ../TrainUI/stationtostationsearch.h ../TrainUI/trainsearch.h ../TrainUI/stationsearch.h ../TrainUI/searchticket.h ../TrainUI/adminwindow.h ../TrainUI/toserverstructs.h ../TrainUI/uistructs.h ../TrainUI/modifyplanofatrain.h ../TrainUI/addplan.h ../TrainUI/addplansimple.h ../TrainUI/searchusr.h ../TrainUI/editsearchusr.h ../TrainUI/include/algorithm0.hpp ../TrainUI/include/database.h ../TrainUI/include/DataBase_Account.h ../TrainUI/include/DataBase_Log.h ../TrainUI/include/database_main.h ../TrainUI/include/DataBase_Train.h ../TrainUI/include/DataBase_User.h ../TrainUI/include/datastream.h ../TrainUI/include/exceptions.hpp ../TrainUI/include/map.hpp ../TrainUI/include/smartpoint.hpp ../TrainUI/include/station.h ../TrainUI/include/train.h ../TrainUI/include/utility.hpp ../TrainUI/include/vector.hpp ../TrainUI/syslog.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../TrainUI/main.cpp ../TrainUI/mainwindow.cpp ../TrainUI/login.cpp ../TrainUI/regist.cpp ../TrainUI/myticket.cpp ../TrainUI/myinform.cpp ../TrainUI/stationtostationsearch.cpp ../TrainUI/trainsearch.cpp ../TrainUI/stationsearch.cpp ../TrainUI/searchticket.cpp ../TrainUI/adminwindow.cpp ../TrainUI/toserverstructs.cpp ../TrainUI/uistructs.cpp ../TrainUI/modifyplanofatrain.cpp ../TrainUI/addplan.cpp ../TrainUI/addplansimple.cpp ../TrainUI/searchusr.cpp ../TrainUI/editsearchusr.cpp ../TrainUI/syslog.cpp ../TrainUI/src/DataBase_Train.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../TrainUI/mainwindow.h ../TrainUI/login.h ../TrainUI/regist.h ../TrainUI/myticket.h ../TrainUI/myinform.h ../TrainUI/stationtostationsearch.h ../TrainUI/trainsearch.h ../TrainUI/stationsearch.h ../TrainUI/searchticket.h ../TrainUI/adminwindow.h ../TrainUI/toserverstructs.h ../TrainUI/uistructs.h ../TrainUI/modifyplanofatrain.h ../TrainUI/addplan.h ../TrainUI/addplansimple.h ../TrainUI/searchusr.h ../TrainUI/editsearchusr.h ../TrainUI/syslog.h ../TrainUI/include/algorithm0.hpp ../TrainUI/include/database.h ../TrainUI/include/DataBase_Account.h ../TrainUI/include/DataBase_Log.h ../TrainUI/include/database_main.h ../TrainUI/include/DataBase_Train.h ../TrainUI/include/DataBase_User.h ../TrainUI/include/datastream.h ../TrainUI/include/exceptions.hpp ../TrainUI/include/map.hpp ../TrainUI/include/smartpoint.hpp ../TrainUI/include/station.h ../TrainUI/include/train.h ../TrainUI/include/utility.hpp ../TrainUI/include/vector.hpp ../TrainUI/syslog.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../TrainUI/main.cpp ../TrainUI/mainwindow.cpp ../TrainUI/login.cpp ../TrainUI/regist.cpp ../TrainUI/myticket.cpp ../TrainUI/myinform.cpp ../TrainUI/stationtostationsearch.cpp ../TrainUI/trainsearch.cpp ../TrainUI/stationsearch.cpp ../TrainUI/searchticket.cpp ../TrainUI/adminwindow.cpp ../TrainUI/toserverstructs.cpp ../TrainUI/uistructs.cpp ../TrainUI/modifyplanofatrain.cpp ../TrainUI/addplan.cpp ../TrainUI/addplansimple.cpp ../TrainUI/searchusr.cpp ../TrainUI/editsearchusr.cpp ../TrainUI/syslog.cpp ../TrainUI/src/DataBase_Account.cpp ../TrainUI/src/DataBase_Train.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../TrainUI/mainwindow.ui ../TrainUI/login.ui ../TrainUI/regist.ui ../TrainUI/myticket.ui ../TrainUI/myinform.ui ../TrainUI/stationtostationsearch.ui ../TrainUI/trainsearch.ui ../TrainUI/stationsearch.ui ../TrainUI/searchticket.ui ../TrainUI/adminwindow.ui ../TrainUI/modifyplanofatrain.ui ../TrainUI/addplan.ui ../TrainUI/addplansimple.ui ../TrainUI/searchusr.ui ../TrainUI/editsearchusr.ui ../TrainUI/syslog.ui $(DISTDIR)/
 
 
@@ -763,7 +767,8 @@ qrc_pic.cpp: ../TrainUI/pic.qrc \
 
 qrc_completer.cpp: ../TrainUI/completer.qrc \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc \
-		../TrainUI/names.txt
+		../TrainUI/names.txt \
+		../TrainUI/ipconfig.txt
 	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc -name completer ../TrainUI/completer.qrc -o qrc_completer.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
@@ -772,9 +777,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++11 -Wall -W -dM -E -o moc_predefs.h /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_login.cpp moc_regist.cpp moc_myticket.cpp moc_myinform.cpp moc_stationtostationsearch.cpp moc_trainsearch.cpp moc_stationsearch.cpp moc_searchticket.cpp moc_adminwindow.cpp moc_modifyplanofatrain.cpp moc_addplan.cpp moc_addplansimple.cpp moc_searchusr.cpp moc_editsearchusr.cpp moc_syslog.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_login.cpp moc_regist.cpp moc_myticket.cpp moc_myinform.cpp moc_stationtostationsearch.cpp moc_trainsearch.cpp moc_stationsearch.cpp moc_searchticket.cpp moc_adminwindow.cpp moc_modifyplanofatrain.cpp moc_addplan.cpp moc_addplansimple.cpp moc_searchusr.cpp moc_editsearchusr.cpp moc_syslog.cpp moc_syslog.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_login.cpp moc_regist.cpp moc_myticket.cpp moc_myinform.cpp moc_stationtostationsearch.cpp moc_trainsearch.cpp moc_stationsearch.cpp moc_searchticket.cpp moc_adminwindow.cpp moc_modifyplanofatrain.cpp moc_addplan.cpp moc_addplansimple.cpp moc_searchusr.cpp moc_editsearchusr.cpp moc_syslog.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_login.cpp moc_regist.cpp moc_myticket.cpp moc_myinform.cpp moc_stationtostationsearch.cpp moc_trainsearch.cpp moc_stationsearch.cpp moc_searchticket.cpp moc_adminwindow.cpp moc_modifyplanofatrain.cpp moc_addplan.cpp moc_addplansimple.cpp moc_searchusr.cpp moc_editsearchusr.cpp moc_syslog.cpp moc_syslog.cpp
 moc_mainwindow.cpp: /home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QMainWindow \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qmainwindow.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
@@ -2733,6 +2738,113 @@ moc_syslog.cpp: /home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QDialog \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc
 	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I/home/timemachine/Desktop/TrainTickets/Client/UI/TrainUI -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../TrainUI/syslog.h -o moc_syslog.cpp
 
+moc_syslog.cpp: /home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QDialog \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qdialog.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtwidgetsglobal.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qtguiglobal.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobal.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qtcore-config.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qsysinfo.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qlogging.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qflags.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypetraits.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qmutex.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qnumeric.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qversiontagging.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qtgui-config.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qtwidgets-config.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qwidget.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qwindowdefs.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qnamespace.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qwindowdefs_win.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstring.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qchar.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearray.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qrefcount.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qarraydata.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qlist.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qpair.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlist.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qregexp.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qmetatype.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qmargins.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qpaintdevice.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qrect.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qsize.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qpoint.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qpalette.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qcolor.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qrgb.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qrgba64.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qbrush.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qvector.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qmatrix.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qpolygon.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qregion.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qiodevice.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qline.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qtransform.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qpainterpath.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qimage.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qpixelformat.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qpixmap.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qsharedpointer.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qshareddata.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qhash.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qsharedpointer_impl.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qfont.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qfontmetrics.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qfontinfo.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qsizepolicy.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qcursor.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qkeysequence.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qevent.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qvariant.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qmap.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qdebug.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qtextstream.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qlocale.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qset.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcontiguouscache.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qurl.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qurlquery.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qfile.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qfiledevice.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qvector2d.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qtouchdevice.h \
+		../TrainUI/syslog.h \
+		moc_predefs.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc
+	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/linux-g++ -I/home/timemachine/Desktop/TrainTickets/Client/UI/TrainUI -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtNetwork -I/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore -I. -I/usr/include/c++/6 -I/usr/include/x86_64-linux-gnu/c++/6 -I/usr/include/c++/6/backward -I/usr/lib/gcc/x86_64-linux-gnu/6/include -I/usr/local/include -I/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed -I/usr/include/x86_64-linux-gnu -I/usr/include ../TrainUI/syslog.h -o moc_syslog.cpp
+
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
 compiler_uic_make_all: ui_mainwindow.h ui_login.h ui_regist.h ui_myticket.h ui_myinform.h ui_stationtostationsearch.h ui_trainsearch.h ui_stationsearch.h ui_searchticket.h ui_adminwindow.h ui_modifyplanofatrain.h ui_addplan.h ui_addplansimple.h ui_searchusr.h ui_editsearchusr.h ui_syslog.h
@@ -3844,7 +3956,8 @@ myticket.o: ../TrainUI/myticket.cpp ../TrainUI/myticket.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
+		../TrainUI/include/DataBase_Account.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o myticket.o ../TrainUI/myticket.cpp
 
 myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
@@ -6062,6 +6175,76 @@ syslog.o: ../TrainUI/syslog.cpp ../TrainUI/syslog.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qlayoutitem.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qgridlayout.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o syslog.o ../TrainUI/syslog.cpp
+
+DataBase_Account.o: ../TrainUI/src/DataBase_Account.cpp ../TrainUI/include/DataBase_Account.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QString \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstring.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qchar.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobal.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig-bootstrapped.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qconfig.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qtcore-config.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qsystemdetection.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qprocessordetection.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcompilerdetection.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypeinfo.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qsysinfo.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qlogging.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qflags.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qtypetraits.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qbasicatomic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_bootstrap.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qgenericatomic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_cxx11.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qatomic_msvc.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qglobalstatic.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qmutex.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qnumeric.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qversiontagging.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearray.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qrefcount.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qnamespace.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qarraydata.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringbuilder.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QDateTime \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatetime.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qshareddata.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qhash.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qiterator.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qlist.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qalgorithms.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qhashfunctions.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qpair.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qbytearraylist.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringlist.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qregexp.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringmatcher.h \
+		../TrainUI/include/database.h \
+		../TrainUI/include/vector.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/utility.hpp \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qscopedpointer.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qiodevice.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobjectdefs_impl.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcoreevent.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qmetatype.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
+		../TrainUI/include/smartpoint.hpp \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp \
+		../TrainUI/include/datastream.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QIODevice \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QFile \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qfile.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qfiledevice.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o DataBase_Account.o ../TrainUI/src/DataBase_Account.cpp
 
 DataBase_Train.o: ../TrainUI/src/DataBase_Train.cpp ../TrainUI/include/DataBase_Train.h \
 		../TrainUI/include/map.hpp \

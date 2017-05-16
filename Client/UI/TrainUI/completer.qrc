@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/src">
         <file>names.txt</file>
+        <file>ipconfig.txt</file>
     </qresource>
 </RCC>
