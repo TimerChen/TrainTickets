@@ -18,6 +18,7 @@ INPUT(
 ./debug\searchusr.o
 ./debug\editsearchusr.o
 ./debug\syslog.o
+./debug\DataBase_Account.o
 ./debug\qrc_pic.o
 ./debug\qrc_completer.o
 ./debug\moc_mainwindow.o

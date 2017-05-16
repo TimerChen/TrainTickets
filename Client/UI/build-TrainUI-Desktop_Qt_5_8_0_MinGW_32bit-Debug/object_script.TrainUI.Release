@@ -18,6 +18,7 @@ INPUT(
 ./release\searchusr.o
 ./release\editsearchusr.o
 ./release\syslog.o
+./release\DataBase_Account.o
 ./release\qrc_pic.o
 ./release\qrc_completer.o
 ./release\moc_mainwindow.o

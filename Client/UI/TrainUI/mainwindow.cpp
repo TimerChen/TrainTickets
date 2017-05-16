@@ -45,7 +45,7 @@ MainWindow::~MainWindow() { delete ui; }
 void MainWindow::link()
 {
 	serverSocket->abort();
-    serverSocket->connectToHost("59.78.48.244",12308);
+    serverSocket->connectToHost("192.168.48.1",12308);
 }
 
 void MainWindow::dealError(QAbstractSocket::SocketError socketError)
@@ -131,8 +131,8 @@ void MainWindow::on_myticketBtn_clicked() {
 
 void MainWindow::on_myinformBtn_clicked() {
     Myinform myinform(nowaccount, this);
-
     myinform.exec();
+    ui->nameLabel->setText(nowaccount->name);
 }
 
 void MainWindow::on_stationToStationSearchBtn_clicked() {
