@@ -209,6 +209,31 @@ ttd::pair<int,QString> MainWindow::login_remote(const QString &UserId, const QSt
 	return serverReturn;
 }
 
+ttd::pair<int,QString> MainWindow::aulogin_remote(const QString &UserId, const QString &pwd)
+{
+    QByteArray block;
+    ttd::pair<int,QString> serverReturn;
+    QDataStream serverOut(&block,QIODevice::WriteOnly);
+    serverOut.setVersion(QDataStream::Qt_5_0);
+
+    serverOut << (quint16)frontask::aulogin
+                 << frontask::loginAccount(UserId, pwd) ;
+
+    serverSocket->write(block);
+    serverSocket->waitForBytesWritten();
+    while(1)
+    {
+        serverSocket->waitForReadyRead();
+        //QMessageBox::information(this,"Info","ReadReady_OK");
+        serverIn.startTransaction();
+        serverIn >> serverReturn;
+        if(serverIn.commitTransaction())
+            break;
+    }
+    //QMessageBox::information(this,"Info","Read_OK");
+    return serverReturn;
+}
+
 bool MainWindow::logout_remote()
 {
 	QByteArray block;
