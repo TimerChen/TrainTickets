@@ -767,7 +767,8 @@ qrc_pic.cpp: ../TrainUI/pic.qrc \
 
 qrc_completer.cpp: ../TrainUI/completer.qrc \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc \
-		../TrainUI/names.txt
+		../TrainUI/names.txt \
+		../TrainUI/ipconfig.txt
 	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc -name completer ../TrainUI/completer.qrc -o qrc_completer.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
