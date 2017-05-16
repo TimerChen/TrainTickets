@@ -6,6 +6,7 @@
 #include "include/vector.hpp"
 #include "toserverstructs.h"
 #include "ui_myticket.h"
+#include "include/DataBase_Account.h"
 
 Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
                    QString _adminID, QString _adminName)
@@ -37,8 +38,8 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
     ui->ticketsTableView->setColumnWidth(0, 200);
     ui->ticketsTableView->setColumnWidth(1, 200);
     ui->ticketsTableView->setColumnWidth(2, 200);
-    ui->ticketsTableView->setColumnWidth(3, 200);
-    ui->ticketsTableView->setColumnWidth(4, 200);
+    ui->ticketsTableView->setColumnWidth(3, 300);
+    ui->ticketsTableView->setColumnWidth(4, 300);
     ui->ticketsTableView->setColumnWidth(5, 200);
     ui->ticketsTableView->setColumnWidth(6, 150);
     ui->ticketsTableView->setColumnWidth(7, 100);
@@ -72,45 +73,40 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
     //    model->setItem(1, 7, new QStandardItem(tr("7")));
 
     // test
-    DataBase_Train::QTrain qtrain;
-    DataBase_Train::QTrain qtrain1;
-    qtrain.ableToBuy = true;
+    DataBase_Account::Ticket qtrain;
+    DataBase_Account::Ticket qtrain1;
+
     qtrain.trainID = "2502B";
-    qtrain.seatTypeNumber = 1;
     qtrain.loadStation = "交大";
     qtrain.unLoadStation = "华师大";
 
-    qtrain1.ableToBuy = true;
     qtrain1.trainID = "25002B";
-    qtrain1.seatTypeNumber = 1;
     qtrain1.loadStation = "华师大";
     qtrain1.unLoadStation = "交大";
 
-    qtrain.price.push_back(100);
-    qtrain1.price.push_back(200);
+    qtrain.price = 100;
+    qtrain1.price = 200;
     qtrain.seatType.push_back("单腿");
     qtrain1.seatType.push_back("三腿");
 
-    qtrain.seatNumber.push_back(10);
-    qtrain1.seatNumber.push_back(1);
-    qtrain.loadStationLeaveTime =
+    qtrain.loadTime =
         QDateTime::fromString("2017-04-01 12:07:50", "yyyy-MM-dd hh:mm:ss");
-    qtrain.unLoadStationReachTime =
+    qtrain.unLoadTime =
         QDateTime::fromString("2017-04-01 13:07:50", "yyyy-MM-dd hh:mm:ss");
-    qtrain1.loadStationLeaveTime =
+    qtrain1.loadTime =
         QDateTime::fromString("2017-04-12 12:07:50", "yyyy-MM-dd hh:mm:ss");
-    qtrain1.unLoadStationReachTime =
+    qtrain1.unLoadTime =
         QDateTime::fromString("2017-04-13 13:07:50", "yyyy-MM-dd hh:mm:ss");
 
     ///发送frontask::getmytickets
     ///发送nowaccount->usrID
     ///获得QTrain的vector或者其他的结构
-    ttd::vector<DataBase_Train::QTrain> qtrains;
+    ttd::vector<DataBase_Account::Ticket> qtrains;
     qtrains.push_back(qtrain);
 
     int deltaForSeat = 0;
     for (size_t i = 0; i < qtrains.size(); ++i) {
-        for (int j = 0; j < qtrains[i].seatTypeNumber; ++j) {
+            double price = double(qtrains[i].price)/100;
             model->setItem(i + deltaForSeat, 0,
                            new QStandardItem(qtrains[i].trainID));
             model->setItem(i + deltaForSeat, 1,
@@ -119,23 +115,23 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
                            new QStandardItem(qtrains[i].unLoadStation));
             model->setItem(
                 i + deltaForSeat, 3,
-                new QStandardItem(qtrains[i].loadStationLeaveTime.toString(
+                new QStandardItem(qtrains[i].loadTime.toString(
                     "yyyy-mm-dd hh:mm:ss")));
             model->setItem(
                 i + deltaForSeat, 4,
-                new QStandardItem(qtrains[i].unLoadStationReachTime.toString(
+                new QStandardItem(qtrains[i].unLoadTime.toString(
                     "yyyy-mm-dd hh:mm:ss")));
 
             model->setItem(i + deltaForSeat, 5,
-                           new QStandardItem(qtrains[i].seatType[j]));
+                           new QStandardItem(qtrains[i].seatType));
             model->setItem(
                 i + deltaForSeat, 6,
-                new QStandardItem(QString::number(qtrains[i].price[j], 10)));
+                new QStandardItem(QString::number(1,10)));
             model->setItem(i + deltaForSeat, 7,
                            new QStandardItem(
-                               QString::number(qtrains[i].seatNumber[j], 10)));
+                               QString::number(price, '.', 2)));
             ++deltaForSeat;
-        }
+
     }
 }
 

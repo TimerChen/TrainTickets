@@ -174,9 +174,10 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
 
                     model->setItem(i + deltaForSeat, 5,
                                    new QStandardItem(qtrains[i].seatType[j]));
+                    double price = double(qtrains[i].price[j]) / 100;
                     model->setItem(i + deltaForSeat, 6,
                                    new QStandardItem(QString::number(
-                                       qtrains[i].price[j], 10)));
+                                       price, '.', 2)));
                     model->setItem(i + deltaForSeat, 7,
                                    new QStandardItem(QString::number(
                                        qtrains[i].seatNumber[j], 10)));
@@ -328,9 +329,7 @@ void SearchTicket::on_buyTicketBtn_clicked() {
     QString trainInform =
         "车次：" + targetticket.trainID + "\n发站日期：" + date.toString();
     if (nowaccount->userType == Ui::annonymous) {
-        Login log(nowaccount, this);
-        log.setAuloginEnable(false);
-        log.exec();
+       QMessageBox::warning(this, "失败", "请先登录再购买车票",QMessageBox::Cancel);
     } else if (nowaccount->userType == Ui::normal || nowaccount->userType == Ui::searchusr) {
         if (abletobuy == tr("否")) {
             QMessageBox::warning(this, "无法购买", "该票还未发售",
