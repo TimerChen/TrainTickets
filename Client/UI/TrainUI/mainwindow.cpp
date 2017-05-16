@@ -44,7 +44,7 @@ MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::link()
 {
-    QFile ipconfig(":/src/ipconfig.txt");
+	QFile ipconfig("ipconfig.txt");
     ipconfig.open(QIODevice::ReadOnly);
 
     QTextStream in(&ipconfig);
