@@ -151,8 +151,20 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
     if (searchType == Ui::stationToStation) {
 
         frontask::stationToStationSearch sss(date, ask1, ask2);
-        if (true) {  ///发送sss到服务器
+		bool no_error = true;
+		try{
+			qtrains =
+			((MainWindow*)(parentWidget()->parentWidget()))->query_sts_remote
+								(sss);
+		}catch(...){
+			no_error = false;
+		}
+
+		if (no_error) {  ///发送sss到服务器
             ///获得qtrains
+
+
+
             int deltaForSeat = 0;
             for (size_t i = 0; i < qtrains.size(); ++i) {
                 for (int j = 0; j < qtrains[i].seatTypeNumber; ++j) {
@@ -197,13 +209,25 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
         }
     } else if (searchType == Ui::trainSearch) {
         frontask::trainSearch sss(date, ask1);
-        if (true) {
+
+		bool no_error = true;
+		try{
+			trainroute =
+			((MainWindow*)(parentWidget()->parentWidget()))->query_t_remote
+								(sss);
+		}catch(...){
+			no_error = false;
+		}
+
+		if (no_error) {
             ///发送frontask::trainsearch
             ///发送sss到服务器
             ///获得trainroute
             ui->calLabel->setText("始发日期： " + date.toString());
             model->setHeaderData(6, Qt::Horizontal, tr("发出第 天"));
             model->setHeaderData(7, Qt::Horizontal, tr("里程"));
+			model->setHeaderData(3, Qt::Horizontal, tr("到站时刻"));
+			model->setHeaderData(4, Qt::Horizontal, tr("发出时刻"));
             model->setHeaderData(8, Qt::Horizontal, tr(""));
             int deltaForSeat = 0;
             for (int i = 0; i < trainroute.stationNumber; ++i) {
@@ -217,12 +241,13 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
                     model->setItem(
                         i + deltaForSeat, 2,
                         new QStandardItem(trainroute.stationName[i]));
-                model->setItem(
-                    i + deltaForSeat, 3,
+
+				if(i != trainroute.stationNumber - 1) model->setItem(
+					i + deltaForSeat, 4,
                     new QStandardItem(
                         trainroute.leaveTime[i].toString("hh:mm:ss")));
-                model->setItem(
-                    i + deltaForSeat, 4,
+			   if(i!= 0) model->setItem(
+					i + deltaForSeat, 3,
                     new QStandardItem(
                         trainroute.reachTime[i].toString("hh:mm:ss")));
                 model->setItem(
@@ -250,7 +275,17 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
         }
     } else {
         frontask::stationSearch sss(date, ask1);
-        if (true) {
+
+		bool no_error = true;
+		try{
+			vtrainroute =
+			((MainWindow*)(parentWidget()->parentWidget()))->query_s_remote
+								(sss);
+		}catch(...){
+			no_error = false;
+		}
+
+		if (no_error) {
             ///发送frontask::stationsearch
             ///发送sss到服务器
             ///获得vtrainroute
@@ -258,11 +293,15 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
             model->setHeaderData(6, Qt::Horizontal, tr("发出第 天"));
             model->setHeaderData(7, Qt::Horizontal, tr("里程"));
             model->setHeaderData(1, Qt::Horizontal, tr("始发站"));
+			model->setHeaderData(3, Qt::Horizontal, tr("到站时刻"));
+			model->setHeaderData(4, Qt::Horizontal,tr("发出时刻"));
             model->setHeaderData(8, Qt::Horizontal, tr(""));
             int deltaForSeat = 0;
             for (size_t t = 0; t < vtrainroute.size(); ++t) {
                 model->setItem(t + deltaForSeat, 0,
                                new QStandardItem(vtrainroute[t].trainID));
+				qDebug() << vtrainroute[t].trainID;
+				qDebug() << vtrainroute[t].stationNumber;
                 for (int i = 0; i < vtrainroute[t].stationNumber; ++i) {
                     if (i == 0)
                         model->setItem(
@@ -272,12 +311,12 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
                         model->setItem(
                             t + deltaForSeat, 2,
                             new QStandardItem(vtrainroute[t].stationName[i]));
-                    model->setItem(
-                        t + deltaForSeat, 4,
+					if(i != vtrainroute[t].stationNumber-1) model->setItem(
+						t + deltaForSeat, 4,
                         new QStandardItem(
                             vtrainroute[t].leaveTime[i].toString("hh:mm:ss")));
-                    model->setItem(
-                        t + deltaForSeat, 3,
+					if (i != 0) model->setItem(
+						t + deltaForSeat, 3,
                         new QStandardItem(
                             vtrainroute[t].reachTime[i].toString("hh:mm:ss")));
                     model->setItem(

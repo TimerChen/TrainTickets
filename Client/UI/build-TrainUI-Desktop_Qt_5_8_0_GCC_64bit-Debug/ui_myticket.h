@@ -16,6 +16,7 @@
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
+#include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QTableView>
@@ -31,6 +32,7 @@ public:
     QTableView *ticketsTableView;
     QVBoxLayout *verticalLayout;
     QHBoxLayout *horizontalLayout;
+    QLabel *label;
     QLineEdit *numLineEdit;
     QPushButton *modifyTicketBtn;
     QPushButton *exitBtn;
@@ -56,23 +58,27 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        label = new QLabel(Myticket);
+        label->setObjectName(QStringLiteral("label"));
+
+        horizontalLayout->addWidget(label);
+
         numLineEdit = new QLineEdit(Myticket);
         numLineEdit->setObjectName(QStringLiteral("numLineEdit"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Minimum);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
         sizePolicy.setHeightForWidth(numLineEdit->sizePolicy().hasHeightForWidth());
         numLineEdit->setSizePolicy(sizePolicy);
+        numLineEdit->setMinimumSize(QSize(0, 70));
 
         horizontalLayout->addWidget(numLineEdit);
 
         modifyTicketBtn = new QPushButton(Myticket);
         modifyTicketBtn->setObjectName(QStringLiteral("modifyTicketBtn"));
-        QSizePolicy sizePolicy1(QSizePolicy::Expanding, QSizePolicy::Fixed);
-        sizePolicy1.setHorizontalStretch(0);
-        sizePolicy1.setVerticalStretch(0);
-        sizePolicy1.setHeightForWidth(modifyTicketBtn->sizePolicy().hasHeightForWidth());
-        modifyTicketBtn->setSizePolicy(sizePolicy1);
+        sizePolicy.setHeightForWidth(modifyTicketBtn->sizePolicy().hasHeightForWidth());
+        modifyTicketBtn->setSizePolicy(sizePolicy);
+        modifyTicketBtn->setMinimumSize(QSize(0, 70));
 
         horizontalLayout->addWidget(modifyTicketBtn);
 
@@ -81,6 +87,7 @@ public:
 
         exitBtn = new QPushButton(Myticket);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
+        exitBtn->setMinimumSize(QSize(0, 70));
 
         verticalLayout->addWidget(exitBtn);
 
@@ -100,6 +107,7 @@ public:
     void retranslateUi(QDialog *Myticket)
     {
         Myticket->setWindowTitle(QApplication::translate("Myticket", "\346\210\221\347\232\204\350\275\246\347\245\250", Q_NULLPTR));
+        label->setText(QApplication::translate("Myticket", "\351\200\200\350\256\242\345\274\240\346\225\260", Q_NULLPTR));
         modifyTicketBtn->setText(QApplication::translate("Myticket", "\351\200\200\350\256\242", Q_NULLPTR));
         exitBtn->setText(QApplication::translate("Myticket", "\350\277\224\345\233\236\346\237\245\350\257\242\347\252\227\345\217\243", Q_NULLPTR));
     } // retranslateUi

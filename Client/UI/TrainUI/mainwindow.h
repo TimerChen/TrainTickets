@@ -5,6 +5,9 @@
 #include <QTcpSocket>
 #include "include/smartpoint.hpp"
 #include "include/utility.hpp"
+#include "include/vector.hpp"
+#include "include/DataBase_Train.h"
+#include "toserverstructs.h"
 #include "uistructs.h"
 
 #include "include/DataBase_Train.h"
@@ -22,6 +25,7 @@ class MainWindow : public QMainWindow {
 
 	friend class Login;
 	friend class Regist;
+	friend class SearchTicket;
    public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -60,6 +64,17 @@ class MainWindow : public QMainWindow {
 	ttd::vector<DataBase_Train::QTrain> query_stationToStation();
 	ttd::vector<DataBase_Train::TrainRoute> query_station();
 	DataBase_Train::TrainRoute query_train();
+
+	ttd::vector<DataBase_Train::QTrain>
+		query_sts_remote
+		( const frontask::stationToStationSearch &fask );
+	ttd::vector<DataBase_Train::TrainRoute>
+		query_s_remote
+		( const frontask::stationSearch &fask );
+	DataBase_Train::TrainRoute
+		query_t_remote
+		( const frontask::trainSearch &fask );
+
 
 
 };

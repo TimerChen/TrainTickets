@@ -82,6 +82,7 @@ private:
 	ttd::map<QString,ttd::vector<QString> > staData;
 public:
 	DataBase_Train( const QString&Name = "Default" );
+	~DataBase_Train();
 
 	void loadData();
 	void loadData_raw(const QString &FileName);
@@ -98,10 +99,10 @@ public:
 	QDateTime getLeaveTime(QString train, QString station);
 	QDateTime getReachTime(QString train, QString station);
 	bool modifyTrain(QString traId, int setnr, int stanr,
-	 const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
-	 const ttd::vector<QDateTime> &rt, const ttd::vector<QDateTime> &lt,
-	 const ttd::vector<QString> &set, const ttd::vector<int> &senr,
-	 const ttd::vector<ttd::vector<int> > &ptb);
+	const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
+	const ttd::vector<QDateTime> &rt, const ttd::vector<QDateTime> &lt,
+	const ttd::vector<QString> &set, const ttd::vector<int> &senr,
+	const ttd::vector<ttd::vector<int> > &ptb);
 	
 	void openOneDay(QString traId, QDate dato);
 	bool closeOneDay (QString traId, QDate datc);

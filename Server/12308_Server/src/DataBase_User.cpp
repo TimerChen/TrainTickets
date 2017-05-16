@@ -52,6 +52,8 @@ void DataBase_User::add_acc(ttd::shared_ptr<DataBase_Account> whichAcc)
 
 bool DataBase_User::is_admin(int UserId)
 {
+	if(UserId == -1) return false;
+	if(UserId == 0) return true;
 	return nowAccData->accData[userData[UserId]].isAdmin;
 	// when you use some admin_function, please use this first
 	// for example  if(a.isAdmin(UserId))	a.query_account(ID)

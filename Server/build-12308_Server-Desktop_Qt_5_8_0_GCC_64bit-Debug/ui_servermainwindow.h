@@ -13,15 +13,18 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
+#include <QtWidgets/QSplitter>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QTextEdit>
 #include <QtWidgets/QToolBar>
+#include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 
 QT_BEGIN_NAMESPACE
@@ -31,11 +34,18 @@ class Ui_ServerMainWindow
 public:
     QAction *actionAbout;
     QWidget *centralWidget;
-    QPushButton *restartPushButton;
+    QVBoxLayout *verticalLayout_2;
+    QSplitter *splitter_2;
+    QSplitter *splitter;
     QTextEdit *console;
+    QWidget *layoutWidget;
+    QVBoxLayout *verticalLayout;
+    QPushButton *restartPushButton;
     QPushButton *stopPushButton;
-    QLineEdit *lineEdit;
-    QPushButton *pushButton;
+    QWidget *layoutWidget1;
+    QHBoxLayout *horizontalLayout;
+    QLineEdit *commandEdit;
+    QPushButton *commandButton;
     QMenuBar *menuBar;
     QMenu *menuSetting;
     QToolBar *mainToolBar;
@@ -50,22 +60,60 @@ public:
         actionAbout->setObjectName(QStringLiteral("actionAbout"));
         centralWidget = new QWidget(ServerMainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
-        restartPushButton = new QPushButton(centralWidget);
-        restartPushButton->setObjectName(QStringLiteral("restartPushButton"));
-        restartPushButton->setGeometry(QRect(660, 20, 85, 28));
-        console = new QTextEdit(centralWidget);
+        verticalLayout_2 = new QVBoxLayout(centralWidget);
+        verticalLayout_2->setSpacing(6);
+        verticalLayout_2->setContentsMargins(11, 11, 11, 11);
+        verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
+        splitter_2 = new QSplitter(centralWidget);
+        splitter_2->setObjectName(QStringLiteral("splitter_2"));
+        splitter_2->setOrientation(Qt::Vertical);
+        splitter = new QSplitter(splitter_2);
+        splitter->setObjectName(QStringLiteral("splitter"));
+        splitter->setOrientation(Qt::Horizontal);
+        console = new QTextEdit(splitter);
         console->setObjectName(QStringLiteral("console"));
-        console->setGeometry(QRect(20, 20, 621, 361));
         console->setReadOnly(true);
-        stopPushButton = new QPushButton(centralWidget);
+        splitter->addWidget(console);
+        layoutWidget = new QWidget(splitter);
+        layoutWidget->setObjectName(QStringLiteral("layoutWidget"));
+        verticalLayout = new QVBoxLayout(layoutWidget);
+        verticalLayout->setSpacing(6);
+        verticalLayout->setContentsMargins(11, 11, 11, 11);
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
+        verticalLayout->setContentsMargins(0, 0, 0, 0);
+        restartPushButton = new QPushButton(layoutWidget);
+        restartPushButton->setObjectName(QStringLiteral("restartPushButton"));
+
+        verticalLayout->addWidget(restartPushButton);
+
+        stopPushButton = new QPushButton(layoutWidget);
         stopPushButton->setObjectName(QStringLiteral("stopPushButton"));
-        stopPushButton->setGeometry(QRect(660, 60, 85, 28));
-        lineEdit = new QLineEdit(centralWidget);
-        lineEdit->setObjectName(QStringLiteral("lineEdit"));
-        lineEdit->setGeometry(QRect(20, 390, 621, 31));
-        pushButton = new QPushButton(centralWidget);
-        pushButton->setObjectName(QStringLiteral("pushButton"));
-        pushButton->setGeometry(QRect(660, 390, 121, 31));
+
+        verticalLayout->addWidget(stopPushButton);
+
+        splitter->addWidget(layoutWidget);
+        splitter_2->addWidget(splitter);
+        layoutWidget1 = new QWidget(splitter_2);
+        layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
+        horizontalLayout = new QHBoxLayout(layoutWidget1);
+        horizontalLayout->setSpacing(6);
+        horizontalLayout->setContentsMargins(11, 11, 11, 11);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(0, 0, 0, 0);
+        commandEdit = new QLineEdit(layoutWidget1);
+        commandEdit->setObjectName(QStringLiteral("commandEdit"));
+
+        horizontalLayout->addWidget(commandEdit);
+
+        commandButton = new QPushButton(layoutWidget1);
+        commandButton->setObjectName(QStringLiteral("commandButton"));
+
+        horizontalLayout->addWidget(commandButton);
+
+        splitter_2->addWidget(layoutWidget1);
+
+        verticalLayout_2->addWidget(splitter_2);
+
         ServerMainWindow->setCentralWidget(centralWidget);
         menuBar = new QMenuBar(ServerMainWindow);
         menuBar->setObjectName(QStringLiteral("menuBar"));
@@ -94,7 +142,7 @@ public:
         actionAbout->setText(QApplication::translate("ServerMainWindow", "About..", Q_NULLPTR));
         restartPushButton->setText(QApplication::translate("ServerMainWindow", "Restart", Q_NULLPTR));
         stopPushButton->setText(QApplication::translate("ServerMainWindow", "Stop", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("ServerMainWindow", "SendCommond", Q_NULLPTR));
+        commandButton->setText(QApplication::translate("ServerMainWindow", "SendCommand", Q_NULLPTR));
         menuSetting->setTitle(QApplication::translate("ServerMainWindow", "Setting", Q_NULLPTR));
     } // retranslateUi
 

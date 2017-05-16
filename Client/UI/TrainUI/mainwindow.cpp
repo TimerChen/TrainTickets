@@ -45,7 +45,7 @@ MainWindow::~MainWindow() { delete ui; }
 void MainWindow::link()
 {
 	serverSocket->abort();
-    serverSocket->connectToHost("192.168.48.1",12308);
+	serverSocket->connectToHost("0.0.0.0",12308);
 }
 
 void MainWindow::dealError(QAbstractSocket::SocketError socketError)
@@ -222,5 +222,93 @@ bool MainWindow::logout_remote()
 		if(serverIn.commitTransaction())
 			break;
 	}
+	return serverReturn;
+}
+
+
+ttd::vector<DataBase_Train::QTrain>
+	MainWindow::query_sts_remote
+	( const frontask::stationToStationSearch &fask )
+{
+	QByteArray block;
+	ttd::vector<DataBase_Train::QTrain> serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::stationtostationsearch
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+ttd::vector<DataBase_Train::TrainRoute>
+	MainWindow::query_s_remote
+	( const frontask::stationSearch &fask )
+{
+	QByteArray block;
+	ttd::vector<DataBase_Train::TrainRoute> serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::stationsearch
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+DataBase_Train::TrainRoute
+	MainWindow::query_t_remote
+	( const frontask::trainSearch &fask )
+{
+	QByteArray block;
+	DataBase_Train::TrainRoute serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::trainsearch
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
 	return serverReturn;
 }
