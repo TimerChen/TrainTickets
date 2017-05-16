@@ -103,9 +103,15 @@ int DataBase_Main::regist( const QString &Id, const QString &pwd, const QString 
 }
 
 ttd::pair<int,QString> DataBase_Main::login
-( const QString &ID, const QString &password )
-{ return dLog->login
-			( ID, password, dUser->login( ID, password ) ); }
+( const QString &ID, const QString &password, const short &type )
+{
+	if(type)
+		return dLog->login
+				( ID, password, dUser->adminLogin( ID, password ) );
+	else
+		return dLog->login
+				( ID, password, dUser->login( ID, password ) );
+}
 
 bool DataBase_Main::logout( int UserId )
 {

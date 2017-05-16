@@ -41,7 +41,7 @@ public:
 
 	//Database_User
 	int regist( const QString &Id, const QString &pwd, const QString &name="Unknown" );
-	ttd::pair<int,QString> login( const QString &ID, const QString &password );
+	ttd::pair<int,QString> login( const QString &ID, const QString &password, const short &type=1 );
 	bool logout( int UserId );
 
 	//Database_Account
@@ -88,7 +88,6 @@ public:
 	//UserId is for identify your identification.
 
 	void modify_train( int UserId, int TrainId, const Train &TrainInfo );
-	void modify_ticket( int UserId, int TrainId, int DayTime, const Ticket &TicketInfo );
 
 	//This will return a TrainId.
 	int add_train( int UserId, const Train &TrainInfo );

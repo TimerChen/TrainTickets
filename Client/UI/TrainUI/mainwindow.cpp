@@ -312,3 +312,87 @@ DataBase_Train::TrainRoute
 	if(!no_error) throw(0);
 	return serverReturn;
 }
+void MainWindow::returnTickets_remote
+	( const frontask::targetTicket &fask)
+{
+	QByteArray block;
+//	DataBase_Train::TrainRoute serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::modifymyticket
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+//		if( no_error )
+//			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+void MainWindow::buyTickets_remote
+	( const frontask::targetTicket &fask)
+{
+	QByteArray block;
+//	DataBase_Train::TrainRoute serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::buyTicket
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+//		if( no_error )
+//			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+ttd::map<DataBase_Account::Ticket,int>
+	MainWindow::askTickets_remote
+	( const QString &fask )
+{
+	QByteArray block;
+	ttd::map<DataBase_Account::Ticket,int> serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::getmytickets
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}

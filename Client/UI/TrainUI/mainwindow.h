@@ -75,6 +75,12 @@ class MainWindow : public QMainWindow {
 		query_t_remote
 		( const frontask::trainSearch &fask );
 
+	void returnTickets_remote
+		( const frontask::targetTicket &fask);
+	void buyTickets_remote
+		( const frontask::targetTicket &fask);
+	ttd::map<DataBase_Account::Ticket,int> askTickets_remote
+		( const QString &fask );
 
 
 };
