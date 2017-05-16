@@ -1,6 +1,7 @@
 #include "include/DataBase_Train.h"
 
 #include <QFile>
+#include <QTest>
 #include <QDataStream>
 #include <QTextStream>
 
@@ -32,7 +33,7 @@ DataBase_Train::Train DataBase_Train::Train::operator=(const Train &a)
 	salingDate = a.salingDate;
 	return *this;
 }
-DataBase_Train::Train::~Train (){}
+DataBase_Train::Train::~Train (){ }
 void DataBase_Train::Train::openOneDay (QDate dato)
 {
 	if (salingDate.count(dato))
@@ -159,7 +160,8 @@ DataBase_Train::DataBase_Train(const QString &Name)
 	traData.clear();
 	staData.clear();
 }
-	
+DataBase_Train::~DataBase_Train()
+{ saveData(); }
 bool DataBase_Train::trainExist(QString traId)
 {
 	return traData.count(traId);
@@ -171,9 +173,10 @@ bool DataBase_Train::createTrain(QString traId, int setnr, int stanr,
 	 const ttd::vector<ttd::vector<int> > &ptb)
 {
  	if (trainExist(traId))	return 0;	//fail, train existed or have sold tickets
- 	traData[traId] = Train(traId,setnr,stanr,stan,ma,rt,lt,set,senr,ptb);
- 	ttd::vector<QString>::iterator it = traData[traId].stationName.begin();
-	for (ttd::vector<QString>::iterator ed = traData[traId].stationName.end(); it != ed; ++it)
+	ttd::map<QString, Train>::iterator ti
+			= traData.insert( ttd::make_pair(traId, Train(traId,setnr,stanr,stan,ma,rt,lt,set,senr,ptb)) ).first;
+	ttd::vector<QString>::iterator it = ti->second.stationName.begin();
+	for (ttd::vector<QString>::iterator ed = ti->second.stationName.end(); it != ed; ++it)
 		insert(*it,traId);
 	return 1;
 }
@@ -280,6 +283,7 @@ ttd::vector<DataBase_Train::QTrain> DataBase_Train::queryTwo(const QDate &dat, c
 	ttd::vector<QString> a(bothPass(sta,stb));
 	for (ttd::vector<QString>::iterator it(a.begin()), ra(a.end()); it != ra; ++it)
 	{
+		//qDebug() << *it ;
 		tmp.push_back(traData[*it].query_stationToStation(dat,sta,stb));
 		if(!tmp[tmp.size()-1].ableToBuy)	tmp.pop_back();
 	}
@@ -287,7 +291,8 @@ ttd::vector<DataBase_Train::QTrain> DataBase_Train::queryTwo(const QDate &dat, c
 }
 ttd::vector<QString> DataBase_Train::bothPass(const QString &sta, const QString &stb)
 {
-	ttd::vector<QString> ans = staData[sta], tmp = staData[stb];
+	ttd::vector<QString> ans = staData[sta];
+	const ttd::vector<QString> &tmp = staData[stb];
 	for(int i = ans.size()-1; i >=0; i--)
 	{
 		bool ok = 0;
@@ -299,7 +304,7 @@ ttd::vector<QString> DataBase_Train::bothPass(const QString &sta, const QString 
 					else if (traData[ans[i]].stationName[k] == stb)	{ok = 1;break;}
 				break;
 			}
-		if (!ok)	ans.erase(i--);
+		if (!ok)	ans.erase(i);
 	}
 	return ans;
 }
@@ -364,7 +369,7 @@ QDataStream& operator >> (QDataStream& in, DataBase_Train::Train &data)
 			>> data.stationName >> data.mileAge
 			>> data.reachTime >> data.leaveTime
 			>> data.seatType >> data.seatNumber
-			>> data.priceTable << data.salingDate;
+			>> data.priceTable >> data.salingDate;
 	return in;
 }
 
@@ -387,7 +392,8 @@ void DataBase_Train::loadData()
 		return;
 	QDataStream in(&file);
 	in.setVersion(QDataStream::Qt_5_0);
-	in >> traData >> staData;
+	in >> traData;
+	in >> staData;
 	file.close();
 }
 void DataBase_Train::saveData()
@@ -432,7 +438,7 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 		traId = in.readLine();
 		qslist = in.readLine().split(',');
 		setnr = qslist.size()-5;
-		for(int i=6;i<qslist.size();++i)
+		for(int i=5;i<qslist.size();++i)
 		{
 			set.push_back(qslist[i]);
 			ptb.push_back(ttd::vector<int>() );
@@ -446,8 +452,8 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 
 			stan.push_back(qslist[0]);
 
-			QDate day = QDate::fromString(qslist[1],"yyyy-mm-dd");
-			day.addDays(-27);			//yy and mm is useless
+			QDate day = QDate::fromString(qslist[1],"yyyy-MM-dd");
+			day = day.addDays(-27);			//yy and mm is useless
 
 			if(qslist[2] == "起点站")
 				rt.push_back(QDateTime(day));
@@ -455,7 +461,7 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 				rt.push_back(QDateTime(day,QTime::fromString(qslist[2],"hh:mm") ));
 
 
-			if(qslist[3] == "终点站")
+			if(qslist[3] == "终到站")
 				rt.push_back(QDateTime(day)),ok = 1;
 			else
 				lt.push_back(QDateTime(day,QTime::fromString(qslist[3],"hh:mm")));
@@ -471,7 +477,18 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 				ptb[i].push_back( int(qslist[i+5].mid(1).toDouble() * 100) );
 		}
 		if ( createTrain(traId,setnr,stanr,stan,ma,rt,lt,set,sen,ptb) )
+		{
 			total++;
+			ttd::map<QString, Train>::iterator ti
+					= traData.find(traId);
+			QDate firstDay(2017,3,28);
+			//30day?
+			for(int i=0; i<30;++i)
+			{
+				ti->second.openOneDay(firstDay);
+				firstDay = firstDay.addDays(1);
+			}
+		}
 	}
 	file.close();
 	/*

@@ -26,8 +26,9 @@ ttd::normal_ptr<ttd::vector<QString> > DataBase_Main::getLog()
 { return &(dLog->log); }
 
 /*Unfinished*/
-void DataBase_Main::loadData_raw( const QString &FileName )
+void DataBase_Main::loadData_raw_buy( const QString &FileName )
 {
+	dLog->any("Start load raw-buy-data.");
 	QFile file(FileName);	//file
 	if (!file.open(QFile::ReadOnly|QFile::Text))	throw(0);//open failed
 	QTextStream in(&file);
@@ -46,13 +47,20 @@ void DataBase_Main::loadData_raw( const QString &FileName )
 		in>>tmp>>sta;
 		in>>tmp>>stb;
 		in>>tmp>>tmp;
-		day = QDate::fromString(tmp,"yyyy-mm-dd");
+		day = QDate::fromString(tmp,"yyyy-MM-dd");
 		regist(id,QString("000000"),name);
 		if (bor == "bought")	buyTickets(0,id,traId,day,sta,stb,type,num);	//  of the two functions
 		else	returnTickets(0,id,traId,day,sta,stb,type,num);
 		total++;
 	}
+	dLog->any("Finished load raw-buy-data.");
 	//unrepeated user: 484468(means 484468 accounts)
+}
+void DataBase_Main::loadData_raw_train(const QString &FileName)
+{
+	dLog->any("Start load raw-train-data.");
+	dTrain->loadData_raw(FileName);
+	dLog->any("Finished load raw-buy-data.");
 }
 
 void DataBase_Main::loadData()

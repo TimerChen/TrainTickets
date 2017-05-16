@@ -28,6 +28,8 @@ private slots:
 	void disconnect();
 	void refreshConsole();
 
+	void newCommand();
+
 private:
 	Ui::ServerMainWindow *ui;
 	QTcpServer *tcpServer;

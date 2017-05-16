@@ -503,9 +503,12 @@ QDataStream& operator >> (QDataStream& in, ttd::vector<T>&v)
 	v.clear();
 	quint32 tmp_n;
 	in >> tmp_n;
-	v = ttd::vector<T>( tmp_n );
+	T tmp;
 	for( size_t i = 0; i < tmp_n; ++i )
-		in >> v[i];
+	{
+		in >> tmp;
+		v.push_back(tmp);
+	}
 	return in;
 }
 

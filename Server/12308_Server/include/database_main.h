@@ -32,7 +32,8 @@ public:
 
 	ttd::normal_ptr<ttd::vector<QString> > getLog();
 	//Read information from external files.
-	void loadData_raw( const QString &FileName );
+	void loadData_raw_buy( const QString &FileName );
+	void loadData_raw_train( const QString &FileName );
 
 	//Network
 	void newConnection( const QString &Ip );

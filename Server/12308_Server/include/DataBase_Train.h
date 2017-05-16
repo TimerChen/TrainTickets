@@ -82,6 +82,7 @@ private:
 	ttd::map<QString,ttd::vector<QString> > staData;
 public:
 	DataBase_Train( const QString&Name = "Default" );
+	~DataBase_Train();
 
 	void loadData();
 	void loadData_raw(const QString &FileName);
