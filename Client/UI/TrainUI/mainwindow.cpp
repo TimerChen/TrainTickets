@@ -44,8 +44,15 @@ MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::link()
 {
+    QFile ipconfig(":/src/ipconfig.txt");
+    ipconfig.open(QIODevice::ReadOnly);
+
+    QTextStream in(&ipconfig);
+    in.setCodec("UTF-8");
+    QString ip;
+    in >> ip;
 	serverSocket->abort();
-	serverSocket->connectToHost("0.0.0.0",12308);
+    serverSocket->connectToHost(ip, 12308);
 }
 
 void MainWindow::dealError(QAbstractSocket::SocketError socketError)
