@@ -23,6 +23,7 @@ ServerMainWindow::ServerMainWindow(QWidget *parent) :
 	tcpServer = new QTcpServer(this);
 	tcpServer->listen(QHostAddress::Any,12308);
 	connect(tcpServer,SIGNAL(newConnection()),this,SLOT(newConnection()));
+	connect(ui->commandButton,SIGNAL(clicked()),this,SLOT(newCommand()));
 	//connect(ui->sendButton,SIGNAL(clicked()),this,SLOT(sendInfo()));
 	currentConnection = NULL;
 	in.setVersion(QDataStream::Qt_5_0);
@@ -35,6 +36,35 @@ ServerMainWindow::~ServerMainWindow()
 {
 	database->addLog( "Server closed." );
 	delete ui;
+}
+
+void ServerMainWindow::newCommand()
+{
+	QStringList qlist = ui->commandEdit->text().split(' ');
+	if(qlist.size()==0)return;
+	ui->commandButton->setEnabled(false);
+	database->addLog("> " + ui->commandEdit->text());
+	refreshConsole();
+	if( qlist[0] == QString("read") && qlist.size() > 1 )
+	{
+		if(qlist[1] == QString("train"))
+		{
+			if(qlist.size() < 3)
+				database->loadData_raw_train("onerawdata.csv");
+			else
+				database->loadData_raw_train(qlist[2]);
+		}else if(qlist[2] == QString("buy")){
+			if(qlist.size() < 3)
+				database->loadData_raw_buy("rawbuy.in");
+			else
+				database->loadData_raw_buy(qlist[2]);
+		}
+	}else if(qlist[0] == QString("test")){
+		database->query_stationToStation(-1,QDate(2017,3,28),"恩施","宜昌东");
+	}
+	refreshConsole();
+	ui->commandEdit->setText("");
+	ui->commandButton->setEnabled(true);
 }
 
 void ServerMainWindow::newConnection()

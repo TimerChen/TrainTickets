@@ -41,7 +41,7 @@ public:
 	class Train
 	{
 	public:
-	
+
 		QString trainID;
 		bool started;
 		int seatTypeNumber, stationNumber;
@@ -52,7 +52,7 @@ public:
 		ttd::vector<QString> seatType;
 		ttd::vector<int> seatNumber;
 		ttd::vector<ttd::vector<int> > priceTable;
-	
+
 		struct TicketsPerDay
 		{
 			bool ableToBuy;
@@ -61,14 +61,14 @@ public:
 
 		ttd::map<QDate, TicketsPerDay> salingDate;
 		Train();
-	 	Train (const QString &tID, int setnr, int stanr,
+		Train (const QString &tID, int setnr, int stanr,
 			const ttd::vector<QString> &stan, const ttd::vector<int> &ma,
 			const ttd::vector<QDateTime> &rt, const ttd::vector<QDateTime> &lt,
 			const ttd::vector<QString> &set, const ttd::vector<int> &senr,
 			const ttd::vector<ttd::vector<int> > &ptb);
 		Train operator=(const Train &a);
 		~Train ();
-	
+
 		void openOneDay (QDate dato);
 		bool closeOneDay (QDate datc);
 		int buyTickets (QDate dat, QString lsta, QString ulsta, QString set, int num);
@@ -93,7 +93,7 @@ public:
 	 const ttd::vector<QDateTime> &rt, const ttd::vector<QDateTime> &lt,
 	 const ttd::vector<QString> &set, const ttd::vector<int> &senr,
 	 const ttd::vector<ttd::vector<int> > &ptb);
-	
+
 	bool delTrain(QString traId);
 	QDateTime getLeaveTime(QString train, QString station);
 	QDateTime getReachTime(QString train, QString station);
@@ -102,17 +102,17 @@ public:
 	 const ttd::vector<QDateTime> &rt, const ttd::vector<QDateTime> &lt,
 	 const ttd::vector<QString> &set, const ttd::vector<int> &senr,
 	 const ttd::vector<ttd::vector<int> > &ptb);
-	
+
 	void openOneDay(QString traId, QDate dato);
 	bool closeOneDay (QString traId, QDate datc);
-	
+
 	int buyTickets (QString traId, QDate dat, QString lsta, QString ulsta, QString set, int num);
-	
+
 	int cancelTickets (QString traId, QDate dat, QString lsta, QString ulsta, QString set, int num);
-	
+
 	bool openDate (QString traId, QDate dat);
 	QTrain query_stationToStation (QDate dat, QString lsta, QString ulsta);
-	
+
 	TrainRoute query_train(QString tra);
 	bool insert(const QString&sta, const QString& add_ref);
 	bool remove(const QString&sta, const QString& mod_ref);

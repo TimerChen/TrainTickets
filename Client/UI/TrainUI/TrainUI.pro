@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     searchusr.cpp \
     editsearchusr.cpp \
     syslog.cpp \
-    src/DataBase_Account.cpp
+    src/DataBase_Account.cpp \
+    src/DataBase_Train.cpp
 
 HEADERS  += mainwindow.h \
     login.h \
@@ -79,7 +80,8 @@ HEADERS  += mainwindow.h \
     include/station.h \
     include/train.h \
     include/utility.hpp \
-    include/vector.hpp
+    include/vector.hpp \
+    syslog.h
 
 FORMS    += mainwindow.ui \
     login.ui \

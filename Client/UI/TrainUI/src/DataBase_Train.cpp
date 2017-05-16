@@ -152,12 +152,6 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 }
 
 
-DataBase_Train::DataBase_Train(const QString &Name)
-	:DataBase_Base(Name)
-{
-	traData.clear();
-	staData.clear();
-}
 	
 bool DataBase_Train::trainExist(QString traId)
 {
