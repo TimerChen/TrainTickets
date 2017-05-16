@@ -112,6 +112,8 @@ void ServerMainWindow::newMessage()
 	frontask::loginAccount opt_login;
 	frontask::regist opt_reg;
 	frontask::targetTicket opt_tic;
+	frontask::changePwd opt_cp;
+	frontask::changeUsrName opt_cun;
 	QString opt_str;
 	switch (oType) {
 	case frontask::stationtostationsearch:
@@ -143,6 +145,12 @@ void ServerMainWindow::newMessage()
 		break;
 	case frontask::logout:
 
+		break;
+	case frontask::changepwd:
+		in >> opt_cp;
+		break;
+	case frontask::changeusrname:
+		in >> opt_cun;
 		break;
 	default:
 		//unknown command
@@ -279,6 +287,28 @@ void ServerMainWindow::newMessage()
 		out << tmp;
 	}
 		break;
+	case frontask::changepwd:
+	{
+		try{
+			tmp = database->changePwd( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::changeusrname:
+	{
+		try{
+			tmp = database->ownedTicket( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
 	default:
 		break;
 	}

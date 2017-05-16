@@ -12,7 +12,7 @@ class DataBase_User : public DataBase_Base
 
 private:
 	int nowTempId;
-	ttd::map<int,int> userData;//userData[userid] = accountId
+	ttd::map<int,ttd::pair<int,int> > userData;//userData[userid] = accountId
 	ttd::shared_ptr<DataBase_Account> nowAccData;
 
 

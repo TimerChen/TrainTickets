@@ -67,7 +67,7 @@ void DataBase_Main::loadData_raw_train(const QString &FileName)
 {
 	dLog->any("Start load raw-train-data.");
 	dTrain->loadData_raw(FileName);
-	dLog->any("Finished load raw-buy-data.");
+	dLog->any("Finished load raw-train-data.");
 }
 
 void DataBase_Main::loadData()

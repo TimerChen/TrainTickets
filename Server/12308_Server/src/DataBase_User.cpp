@@ -16,6 +16,11 @@ DataBase_User::~DataBase_User()
 void DataBase_User::saveData(){}
 void DataBase_User::loadData(){}
 
+int DataBase_User::link()
+{
+
+}
+
 ttd::pair<int,QString> DataBase_User::login( const QString &ID, const QString &password )
 {
 	if (nowAccData == NULL)	return ttd::pair<int,QString>(0,"NoAccountData");	// no account data
