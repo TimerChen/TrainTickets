@@ -50,10 +50,10 @@ void ServerMainWindow::newCommand()
 		if(qlist[1] == QString("train"))
 		{
 			if(qlist.size() < 3)
-				database->loadData_raw_train("onerawdata.csv");
+				database->loadData_raw_train("rawdata.csv");
 			else
 				database->loadData_raw_train(qlist[2]);
-		}else if(qlist[2] == QString("buy")){
+		}else if(qlist[1] == QString("buy")){
 			if(qlist.size() < 3)
 				database->loadData_raw_buy("rawbuy.in");
 			else
@@ -78,7 +78,7 @@ void ServerMainWindow::newConnection()
 			this, &ServerMainWindow::newMessage);
 	currentConnection = clientConnection;
 
-	in.setDevice(currentConnection);	
+	in.setDevice(currentConnection);
 	in.setVersion(QDataStream::Qt_5_0);
 
 	database->newConnection( currentConnection->peerAddress().toString() );
@@ -111,6 +111,8 @@ void ServerMainWindow::newMessage()
 	frontask::trainSearch opt_qt;
 	frontask::loginAccount opt_login;
 	frontask::regist opt_reg;
+	frontask::targetTicket opt_tic;
+	QString opt_str;
 	switch (oType) {
 	case frontask::stationtostationsearch:
 		in >> opt_qsts;
@@ -121,7 +123,19 @@ void ServerMainWindow::newMessage()
 	case frontask::trainsearch:
 		in >> opt_qt;
 		break;
+	case frontask::modifymyticket:
+		in >> opt_tic;
+		break;
+	case frontask::buyTicket:
+		in >> opt_tic;
+		break;
+	case frontask::getmytickets:
+		in >> opt_str;
+		break;
 	case frontask::login:
+		in >> opt_login;
+		break;
+	case frontask::aulogin:
 		in >> opt_login;
 		break;
 	case frontask::reg:
@@ -190,6 +204,55 @@ void ServerMainWindow::newMessage()
 		out << tmp;
 		break;
 	}
+	case frontask::modifymyticket:
+	{
+		try{
+			database->returnTickets( currentUser, opt_tic.usrID, opt_tic.trainID,
+									 opt_tic.time, opt_tic.loadStation, opt_tic.unLoadStation,
+									 opt_tic.seatType, opt_tic.buyNum);
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::buyTicket:
+	{
+		try{
+			database->buyTickets( currentUser, opt_tic.usrID, opt_tic.trainID,
+								  opt_tic.time, opt_tic.loadStation, opt_tic.unLoadStation,
+								  opt_tic.seatType, opt_tic.buyNum);
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::getmytickets:
+	{
+		ttd::map<DataBase_Account::Ticket,int> tmp;
+		try{
+			tmp = database->ownedTicket( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
+	case frontask::aulogin:
+	{
+		ttd::pair<int, QString> tmp
+			= database->login( opt_login.userID, opt_login.pwd, 1 );
+		currentUser = tmp.first;
+		if(tmp.first > 0)
+			tmp.first = 2;
+		out << tmp;
+		break;
+	}
 	case frontask::login:
 	{
 		ttd::pair<int, QString> tmp
@@ -198,8 +261,9 @@ void ServerMainWindow::newMessage()
 		if(tmp.first > 0)
 			tmp.first = 1;
 		out << tmp;
-	}
 		break;
+	}
+
 	case frontask::logout:
 	{
 		bool tmp
@@ -230,7 +294,7 @@ void ServerMainWindow::newMessage()
 void ServerMainWindow::refreshConsole()
 {
 	QString content;
-	for(size_t i=ttd::max((size_t)0,logs->size()-20); i<logs->size(); ++i)
+	for(size_t i=ttd::max(0,int(logs->size())-20); i<logs->size(); ++i)
 	{
 		content = content + (*logs)[i] + "\n";
 	}

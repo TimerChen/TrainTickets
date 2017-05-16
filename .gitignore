@@ -28,5 +28,6 @@
 *.out
 *.app
 
-.pro.user
+*.pro.user
+*.dat
 .vscode

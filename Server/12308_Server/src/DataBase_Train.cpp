@@ -1,7 +1,6 @@
 #include "include/DataBase_Train.h"
 
 #include <QFile>
-#include <QTest>
 #include <QDataStream>
 #include <QTextStream>
 
@@ -75,7 +74,7 @@ int DataBase_Train::Train::buyTickets (QDate dat, QString lsta, QString ulsta, Q
 			if (stationName[j] == ulsta)	break;
 		}				
 		if (j == stationNumber)	return -3;	// no such station
-		for(int _=j; _ >= i; _--)
+		for(int _=j-1; _ >= i; _--)
 			salingDate[dat].restTickets[sid][_] -= num;
 		started = 1;
 		return (priceTable[sid][j]-priceTable[sid][i]);
@@ -93,9 +92,9 @@ int DataBase_Train::Train::cancelTickets (QDate dat, QString lsta, QString ulsta
 		--k, dat = dat.addDays(-k);
 		//int mn = seatNumber[sid];
 		int j = i;
-		for(; stationName[j] != ulsta; j++)	salingDate[dat].restTickets[sid][j] += num;
-		salingDate[dat].restTickets[sid][j] += num;
-		return num*(priceTable[sid][j]-priceTable[sid][i]);
+		for(; stationName[j] != ulsta; j++)
+			salingDate[dat].restTickets[sid][j] += num;
+		return (priceTable[sid][j]-priceTable[sid][i]);
 	}
 	return -3;	// no such station;			
 }
@@ -141,7 +140,7 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 		{
 			ans.price.push_back(priceTable[_][j]-priceTable[_][i]);
 			int mn = 2e9;
-			for (k = i; k <= j; k++)
+			for (k = i; k < j; k++)
 			{
 				int tt = salingDate[dat].restTickets[_][k];
 				if (mn > tt)	mn = tt;
@@ -481,9 +480,9 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 			total++;
 			ttd::map<QString, Train>::iterator ti
 					= traData.find(traId);
-			QDate firstDay(2017,3,28);
+			QDate firstDay(2017,3,20);
 			//30day?
-			for(int i=0; i<30;++i)
+			for(int i=0; i<60;++i)
 			{
 				ti->second.openOneDay(firstDay);
 				firstDay = firstDay.addDays(1);

@@ -7,10 +7,10 @@
 #include "include/utility.hpp"
 #include "include/vector.hpp"
 #include "include/DataBase_Train.h"
+#include "include/DataBase_Account.h"
 #include "toserverstructs.h"
 #include "uistructs.h"
 
-#include "include/DataBase_Train.h"
 
 namespace Ui {
 enum { annonymous, normal, admin, searchusr };
@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow {
 	friend class Login;
 	friend class Regist;
 	friend class SearchTicket;
+	friend class Myticket;
    public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -60,6 +61,7 @@ class MainWindow : public QMainWindow {
 
 	int register_remote(const QString &UserId, const QString &pwd);
 	ttd::pair<int, QString> login_remote(const QString &UserId, const QString &pwd);
+    ttd::pair<int,QString> aulogin_remote(const QString &UserId, const QString &pwd);
 	bool logout_remote();
 	ttd::vector<DataBase_Train::QTrain> query_stationToStation();
 	ttd::vector<DataBase_Train::TrainRoute> query_station();
@@ -75,6 +77,12 @@ class MainWindow : public QMainWindow {
 		query_t_remote
 		( const frontask::trainSearch &fask );
 
+	void returnTickets_remote
+		( const frontask::targetTicket &fask);
+	void buyTickets_remote
+		( const frontask::targetTicket &fask);
+	ttd::map< DataBase_Account::Ticket , int> askTickets_remote
+		( const QString &fask );
 
 
 };

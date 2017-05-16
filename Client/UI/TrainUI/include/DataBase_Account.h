@@ -64,7 +64,7 @@ public:
 		ttd::map<Ticket,int> bought;
 
 
-		Account(const QString&Id = "Default", const QString&nam = "TimeMachine", const bool &adm = 0,
+		Account(const QString&Id = "Default", const QString&nam = "Unknown", const bool &adm = 0,
 		 const QString&pwhash = "e45fdbb7dfc90eaabbc46e25ddecfad0", const int &num = -1);
 		Account& operator=(const Account &acc);
 	};

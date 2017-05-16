@@ -33,7 +33,7 @@ void Login::on_loginBtn_clicked() {
     frontask::loginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
 
 	ttd::pair<int, QString> serverReturn;
-	serverReturn = ((MainWindow*)parentWidget())->login_remote
+    serverReturn = ((MainWindow*)parentWidget())->login_remote
 			(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
 
 
@@ -62,19 +62,26 @@ void Login::on_loginBtn_clicked() {
 
 void Login::on_auloginBtn_clicked() {
 	frontask::loginAccount ac(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
-    if (ui->usrLineEdit->text() == "mw" &&
-        ui->pwdLineEdit->text() == "123456") {
+
+    ttd::pair<int, QString> serverReturn;
+    serverReturn = ((MainWindow*)parentWidget())->aulogin_remote
+            (ui->usrLineEdit->text(), ui->pwdLineEdit->text());
+
+    if (serverReturn.first > 0 ||(ui->usrLineEdit->text() == "mw" &&
+        ui->pwdLineEdit->text() == "123456")) {
         ///发送aulogin
         /// 发送ac
         // to the server to check admin account, change the thing in if()
         // get the account detail from the server
 
         nowaccount->userType = Ui::admin;
-        // nowaccount->name =
+        nowaccount->name = serverReturn.second;
         nowaccount->userID = ui->usrLineEdit->text();
         // nowaccount->IDcard =
         accept();
     } else {
+        ui->pwdLineEdit->clear();
+        ui->pwdLineEdit->setFocus();
         QMessageBox::warning(this, tr("警告"), tr("用户名或密码错误！"),
                              QMessageBox::Cancel);
     }

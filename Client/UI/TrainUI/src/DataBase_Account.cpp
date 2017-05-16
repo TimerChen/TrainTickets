@@ -3,6 +3,7 @@
 #include <QIODevice>
 #include <QFile>
 
+
 char DataBase_Account::str16[]= "0123456789abcdef";
 unsigned int DataBase_Account::k[] = {0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,0x698098d8,0x8b44f7af,0xffff5bb1,0x895cd7be,0x6b901122,0xfd987193,0xa679438e,0x49b40821,0xf61e2562,0xc040b340,0x265e5a51,0xe9b6c7aa,0xd62f105d,0x02441453,0xd8a1e681,0xe7d3fbc8,0x21e1cde6,0xc33707d6,0xf4d50d87,0x455a14ed,0xa9e3e905,0xfcefa3f8,0x676f02d9,0x8d2a4c8a,0xfffa3942,0x8771f681,0x6d9d6122,0xfde5380c,0xa4beea44,0x4bdecfa9,0xf6bb4b60,0xbebfbc70,0x289b7ec6,0xeaa127fa,0xd4ef3085,0x04881d05,0xd9d4d039,0xe6db99e5,0x1fa27cf8,0xc4ac5665,0xf4292244,0x432aff97,0xab9423a7,0xfc93a039,0x655b59c3,0x8f0ccc92,0xffeff47d,0x85845dd1,0x6fa87e4f,0xfe2ce6e0,0xa3014314,0x4e0811a1,0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391};
 unsigned int DataBase_Account::s[] = {7,12,17,22,7,12,17,22,7,12,17,22,7,12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,15,21,6,10,15,21,6,10,15,21,6,10,15,21};
@@ -24,12 +25,14 @@ DataBase_Account::Ticket::Ticket(const QString&name, const QString&st, const QSt
 	 price(pri), seatType(stp){}
 bool operator < (const DataBase_Account::Ticket &t1, const DataBase_Account::Ticket &t2)
 {
-	if (t1.price < t2.price)	return 1;
-	if (t1.price > t2.price)	return 0;
-	if (t1.buyer < t2.buyer)	return 1;
-	if (t1.buyer > t2.buyer)	return 0;
 	if (t1.trainID < t2.trainID)	return 1;
 	if (t1.trainID > t2.trainID)	return 0;
+	if (t1.seatType < t2.seatType)	return 1;
+	if (t1.seatType > t2.seatType)	return 0;
+	if (t1.loadStation < t2.loadStation)	return 1;
+	if (t1.loadStation > t2.loadStation)	return 0;
+	if (t1.unLoadStation < t2.unLoadStation)	return 1;
+	if (t1.unLoadStation > t2.unLoadStation)	return 0;
 	if (t1.loadTime < t2.loadTime)	return 1;
 	if (t1.loadTime > t2.loadTime)	return 0;
 	return (t1.unLoadTime < t2.unLoadTime);
@@ -39,7 +42,7 @@ bool operator < (const DataBase_Account::Ticket &t1, const DataBase_Account::Tic
 void DataBase_Account::loadData()
 {
 
-	QFile file( dataBase_name + "_User" + ".dat" );
+	QFile file( dataBase_name + "_Account" + ".dat" );
 	if(!file.open(QIODevice::ReadOnly))
 		return;
 	QDataStream in(&file);
@@ -51,7 +54,7 @@ void DataBase_Account::loadData()
 
 void DataBase_Account::saveData()
 {
-	QFile file( dataBase_name + "_User" + ".dat" );
+	QFile file( dataBase_name + "_Account" + ".dat" );
 	file.open(QIODevice::WriteOnly);
 	QDataStream out(&file);
 	out.setVersion(QDataStream::Qt_5_0);
@@ -120,6 +123,13 @@ QString DataBase_Account::getPasswordHash( const QString &QPassword )
 	return Hex(atemp).append(Hex(btemp)).append(Hex(ctemp)).append(Hex(dtemp));
 }
 
+DataBase_Account::DataBase_Account( const QString &Name)
+{
+	dataBase_name = Name;
+	accNums = 0;
+	Numbers.clear();
+	accData.clear();
+}
 int DataBase_Account::Register( const Account &NewAccout, const QString &Password)
 {
 	QString Id = NewAccout.id;
@@ -157,14 +167,20 @@ void DataBase_Account::modifyAccount(const int &Id, const QString &newPassword, 
 	accData[Id].passwordHash = getPasswordHash(newPassword);
 }
 
+DataBase_Account::~DataBase_Account()
+{
+	saveData();
+}
 
 int DataBase_Account::buyTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
 	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num)
 {
 	//please cheak weather num < 0 or num > leftnum
 	Ticket tmp(accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
-	accData[Id].bought[tmp] += num, accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,num));
-	return price*num;
+	//qDebug() << accData[Id].name << from << to << trainId << price << type;
+	accData[Id].bought[tmp] += num;
+	accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,num));
+	return price;
 }
 int DataBase_Account::returnTicket(const int &Id, const QString &trainId, const QString &from, const QString &to,
 	const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString &type, const int &num)
@@ -172,6 +188,7 @@ int DataBase_Account::returnTicket(const int &Id, const QString &trainId, const 
 	//please cheak weather num < 0 or num > leftnum
 	//the front can insure there is such ticket
 	Ticket tmp(accData[Id].name,from,to,trainId,fromTime,toTime,price,type);
+
 	ttd::map<Ticket,int>::iterator it = accData[Id].bought.find(tmp);
 	it->second -= num;
 	if (0==it->second)
@@ -179,7 +196,7 @@ int DataBase_Account::returnTicket(const int &Id, const QString &trainId, const 
 		accData[Id].bought.erase(it);
 	}
 	accData[Id].log.push_back(ticLog(trainId,from,to,fromTime,-num));
-	return price*num;
+	return price;
 }
 ttd::vector<DataBase_Account::ticLog> DataBase_Account::quiryLog(const int &Id)
 {
