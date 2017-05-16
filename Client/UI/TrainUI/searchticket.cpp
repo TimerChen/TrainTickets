@@ -187,7 +187,8 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
                     model->setItem(i + deltaForSeat, 5,
                                    new QStandardItem(qtrains[i].seatType[j]));
                     double price = double(qtrains[i].price[j]) / 100;
-                    model->setItem(i + deltaForSeat, 6,
+                    if (price <= 0) qtrains[i].ableToBuy = false;
+                            model->setItem(i + deltaForSeat, 6,
                                    new QStandardItem(QString::number(
                                        price, '.', 2)));
                     model->setItem(i + deltaForSeat, 7,

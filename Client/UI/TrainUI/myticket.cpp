@@ -73,65 +73,66 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
     //    model->setItem(1, 7, new QStandardItem(tr("7")));
 
     // test
-    DataBase_Account::Ticket qtrain;
-    DataBase_Account::Ticket qtrain1;
+    //ttd::map<DataBase_Account::Ticket,int> qtrain;
+//    DataBase_Account::Ticket qtrain1;
 
-    qtrain.trainID = "2502B";
-    qtrain.loadStation = "交大";
-    qtrain.unLoadStation = "华师大";
+//    qtrain.trainID = "2502B";
+//    qtrain.loadStation = "交大";
+//    qtrain.unLoadStation = "华师大";
 
-    qtrain1.trainID = "25002B";
-    qtrain1.loadStation = "华师大";
-    qtrain1.unLoadStation = "交大";
+//    qtrain1.trainID = "25002B";
+//    qtrain1.loadStation = "华师大";
+//    qtrain1.unLoadStation = "交大";
 
-    qtrain.price = 100;
-    qtrain1.price = 200;
-    qtrain.seatType.push_back("单腿");
-    qtrain1.seatType.push_back("三腿");
+//    qtrain.price = 100;
+//    qtrain1.price = 200;
+//    qtrain.seatType.push_back("单腿");
+//    qtrain1.seatType.push_back("三腿");
 
-    qtrain.loadTime =
-        QDateTime::fromString("2017-04-01 12:07:50", "yyyy-MM-dd hh:mm:ss");
-    qtrain.unLoadTime =
-        QDateTime::fromString("2017-04-01 13:07:50", "yyyy-MM-dd hh:mm:ss");
-    qtrain1.loadTime =
-        QDateTime::fromString("2017-04-12 12:07:50", "yyyy-MM-dd hh:mm:ss");
-    qtrain1.unLoadTime =
-        QDateTime::fromString("2017-04-13 13:07:50", "yyyy-MM-dd hh:mm:ss");
+//    qtrain.loadTime =
+//        QDateTime::fromString("2017-04-01 12:07:50", "yyyy-MM-dd hh:mm:ss");
+//    qtrain.unLoadTime =
+//        QDateTime::fromString("2017-04-01 13:07:50", "yyyy-MM-dd hh:mm:ss");
+//    qtrain1.loadTime =
+//        QDateTime::fromString("2017-04-12 12:07:50", "yyyy-MM-dd hh:mm:ss");
+//    qtrain1.unLoadTime =
+//        QDateTime::fromString("2017-04-13 13:07:50", "yyyy-MM-dd hh:mm:ss");
 
     ///发送frontask::getmytickets
     ///发送nowaccount->usrID
-    ///获得QTrain的vector或者其他的结构
-    ttd::vector<DataBase_Account::Ticket> qtrains;
-    qtrains.push_back(qtrain);
+    ///获得ttd::map< , int> qtrain
+    ttd::map<DataBase_Account::Ticket, int> qtrains;
+    //qtrains.push_back(qtrain);
 
     int deltaForSeat = 0;
-    for (size_t i = 0; i < qtrains.size(); ++i) {
-            double price = double(qtrains[i].price)/100;
+    int i = 0;
+    for (ttd::map<DataBase_Account::Ticket,int>::iterator it = qtrains.begin(); it != qtrains.end(); ++it) {
+            double price = double(it->first.price)/100;
             model->setItem(i + deltaForSeat, 0,
-                           new QStandardItem(qtrains[i].trainID));
+                           new QStandardItem(it->first.trainID));
             model->setItem(i + deltaForSeat, 1,
-                           new QStandardItem(qtrains[i].loadStation));
+                           new QStandardItem(it->first.loadStation));
             model->setItem(i + deltaForSeat, 2,
-                           new QStandardItem(qtrains[i].unLoadStation));
+                           new QStandardItem(it->first.unLoadStation));
             model->setItem(
                 i + deltaForSeat, 3,
-                new QStandardItem(qtrains[i].loadTime.toString(
+                new QStandardItem(it->first.loadTime.toString(
                     "yyyy-mm-dd hh:mm:ss")));
             model->setItem(
                 i + deltaForSeat, 4,
-                new QStandardItem(qtrains[i].unLoadTime.toString(
+                new QStandardItem(it->first.unLoadTime.toString(
                     "yyyy-mm-dd hh:mm:ss")));
 
             model->setItem(i + deltaForSeat, 5,
-                           new QStandardItem(qtrains[i].seatType));
+                           new QStandardItem(it->first.seatType));
             model->setItem(
                 i + deltaForSeat, 6,
-                new QStandardItem(QString::number(1,10)));
+                new QStandardItem(QString::number(it->second,10)));
             model->setItem(i + deltaForSeat, 7,
                            new QStandardItem(
                                QString::number(price, '.', 2)));
             ++deltaForSeat;
-
+            ++i;
     }
 }
 
