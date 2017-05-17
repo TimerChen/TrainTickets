@@ -20,8 +20,10 @@ INPUT(
 ./release\syslog.o
 ./release\DataBase_Account.o
 ./release\DataBase_Train.o
+./release\database_base.o
 ./release\qrc_pic.o
 ./release\qrc_completer.o
+./release\qrc_style.o
 ./release\moc_mainwindow.o
 ./release\moc_login.o
 ./release\moc_regist.o

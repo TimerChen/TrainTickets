@@ -20,8 +20,10 @@ INPUT(
 ./debug\syslog.o
 ./debug\DataBase_Account.o
 ./debug\DataBase_Train.o
+./debug\database_base.o
 ./debug\qrc_pic.o
 ./debug\qrc_completer.o
+./debug\qrc_style.o
 ./debug\moc_mainwindow.o
 ./debug\moc_login.o
 ./debug\moc_regist.o

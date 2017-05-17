@@ -60,6 +60,11 @@ public:
 
         trainIDLineEdit = new QLineEdit(TrainSearch);
         trainIDLineEdit->setObjectName(QStringLiteral("trainIDLineEdit"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(trainIDLineEdit->sizePolicy().hasHeightForWidth());
+        trainIDLineEdit->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(trainIDLineEdit, 0, 1, 1, 1);
 
@@ -70,6 +75,11 @@ public:
 
         dateEdit = new QDateEdit(TrainSearch);
         dateEdit->setObjectName(QStringLiteral("dateEdit"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(dateEdit->sizePolicy().hasHeightForWidth());
+        dateEdit->setSizePolicy(sizePolicy1);
         dateEdit->setDateTime(QDateTime(QDate(2017, 1, 1), QTime(0, 0, 0)));
         dateEdit->setMaximumDateTime(QDateTime(QDate(2020, 12, 31), QTime(23, 59, 59)));
         dateEdit->setMaximumDate(QDate(2020, 12, 31));
@@ -84,11 +94,15 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         searchbotton = new QPushButton(TrainSearch);
         searchbotton->setObjectName(QStringLiteral("searchbotton"));
+        sizePolicy1.setHeightForWidth(searchbotton->sizePolicy().hasHeightForWidth());
+        searchbotton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(searchbotton);
 
         exitBtn = new QPushButton(TrainSearch);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
+        sizePolicy1.setHeightForWidth(exitBtn->sizePolicy().hasHeightForWidth());
+        exitBtn->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(exitBtn);
 
@@ -108,8 +122,8 @@ public:
     void retranslateUi(QDialog *TrainSearch)
     {
         TrainSearch->setWindowTitle(QApplication::translate("TrainSearch", "\350\275\246\346\254\241\346\237\245\350\257\242", Q_NULLPTR));
-        label->setText(QApplication::translate("TrainSearch", "\350\275\246\346\254\241", Q_NULLPTR));
-        label_3->setText(QApplication::translate("TrainSearch", "\346\227\245\346\234\237", Q_NULLPTR));
+        label->setText(QApplication::translate("TrainSearch", "\350\275\246\346\254\241\357\274\232 ", Q_NULLPTR));
+        label_3->setText(QApplication::translate("TrainSearch", "\346\227\245\346\234\237\357\274\232 ", Q_NULLPTR));
         searchbotton->setText(QApplication::translate("TrainSearch", "\347\253\213\345\215\263\346\220\234\347\264\242", Q_NULLPTR));
         exitBtn->setText(QApplication::translate("TrainSearch", "\350\277\224\345\233\236\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
     } // retranslateUi

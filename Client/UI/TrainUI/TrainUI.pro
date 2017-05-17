@@ -103,6 +103,7 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     pic.qrc \
-    completer.qrc
+    completer.qrc \
+    style.qrc
 
 DISTFILES +=

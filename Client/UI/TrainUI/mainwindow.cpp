@@ -46,7 +46,7 @@ MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::link()
 {
-	QFile ipconfig("ipconfig.txt");
+    QFile ipconfig(":/src/ipconfig.txt");
     ipconfig.open(QIODevice::ReadOnly);
 
     QTextStream in(&ipconfig);
@@ -427,4 +427,21 @@ ttd::map<DataBase_Account::Ticket,int>
 	}
 	if(!no_error) throw(0);
 	return serverReturn;
+}
+
+void MainWindow::changestyle() {
+    static QString styles[] = {":/qss/qss/none.qss",":/qss/qss/white.qss",":/qss/qss/black.qss"};
+    static int nowstyle = 0;
+    nowstyle = (nowstyle+1)%3;
+    QFile styleSheet(styles[nowstyle]);
+    if (!styleSheet.open(QIODevice::ReadOnly))
+    {
+        qWarning("Can't open the style sheet file.");
+    }
+    qApp->setStyleSheet(styleSheet.readAll());
+}
+
+void MainWindow::on_styleBtn_clicked()
+{
+    changestyle();
 }

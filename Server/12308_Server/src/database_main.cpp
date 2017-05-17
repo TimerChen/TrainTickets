@@ -32,7 +32,8 @@ void DataBase_Main::loadData_raw_buy( const QString &FileName )
 {
 	dLog->any("Start load raw-buy-data.");
 	QFile file(FileName);	//file
-	if (!file.open(QFile::ReadOnly|QFile::Text))	throw(0);//open failed
+    if (!file.open(QFile::ReadOnly|QFile::Text))
+        throw(0);//open failed
 	QTextStream in(&file);
 
 	int total = 0;

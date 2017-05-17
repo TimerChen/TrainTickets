@@ -73,6 +73,9 @@
     <property name="text">
      <string>12308</string>
     </property>
+    <property name="textFormat">
+     <enum>Qt::RichText</enum>
+    </property>
     <property name="scaledContents">
      <bool>false</bool>
     </property>
@@ -165,17 +168,11 @@
     <layout class="QHBoxLayout" name="horizontalLayout">
      <item>
       <widget class="QPushButton" name="myticketBtn">
-       <property name="minimumSize">
-        <size>
-         <width>222</width>
-         <height>58</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>222</width>
-         <height>58</height>
-        </size>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="text">
         <string>我的车票</string>
@@ -184,17 +181,11 @@
      </item>
      <item>
       <widget class="QPushButton" name="myinformBtn">
-       <property name="minimumSize">
-        <size>
-         <width>221</width>
-         <height>58</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>221</width>
-         <height>58</height>
-        </size>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="text">
         <string>用户信息</string>
@@ -203,17 +194,11 @@
      </item>
      <item>
       <widget class="QPushButton" name="logoutBtn">
-       <property name="minimumSize">
-        <size>
-         <width>222</width>
-         <height>58</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>222</width>
-         <height>58</height>
-        </size>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
        </property>
        <property name="text">
         <string>退出登录</string>
@@ -297,11 +282,25 @@
      </item>
     </layout>
    </widget>
+   <widget class="QPushButton" name="styleBtn">
+    <property name="geometry">
+     <rect>
+      <x>609</x>
+      <y>250</y>
+      <width>141</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>更换主题</string>
+    </property>
+   </widget>
    <zorder>splitter</zorder>
    <zorder>layoutWidget</zorder>
    <zorder>label</zorder>
    <zorder>label_3</zorder>
    <zorder>layoutWidget</zorder>
+   <zorder>styleBtn</zorder>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
