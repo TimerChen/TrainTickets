@@ -480,12 +480,23 @@ void SearchTicket::on_tryLuckBtn_clicked()
                 QMessageBox::Yes | QMessageBox::No);
             if (qmb == QMessageBox::Yes) {
                 bool no_error = true;
-                try{
-                    ((MainWindow*)(parentWidget()->parentWidget()))->
-                            buyTickets_remote(targetticket);
+                if (nowaccount->userType == Ui::normal){
+                    try{
+                        ((MainWindow*)(parentWidget()->parentWidget()))->
+                                buyTickets_remote(targetticket);
 
-                }catch(...){
-                    no_error = false;
+                    }catch(...){
+                        no_error = false;
+                    }
+                }
+                else {
+                    try{
+                        ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+                                buyTickets_remote(targetticket);
+
+                    }catch(...){
+                        no_error = false;
+                    }
                 }
                 if (no_error) {
                     QMessageBox::information(this, "成功", "购票成功",
