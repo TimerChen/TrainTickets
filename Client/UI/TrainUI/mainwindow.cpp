@@ -431,7 +431,6 @@ ttd::map<DataBase_Account::Ticket,int>
 void MainWindow::changePwd_remote(const frontask::changePwd &fask)
 {
 	QByteArray block;
-	ttd::map<DataBase_Account::Ticket,int> serverReturn;
 	QDataStream serverOut(&block,QIODevice::WriteOnly);
 	serverOut.setVersion(QDataStream::Qt_5_0);
 
@@ -455,7 +454,6 @@ void MainWindow::changePwd_remote(const frontask::changePwd &fask)
 void MainWindow::changeName_remote(const frontask::changeUsrName &fask)
 {
 	QByteArray block;
-	ttd::map<DataBase_Account::Ticket,int> serverReturn;
 	QDataStream serverOut(&block,QIODevice::WriteOnly);
 	serverOut.setVersion(QDataStream::Qt_5_0);
 
@@ -475,6 +473,153 @@ void MainWindow::changeName_remote(const frontask::changeUsrName &fask)
 	}
 	if(!no_error) throw(0);
 	return;
+}
+DataBase_Account::Account MainWindow::query_name_remote( const QString &fask )
+{
+	QByteArray block;
+	DataBase_Account::Account serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::getaccount
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if( no_error )
+			serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+void MainWindow::addTrain_remote( const QString &fask )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::addplan
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+
+void MainWindow::delTrain_remote( const QString &fask )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::deletetrain
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+
+void MainWindow::openDate_remote( const QString &Train, const QDate &Date )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::startselltrain
+			<< Train << Date ;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+
+void MainWindow::closeDate_remote( const QString &Train, const QDate &Date )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::stopsellticket
+			<< Train << Date;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+
+}
+
+QString MainWindow::query_log_remote()
+{
+	QByteArray block;
+	QString serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::getsyslog;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error = true;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
 }
 
 void MainWindow::changestyle() {
