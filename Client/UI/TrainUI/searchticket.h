@@ -25,7 +25,9 @@ class SearchTicket : public QDialog {
 
     void on_buyTicketBtn_clicked();
 
-   private:
+    void on_tryLuckBtn_clicked();
+
+private:
     Ui::SearchTicket *ui;
     int searchType;
 

@@ -142,6 +142,7 @@ void MainWindow::on_myinformBtn_clicked() {
 	Myinform myinform(nowaccount, this);
 
 	myinform.exec();
+    ui->nameLabel->setText(nowaccount->name);
 }
 
 void MainWindow::on_stationToStationSearchBtn_clicked() {
@@ -444,4 +445,8 @@ void MainWindow::changestyle() {
 void MainWindow::on_styleBtn_clicked()
 {
     changestyle();
+}
+
+bool Compare_for_qtrains(const DataBase_Train::QTrain &q1,const DataBase_Train::QTrain &q2){
+    return q1.loadStationLeaveTime < q2.loadStationLeaveTime;
 }

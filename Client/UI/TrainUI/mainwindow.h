@@ -15,6 +15,8 @@
 namespace Ui {
 enum { annonymous, normal, admin, searchusr };
 enum { stationToStation, stationSearch, trainSearch };
+bool Compare_for_qtrains(const DataBase_Train::QTrain &q1,const DataBase_Train::QTrain &q2);
+
 class MainWindow;
 }
 
