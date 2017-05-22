@@ -193,7 +193,10 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
                     model->setItem(i + deltaForSeat, 5,
                                    new QStandardItem(qtrains[i].seatType[j]));
                     double price = double(qtrains[i].price[j]) / 100;
-                    if (price <= 0) qtrains[i].ableToBuy = false;
+                    if (price <= 0) {
+                        qtrains[i].ableToBuy = false;
+                        price = 0;
+                    }
                             model->setItem(i + deltaForSeat, 6,
                                    new QStandardItem(QString::number(
                                        price, '.', 2)));
@@ -415,7 +418,7 @@ void SearchTicket::on_buyTicketBtn_clicked() {
                     QMessageBox::information(this, "成功", "购票成功",
                                              QMessageBox::Yes);
 
-                    model->setItem(curRow,6,new QStandardItem(QString::number(remaintickets-buyNum,10)));
+                    model->setItem(curRow,7,new QStandardItem(QString::number(remaintickets-buyNum,10)));
                 } else
                     QMessageBox::warning(this, "失败", "非常抱歉，购票失败",
                                          QMessageBox::Cancel);
@@ -488,7 +491,7 @@ void SearchTicket::on_tryLuckBtn_clicked()
                     QMessageBox::information(this, "成功", "购票成功",
                                              QMessageBox::Yes);
 
-                    model->setItem(curRow,6,new QStandardItem(QString::number(remaintickets-buyNum,10)));
+                    model->setItem(curRow,7,new QStandardItem(QString::number(remaintickets-buyNum,10)));
                 } else
                     QMessageBox::warning(this, "失败", "非常抱歉，购票失败",
                                          QMessageBox::Cancel);
