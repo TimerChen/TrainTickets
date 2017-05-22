@@ -35,6 +35,7 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
     {
         ui->buyTicketBtn->setEnabled(false);
         ui->ticketNumLineEdit->setEnabled(false);
+        ui->tryLuckBtn->setEnabled(false);
     }
     if (nowaccount->userType == Ui::admin) {
         ui->buyTicketBtn->setEnabled(true);
@@ -431,7 +432,12 @@ void SearchTicket::on_buyTicketBtn_clicked() {
 void SearchTicket::on_tryLuckBtn_clicked()
 {
     int curRow = qrand()%(model->rowCount())-1;
-    while (model->data(model->index(curRow, 8)).toString() != tr("是")) curRow = qrand()%(model->rowCount())-1;
+    int cnt = 0;
+    while (model->data(model->index(curRow, 8)).toString() != tr("是") && cnt++ < 10000) curRow = qrand()%(model->rowCount())-1;
+    if (cnt >= 10000) {
+        QMessageBox::warning(this,"手气真差","对不起，您的脸太黑，抽不到票",QMessageBox::Cancel);
+        return;
+    }
     int buyNum = qrand()%model->data(model->index(curRow, 7)).toInt()+1;
     QString trainID = model->data(model->index(curRow, 0)).toString();
     QString usrID = nowaccount->userID;
