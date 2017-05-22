@@ -2,9 +2,8 @@
 #define TTD_VECTOR_HPP
 
 #include "include/exceptions.hpp"
-#include "include/utility.hpp"
 #include "include/smartpoint.hpp"
-
+#include "include/utility.hpp"
 
 #include <climits>
 #include <cstddef>
@@ -17,7 +16,8 @@ namespace ttd {
  * a data container like std::vector
  * store data in a successive memory and support random access.
  */
-template <typename T> class vector {
+template <typename T>
+class vector {
     // typedef unsigned int size_t;
     shared_ptr<T, true, true> container;
     size_t sz;
@@ -41,7 +41,7 @@ template <typename T> class vector {
         }
     }
 
-  public:
+   public:
     /**
      * TODO
      * a type for actions of the elements of a vector, and you should write
@@ -53,7 +53,7 @@ template <typename T> class vector {
     friend class iterator;
     class const_iterator;
     class iterator {
-      private:
+       private:
         /**
          * TODO add data members
          *   just add whatever you want.
@@ -66,7 +66,7 @@ template <typename T> class vector {
         friend iterator vector::erase(iterator pos);
         friend iterator vector::erase(const size_t &ind);
         friend class const_iterator;
-		friend class vector;
+        friend class vector;
 
         // T *it;
         normal_ptr<const shared_ptr<T, true, true>> oriplace;
@@ -74,7 +74,7 @@ template <typename T> class vector {
         iterator(size_t _pos, const shared_ptr<T, true, true> *_c)
             : oriplace(_c), pos(_pos) {}
 
-      public:
+       public:
         /**
          * return a new iterator which pointer n-next elements
          *   even if there are not enough elements, just return the answer.
@@ -153,6 +153,10 @@ template <typename T> class vector {
          * a operator to check whether two iterators are same (pointing to the
          * same memory).
          */
+        bool operator>=(const iterator &rhs) const {
+            if (container != rhs.container) throw invalid_iterator();
+            return pos >= rhs.pos;
+        }
         bool operator==(const iterator &rhs) const {
             return (*oriplace == *(rhs.oriplace) && pos == rhs.pos);
         }
@@ -174,7 +178,7 @@ template <typename T> class vector {
      * has same function as iterator, just for a const object.
      */
     class const_iterator {
-      private:
+       private:
         /**
         * TODO add data members
         *   just add whatever you want.
@@ -187,7 +191,7 @@ template <typename T> class vector {
         const_iterator(size_t _pos, const shared_ptr<T, true, true> *_c)
             : oriplace(_c), pos(_pos) {}
 
-      public:
+       public:
         /**
         * return a new iterator which pointer n-next elements
         *   even if there are not enough elements, just return the answer.
@@ -266,6 +270,10 @@ template <typename T> class vector {
         * a operator to check whether two iterators are same (pointing to the
         * same memory).
         */
+        bool operator>=(const const_iterator &rhs) const {
+            if (container != rhs.container) throw invalid_iterator();
+            return pos >= rhs.pos;
+        }
         bool operator==(const iterator &rhs) const {
             return (*oriplace == *rhs.oriplace && pos == rhs.pos);
         }
@@ -305,7 +313,9 @@ template <typename T> class vector {
          }
      }*/
     vector(size_t n)
-        : container(reinterpret_cast<T *>(operator new(sizeof(T) * n))), sz(n), upbound(n){
+        : container(reinterpret_cast<T *>(operator new(sizeof(T) * n))),
+          sz(n),
+          upbound(n) {
         for (size_t i = 0; i < n; ++i) {
             new (static_cast<void *>(&container[i])) T();
         }
@@ -458,8 +468,8 @@ template <typename T> class vector {
      * throw index_out_of_bound if ind >= size
      */
     iterator erase(const size_t &ind) {
-		if (ind < 0 || ind >= sz) throw index_out_of_bound();
-		return erase(iterator(ind, &container));
+        if (ind < 0 || ind >= sz) throw index_out_of_bound();
+        return erase(iterator(ind, &container));
     }
     /**
      * adds an element to the end.
@@ -488,25 +498,21 @@ template <typename T> class vector {
  *  [Passed test]
  *
  */
-template<class T>
-QDataStream& operator << (QDataStream& out, const ttd::vector<T>&v)
-{
-	out << (quint32)(v.size());
-	for (size_t i = 0; i < v.size(); ++i)
-		out << v[i] ;
-	return out;
+template <class T>
+QDataStream &operator<<(QDataStream &out, const ttd::vector<T> &v) {
+    out << (quint32)(v.size());
+    for (size_t i = 0; i < v.size(); ++i) out << v[i];
+    return out;
 }
 
-template<class T>
-QDataStream& operator >> (QDataStream& in, ttd::vector<T>&v)
-{
-	v.clear();
-	quint32 tmp_n;
-	in >> tmp_n;
-	v = ttd::vector<T>( tmp_n );
-	for( size_t i = 0; i < tmp_n; ++i )
-		in >> v[i];
-	return in;
+template <class T>
+QDataStream &operator>>(QDataStream &in, ttd::vector<T> &v) {
+    v.clear();
+    quint32 tmp_n;
+    in >> tmp_n;
+    v = ttd::vector<T>(tmp_n);
+    for (size_t i = 0; i < tmp_n; ++i) in >> v[i];
+    return in;
 }
 
 #endif
