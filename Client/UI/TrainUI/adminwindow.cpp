@@ -34,6 +34,7 @@ void AdminWindow::on_myinformBtn_clicked()
 {
     Myinform m(nowaccount, this);
     m.exec();
+    ui->nameLabel->setText(nowaccount->name);
 }
 
 void AdminWindow::on_searchAccountBtn_clicked()

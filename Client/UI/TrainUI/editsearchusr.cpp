@@ -12,7 +12,7 @@ editSearchUsr::editSearchUsr(
     ui->setupUi(this);
     ui->welcomeLabel_2->setText("管理员：" + adminName + "， 您好！");
     ui->nameLabel_2->setText("您正在修改用户:\nID: " + editaccount->userID +
-                           "\n用户名：" + editaccount->userID + "的信息");
+                           "\n用户名：" + editaccount->name + "的信息");
 }
 
 editSearchUsr::~editSearchUsr() { delete ui; }
@@ -29,6 +29,8 @@ void editSearchUsr::on_myinformBtn_2_clicked()
     Myinform myinform(editaccount, this, adminID, adminName);
 
        myinform.exec();
+       ui->nameLabel_2->setText("您正在修改用户:\nID: " + editaccount->userID +
+                                "\n用户名：" + editaccount->name + "的信息");
 }
 
 void editSearchUsr::on_stationToStationSearchBtn_2_clicked()

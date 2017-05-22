@@ -1,0 +1,494 @@
+* [31m5f104d9[m -[33m (HEAD -> dev)[m change a little [32m(63 seconds ago) [1;34m<Michael Wu>[m
+* [31m2e74bb7[m -[33m[m fix conflict [32m(7 minutes ago) [1;34m<Michael Wu>[m
+* [31m2f4d097[m -[33m (origin/MW, MW)[m fix some bugs of the ticket number [32m(2 hours ago) [1;34m<Michael Wu>[m
+* [31md6eadc9[m -[33m[m Delete the oldpwdLineEdit [32m(3 hours ago) [1;34m<Michael Wu>[m
+* [31m5d5e0d4[m -[33m[m fix the debug file [32m(7 hours ago) [1;34m<Michael Wu>[m
+*   [31m16bd58d[m -[33m[m Merge branch 'MW' into dev [32m(7 hours ago) [1;34m<Michael Wu>[m
+[32m|[m[33m\[m  
+[32m|[m * [31mede7751[m -[33m[m fix bugs for tryluck [32m(7 hours ago) [1;34m<Michael Wu>[m
+* [33m|[m   [31m638232c[m -[33m[m Merge branch 'MW' into dev [32m(8 hours ago) [1;34m<Michael Wu>[m
+[34m|[m[33m\[m [33m\[m  
+[34m|[m [33m|[m[33m/[m  
+[34m|[m * [31m43ce13f[m -[33m[m Add tryluck and lianghao features, qtrains remains unsorted [32m(8 hours ago) [1;34m<Michael Wu>[m
+[34m|[m[34m/[m  
+* [31m6c263ff[m -[33m[m Change style is now available [32m(5 days ago) [1;34m<Michael Wu>[m
+* [31m99ea189[m -[33m (origin/Timer)[m Feature Ticket [32m(6 days ago) [1;34m<TimerChen>[m
+*   [31m2f39bd1[m -[33m[m mrege [32m(6 days ago) [1;34m<TimerChen>[m
+[36m|[m[1;31m\[m  
+[36m|[m *   [31m8b5dc6a[m -[33m[m merge [32m(6 days ago) [1;34m<TimerChen>[m
+[36m|[m [1;32m|[m[1;33m\[m  
+[36m|[m [1;32m|[m * [31m060b47c[m -[33m[m unbuyable seted [32m(6 days ago) [1;34m<Michael Wu>[m
+[36m|[m [1;32m|[m * [31m2b2375c[m -[33m[m Add aulogin [32m(6 days ago) [1;34m<Michael Wu>[m
+[36m|[m [1;32m|[m * [31m5c46d5a[m -[33m[m Change my tickets [32m(6 days ago) [1;34m<Michael Wu>[m
+[36m|[m [1;32m|[m * [31m462f24c[m -[33m[m Add user manual and edit it [32m(6 days ago) [1;34m<Michael Wu>[m
+* [1;32m|[m [1;33m|[m   [31m6879ed9[m -[33m[m merge [32m(6 days ago) [1;34m<TimerChen>[m
+[1;34m|[m[1;35m\[m [1;32m\[m [1;33m\[m  
+[1;34m|[m * [1;32m\[m [1;33m\[m   [31m2157ad4[m -[33m[m Feature buy/return [No remote] [32m(6 days ago) [1;34m<TimerChen>[m
+[1;34m|[m [1;36m|[m[1;32m\[m [1;32m\[m [1;33m\[m  
+[1;34m|[m [1;36m|[m [1;32m|[m[1;32m/[m [1;33m/[m  
+[1;34m|[m [1;36m|[m * [1;33m|[m [31mb530699[m -[33m[m Feature buy/return[no remote] [32m(6 days ago) [1;34m<TimerChen>[m
+[1;34m|[m [1;36m|[m [1;33m|[m[1;33m/[m  
+[1;34m|[m [1;36m|[m * [31m590dbd3[m -[33m (localtest)[m ppt almost complete [32m(6 days ago) [1;34m<Michael Wu>[m
+[1;34m|[m [1;36m|[m * [31m5a6c10c[m -[33m[m Add ipconfig.txt [32m(6 days ago) [1;34m<Michael Wu>[m
+[1;34m|[m [1;36m|[m *   [31mb68b00d[m -[33m[m solve conflict in pro.user [32m(6 days ago) [1;34m<Michael Wu>[m
+[1;34m|[m [1;36m|[m [32m|[m[33m\[m  
+[1;34m|[m [1;36m|[m * [33m|[m [31m3d04e50[m -[33m[m Add things in ppt [32m(6 days ago) [1;34m<Michael Wu>[m
+* [1;36m|[m [33m|[m [33m|[m [31m7b9cb96[m -[33m[m tmp for buy/return [32m(6 days ago) [1;34m<TimerChen>[m
+* [1;36m|[m [33m|[m [33m|[m [31m4823a54[m -[33m[m tmp for buy/return [32m(6 days ago) [1;34m<TimerChen>[m
+* [1;36m|[m [33m|[m [33m|[m [31m034c7e1[m -[33m[m Feature buy/return [32m(6 days ago) [1;34m<TimerChen>[m
+[1;36m|[m[1;36m/[m [33m/[m [33m/[m  
+* [33m|[m [33m|[m   [31m8c9e094[m -[33m[m Search Feature [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m[33m\[m [33m\[m [33m\[m  
+[34m|[m [33m|[m [33m|[m[33m/[m  
+[34m|[m [33m|[m[33m/[m[33m|[m   
+[34m|[m * [33m|[m   [31mf133e3d[m -[33m[m merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m[1;31m\[m [33m\[m  
+[34m|[m [36m|[m * [33m|[m [31mb172d84[m -[33m[m Search feature [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m * [33m|[m [31m835857b[m -[33m[m add onerawdata [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m * [33m|[m [31md66843f[m -[33m[m loadraw 2/2 [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m * [33m|[m   [31m0a831d0[m -[33m[m merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m [1;32m|[m[1;33m\[m [33m\[m  
+[34m|[m [36m|[m * [1;33m|[m [33m|[m [31m2e379fd[m -[33m[m read raw 1/2 [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m * [1;33m|[m [33m|[m [31ma36d2ad[m -[33m[m add 3 queries in client [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m * [1;33m|[m [1;33m|[m [33m|[m   [31m7158da3[m -[33m[m merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;33m|[m[33m\[m [1;33m\[m [1;33m\[m [33m\[m  
+[34m|[m [1;33m|[m [33m|[m[1;33m_[m[1;33m|[m[1;33m/[m [33m/[m  
+[34m|[m [1;33m|[m[1;33m/[m[33m|[m [1;33m|[m [33m/[m   
+[34m|[m [1;33m|[m [33m|[m [1;33m|[m[33m/[m    
+[34m|[m [1;33m|[m [33m|[m[33m/[m[1;33m|[m     
+[34m|[m [1;33m|[m * [1;33m|[m [31mc72e4b3[m -[33m[m change the price format [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;33m|[m * [1;33m|[m [31m89c1ceb[m -[33m[m add usermanual [32m(7 days ago) [1;34m<hydralisks>[m
+[34m|[m [1;33m|[m * [1;33m|[m [31m7601665[m -[33m[m Delete the registBtn in login ui, and change a lot in ppt [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;35m|[m [1;33m|[m   [31m11983dd[m -[33m[m merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;36m|[m[1;35m\[m [1;35m\[m [1;33m\[m  
+[34m|[m [1;36m|[m [1;35m|[m[1;35m/[m [1;33m/[m  
+[34m|[m [1;36m|[m * [1;33m|[m [31m32b3e37[m -[33m[m Fix bugs in myticket [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m * [1;33m|[m [31m475d3f8[m -[33m[m Add things in ppt [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m * [1;33m|[m [31m3092af4[m -[33m[m Change the ui and fix the encode(eventually) [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m * [1;33m|[m [31m05669e3[m -[33m[m fix the encode [32m(7 days ago) [1;34m<MW>[m
+[34m|[m * [31m|[m [1;33m|[m   [31m1d28809[m -[33m[m merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [32m|[m[31m\[m [31m\[m [1;33m\[m  
+[34m|[m [32m|[m [31m|[m[31m/[m [1;33m/[m  
+[34m|[m [32m|[m * [1;33m|[m [31m3e838a1[m -[33m[m fix the qrc bug [32m(7 days ago) [1;34m<MW>[m
+[34m|[m [32m|[m * [1;33m|[m [31m19e4965[m -[33m[m change names.out to names.txt [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [32m|[m * [1;33m|[m [31m3ceec40[m -[33m[m change the source of ui [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [33m|[m [1;33m|[m   [31m16d26fc[m -[33m[m merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [34m|[m[33m\[m [33m\[m [1;33m\[m  
+[34m|[m [34m|[m [33m|[m[33m/[m [1;33m/[m  
+[34m|[m [34m|[m * [1;33m|[m [31m6679c84[m -[33m[m change the server ui [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [34m|[m * [1;33m|[m   [31m982758e[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [34m|[m [36m|[m[1;31m\[m [1;33m\[m  
+[34m|[m [34m|[m * [1;31m|[m [1;33m|[m [31m4f5971e[m -[33m[m change the ppt [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;31m|[m [1;31m|[m [1;33m|[m [31m00aa95e[m -[33m[m save [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;31m|[m [1;31m|[m[1;31m/[m [1;33m/[m  
+[34m|[m [1;31m|[m[1;31m/[m[1;31m|[m [1;33m|[m   
+[34m|[m * [1;31m|[m [1;33m|[m   [31m7e157a3[m -[33m[m Merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;32m|[m[1;31m\[m [1;31m\[m [1;33m\[m  
+[34m|[m [1;32m|[m [1;31m|[m[1;31m/[m [1;33m/[m  
+[34m|[m [1;32m|[m * [1;33m|[m [31mad4e953[m -[33m[m Add getsyslog [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;33m|[m [1;33m|[m [31m53e23c7[m -[33m[m Merge [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;33m|[m [1;33m|[m[1;33m/[m  
+[34m|[m [1;33m|[m[1;33m/[m[1;33m|[m   
+[34m|[m * [1;33m|[m   [31mbe27988[m -[33m[m Merge branch 'dev' into Timer [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;34m|[m[1;33m\[m [1;33m\[m  
+[34m|[m [1;34m|[m [1;33m|[m[1;33m/[m  
+[34m|[m [1;34m|[m *   [31md086aef[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m [1;36m|[m[31m\[m  
+[34m|[m [1;34m|[m [1;36m|[m * [31mbf77697[m -[33m[m add file read [32m(7 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;34m|[m * [31m|[m [31m6a53374[m -[33m[m Add autocomplete [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m * [31m|[m   [31mec69ff6[m -[33m[m fix conflict for pro.user [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m [32m|[m[31m\[m [31m\[m  
+[34m|[m [1;34m|[m [32m|[m [31m|[m[31m/[m  
+[34m|[m [1;34m|[m * [31m|[m [31m56f4dec[m -[33m[m pro file has been modified automatically [32m(7 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [33m|[m [31m|[m [31m23c4aaf[m -[33m[m tmp [32m(7 days ago) [1;34m<TimerChen>[m
+[34m|[m [31m|[m [33m|[m[31m/[m  
+[34m|[m [31m|[m[31m/[m[33m|[m   
+[34m|[m * [33m|[m [31mf5d7a02[m -[33m[m add loadraw [32m(8 days ago) [1;34m<TimerChen>[m
+* [33m|[m [33m|[m   [31ma1ff271[m -[33m[m [Ver 0.1] login/logout/register [32m(8 days ago) [1;34m<TimerChen>[m
+[34m|[m[33m\[m [33m\[m [33m\[m  
+[34m|[m [33m|[m[33m/[m [33m/[m  
+[34m|[m * [33m|[m [31m55970f3[m -[33m[m AIchan register successful! [32m(8 days ago) [1;34m<TimerChen>[m
+[34m|[m * [33m|[m [31m282ee41[m -[33m[m AIchan register successful! [32m(8 days ago) [1;34m<TimerChen>[m
+[34m|[m * [33m|[m   [31m872fc43[m -[33m[m Merge branch 'dev' into Timer [32m(8 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m[33m\[m [33m\[m  
+[34m|[m [36m|[m [33m|[m[33m/[m  
+[34m|[m [36m|[m *   [31m051ef65[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(8 days ago) [1;34m<Michael Wu>[m
+[34m|[m [36m|[m [1;32m|[m[1;33m\[m  
+[34m|[m [36m|[m [1;32m|[m *   [31maf85dc1[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(8 days ago) [1;34m<hydralisks>[m
+[34m|[m [36m|[m [1;32m|[m [1;34m|[m[1;35m\[m  
+[34m|[m [36m|[m [1;32m|[m * [1;35m|[m [31m7d2b091[m -[33m[m another map [32m(8 days ago) [1;34m<hydralisks>[m
+[34m|[m [36m|[m * [1;35m|[m [1;35m|[m [31m403a048[m -[33m[m Almost complete the admin ui, optimize the comment for server and change add some enum in toserverstructs.h [32m(8 days ago) [1;34m<Michael Wu>[m
+[34m|[m [36m|[m [1;35m|[m [1;35m|[m[1;35m/[m  
+[34m|[m [36m|[m [1;35m|[m[1;35m/[m[1;35m|[m   
+[34m|[m * [1;35m|[m [1;35m|[m [31ma51c651[m -[33m[m Finished Server Login/out [32m(8 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;35m|[m[1;35m/[m [1;35m/[m  
+[34m|[m * [1;35m|[m [31m145777a[m -[33m[m Fix some Bug [32m(8 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;35m|[m   [31md80e1a1[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(8 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m[1;35m\[m [1;35m\[m  
+[34m|[m [1;36m|[m [1;35m|[m[1;35m/[m  
+[34m|[m [1;36m|[m *   [31m973715e[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(8 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;36m|[m [32m|[m[33m\[m  
+[34m|[m [1;36m|[m * [33m|[m [31m745b75b[m -[33m[m change TrainRoute [32m(8 days ago) [1;34m<TimerChen>[m
+[34m|[m * [33m|[m [33m|[m [31m772d68a[m -[33m[m Change addplan to addplansimple [32m(8 days ago) [1;34m<Michael Wu>[m
+[34m|[m [33m|[m [33m|[m[33m/[m  
+[34m|[m [33m|[m[33m/[m[33m|[m   
+[34m|[m * [33m|[m [31mf058e00[m -[33m[m Change train.h to DataBase_Train.h [32m(8 days ago) [1;34m<Michael Wu>[m
+[34m|[m [33m|[m[33m/[m  
+[34m|[m *   [31mfdbc1a8[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [34m|[m[35m\[m  
+[34m|[m [34m|[m * [31m31ad2ba[m -[33m[m Change the tableview size and smartpoint [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [34m|[m * [31m056714d[m -[33m[m Change pointer to smartpoint in ui [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [35m|[m [31mcbaf456[m -[33m[m Add Train and Log [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m * [35m|[m   [31m237deff[m -[33m[m Merge branch 'dev' into Timer [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m[35m\[m [35m\[m  
+[34m|[m [36m|[m [35m|[m[35m/[m  
+[34m|[m [36m|[m * [31m873d5e9[m -[33m[m Add comment for the toserverstructs.h [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [36m|[m *   [31me6e60c1[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [36m|[m [1;32m|[m[1;33m\[m  
+[34m|[m [36m|[m [1;32m|[m * [31m861649d[m -[33m[m add log(can't query), change train [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [36m|[m * [1;33m|[m [31m8236abc[m -[33m[m TableView output is now available [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;33m|[m [1;33m|[m [31mbeacd2a[m -[33m[m ready for net [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m * [1;33m|[m [1;33m|[m [31m83d2684[m -[33m[m CE0 [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;33m|[m [1;33m|[m[1;33m/[m  
+[34m|[m [1;33m|[m[1;33m/[m[1;33m|[m   
+[34m|[m * [1;33m|[m   [31m361bce7[m -[33m[m new vector without warning [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;34m|[m[1;35m\[m [1;33m\[m  
+[34m|[m [1;34m|[m * [1;33m|[m [31m6a959da[m -[33m[m naive test passed [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;34m|[m [1;33m|[m[1;33m/[m  
+[34m|[m [1;34m|[m * [31mbe2fe44[m -[33m[m Fix bugs in vector [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m * [31m03884fa[m -[33m[m replace the vector.hpp [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m * [31mb0d2720[m -[33m[m Add test code in ui for qtrain [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m * [31me0750ae[m -[33m[m solve conflict in regist.cpp [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m *   [31m18653d1[m -[33m[m Merge branch 'MW' into dev [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m [1;36m|[m[31m\[m  
+[34m|[m [1;34m|[m [1;36m|[m * [31mafb6386[m -[33m[m Add something in myticket [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m * [31m|[m [31m21d52de[m -[33m[m delete indentifytype [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;34m|[m * [31m|[m   [31ma6d518d[m -[33m[m Merge branch 'dev' of https://github.com/TimerChen/TrainTickets into dev [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;34m|[m [32m|[m[33m\[m [31m\[m  
+[34m|[m [1;34m|[m * [33m|[m [31m|[m [31m7021edd[m -[33m[m delete indentifytype [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m * [33m|[m [33m|[m [31m|[m [31m791e845[m -[33m[m save-load compile error [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [33m|[m [33m|[m[33m/[m [31m/[m  
+[34m|[m [33m|[m[33m/[m[33m|[m [31m|[m   
+[34m|[m * [33m|[m [31m|[m   [31mbde88eb[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [34m|[m[31m\[m [33m\[m [31m\[m  
+[34m|[m [34m|[m [31m|[m [33m|[m[31m/[m  
+[34m|[m [34m|[m [31m|[m[31m/[m[33m|[m   
+[34m|[m [34m|[m * [33m|[m   [31m6934ba2[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into MW [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [34m|[m [36m|[m[33m\[m [33m\[m  
+[34m|[m [34m|[m [36m|[m [33m|[m[33m/[m  
+[34m|[m [34m|[m [36m|[m * [31mf915fe8[m -[33m[m will it work? [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [34m|[m * [1;31m|[m [31ma6fbe1f[m -[33m[m Add structs for buy tickets and other operations and correct the buy ticket UI [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;31m|[m [1;31m|[m [31m6c39c63[m -[33m[m QDataStream about Map and Vector passed test [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m * [1;31m|[m [1;31m|[m [31m3afae38[m -[33m[m file about map passed test [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m * [1;31m|[m [1;31m|[m   [31mfdf62e7[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;32m|[m[1;31m\[m [1;31m\[m [1;31m\[m  
+[34m|[m [1;32m|[m [1;31m|[m [1;31m|[m[1;31m/[m  
+[34m|[m [1;32m|[m [1;31m|[m[1;31m/[m[1;31m|[m   
+[34m|[m [1;32m|[m * [1;31m|[m [31m791154a[m -[33m[m return ttd::pair in log in [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m * [1;31m|[m [31m38d39aa[m -[33m[m add admin log in [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m * [1;31m|[m   [31mfdcb14f[m -[33m[m haha [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m [1;34m|[m[1;31m\[m [1;31m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [1;31m|[m[1;31m/[m  
+[34m|[m [1;32m|[m * [1;31m|[m [31m87d34df[m -[33m[m add admin log in [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m * [1;35m|[m [1;31m|[m [31m4bdd329[m -[33m[m add QDataStream << >> of map [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;31m|[m [1;35m|[m[1;31m/[m  
+[34m|[m [1;31m|[m[1;31m/[m[1;35m|[m   
+[34m|[m * [1;35m|[m [31m30f5192[m -[33m[m fixed .out bug [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m * [1;35m|[m   [31mb2ff7ad[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;36m|[m[31m\[m [1;35m\[m  
+[34m|[m [1;36m|[m * [1;35m|[m [31m95f7bec[m -[33m[m Add a little [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m * [1;35m|[m   [31mb708e16[m -[33m[m Merge branch 'MW' into dev [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m [1;35m|[m[33m\[m [1;35m\[m  
+[34m|[m [1;36m|[m [1;35m|[m [33m|[m[1;35m/[m  
+[34m|[m [1;36m|[m [1;35m|[m[1;35m/[m[33m|[m   
+[34m|[m [1;36m|[m [1;35m|[m * [31m619af8a[m -[33m[m Add administration UI and add a function(getadress) in smartpoint [32m(9 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m * [33m|[m [31m61fdf0d[m -[33m[m does it works? [32m(9 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m * [33m|[m [31m1538d8b[m -[33m[m station.h untested [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m * [33m|[m   [31m8ca104b[m -[33m[m test [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m[35m\[m [33m\[m  
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31m5498a93[m -[33m[m Delete main.cpp [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31mc4b09df[m -[33m[m Delete aha.pro [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31m9983a54[m -[33m[m Delete mainwindow.h [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31me91eea6[m -[33m[m Delete mainwindow.ui [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31mffc2d5a[m -[33m[m Delete mainwindow.cpp [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31m00bc1c8[m -[33m[m Delete main.cpp [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31me2a9b5a[m -[33m[m Delete ah.pro [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31mc9b7d48[m -[33m[m Delete DataBase_Account.h [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31m3f7d25f[m -[33m[m Delete .gitignore [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31mee2f780[m -[33m[m Delete test.pro [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31m1d81eb3[m -[33m[m Delete DataBase_Account.h [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31m3b30d62[m -[33m[m Delete DataBase_Account.cpp [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [34m|[m * [33m|[m [31ma525878[m -[33m[m Delete DataBase_Accounttest.cpp [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m * [35m|[m [33m|[m [31m6024199[m -[33m[m test [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [35m|[m[35m/[m [33m/[m  
+[34m|[m [1;36m|[m * [33m|[m [31md948a80[m -[33m[m test map speed [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m * [33m|[m   [31m6d662d7[m -[33m[m Merge branch 'dev' of https://github.com/TimerChen/TrainTickets into dev [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m [36m|[m[33m\[m [33m\[m  
+[34m|[m [1;36m|[m [36m|[m [33m|[m[33m/[m  
+[34m|[m [1;36m|[m [36m|[m *   [31m25dc638[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(10 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m [36m|[m [1;32m|[m[1;33m\[m  
+[34m|[m [1;36m|[m [36m|[m * [1;33m|[m [31mef100e3[m -[33m[m Add nowaccount to ui [32m(10 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m [36m|[m * [1;33m|[m [31mdfd0b74[m -[33m[m Change the format of vector.hpp and smartpoint.hpp in gitlearning/MW [32m(10 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m [36m|[m * [1;33m|[m [31m3e4ee7b[m -[33m[m Fix the warnings in vector and smartpoint in gitlearning/MW/ [32m(10 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m [36m|[m * [1;33m|[m [31m1175500[m -[33m[m Add some structs in toserverstructs [32m(11 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m * [1;33m|[m [1;33m|[m [31mce927d4[m -[33m[m naive test passed [32m(10 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m * [1;33m|[m [1;33m|[m [31m92c7d5d[m -[33m[m account tested [32m(11 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;36m|[m * [1;33m|[m [1;33m|[m [31me1559e2[m -[33m[m will try correctness after write log [32m(11 days ago) [1;34m<djrmlrfs>[m
+[34m|[m * [1;33m|[m [1;33m|[m [1;33m|[m [31md79f904[m -[33m[m Add InputData [32m(9 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;33m|[m [1;33m|[m[1;33m_[m[1;33m|[m[1;33m/[m  
+[34m|[m [1;33m|[m[1;33m/[m[1;33m|[m [1;33m|[m   
+[34m|[m * [1;33m|[m [1;33m|[m   [31mb127076[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;34m|[m[1;33m\[m [1;33m\[m [1;33m\[m  
+[34m|[m [1;34m|[m [1;33m|[m [1;33m|[m[1;33m/[m  
+[34m|[m [1;34m|[m [1;33m|[m[1;33m/[m[1;33m|[m   
+[34m|[m [1;34m|[m * [1;33m|[m [31m2a62433[m -[33m[m update include file in Client [32m(11 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m * [1;33m|[m   [31m9d236fb[m -[33m[m Merge branch 'dev' into MW [32m(11 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m [1;36m|[m[31m\[m [1;33m\[m  
+[34m|[m [1;34m|[m * [31m|[m [1;33m|[m [31m6efcdcd[m -[33m[m Add include file to my project [32m(11 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [31m|[m [31m|[m [1;33m|[m [31m093112d[m -[33m[m add test data [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [31m|[m [31m|[m[31m/[m [1;33m/[m  
+[34m|[m [31m|[m[31m/[m[31m|[m [1;33m|[m   
+[34m|[m * [31m|[m [1;33m|[m   [31m3f94a95[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [32m|[m[31m\[m [31m\[m [1;33m\[m  
+[34m|[m [32m|[m [31m|[m[31m/[m [1;33m/[m  
+[34m|[m [32m|[m * [1;33m|[m [31m9687d9c[m -[33m[m My original UI [32m(11 days ago) [1;34m<Michael Wu>[m
+[34m|[m * [33m|[m [1;33m|[m   [31mfdb997d[m -[33m[m Merge branch 'Timer' into dev [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [33m|[m[35m\[m [33m\[m [1;33m\[m  
+[34m|[m [33m|[m [35m|[m[33m/[m [1;33m/[m  
+[34m|[m [33m|[m[33m/[m[35m|[m [1;33m|[m   
+[34m|[m [33m|[m * [1;33m|[m [31m8357f62[m -[33m[m Modified station.h and train.h [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m * [35m|[m [1;33m|[m   [31m1157362[m -[33m[m Merge branch 'Timer' into dev [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m[35m\[m [35m\[m [1;33m\[m  
+[34m|[m [36m|[m [35m|[m[35m/[m [1;33m/[m  
+[34m|[m [36m|[m * [1;33m|[m [31mc46993d[m -[33m[m add vector and map and rewrite for two files [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m * [1;31m|[m [1;33m|[m   [31m89f32cf[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;31m|[m[1;33m\[m [1;31m\[m [1;33m\[m  
+[34m|[m [1;31m|[m [1;33m|[m[1;31m/[m [1;33m/[m  
+[34m|[m [1;31m|[m[1;31m/[m[1;33m|[m [1;33m|[m   
+[34m|[m [1;31m|[m * [1;33m|[m   [31mc8fcadf[m -[33m[m Merge branch 'MW' into dev [32m(11 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;31m|[m [1;33m|[m[1;35m\[m [1;33m\[m  
+[34m|[m [1;31m|[m [1;33m|[m [1;35m|[m[1;33m/[m  
+[34m|[m [1;31m|[m [1;33m|[m[1;33m/[m[1;35m|[m   
+[34m|[m [1;31m|[m [1;33m|[m * [31me98a5b3[m -[33m[m Add some ui for administrator [32m(11 days ago) [1;34m<Michael Wu>[m
+[34m|[m [1;31m|[m [1;33m|[m * [31m3ace29b[m -[33m[m Add a little to the UI [32m(11 days ago) [1;34m<MW>[m
+[34m|[m [1;31m|[m [1;33m|[m * [31m55813d6[m -[33m[m Add some UI [32m(12 days ago) [1;34m<MW>[m
+[34m|[m [1;31m|[m * [1;35m|[m [31mf6b6f67[m -[33m[m add some function relative to tickets [32m(11 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;31m|[m * [1;35m|[m   [31m2db4171[m -[33m[m Merge branch 'dev' of https://github.com/TimerChen/TrainTickets into dev [32m(11 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;31m|[m [1;36m|[m[31m\[m [1;35m\[m  
+[34m|[m [1;31m|[m * [31m|[m [1;35m|[m [31mb80263c[m -[33m[m add find iterator >= key [32m(11 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;31m|[m [1;35m|[m [31m|[m[1;35m/[m  
+[34m|[m [1;31m|[m [1;35m|[m[1;35m/[m[31m|[m   
+[34m|[m * [1;35m|[m [31m|[m [31m3bbea46[m -[33m[m add /interface [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [31m|[m [1;35m|[m[31m/[m  
+[34m|[m [31m|[m[31m/[m[1;35m|[m   
+[34m|[m * [1;35m|[m   [31mbc655f9[m -[33m[m merge for git pull [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m [32m|[m[1;35m\[m [1;35m\[m  
+[34m|[m [32m|[m [1;35m|[m[1;35m/[m  
+[34m|[m [32m|[m *   [31m0447b7a[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(12 days ago) [1;34m<MW>[m
+[34m|[m [32m|[m [34m|[m[35m\[m  
+[34m|[m [32m|[m [34m|[m * [31m247fb41[m -[33m[m aa [32m(12 days ago) [1;34m<Vegewong>[m
+[34m|[m [32m|[m [34m|[m * [31me1ca36b[m -[33m[m add pseudocode of input and output in map(maybe) [32m(12 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [32m|[m [34m|[m * [31me2d699a[m -[33m[m how can I reference an unimplementationed function modidied something [32m(12 days ago) [1;34m<djrmlrfs>[m
+[34m|[m [32m|[m * [35m|[m   [31m85a56ea[m -[33m[m Merge branch 'MW' into dev [32m(12 days ago) [1;34m<MW>[m
+[34m|[m [32m|[m [36m|[m[1;31m\[m [35m\[m  
+[34m|[m [32m|[m [36m|[m * [35m|[m [31m4b67588[m -[33m[m Make the UI automatically fit the size of the window [32m(12 days ago) [1;34m<MW>[m
+[34m|[m [32m|[m [36m|[m * [35m|[m [31me62f675[m -[33m[m change a little again [32m(12 days ago) [1;34m<MW>[m
+[34m|[m [32m|[m [36m|[m * [35m|[m [31m2a7b0a4[m -[33m[m Change a little of the UI file [32m(12 days ago) [1;34m<MW>[m
+[34m|[m * [36m|[m [1;31m|[m [35m|[m [31m5323e30[m -[33m[m fix qt files error [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m * [36m|[m [1;31m|[m [35m|[m [31m4e1ac90[m -[33m[m Modify files of 1230_Server project. [32m(11 days ago) [1;34m<TimerChen>[m
+[34m|[m * [36m|[m [1;31m|[m [35m|[m   [31m190f88b[m -[33m[m Merge branch 'dev' into Timer [32m(12 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;32m|[m[35m\[m [36m\[m [1;31m\[m [35m\[m  
+[34m|[m [1;32m|[m [35m|[m [36m|[m[35m_[m[1;31m|[m[35m/[m  
+[34m|[m [1;32m|[m [35m|[m[35m/[m[36m|[m [1;31m|[m   
+[34m|[m [1;32m|[m * [36m|[m [1;31m|[m   [31mb80b59b[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(12 days ago) [1;34m<TimerChen>[m
+[34m|[m [1;32m|[m [1;34m|[m[1;35m\[m [36m\[m [1;31m\[m  
+[34m|[m [1;32m|[m [1;34m|[m * [36m|[m [1;31m|[m [31m366dfc0[m -[33m[m most of the work done [32m(12 days ago) [1;34m<Vegewong>[m
+[34m|[m [1;32m|[m [1;34m|[m [36m|[m[36m/[m [1;31m/[m  
+[34m|[m [1;32m|[m [1;34m|[m * [1;31m|[m   [31ma17c45b[m -[33m[m Add something of station to station search in UI [32m(2 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [1;36m|[m[1;31m\[m [1;31m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [1;36m|[m [1;31m|[m[1;31m/[m  
+[34m|[m [1;32m|[m [1;34m|[m [1;36m|[m * [31m6a04a65[m -[33m[m Add something for station to station search UI part and update the UI [32m(2 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [1;36m|[m[1;36m/[m  
+[34m|[m [1;32m|[m [1;34m|[m * [31mf624a48[m -[33m[m add some advice in main, tickets need train info [32m(2 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m [1;34m|[m * [31mb6d8b4c[m -[33m[m user and account with simple function like isadmin [32m(2 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m [1;34m|[m * [31m69b8518[m -[33m[m Kodak's map [32m(2 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [1;32m|[m [1;34m|[m * [31m08569ee[m -[33m[m aa [32m(2 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m [1;34m|[m *   [31mb4bdc7a[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(2 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m[33m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m * [31md544158[m -[33m[m add map rewrite in AVL [32m(3 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m *   [31md1eb2d5[m -[33m[m Add Client file and move UI to it [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [34m|[m[35m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [34m|[m * [31m100a222[m -[33m[m Delete UI file in MW [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [34m|[m * [31m190b327[m -[33m[m Add some forgotten things [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [34m|[m * [31m78d73d1[m -[33m[m Add client file [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [34m|[m * [31ma90cd8c[m -[33m[m Add some functions to UI [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [34m|[m * [31ma11f1ad[m -[33m[m Add limit to kunjinkaotangtangtang [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m * [35m|[m   [31m52673fd[m -[33m[m Change the tab order in login dialog [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [36m|[m[35m\[m [35m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [36m|[m [35m|[m[35m/[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [36m|[m * [31md9e16d9[m -[33m[m Change the tab order for login dialog [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [36m|[m[36m/[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m *   [31m9c1b785[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;32m|[m[1;33m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m * [1;33m\[m   [31mf8c66d1[m -[33m[m Add some new UI [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;34m|[m[1;35m\[m [1;33m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;34m|[m * [1;33m\[m   [31m1b17ca6[m -[33m[m Merge branch 'dev' into MW [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;34m|[m [1;36m|[m[31m\[m [1;33m\[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;34m|[m [1;36m|[m * [1;33m|[m [31m4832aad[m -[33m[m Forget add something in last commit [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;34m|[m [1;36m|[m * [1;33m|[m [31m4addeff[m -[33m[m Add UI for account [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;34m|[m [1;36m|[m[1;34m/[m [1;33m/[m  
+[34m|[m [1;32m|[m [1;34m|[m [32m|[m [1;34m|[m[1;34m/[m[1;36m|[m [1;33m|[m   
+[34m|[m [1;32m|[m * [32m|[m [1;34m|[m [1;36m|[m [1;33m|[m   [31mfdf95c9[m -[33m[m Merge branch 'Timer' into dev [32m(2 weeks ago) [1;34m<TimerChen>[m
+[34m|[m [1;32m|[m [1;33m|[m[33m\[m [32m\[m [1;34m\[m [1;36m\[m [1;33m\[m  
+[34m|[m [1;32m|[m [1;33m|[m [33m|[m[1;33m_[m[32m|[m[1;33m_[m[1;34m|[m[1;33m_[m[1;36m|[m[1;33m/[m  
+[34m|[m [1;32m|[m [1;33m|[m[1;33m/[m[33m|[m [32m|[m [1;34m|[m [1;36m|[m   
+[34m|[m [1;32m|[m * [33m|[m [32m|[m [1;34m|[m [1;36m|[m   [31mff6fc52[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(3 weeks ago) [1;34m<TimerChen>[m
+[34m|[m [1;32m|[m [34m|[m[35m\[m [33m\[m [32m\[m [1;34m\[m [1;36m\[m  
+[34m|[m [1;32m|[m [34m|[m * [33m|[m [32m|[m [1;34m|[m [1;36m|[m [31m34ed4a4[m -[33m[m delete define [32m(3 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;32m|[m [34m|[m [1;34m|[m [33m|[m[1;34m_[m[32m|[m[1;34m/[m [1;36m/[m  
+[34m|[m [1;32m|[m [34m|[m [1;34m|[m[1;34m/[m[33m|[m [32m|[m [1;36m|[m   
+[34m|[m [1;32m|[m [34m|[m * [33m|[m [32m|[m [1;36m|[m   [31m89db7cb[m -[33m[m Merge branch 'MW' into dev, add UI for login [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [34m|[m [36m|[m[1;36m\[m [33m\[m [32m\[m [1;36m\[m  
+[34m|[m [1;32m|[m [34m|[m [36m|[m [1;36m|[m [33m|[m[1;36m_[m[32m|[m[1;36m/[m  
+[34m|[m [1;32m|[m [34m|[m [36m|[m [1;36m|[m[1;36m/[m[33m|[m [32m|[m   
+[34m|[m [1;32m|[m [34m|[m [36m|[m * [33m|[m [32m|[m   [31m340b229[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into MW [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m [1;32m|[m [34m|[m [36m|[m [1;32m|[m[36m\[m [33m\[m [32m\[m  
+[34m|[m [1;32m|[m [34m|[m [36m|[m [1;32m|[m[36m/[m [33m/[m [32m/[m  
+[34m|[m [1;32m|[m [34m|[m [36m|[m[36m/[m[1;32m|[m [33m|[m [32m|[m   
+[34m|[m [1;32m|[m [34m|[m [36m|[m * [33m|[m [32m|[m [31ma7e14ea[m -[33m[m add the UI for login [32m(3 weeks ago) [1;34m<MW>[m
+[34m|[m * [34m|[m [36m|[m [1;33m|[m [33m|[m [32m|[m [31m8ee2f9a[m -[33m[m fixed a bug about uniqe() in algorithm0.hpp [32m(12 days ago) [1;34m<TimerChen>[m
+[34m|[m * [34m|[m [36m|[m [1;33m|[m [33m|[m [32m|[m   [31m39bd986[m -[33m[m Merge branch 'Timer' of github.com:TimerChen/TrainTickets into Timer [32m(12 days ago) [1;34m<TimerChen>[m
+[34m|[m [33m|[m[32m\[m [34m\[m [36m\[m [1;33m\[m [33m\[m [32m\[m  
+[34m|[m [33m|[m [32m|[m[33m_[m[34m|[m[33m_[m[36m|[m[33m_[m[1;33m|[m[33m/[m [32m/[m  
+[34m|[m [33m|[m[33m/[m[32m|[m [34m|[m [36m|[m [1;33m|[m [32m/[m   
+[34m|[m [33m|[m [32m|[m [34m|[m[32m_[m[36m|[m[32m_[m[1;33m|[m[32m/[m    
+[34m|[m [33m|[m [32m|[m[32m/[m[34m|[m [36m|[m [1;33m|[m     
+[34m|[m [33m|[m * [34m|[m [36m|[m [1;33m|[m [31mab1c9f0[m -[33m[m Maintain the sort function in algorithm0.hpp. [32m(2 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [33m|[m [34m|[m[34m/[m [36m/[m [1;33m/[m  
+[34m|[m * [34m|[m [36m|[m [1;33m|[m [31m77be5aa[m -[33m[m fix a bug of uniqe() in algorithm0.hpp [32m(2 weeks ago) [1;34m<TimerChen>[m
+[34m|[m [34m|[m[34m/[m [36m/[m [1;33m/[m  
+[34m|[m * [36m|[m [1;33m|[m [31mdae0170[m -[33m[m Ready for git push [32m(3 weeks ago) [1;34m<TimerChen>[m
+[34m|[m * [36m|[m [1;33m|[m   [31mc496010[m -[33m[m Merge branch 'Timer' into dev [32m(3 weeks ago) [1;34m<TimerChen>[m
+[34m|[m [36m|[m[31m\[m [36m\[m [1;33m\[m  
+[34m|[m [36m|[m [31m|[m[36m/[m [1;33m/[m  
+[34m|[m [36m|[m[36m/[m[31m|[m [1;33m|[m   
+[34m|[m [36m|[m * [1;33m|[m [31mc38caaa[m -[33m[m Set up the Server QT Project. [32m(3 weeks ago) [1;34m<TimerChen>[m
+[34m|[m * [31m|[m [1;33m|[m [31mcf2088c[m -[33m[m DataBase_Log [32m(3 weeks ago) [1;34m<Vegewong>[m
+[34m|[m * [31m|[m [1;33m|[m [31m642f8ce[m -[33m[m I think Venomancers could test the correctness and help write files cause i dont know what to do [32m(3 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m [31m|[m[31m/[m [1;33m/[m  
+[34m|[m * [1;33m|[m [31m46b5ef5[m -[33m[m add max() [32m(4 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m * [1;33m|[m   [31mf06e887[m -[33m[m Merge branch 'Timer' into dev [32m(4 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [32m|[m[33m\[m [1;33m\[m  
+[34m|[m [32m|[m * [1;33m|[m [31mceec410[m -[33m[m A->a [32m(4 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [32m|[m * [1;33m|[m [31m7177ec1[m -[33m[m meaningless commit [32m(4 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m * [33m|[m [1;33m|[m   [31m3ec1ba4[m -[33m[m Merge branch 'Timer' into dev [32m(4 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [34m|[m[33m\[m [33m\[m [1;33m\[m  
+[34m|[m [34m|[m [33m|[m[33m/[m [1;33m/[m  
+[34m|[m [34m|[m * [1;33m|[m [31m908dccd[m -[33m[m Add file algorithm0.hpp. [32m(4 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m * [35m|[m [1;33m|[m   [31m3d142b3[m -[33m[m Merge branch 'MW' into dev [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [36m|[m[1;33m\[m [35m\[m [1;33m\[m  
+[34m|[m [36m|[m [1;33m|[m [35m|[m[1;33m/[m  
+[34m|[m [36m|[m [1;33m|[m[1;33m/[m[35m|[m   
+[34m|[m [36m|[m * [35m|[m [31m5a86311[m -[33m[m Fix some bugs for const_shared_ptr [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;31m|[m [35m|[m   [31m5dd1edc[m -[33m[m Merge branch 'MW' into dev [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m[1;31m\[m [1;31m\[m [35m\[m  
+[34m|[m [1;32m|[m [1;31m|[m[1;31m/[m [35m/[m  
+[34m|[m [1;32m|[m * [35m|[m [31m338494b[m -[33m[m Move test.cpp back into testfile [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m * [35m|[m [31m828929f[m -[33m[m Correct the ce for test.cpp [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m * [35m|[m [31m8ea0062[m -[33m[m Add const_shared_ptr and const_normal_ptr, which are not yet tested [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m[1;32m/[m [35m/[m  
+[34m|[m * [35m|[m   [31m6026151[m -[33m[m Merge branch 'MW' into dev [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m[1;35m\[m [35m\[m  
+[34m|[m [1;34m|[m * [35m|[m [31md8ab117[m -[33m[m Fix some bugs [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;34m|[m[1;34m/[m [35m/[m  
+[34m|[m * [35m|[m [31ma2f5f79[m -[33m[m add some operator to smartpoint [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m * [35m|[m   [31mc4930c0[m -[33m[m Merge branch 'MW' into dev [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m[31m\[m [35m\[m  
+[34m|[m [1;36m|[m * [35m\[m   [31mf7a164f[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into MW [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m [32m|[m[1;36m\[m [35m\[m  
+[34m|[m [1;36m|[m [32m|[m[1;36m/[m [35m/[m  
+[34m|[m [1;36m|[m[1;36m/[m[32m|[m [35m|[m   
+[34m|[m * [32m|[m [35m|[m [31m025b72b[m -[33m[m Delete DocumentAboutClassFile.md [32m(5 weeks ago) [1;34m<VegeWong>[m
+[34m|[m * [32m|[m [35m|[m [31m5545811[m -[33m[m Final Version [32m(5 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [33m|[m * [35m|[m [31m44cb9c8[m -[33m[m Change the wrong name in readme [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [33m|[m[33m/[m [35m/[m  
+[34m|[m * [35m|[m   [31mfde44cc[m -[33m[m Merge branch 'MW' into dev [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [34m|[m[35m\[m [35m\[m  
+[34m|[m [34m|[m * [35m|[m [31m7ec0caa[m -[33m[m Fix memory leak bugs [32m(5 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [34m|[m[34m/[m [35m/[m  
+[34m|[m * [35m|[m [31m722ae35[m -[33m[m Add a .clang-format file for code formating [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m * [35m|[m   [31m0b28dcc[m -[33m[m Merge branch 'MW' into dev [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [36m|[m[1;31m\[m [35m\[m  
+[34m|[m [36m|[m * [35m|[m [31mc7048fd[m -[33m[m Change a little of the README [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [36m|[m * [35m|[m [31ma4ffc19[m -[33m[m Add a README file for smartpoint and vector [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;31m|[m [35m|[m   [31m19f539b[m -[33m[m Merge branch 'MW' into dev [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m[1;31m\[m [1;31m\[m [35m\[m  
+[34m|[m [1;32m|[m [1;31m|[m[1;31m/[m [35m/[m  
+[34m|[m [1;32m|[m * [35m|[m [31ma14b187[m -[33m[m Fix bugs for test2 and test3, it seems that the smartpoint and vector are avialable now [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m * [35m|[m   [31m9567816[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into MW [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m [1;34m|[m[1;32m\[m [35m\[m  
+[34m|[m [1;32m|[m [1;34m|[m[1;32m/[m [35m/[m  
+[34m|[m [1;32m|[m[1;32m/[m[1;34m|[m [35m|[m   
+[34m|[m * [1;34m|[m [35m|[m   [31m363f24c[m -[33m[m Merge branch 'MW' into dev [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m[1;34m\[m [1;34m\[m [35m\[m  
+[34m|[m [1;36m|[m [1;34m|[m[1;34m/[m [35m/[m  
+[34m|[m [1;36m|[m * [35m|[m [31m4c211e2[m -[33m[m Fix bugs for test1, and add test1, test2,test3 [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;36m|[m[1;36m/[m [35m/[m  
+[34m|[m * [35m|[m   [31m05cd946[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [32m|[m[33m\[m [35m\[m  
+[34m|[m [32m|[m * [35m|[m [31m99e12c3[m -[33m[m Stupid with stl and no file [32m(6 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m * [33m|[m [35m|[m   [31mca427c9[m -[33m[m Merge branch 'MW' into dev [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [33m|[m[35m\[m [33m\[m [35m\[m  
+[34m|[m [33m|[m [35m|[m[33m/[m [35m/[m  
+[34m|[m [33m|[m[33m/[m[35m|[m [35m|[m   
+[34m|[m [33m|[m * [35m|[m   [31mad3a21d[m -[33m[m Merge branch 'testptr' into MW [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [33m|[m [36m|[m[1;31m\[m [35m\[m  
+[34m|[m [33m|[m [36m|[m * [35m|[m [31md0d96d2[m -[33m[m Fix bugs in smartpoint and change the vector point to smartpoint [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m * [36m|[m [1;31m|[m [35m|[m [31m1c8879f[m -[33m[m Debug [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m * [36m|[m [1;31m|[m [35m|[m [31me514643[m -[33m[m test [32m(6 weeks ago) [1;34m<djrmlrfs>[m
+[34m|[m [1;31m|[m [36m|[m[1;31m/[m [35m/[m  
+[34m|[m [1;31m|[m[1;31m/[m[36m|[m [35m|[m   
+[34m|[m * [36m|[m [35m|[m   [31m2d15e7a[m -[33m[m Merge branch 'MW' into dev [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m[36m\[m [36m\[m [35m\[m  
+[34m|[m [1;32m|[m [36m|[m[36m/[m [35m/[m  
+[34m|[m [1;32m|[m * [35m|[m [31m401a0e8[m -[33m[m SmartPoint is available, vector is not fully changed to smartpoint [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m * [35m|[m [31m67dc880[m -[33m[m Add some function to the SmartPoint [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m * [35m|[m [31m1b8d39c[m -[33m[m Add the vector.hpp [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m [1;32m|[m * [35m|[m [31m696c694[m -[33m[m Complete a little bit of the smart point [32m(6 weeks ago) [1;34m<Michael Wu>[m
+[34m|[m * [1;33m|[m [35m|[m [31mfc9de8e[m -[33m[m File [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m * [1;33m|[m [35m|[m [31m5218dc0[m -[33m[m File [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [1;33m|[m[1;33m/[m [35m/[m  
+[34m|[m * [35m|[m [31mf72d786[m -[33m[m Delete Naive.md [32m(6 weeks ago) [1;34m<VegeWong>[m
+[34m|[m * [35m|[m   [31m9af0b0c[m -[33m[m 122Merge branch 'dev' of https://github.com/TimerChen/TrainTickets into dev [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [1;34m|[m[1;35m\[m [35m\[m  
+[34m|[m [1;34m|[m * [35m|[m [31mee08d57[m -[33m[m Delete README.md [32m(6 weeks ago) [1;34m<VegeWong>[m
+[34m|[m * [1;35m|[m [35m|[m [31med96939[m -[33m[m Correct Version updated [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [1;35m|[m[1;35m/[m [35m/[m  
+[34m|[m * [35m|[m   [31m66e5209[m -[33m[m TestMerge branch 'dev' of https://github.com/TimerChen/TrainTickets into dev [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [1;36m|[m[35m\[m [35m\[m  
+[34m|[m [1;36m|[m [35m|[m[35m/[m  
+[34m|[m [1;36m|[m * [31m72685dd[m -[33m[m Little updates after meeting. [32m(6 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m * [31m|[m [31m2e5e145[m -[33m[m 233 [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m * [31m|[m [31m66fcb31[m -[33m[m I'm sleepy~ [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [31m|[m[31m/[m  
+[34m|[m *   [31me791e16[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(6 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [32m|[m[33m\[m  
+[34m|[m [32m|[m * [31m8a5d1cd[m -[33m[m Add interface.h and add class Train and Account in it(way from complete [32m(6 weeks ago) [1;34m<MW>[m
+[34m|[m [32m|[m * [31mf5c5e5d[m -[33m[m Change the .gitignore file in order to ignore the file needed by vscode [32m(6 weeks ago) [1;34m<MW>[m
+[34m|[m * [33m|[m [31m0449ac3[m -[33m[m Add interface design[Unfinished]. [32m(6 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [33m|[m[33m/[m  
+[34m|[m *   [31m1db6367[m -[33m[m Merge branch 'dev' of github.com:TimerChen/TrainTickets into dev [32m(6 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m [34m|[m[35m\[m  
+[34m|[m [34m|[m * [31mba6ea35[m -[33m[m Delete Hello.txt [32m(6 weeks ago) [1;34m<VegeWong>[m
+[34m|[m [34m|[m * [31m2cadcba[m -[33m[m Still Testing [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [34m|[m *   [31m3da8bbf[m -[33m[m Initialization of File Merge branch 'dev' of https://github.com/TimerChen/TrainTickets into dev [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m [34m|[m [36m|[m[34m\[m  
+[34m|[m [34m|[m[34m_[m[36m|[m[34m/[m  
+[34m|[m[34m/[m[34m|[m [36m|[m   
+[34m|[m [34m|[m * [31m84be84e[m -[33m[m Hello [32m(6 weeks ago) [1;34m<Vegewong>[m
+[34m|[m * [31m90b189e[m -[33m (origin/admin)[m Add relevant files. [32m(6 weeks ago) [1;34m<TimeMachine>[m
+[34m|[m[34m/[m  
+* [31m8a95eae[m -[33m[m Readme Update 4.6 [32m(7 weeks ago) [1;34m<TimeMachine>[m
+* [31md6e6fe4[m -[33m[m fix the error of '#' in 4-3/README.md [32m(7 weeks ago) [1;34m<MW>[m
+* [31m1347126[m -[33m[m [4-3]Add New Task's Readme file. [32m(7 weeks ago) [1;34m<TimerChen>[m
+* [31m71e1db5[m -[33m[m Initial commit [32m(7 weeks ago) [1;34m<TimerChen>[m
