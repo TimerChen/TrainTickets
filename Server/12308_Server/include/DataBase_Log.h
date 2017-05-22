@@ -33,7 +33,8 @@ public:
 	void delTrain(/*const QDateTime &now,*/const QString &AccId, const QString &name, const QString &traID);
 	void openDay(/*const QDateTime &now,*/const QString &AccId, const QString &name, const QString &traID, const QDate &day);
 	void closeDay(/*const QDateTime &now,*/const QString &AccId, const QString &name, const QString &traID, const QDate &day);
-	
+	void setOp( const QString &AccId, const bool &type );
+
 	ttd::pair<int,QString> login( const QString &ID, const QString &pwd, const ttd::pair<int,QString> &re );
 	bool logout( const int &UserId, const bool &re );
 	void newConnection( const QString &Ip );

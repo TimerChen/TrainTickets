@@ -164,8 +164,10 @@ DataBase_Account::Account DataBase_Account::queryAccount(int ID)
 
 void DataBase_Account::modifyAccount(const int &Id, const QString &newPassword, const QString &newName)
 {
-	accData[Id].name = newName;
-	accData[Id].passwordHash = getPasswordHash(newPassword);
+	if( newName.size() )
+		accData[Id].name = newName;
+	if( newPassword.size() )
+		accData[Id].passwordHash = getPasswordHash(newPassword);
 }
 
 DataBase_Account::~DataBase_Account()
@@ -206,6 +208,15 @@ ttd::vector<DataBase_Account::ticLog> DataBase_Account::quiryLog(const int &Id)
 ttd::map<DataBase_Account::Ticket,int> DataBase_Account::ownedTicket(const int &Id)
 {
 	return accData[Id].bought;
+}
+bool DataBase_Account::setOp(const QString &UserId)
+{
+	int id = getIdNumber(UserId);
+	if( id == -1 )
+		throw( ttd::not_exists() );
+	bool &type = accData[id].isAdmin;
+	type ^= 1;
+	return type;
 }
 
 //Database_Account

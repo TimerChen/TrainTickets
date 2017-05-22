@@ -421,13 +421,60 @@ ttd::map<DataBase_Account::Ticket,int>
 		serverSocket->waitForReadyRead();
 		serverIn.startTransaction();
 		serverIn >> no_error;
-		if( no_error )
-			serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
 			break;
 	}
 	if(!no_error) throw(0);
 	return serverReturn;
+}
+
+void MainWindow::changePwd_remote(const frontask::changePwd &fask)
+{
+	QByteArray block;
+	ttd::map<DataBase_Account::Ticket,int> serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::changepwd
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+void MainWindow::changeName_remote(const frontask::changeUsrName &fask)
+{
+	QByteArray block;
+	ttd::map<DataBase_Account::Ticket,int> serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::changeusrname
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
 }
 
 void MainWindow::changestyle() {

@@ -84,8 +84,11 @@ public:
 	void addLog( const QString &content );
 
 
-	void change_pwd( const int &UserId, const QString &accId, const QString
-					 );
+	void change_pwd( const int &UserId, const QString &accId, const QString &Pwd );
+	void change_name( const int &UserId, const QString &accId, const QString &Name );
+
+	void setOp( const QString &UserId );
+
 	//void User
 	//UserId is for identify your identification.
 

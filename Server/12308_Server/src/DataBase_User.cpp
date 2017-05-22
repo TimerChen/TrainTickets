@@ -16,18 +16,18 @@ DataBase_User::~DataBase_User()
 void DataBase_User::saveData(){}
 void DataBase_User::loadData(){}
 
-int DataBase_User::link()
-{
 
-}
-
-ttd::pair<int,QString> DataBase_User::login( const QString &ID, const QString &password )
+ttd::pair<int,QString> DataBase_User::login( const QString &ID, const QString &password, const short &type )
 {
 	if (nowAccData == NULL)	return ttd::pair<int,QString>(0,"NoAccountData");	// no account data
 	int Temp = nowAccData->getIdNumber(ID);//accountid
 	if (Temp == -1)	return ttd::pair<int,QString>(0,"NoSuchAccount");			// no such id in data
 	if (nowAccData->getPasswordHash(password)
 	 != nowAccData->accData[Temp].passwordHash)	return ttd::pair<int,QString>(0,"WrongPassword");	//wrong password
+
+	if (type && nowAccData->accData[Temp].isAdmin)
+		return ttd::pair<int,QString>(0,"Admin cannot modify another admin's account.");
+
 	userData[++nowTempId] = Temp;	//log him
 	return ttd::pair<int,QString>(nowTempId,nowAccData->accData[Temp].name);
 }

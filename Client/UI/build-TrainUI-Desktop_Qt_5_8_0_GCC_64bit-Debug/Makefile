@@ -71,6 +71,7 @@ SOURCES       = ../TrainUI/main.cpp \
 		../TrainUI/src/DataBase_Train.cpp \
 		../TrainUI/src/database_base.cpp qrc_pic.cpp \
 		qrc_completer.cpp \
+		qrc_style.cpp \
 		moc_mainwindow.cpp \
 		moc_login.cpp \
 		moc_regist.cpp \
@@ -111,6 +112,7 @@ OBJECTS       = main.o \
 		database_base.o \
 		qrc_pic.o \
 		qrc_completer.o \
+		qrc_style.o \
 		moc_mainwindow.o \
 		moc_login.o \
 		moc_regist.o \
@@ -536,6 +538,7 @@ Makefile: ../TrainUI/TrainUI.pro /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/li
 		../TrainUI/TrainUI.pro \
 		../TrainUI/pic.qrc \
 		../TrainUI/completer.qrc \
+		../TrainUI/style.qrc \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/lib/libQt5Widgets.prl \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/lib/libQt5Gui.prl \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/lib/libQt5Network.prl \
@@ -714,6 +717,7 @@ Makefile: ../TrainUI/TrainUI.pro /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/li
 ../TrainUI/TrainUI.pro:
 ../TrainUI/pic.qrc:
 ../TrainUI/completer.qrc:
+../TrainUI/style.qrc:
 /home/timemachine/Qt5.8.0/5.8/gcc_64/lib/libQt5Widgets.prl:
 /home/timemachine/Qt5.8.0/5.8/gcc_64/lib/libQt5Gui.prl:
 /home/timemachine/Qt5.8.0/5.8/gcc_64/lib/libQt5Network.prl:
@@ -732,7 +736,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents ../TrainUI/pic.qrc ../TrainUI/completer.qrc $(DISTDIR)/
+	$(COPY_FILE) --parents ../TrainUI/pic.qrc ../TrainUI/completer.qrc ../TrainUI/style.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /home/timemachine/Qt5.8.0/5.8/gcc_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../TrainUI/mainwindow.h ../TrainUI/login.h ../TrainUI/regist.h ../TrainUI/myticket.h ../TrainUI/myinform.h ../TrainUI/stationtostationsearch.h ../TrainUI/trainsearch.h ../TrainUI/stationsearch.h ../TrainUI/searchticket.h ../TrainUI/adminwindow.h ../TrainUI/toserverstructs.h ../TrainUI/uistructs.h ../TrainUI/modifyplanofatrain.h ../TrainUI/addplan.h ../TrainUI/addplansimple.h ../TrainUI/searchusr.h ../TrainUI/editsearchusr.h ../TrainUI/syslog.h ../TrainUI/include/algorithm0.hpp ../TrainUI/include/database.h ../TrainUI/include/DataBase_Account.h ../TrainUI/include/DataBase_Log.h ../TrainUI/include/database_main.h ../TrainUI/include/DataBase_Train.h ../TrainUI/include/DataBase_User.h ../TrainUI/include/datastream.h ../TrainUI/include/exceptions.hpp ../TrainUI/include/map.hpp ../TrainUI/include/smartpoint.hpp ../TrainUI/include/station.h ../TrainUI/include/train.h ../TrainUI/include/utility.hpp ../TrainUI/include/vector.hpp ../TrainUI/syslog.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../TrainUI/main.cpp ../TrainUI/mainwindow.cpp ../TrainUI/login.cpp ../TrainUI/regist.cpp ../TrainUI/myticket.cpp ../TrainUI/myinform.cpp ../TrainUI/stationtostationsearch.cpp ../TrainUI/trainsearch.cpp ../TrainUI/stationsearch.cpp ../TrainUI/searchticket.cpp ../TrainUI/adminwindow.cpp ../TrainUI/toserverstructs.cpp ../TrainUI/uistructs.cpp ../TrainUI/modifyplanofatrain.cpp ../TrainUI/addplan.cpp ../TrainUI/addplansimple.cpp ../TrainUI/searchusr.cpp ../TrainUI/editsearchusr.cpp ../TrainUI/syslog.cpp ../TrainUI/src/DataBase_Account.cpp ../TrainUI/src/DataBase_Train.cpp ../TrainUI/src/database_base.cpp $(DISTDIR)/
@@ -760,9 +764,9 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all: qrc_pic.cpp qrc_completer.cpp
+compiler_rcc_make_all: qrc_pic.cpp qrc_completer.cpp qrc_style.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) qrc_pic.cpp qrc_completer.cpp
+	-$(DEL_FILE) qrc_pic.cpp qrc_completer.cpp qrc_style.cpp
 qrc_pic.cpp: ../TrainUI/pic.qrc \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc \
 		../TrainUI/12308.png
@@ -773,6 +777,13 @@ qrc_completer.cpp: ../TrainUI/completer.qrc \
 		../TrainUI/names.txt \
 		../TrainUI/ipconfig.txt
 	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc -name completer ../TrainUI/completer.qrc -o qrc_completer.cpp
+
+qrc_style.cpp: ../TrainUI/style.qrc \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc \
+		../TrainUI/qss/none.qss \
+		../TrainUI/qss/white.qss \
+		../TrainUI/qss/black.qss
+	/home/timemachine/Qt5.8.0/5.8/gcc_64/bin/rcc -name style ../TrainUI/style.qrc -o qrc_style.cpp
 
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
@@ -3073,7 +3084,9 @@ main.o: ../TrainUI/main.cpp /home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidge
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qdialog.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/QRegExpValidator \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtGui/qvalidator.h \
-		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qregularexpression.h \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QFile \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QtGlobal
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../TrainUI/main.cpp
 
 mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
@@ -4913,7 +4926,8 @@ searchticket.o: ../TrainUI/searchticket.cpp ../TrainUI/searchticket.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QPushButton \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qpushbutton.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/qabstractbutton.h \
-		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtWidgets/QVBoxLayout \
+		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QtGlobal
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o searchticket.o ../TrainUI/searchticket.cpp
 
 adminwindow.o: ../TrainUI/adminwindow.cpp ../TrainUI/adminwindow.h \
@@ -6246,6 +6260,7 @@ DataBase_Account.o: ../TrainUI/src/DataBase_Account.cpp ../TrainUI/include/DataB
 		../TrainUI/include/database.h \
 		../TrainUI/include/vector.hpp \
 		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/smartpoint.hpp \
 		../TrainUI/include/utility.hpp \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
@@ -6259,7 +6274,6 @@ DataBase_Account.o: ../TrainUI/src/DataBase_Account.cpp ../TrainUI/include/DataB
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
-		../TrainUI/include/smartpoint.hpp \
 		../TrainUI/include/map.hpp \
 		../TrainUI/include/algorithm0.hpp \
 		../TrainUI/include/datastream.h \
@@ -6370,6 +6384,7 @@ database_base.o: ../TrainUI/src/database_base.cpp ../TrainUI/include/database.h 
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qstringbuilder.h \
 		../TrainUI/include/vector.hpp \
 		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/smartpoint.hpp \
 		../TrainUI/include/utility.hpp \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/QDataStream \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qdatastream.h \
@@ -6392,7 +6407,6 @@ database_base.o: ../TrainUI/src/database_base.cpp ../TrainUI/include/database.h 
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qvarlengtharray.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qcontainerfwd.h \
 		/home/timemachine/Qt5.8.0/5.8/gcc_64/include/QtCore/qobject_impl.h \
-		../TrainUI/include/smartpoint.hpp \
 		../TrainUI/include/map.hpp \
 		../TrainUI/include/algorithm0.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o database_base.o ../TrainUI/src/database_base.cpp
@@ -6402,6 +6416,9 @@ qrc_pic.o: qrc_pic.cpp
 
 qrc_completer.o: qrc_completer.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_completer.o qrc_completer.cpp
+
+qrc_style.o: qrc_style.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_style.o qrc_style.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

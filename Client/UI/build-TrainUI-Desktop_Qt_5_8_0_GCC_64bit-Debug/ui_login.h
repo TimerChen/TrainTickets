@@ -63,6 +63,11 @@ public:
 
         usrLineEdit = new QLineEdit(Login);
         usrLineEdit->setObjectName(QStringLiteral("usrLineEdit"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(usrLineEdit->sizePolicy().hasHeightForWidth());
+        usrLineEdit->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(usrLineEdit, 0, 1, 1, 1);
 
@@ -73,6 +78,8 @@ public:
 
         pwdLineEdit = new QLineEdit(Login);
         pwdLineEdit->setObjectName(QStringLiteral("pwdLineEdit"));
+        sizePolicy.setHeightForWidth(pwdLineEdit->sizePolicy().hasHeightForWidth());
+        pwdLineEdit->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(pwdLineEdit, 1, 1, 1, 1);
 
@@ -83,11 +90,18 @@ public:
         horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         auloginBtn = new QPushButton(Login);
         auloginBtn->setObjectName(QStringLiteral("auloginBtn"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(auloginBtn->sizePolicy().hasHeightForWidth());
+        auloginBtn->setSizePolicy(sizePolicy1);
 
         horizontalLayout->addWidget(auloginBtn);
 
         loginBtn = new QPushButton(Login);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
+        sizePolicy1.setHeightForWidth(loginBtn->sizePolicy().hasHeightForWidth());
+        loginBtn->setSizePolicy(sizePolicy1);
 
         horizontalLayout->addWidget(loginBtn);
 
@@ -98,6 +112,8 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         exitBtn = new QPushButton(Login);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
+        sizePolicy1.setHeightForWidth(exitBtn->sizePolicy().hasHeightForWidth());
+        exitBtn->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(exitBtn);
 

@@ -106,7 +106,10 @@ int DataBase_Main::regist( const QString &Id, const QString &pwd, const QString 
 ttd::pair<int,QString> DataBase_Main::login
 ( const QString &ID, const QString &password, const short &type )
 {
-	if(type)
+	if(type==2)
+		return dLog->login
+				( ID, password, dUser->login( ID, password, 1 ) );
+	else if(type == 1)
 		return dLog->login
 				( ID, password, dUser->adminLogin( ID, password ) );
 	else
@@ -261,4 +264,48 @@ DataBase_Train::TrainRoute DataBase_Main::query_train
 void DataBase_Main::addLog( const QString &content)
 {
 	dLog->any( content );
+}
+
+
+void DataBase_Main::change_pwd(const int &UserId, const QString &accId, const QString &Pwd)
+{
+
+	if(UserId <0)
+		throw ttd::no_authority();
+
+	int id = dAccount->getIdNumber(accId);
+
+	if(dUser->account_id(UserId) != id &&
+			!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	dAccount->modifyAccount( id, Pwd, "" );
+	dLog->modifyAccount( UserId, id );
+}
+void DataBase_Main::change_name(const int &UserId, const QString &accId, const QString &Name)
+{
+	if(UserId <0)
+		throw ttd::no_authority();
+
+	int id = dAccount->getIdNumber(accId);
+
+	if(dUser->account_id(UserId) != id &&
+			!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	dAccount->modifyAccount( id, "", Name );
+	dLog->modifyAccount( UserId, id );
+
+}
+
+void DataBase_Main::setOp( const QString &UserId )
+{
+	bool tmp;
+	try{
+		tmp = dAccount->setOp( UserId );
+	}catch(...){
+		dLog->any( "Connot find this ID." );
+		return;
+	}
+	dLog->setOp( UserId, tmp );
 }

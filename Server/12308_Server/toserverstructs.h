@@ -27,7 +27,8 @@ enum {
     stopsellticket,          // send pair(targetTicket, adminID)
     deletetrain,             // send pair(targetTicket, adminID)
     startselltrain,          // send pair(targetTicket, adminID)
-    addplane                 // send pair(QString, adminID)
+	addplane,                 // send pair(QString, adminID)
+	querylog
 };
 struct stationToStationSearch {
     QString fromStation, toStation;

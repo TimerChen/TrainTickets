@@ -29,6 +29,7 @@ class MainWindow : public QMainWindow {
 	friend class Regist;
 	friend class SearchTicket;
 	friend class Myticket;
+	friend class Myinform;
    public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -85,8 +86,15 @@ private:
 		( const frontask::targetTicket &fask);
 	void buyTickets_remote
 		( const frontask::targetTicket &fask);
-	ttd::map< DataBase_Account::Ticket , int> askTickets_remote
+	ttd::map< DataBase_Account::Ticket , int>
+		askTickets_remote
 		( const QString &fask );
+
+	void changePwd_remote
+		( const frontask::changePwd &fask );
+	void changeName_remote
+		( const frontask::changeUsrName &fask );
+
     void changestyle();
 
 };

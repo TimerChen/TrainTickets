@@ -17,6 +17,7 @@ ServerMainWindow::ServerMainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	currentUser = -1;
+	subUser = -1;
 	database = new DataBase_Main("12308");
 	logs = database->getLog();
 
@@ -60,7 +61,10 @@ void ServerMainWindow::newCommand()
                 database->loadData_raw_buy(qlist[2]);
         }
 	}else if(qlist[0] == QString("test")){
-		database->query_stationToStation(-1,QDate(2017,3,28),"恩施","宜昌东");
+		//database->query_stationToStation(-1,QDate(2017,3,28),"恩施","宜昌东");
+		database->change_name( 0, "AIchan", "VirturalYoutuber" );
+	}else if(qlist[0] == QString("op") && qlist.size() >= 2){
+		database->setOp( qlist[1] );
 	}
 	refreshConsole();
 	ui->commandEdit->setText("");
@@ -90,6 +94,7 @@ void ServerMainWindow::disconnect()
 	database->disconnect(currentUser);
 	database->logout(currentUser);
 	currentUser = -1;
+	subUser = -1;
 	refreshConsole();
 }
 
@@ -146,11 +151,11 @@ void ServerMainWindow::newMessage()
 	case frontask::logout:
 
 		break;
-	case frontask::changepwd:
-		in >> opt_cp;
-		break;
 	case frontask::changeusrname:
 		in >> opt_cun;
+		break;
+	case frontask::changepwd:
+		in >> opt_cp;
 		break;
 	default:
 		//unknown command
@@ -263,9 +268,19 @@ void ServerMainWindow::newMessage()
 	}
 	case frontask::login:
 	{
-		ttd::pair<int, QString> tmp
-			= database->login( opt_login.userID, opt_login.pwd );
-		currentUser = tmp.first;
+		ttd::pair<int, QString> tmp;
+
+		if( currentUser!=-1 )
+		{
+			// Admin cannot modify another admin's account.
+			tmp = database->login( opt_login.userID, opt_login.pwd, 2 );
+			if(tmp.first > 0)
+				subUser = tmp.first;
+		}else{
+			tmp = database->login( opt_login.userID, opt_login.pwd );
+			if(tmp.first > 0)
+				currentUser = tmp.first;
+		}
 		if(tmp.first > 0)
 			tmp.first = 1;
 		out << tmp;
@@ -274,10 +289,19 @@ void ServerMainWindow::newMessage()
 
 	case frontask::logout:
 	{
-		bool tmp
-			= database->logout( currentUser );
+
+		bool tmp;
+		if( subUser!=-1 )
+		{
+			tmp = database->logout( subUser );
+			subUser = -1;
+		}
+		else
+		{
+			tmp = database->logout( currentUser );
+			currentUser = -1;
+		}
 		out << tmp;
-		currentUser = -1;
 	}
 		break;
 	case frontask::reg:
@@ -290,7 +314,7 @@ void ServerMainWindow::newMessage()
 	case frontask::changepwd:
 	{
 		try{
-			tmp = database->changePwd( currentUser, opt_str );
+			database->change_pwd( currentUser, opt_cp.usrID, opt_cp.newpwd );
 		}catch(...){
 			out << false;
 			break;
@@ -301,7 +325,7 @@ void ServerMainWindow::newMessage()
 	case frontask::changeusrname:
 	{
 		try{
-			tmp = database->ownedTicket( currentUser, opt_str );
+			database->change_name( currentUser, opt_cun.usrID, opt_cun.newname );
 		}catch(...){
 			out << false;
 			break;

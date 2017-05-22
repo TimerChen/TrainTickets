@@ -126,6 +126,15 @@ void DataBase_Log::disconnect(const int &UserId)
 	log.push_back( QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss ddd]  ")
 				   + "disconnect: " + QString::number(UserId) );
 }
+void DataBase_Log::setOp( const QString &AccId, const bool &type )
+{
+	if(type)
+	log.push_back( QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss ddd]  ")
+				   + "Oped " + AccId + "." );
+	else
+	log.push_back( QDateTime::currentDateTime().toString("[yyyy-MM-dd hh:mm:ss ddd]  ")
+				   + "Deoped " + AccId + "." );
+}
 
 void DataBase_Log::any(const QString &content)
 {

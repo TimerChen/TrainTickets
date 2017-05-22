@@ -100,6 +100,7 @@ public:
 	
 	int returnTicket(const int &Id, const QString&trainId, const QString&from, const QString&to,
 		const QDateTime &fromTime, const QDateTime &toTime, const int &price, const QString&type, const int &num);
+	bool setOp( const QString &UserId );
 	ttd::vector<ticLog> quiryLog(const int &Id);
 	ttd::map<Ticket,int> ownedTicket(const int &Id);
 private:
