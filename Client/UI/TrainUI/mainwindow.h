@@ -15,6 +15,8 @@
 namespace Ui {
 enum { annonymous, normal, admin, searchusr };
 enum { stationToStation, stationSearch, trainSearch };
+bool Compare_for_qtrains(const DataBase_Train::QTrain &q1,const DataBase_Train::QTrain &q2);
+
 class MainWindow;
 }
 
@@ -51,7 +53,9 @@ class MainWindow : public QMainWindow {
 	void link();
 	void dealError(QAbstractSocket::SocketError socketError);
 
-   private:
+    void on_styleBtn_clicked();
+
+private:
     Ui::MainWindow *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
@@ -83,7 +87,7 @@ class MainWindow : public QMainWindow {
 		( const frontask::targetTicket &fask);
 	ttd::map< DataBase_Account::Ticket , int> askTickets_remote
 		( const QString &fask );
-
+    void changestyle();
 
 };
 

@@ -62,6 +62,11 @@ public:
 
         fromLineEdit = new QLineEdit(StationToStationSearch);
         fromLineEdit->setObjectName(QStringLiteral("fromLineEdit"));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(fromLineEdit->sizePolicy().hasHeightForWidth());
+        fromLineEdit->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(fromLineEdit, 0, 1, 1, 1);
 
@@ -72,6 +77,8 @@ public:
 
         toLineEdit = new QLineEdit(StationToStationSearch);
         toLineEdit->setObjectName(QStringLiteral("toLineEdit"));
+        sizePolicy.setHeightForWidth(toLineEdit->sizePolicy().hasHeightForWidth());
+        toLineEdit->setSizePolicy(sizePolicy);
 
         gridLayout->addWidget(toLineEdit, 1, 1, 1, 1);
 
@@ -82,6 +89,11 @@ public:
 
         dateEdit = new QDateEdit(StationToStationSearch);
         dateEdit->setObjectName(QStringLiteral("dateEdit"));
+        QSizePolicy sizePolicy1(QSizePolicy::Minimum, QSizePolicy::Preferred);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(dateEdit->sizePolicy().hasHeightForWidth());
+        dateEdit->setSizePolicy(sizePolicy1);
         dateEdit->setDateTime(QDateTime(QDate(2017, 1, 1), QTime(0, 0, 0)));
         dateEdit->setMaximumDateTime(QDateTime(QDate(2020, 12, 31), QTime(23, 59, 59)));
         dateEdit->setMaximumDate(QDate(2020, 12, 31));
@@ -96,11 +108,15 @@ public:
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         searchbotton = new QPushButton(StationToStationSearch);
         searchbotton->setObjectName(QStringLiteral("searchbotton"));
+        sizePolicy1.setHeightForWidth(searchbotton->sizePolicy().hasHeightForWidth());
+        searchbotton->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(searchbotton);
 
         exitBtn = new QPushButton(StationToStationSearch);
         exitBtn->setObjectName(QStringLiteral("exitBtn"));
+        sizePolicy1.setHeightForWidth(exitBtn->sizePolicy().hasHeightForWidth());
+        exitBtn->setSizePolicy(sizePolicy1);
 
         verticalLayout->addWidget(exitBtn);
 
@@ -120,9 +136,9 @@ public:
     void retranslateUi(QDialog *StationToStationSearch)
     {
         StationToStationSearch->setWindowTitle(QApplication::translate("StationToStationSearch", "\347\253\231\347\253\231\346\237\245\350\257\242", Q_NULLPTR));
-        label->setText(QApplication::translate("StationToStationSearch", "\345\207\272\345\217\221", Q_NULLPTR));
-        label_2->setText(QApplication::translate("StationToStationSearch", "\345\210\260\350\276\276", Q_NULLPTR));
-        label_3->setText(QApplication::translate("StationToStationSearch", "\346\227\245\346\234\237", Q_NULLPTR));
+        label->setText(QApplication::translate("StationToStationSearch", "\345\207\272\345\217\221\357\274\232 ", Q_NULLPTR));
+        label_2->setText(QApplication::translate("StationToStationSearch", "\345\210\260\350\276\276\357\274\232 ", Q_NULLPTR));
+        label_3->setText(QApplication::translate("StationToStationSearch", "\346\227\245\346\234\237\357\274\232 ", Q_NULLPTR));
         searchbotton->setText(QApplication::translate("StationToStationSearch", "\347\253\213\345\215\263\346\220\234\347\264\242", Q_NULLPTR));
         exitBtn->setText(QApplication::translate("StationToStationSearch", "\350\277\224\345\233\236\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
     } // retranslateUi

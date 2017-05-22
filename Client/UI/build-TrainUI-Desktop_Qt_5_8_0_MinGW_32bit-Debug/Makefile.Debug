@@ -63,8 +63,10 @@ SOURCES       = ..\TrainUI\main.cpp \
 		..\TrainUI\editsearchusr.cpp \
 		..\TrainUI\syslog.cpp \
 		..\TrainUI\src\DataBase_Account.cpp \
-		..\TrainUI\src\DataBase_Train.cpp debug\qrc_pic.cpp \
+		..\TrainUI\src\DataBase_Train.cpp \
+		..\TrainUI\src\database_base.cpp debug\qrc_pic.cpp \
 		debug\qrc_completer.cpp \
+		debug\qrc_style.cpp \
 		debug\moc_mainwindow.cpp \
 		debug\moc_login.cpp \
 		debug\moc_regist.cpp \
@@ -102,8 +104,10 @@ OBJECTS       = debug/main.o \
 		debug/syslog.o \
 		debug/DataBase_Account.o \
 		debug/DataBase_Train.o \
+		debug/database_base.o \
 		debug/qrc_pic.o \
 		debug/qrc_completer.o \
+		debug/qrc_style.o \
 		debug/moc_mainwindow.o \
 		debug/moc_login.o \
 		debug/moc_regist.o \
@@ -174,7 +178,8 @@ DIST          =  ..\TrainUI\mainwindow.h \
 		..\TrainUI\editsearchusr.cpp \
 		..\TrainUI\syslog.cpp \
 		..\TrainUI\src\DataBase_Account.cpp \
-		..\TrainUI\src\DataBase_Train.cpp
+		..\TrainUI\src\DataBase_Train.cpp \
+		..\TrainUI\src\database_base.cpp
 QMAKE_TARGET  = TrainUI
 DESTDIR        = debug\ #avoid trailing-slash linebreak
 TARGET         = TrainUI.exe
@@ -194,10 +199,10 @@ qmake: FORCE
 qmake_all: FORCE
 
 dist:
-	$(ZIP) TrainUI.zip $(SOURCES) $(DIST) ..\TrainUI\TrainUI.pro C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_pre.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qdevice.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\device_config.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\common\angle.conf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qconfig.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_functions.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_config.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\win32-g++\qmake.conf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\toolchain.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_pre.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resolve_config.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_post.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\build_pass.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qml_debug.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\precompile_header.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\warn_on.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resources.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\moc.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\uic.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qmake_use.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\file_copies.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\windows.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exceptions.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\yacc.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\lex.prf ..\TrainUI\TrainUI.pro ..\TrainUI\pic.qrc ..\TrainUI\completer.qrc C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\qtmaind.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Widgetsd.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Guid.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Networkd.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Cored.prl   ..\TrainUI\pic.qrc ..\TrainUI\completer.qrc C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\data\dummy.cpp ..\TrainUI\mainwindow.h ..\TrainUI\login.h ..\TrainUI\regist.h ..\TrainUI\myticket.h ..\TrainUI\myinform.h ..\TrainUI\stationtostationsearch.h ..\TrainUI\trainsearch.h ..\TrainUI\stationsearch.h ..\TrainUI\searchticket.h ..\TrainUI\adminwindow.h ..\TrainUI\toserverstructs.h ..\TrainUI\uistructs.h ..\TrainUI\modifyplanofatrain.h ..\TrainUI\addplan.h ..\TrainUI\addplansimple.h ..\TrainUI\searchusr.h ..\TrainUI\editsearchusr.h ..\TrainUI\syslog.h ..\TrainUI\include\algorithm0.hpp ..\TrainUI\include\database.h ..\TrainUI\include\DataBase_Account.h ..\TrainUI\include\DataBase_Log.h ..\TrainUI\include\database_main.h ..\TrainUI\include\DataBase_Train.h ..\TrainUI\include\DataBase_User.h ..\TrainUI\include\datastream.h ..\TrainUI\include\exceptions.hpp ..\TrainUI\include\map.hpp ..\TrainUI\include\smartpoint.hpp ..\TrainUI\include\station.h ..\TrainUI\include\train.h ..\TrainUI\include\utility.hpp ..\TrainUI\include\vector.hpp ..\TrainUI\syslog.h ..\TrainUI\main.cpp ..\TrainUI\mainwindow.cpp ..\TrainUI\login.cpp ..\TrainUI\regist.cpp ..\TrainUI\myticket.cpp ..\TrainUI\myinform.cpp ..\TrainUI\stationtostationsearch.cpp ..\TrainUI\trainsearch.cpp ..\TrainUI\stationsearch.cpp ..\TrainUI\searchticket.cpp ..\TrainUI\adminwindow.cpp ..\TrainUI\toserverstructs.cpp ..\TrainUI\uistructs.cpp ..\TrainUI\modifyplanofatrain.cpp ..\TrainUI\addplan.cpp ..\TrainUI\addplansimple.cpp ..\TrainUI\searchusr.cpp ..\TrainUI\editsearchusr.cpp ..\TrainUI\syslog.cpp ..\TrainUI\src\DataBase_Account.cpp ..\TrainUI\src\DataBase_Train.cpp ..\TrainUI\mainwindow.ui ..\TrainUI\login.ui ..\TrainUI\regist.ui ..\TrainUI\myticket.ui ..\TrainUI\myinform.ui ..\TrainUI\stationtostationsearch.ui ..\TrainUI\trainsearch.ui ..\TrainUI\stationsearch.ui ..\TrainUI\searchticket.ui ..\TrainUI\adminwindow.ui ..\TrainUI\modifyplanofatrain.ui ..\TrainUI\addplan.ui ..\TrainUI\addplansimple.ui ..\TrainUI\searchusr.ui ..\TrainUI\editsearchusr.ui ..\TrainUI\syslog.ui    
+	$(ZIP) TrainUI.zip $(SOURCES) $(DIST) ..\TrainUI\TrainUI.pro C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_pre.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qdevice.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\device_config.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\common\angle.conf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\qconfig.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dcore_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dextras_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dinput_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dlogic_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquick_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickextras_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickinput_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3dquickrender_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_3drender_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_accessibility_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axbase_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axcontainer_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_axserver_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bluetooth_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_bootstrap_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_charts_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_clucene_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_core_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_datavisualization_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_egl_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_eventdispatcher_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_fontdatabase_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gamepad_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_help_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_location_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimedia_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_multimediawidgets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_network_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_networkauth_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_nfc_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_openglextensions_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_platformcompositor_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_positioning_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_purchasing_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_qtmultimediaquicktools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_script_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scripttools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_scxml_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sensors_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialbus_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_serialport_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_texttospeech_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_theme_support_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_webchannel_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_websockets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_winextras_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\modules\qt_lib_xmlpatterns_private.pri C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_functions.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt_config.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\win32-g++\qmake.conf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\toolchain.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_pre.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\default_pre.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resolve_config.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exclusive_builds_post.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\default_post.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\build_pass.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qml_debug.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\rtti.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\precompile_header.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\warn_on.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qt.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\resources.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\moc.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\opengl.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\uic.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\qmake_use.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\file_copies.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\win32\windows.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\testcase_targets.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\exceptions.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\yacc.prf C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\lex.prf ..\TrainUI\TrainUI.pro ..\TrainUI\pic.qrc ..\TrainUI\completer.qrc ..\TrainUI\style.qrc C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\qtmaind.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Widgetsd.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Guid.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Networkd.prl C:\Qt\Qt5.8.0\5.8\mingw53_32\lib\Qt5Cored.prl   ..\TrainUI\pic.qrc ..\TrainUI\completer.qrc ..\TrainUI\style.qrc C:\Qt\Qt5.8.0\5.8\mingw53_32\mkspecs\features\data\dummy.cpp ..\TrainUI\mainwindow.h ..\TrainUI\login.h ..\TrainUI\regist.h ..\TrainUI\myticket.h ..\TrainUI\myinform.h ..\TrainUI\stationtostationsearch.h ..\TrainUI\trainsearch.h ..\TrainUI\stationsearch.h ..\TrainUI\searchticket.h ..\TrainUI\adminwindow.h ..\TrainUI\toserverstructs.h ..\TrainUI\uistructs.h ..\TrainUI\modifyplanofatrain.h ..\TrainUI\addplan.h ..\TrainUI\addplansimple.h ..\TrainUI\searchusr.h ..\TrainUI\editsearchusr.h ..\TrainUI\syslog.h ..\TrainUI\include\algorithm0.hpp ..\TrainUI\include\database.h ..\TrainUI\include\DataBase_Account.h ..\TrainUI\include\DataBase_Log.h ..\TrainUI\include\database_main.h ..\TrainUI\include\DataBase_Train.h ..\TrainUI\include\DataBase_User.h ..\TrainUI\include\datastream.h ..\TrainUI\include\exceptions.hpp ..\TrainUI\include\map.hpp ..\TrainUI\include\smartpoint.hpp ..\TrainUI\include\station.h ..\TrainUI\include\train.h ..\TrainUI\include\utility.hpp ..\TrainUI\include\vector.hpp ..\TrainUI\syslog.h ..\TrainUI\main.cpp ..\TrainUI\mainwindow.cpp ..\TrainUI\login.cpp ..\TrainUI\regist.cpp ..\TrainUI\myticket.cpp ..\TrainUI\myinform.cpp ..\TrainUI\stationtostationsearch.cpp ..\TrainUI\trainsearch.cpp ..\TrainUI\stationsearch.cpp ..\TrainUI\searchticket.cpp ..\TrainUI\adminwindow.cpp ..\TrainUI\toserverstructs.cpp ..\TrainUI\uistructs.cpp ..\TrainUI\modifyplanofatrain.cpp ..\TrainUI\addplan.cpp ..\TrainUI\addplansimple.cpp ..\TrainUI\searchusr.cpp ..\TrainUI\editsearchusr.cpp ..\TrainUI\syslog.cpp ..\TrainUI\src\DataBase_Account.cpp ..\TrainUI\src\DataBase_Train.cpp ..\TrainUI\src\database_base.cpp ..\TrainUI\mainwindow.ui ..\TrainUI\login.ui ..\TrainUI\regist.ui ..\TrainUI\myticket.ui ..\TrainUI\myinform.ui ..\TrainUI\stationtostationsearch.ui ..\TrainUI\trainsearch.ui ..\TrainUI\stationsearch.ui ..\TrainUI\searchticket.ui ..\TrainUI\adminwindow.ui ..\TrainUI\modifyplanofatrain.ui ..\TrainUI\addplan.ui ..\TrainUI\addplansimple.ui ..\TrainUI\searchusr.ui ..\TrainUI\editsearchusr.ui ..\TrainUI\syslog.ui    
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\login.o debug\regist.o debug\myticket.o debug\myinform.o debug\stationtostationsearch.o debug\trainsearch.o debug\stationsearch.o debug\searchticket.o debug\adminwindow.o debug\toserverstructs.o debug\uistructs.o debug\modifyplanofatrain.o debug\addplan.o debug\addplansimple.o debug\searchusr.o debug\editsearchusr.o debug\syslog.o debug\DataBase_Account.o debug\DataBase_Train.o debug\qrc_pic.o debug\qrc_completer.o debug\moc_mainwindow.o debug\moc_login.o debug\moc_regist.o debug\moc_myticket.o debug\moc_myinform.o debug\moc_stationtostationsearch.o debug\moc_trainsearch.o debug\moc_stationsearch.o debug\moc_searchticket.o debug\moc_adminwindow.o debug\moc_modifyplanofatrain.o debug\moc_addplan.o debug\moc_addplansimple.o debug\moc_searchusr.o debug\moc_editsearchusr.o debug\moc_syslog.o
+	-$(DEL_FILE) debug\main.o debug\mainwindow.o debug\login.o debug\regist.o debug\myticket.o debug\myinform.o debug\stationtostationsearch.o debug\trainsearch.o debug\stationsearch.o debug\searchticket.o debug\adminwindow.o debug\toserverstructs.o debug\uistructs.o debug\modifyplanofatrain.o debug\addplan.o debug\addplansimple.o debug\searchusr.o debug\editsearchusr.o debug\syslog.o debug\DataBase_Account.o debug\DataBase_Train.o debug\database_base.o debug\qrc_pic.o debug\qrc_completer.o debug\qrc_style.o debug\moc_mainwindow.o debug\moc_login.o debug\moc_regist.o debug\moc_myticket.o debug\moc_myinform.o debug\moc_stationtostationsearch.o debug\moc_trainsearch.o debug\moc_stationsearch.o debug\moc_searchticket.o debug\moc_adminwindow.o debug\moc_modifyplanofatrain.o debug\moc_addplan.o debug\moc_addplansimple.o debug\moc_searchusr.o debug\moc_editsearchusr.o debug\moc_syslog.o
 
 distclean: clean 
 	-$(DEL_FILE) .qmake.stash
@@ -214,9 +219,9 @@ benchmark: first
 
 compiler_no_pch_compiler_make_all:
 compiler_no_pch_compiler_clean:
-compiler_rcc_make_all: debug/qrc_pic.cpp debug/qrc_completer.cpp
+compiler_rcc_make_all: debug/qrc_pic.cpp debug/qrc_completer.cpp debug/qrc_style.cpp
 compiler_rcc_clean:
-	-$(DEL_FILE) debug\qrc_pic.cpp debug\qrc_completer.cpp
+	-$(DEL_FILE) debug\qrc_pic.cpp debug\qrc_completer.cpp debug\qrc_style.cpp
 debug/qrc_pic.cpp: ../TrainUI/pic.qrc \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/rcc.exe \
 		../TrainUI/12308.png
@@ -227,6 +232,13 @@ debug/qrc_completer.cpp: ../TrainUI/completer.qrc \
 		../TrainUI/names.txt \
 		../TrainUI/ipconfig.txt
 	C:\Qt\Qt5.8.0\5.8\mingw53_32\bin\rcc.exe -name completer ..\TrainUI\completer.qrc -o debug\qrc_completer.cpp
+
+debug/qrc_style.cpp: ../TrainUI/style.qrc \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/bin/rcc.exe \
+		../TrainUI/qss/none.qss \
+		../TrainUI/qss/white.qss \
+		../TrainUI/qss/black.qss
+	C:\Qt\Qt5.8.0\5.8\mingw53_32\bin\rcc.exe -name style ..\TrainUI\style.qrc -o debug\qrc_style.cpp
 
 compiler_moc_predefs_make_all: debug/moc_predefs.h
 compiler_moc_predefs_clean:
@@ -358,6 +370,7 @@ debug/moc_mainwindow.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWi
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -488,6 +501,7 @@ debug/moc_login.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -739,6 +753,7 @@ debug/moc_myticket.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -874,6 +889,7 @@ debug/moc_myinform.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QDialog \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -1006,6 +1022,7 @@ debug/moc_stationtostationsearch.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWid
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -1136,6 +1153,7 @@ debug/moc_trainsearch.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -1268,6 +1286,7 @@ debug/moc_stationsearch.cpp: ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -1409,6 +1428,7 @@ debug/moc_searchticket.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/include/database.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		../TrainUI/uistructs.h \
 		../TrainUI/searchticket.h \
@@ -2513,6 +2533,7 @@ debug/main.o: ../TrainUI/main.cpp C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -2520,7 +2541,8 @@ debug/main.o: ../TrainUI/main.cpp C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qdialog.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/QRegExpValidator \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qvalidator.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregularexpression.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QFile
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\TrainUI\main.cpp
 
 debug/mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
@@ -2645,6 +2667,7 @@ debug/mainwindow.o: ../TrainUI/mainwindow.cpp ../TrainUI/mainwindow.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -2992,6 +3015,7 @@ debug/login.o: ../TrainUI/login.cpp ../TrainUI/login.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -3230,6 +3254,7 @@ debug/regist.o: ../TrainUI/regist.cpp ../TrainUI/regist.h \
 		../TrainUI/include/algorithm0.hpp \
 		../TrainUI/include/database.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/uistructs.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\regist.o ..\TrainUI\regist.cpp
 
@@ -3361,6 +3386,7 @@ debug/myticket.o: ../TrainUI/myticket.cpp ../TrainUI/myticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -3415,8 +3441,7 @@ debug/myticket.o: ../TrainUI/myticket.cpp ../TrainUI/myticket.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QPushButton \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qpushbutton.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qabstractbutton.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout \
-		../TrainUI/include/DataBase_Account.h
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QVBoxLayout
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\myticket.o ..\TrainUI\myticket.cpp
 
 debug/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
@@ -3547,6 +3572,7 @@ debug/myinform.o: ../TrainUI/myinform.cpp ../TrainUI/myinform.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -3729,6 +3755,7 @@ debug/stationtostationsearch.o: ../TrainUI/stationtostationsearch.cpp ../TrainUI
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -3916,6 +3943,7 @@ debug/trainsearch.o: ../TrainUI/trainsearch.cpp ../TrainUI/trainsearch.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -4102,6 +4130,7 @@ debug/stationsearch.o: ../TrainUI/stationsearch.cpp ../TrainUI/stationsearch.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/uistructs.h \
@@ -4300,6 +4329,7 @@ debug/searchticket.o: ../TrainUI/searchticket.cpp ../TrainUI/searchticket.h \
 		../TrainUI/include/database.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		../TrainUI/uistructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
@@ -4530,6 +4560,7 @@ debug/adminwindow.o: ../TrainUI/adminwindow.cpp ../TrainUI/adminwindow.h \
 		../TrainUI/include/database.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/addplansimple.h \
@@ -5291,6 +5322,7 @@ debug/searchusr.o: ../TrainUI/searchusr.cpp ../TrainUI/searchusr.h \
 		../TrainUI/include/database.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMessageBox \
@@ -5472,6 +5504,7 @@ debug/editsearchusr.o: ../TrainUI/editsearchusr.cpp ../TrainUI/editsearchusr.h \
 		../TrainUI/include/database.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDateTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
+		../TrainUI/include/DataBase_Account.h \
 		../TrainUI/toserverstructs.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDate \
 		../TrainUI/myinform.h \
@@ -5773,11 +5806,74 @@ debug/DataBase_Train.o: ../TrainUI/src/DataBase_Train.cpp ../TrainUI/include/Dat
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qfiledevice.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\DataBase_Train.o ..\TrainUI\src\DataBase_Train.cpp
 
+debug/database_base.o: ../TrainUI/src/database_base.cpp ../TrainUI/include/database.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstring.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qchar.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qglobal.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qconfig-bootstrapped.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qconfig.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qtcore-config.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsystemdetection.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qprocessordetection.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcompilerdetection.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qtypeinfo.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsysinfo.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qlogging.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qflags.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qtypetraits.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qatomic.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qbasicatomic.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qatomic_bootstrap.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qgenericatomic.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qatomic_cxx11.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qatomic_msvc.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qglobalstatic.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qmutex.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnumeric.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qversiontagging.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qbytearray.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qrefcount.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qnamespace.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qarraydata.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstringbuilder.h \
+		../TrainUI/include/vector.hpp \
+		../TrainUI/include/exceptions.hpp \
+		../TrainUI/include/utility.hpp \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QDataStream \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatastream.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qscopedpointer.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qiodevice.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobject.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobjectdefs_impl.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qlist.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qalgorithms.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qiterator.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qhashfunctions.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qpair.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qbytearraylist.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstringlist.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qregexp.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qstringmatcher.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcoreevent.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qmetatype.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qvarlengtharray.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcontainerfwd.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qobject_impl.h \
+		../TrainUI/include/smartpoint.hpp \
+		../TrainUI/include/map.hpp \
+		../TrainUI/include/algorithm0.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\database_base.o ..\TrainUI\src\database_base.cpp
+
 debug/qrc_pic.o: debug/qrc_pic.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qrc_pic.o debug\qrc_pic.cpp
 
 debug/qrc_completer.o: debug/qrc_completer.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qrc_completer.o debug\qrc_completer.cpp
+
+debug/qrc_style.o: debug/qrc_style.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\qrc_style.o debug\qrc_style.cpp
 
 debug/moc_mainwindow.o: debug/moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\moc_mainwindow.o debug\moc_mainwindow.cpp

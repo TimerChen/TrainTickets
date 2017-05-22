@@ -20,7 +20,7 @@ searchUsr::~searchUsr()
 void searchUsr::on_searchBtn_clicked()
 {
     QString usrID = ui->searchUsrIDLineEdit->text();
-    ///发送usrID给服务器
+    /// 发送usrID给服务器
     /// 获得一个用户信息的结构体
     if (true){
         ttd::shared_ptr<uistructs::nowAccount> searchAccount = new uistructs::nowAccount;

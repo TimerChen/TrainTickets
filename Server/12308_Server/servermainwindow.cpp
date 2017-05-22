@@ -50,15 +50,15 @@ void ServerMainWindow::newCommand()
 		if(qlist[1] == QString("train"))
 		{
 			if(qlist.size() < 3)
-				database->loadData_raw_train("rawdata.csv");
-			else
-				database->loadData_raw_train(qlist[2]);
+                database->loadData_raw_train("rawdata.csv");
+            else
+                database->loadData_raw_train(qlist[2]);
 		}else if(qlist[1] == QString("buy")){
 			if(qlist.size() < 3)
-				database->loadData_raw_buy("rawbuy.in");
-			else
-				database->loadData_raw_buy(qlist[2]);
-		}
+                database->loadData_raw_buy("rawbuy.in");
+            else
+                database->loadData_raw_buy(qlist[2]);
+        }
 	}else if(qlist[0] == QString("test")){
 		database->query_stationToStation(-1,QDate(2017,3,28),"恩施","宜昌东");
 	}
