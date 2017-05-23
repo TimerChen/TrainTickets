@@ -424,6 +424,9 @@ ttd::map<DataBase_Account::Ticket,int>
 		serverSocket->waitForReadyRead();
 		serverIn.startTransaction();
 		serverIn >> no_error;
+        if(no_error) {
+            serverIn >> serverReturn;
+        }
 		if(serverIn.commitTransaction())
 			break;
 	}

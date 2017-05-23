@@ -10,6 +10,8 @@ addplansimple::addplansimple(ttd::shared_ptr<uistructs::nowAccount> _now, QWidge
     nowaccount(_now)
 {
     ui->setupUi(this);
+    setWindowFlags(windowFlags() | Qt::WindowMaximizeButtonHint);
+    setWindowFlags(windowFlags() | Qt::WindowMinimizeButtonHint);
 }
 
 addplansimple::~addplansimple()
@@ -28,7 +30,7 @@ void addplansimple::on_addPlanBtn_clicked()
     else{
 		bool no_error = true;
 		try{
-			((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+            ((MainWindow*)(parentWidget()->parentWidget()))->
 					addTrain_remote( newPlan );
 		}catch(...){
 			no_error = false;

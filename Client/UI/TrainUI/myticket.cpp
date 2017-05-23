@@ -106,7 +106,7 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
 	bool no_error = true;
     if(nowaccount->userType == Ui::searchusr) {
         try{
-            qDebug()<<nowaccount->userID << endl;
+            //qDebug()<<nowaccount->userID << endl;
             qtrains = ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
                     askTickets_remote(nowaccount->userID);
         }catch(...){
@@ -114,7 +114,7 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
         }
     }else {
         try{
-            qDebug()<<nowaccount->userID<< endl;
+            //qDebug()<<nowaccount->userID<< endl;
             qtrains = ((MainWindow*)(parentWidget()))->
                     askTickets_remote(nowaccount->userID);
         }catch(...){
@@ -157,17 +157,17 @@ Myticket::~Myticket() { delete ui; }
 
 void Myticket::on_modifyTicketBtn_clicked() {
     int curRow = ui->ticketsTableView->currentIndex().row();
-    QAbstractItemModel *modessl = ui->ticketsTableView->model();
+    //QAbstractItemModel *modessl = ui->ticketsTableView->model();
 
-    QDate date = modessl->data(modessl->index(curRow, 3)).toDate();
-    int totalNum = modessl->data(modessl->index(curRow, 6)).toInt();
+    QDate date = model->data(model->index(curRow, 3)).toDate();
+    int totalNum = model->data(model->index(curRow, 6)).toInt();
     int tuiNum = ui->numLineEdit->text().toInt();
-    QString trainID = modessl->data(modessl->index(curRow, 0)).toString();
+    QString trainID = model->data(model->index(curRow, 0)).toString();
     QString usrID = nowaccount->userID;
-    QString seatType = modessl->data(modessl->index(curRow, 5)).toString();
-    QString load = modessl->data(modessl->index(curRow, 1)).toString();
-    QString unload = modessl->data(modessl->index(curRow, 2)).toString();
-    //int price = modessl->data(modessl->index(curRow,7)).toInt();
+    QString seatType = model->data(model->index(curRow, 5)).toString();
+    QString load = model->data(model->index(curRow, 1)).toString();
+    QString unload = model->data(model->index(curRow, 2)).toString();
+    //int price = model->data(model->index(curRow,7)).toInt();
 
     frontask::targetTicket targetticket(date, tuiNum, usrID, trainID, seatType,
                                         load, unload);
@@ -176,10 +176,10 @@ void Myticket::on_modifyTicketBtn_clicked() {
         "车次：" + targetticket.trainID + /*"\n发站日期：" + date.toString() +*/
         "\n发站： " + targetticket.loadStation + "\n到站： " +
         targetticket.unLoadStation + "\n发车时间：" +
-        modessl->data(modessl->index(curRow, 3)).toString() + "\n到站时间： " +
-        modessl->data(modessl->index(curRow, 4)).toString() + "\n座位类型：" +
+        model->data(model->index(curRow, 3)).toString() + "\n到站时间： " +
+        model->data(model->index(curRow, 4)).toString() + "\n座位类型：" +
         targetticket.seatType + "\n票价：" +
-        modessl->data(modessl->index(curRow, 7)).toString() + "\n退票张数：" +
+        model->data(model->index(curRow, 7)).toString() + "\n退票张数：" +
         QString::number(targetticket.buyNum, 10) + "\n原张数： " +
         QString::number(totalNum, 10);
     if (totalNum < tuiNum) {
@@ -214,7 +214,7 @@ void Myticket::on_modifyTicketBtn_clicked() {
 			if (no_error) {
                 QMessageBox::information(this, "成功", "退票成功",
                                          QMessageBox::Yes);
-                this->close();
+                model->setItem(curRow,6,new QStandardItem(QString::number(totalNum - tuiNum,10)));
             } else
                 QMessageBox::warning(this, "失败", "非常抱歉，退票失败",
                                      QMessageBox::Cancel);

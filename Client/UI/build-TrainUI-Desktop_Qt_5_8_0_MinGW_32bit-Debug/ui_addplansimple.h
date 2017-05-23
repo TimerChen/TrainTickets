@@ -38,7 +38,7 @@ public:
     {
         if (addplansimple->objectName().isEmpty())
             addplansimple->setObjectName(QStringLiteral("addplansimple"));
-        addplansimple->resize(522, 534);
+        addplansimple->resize(800, 800);
         verticalLayout_2 = new QVBoxLayout(addplansimple);
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         verticalLayout_2->setContentsMargins(20, 20, 20, 20);
