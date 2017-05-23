@@ -8,7 +8,7 @@ namespace ttd {
 
 template<class T>
 void swap( T &a, T &b )
-{ T c(a); a=b;b=c; }
+{ T c(a),d(b); a=d;b=c; }
 template<class T>
 T min(const T &a, const T &b){return a<b?a:b;}
 template<class T>
@@ -80,12 +80,11 @@ TI unique( TI data, TI end )
 template<class TI, class Compare >
 void sort( TI data, TI end, Compare cmp )
 {
-	if(data-end>=0)return;
+    if(end - data <= 1)return;
 	int l,r;
 	l = 0;r = end-data-1;
-	TI x;
 	swap( *(data+(l+r)/2), *(data+l) );
-	x = data+l;
+    TI x = data+l;
 	while( l < r )
 	{
 		while( l < r && cmp( *x, *(data+r) ) )r--;
@@ -99,7 +98,7 @@ void sort( TI data, TI end, Compare cmp )
 template<class TI >
 void sort( TI data, TI end )
 {
-	if(data-end>=0)return;
+    if(end - data <= 1)return;
 	int l,r;
 	l = 0;r = end-data-1;
 	TI x;

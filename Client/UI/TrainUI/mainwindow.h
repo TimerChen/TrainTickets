@@ -109,6 +109,7 @@ private:
 	QString query_log_remote();
     void changestyle();
 
+
 };
 
 #endif  // MAINWINDOW_H

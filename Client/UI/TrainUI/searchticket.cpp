@@ -8,8 +8,9 @@
 #include "modifyplanofatrain.h"
 #include "toserverstructs.h"
 #include "ui_searchticket.h"
-#include <algorithm>
+#include "include/algorithm0.hpp"
 #include <QtGlobal>
+#include "mainwindow.h"
 
 
 SearchTicket::SearchTicket(QWidget *parent, QDate _date,
@@ -182,7 +183,7 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
 		if (no_error) {  ///发送sss到服务器
             ///获得qtrains
 
-           // Ui::sort(qtrains, 0, qtrains.size(), Ui::Compare_for_qtrains);
+            ttd::sort(qtrains.begin(), qtrains.end(), Ui::Compare_for_qtrains);
 
             int deltaForSeat = 0;
             for (size_t i = 0; i < qtrains.size(); ++i) {
