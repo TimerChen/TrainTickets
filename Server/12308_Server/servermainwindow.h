@@ -34,7 +34,7 @@ private:
 	Ui::ServerMainWindow *ui;
 	QTcpServer *tcpServer;
 	QTcpSocket *currentConnection;
-	int currentUser;
+	int currentUser,subUser;
 	QDataStream in;
 
 	ttd::shared_ptr<DataBase_Main>database;

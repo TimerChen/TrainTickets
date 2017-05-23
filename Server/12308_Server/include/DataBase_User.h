@@ -12,7 +12,7 @@ class DataBase_User : public DataBase_Base
 
 private:
 	int nowTempId;
-	ttd::map<int,int> userData;//userData[userid] = accountId
+	ttd::map<int,int > userData;//userData[userid] = accountId
 	ttd::shared_ptr<DataBase_Account> nowAccData;
 
 
@@ -25,7 +25,7 @@ public:
 	void add_acc(ttd::shared_ptr<DataBase_Account> whichAcc);
 	// Login with your account id and password.
 	// return 0: failed
-	ttd::pair<int,QString> login( const QString &ID, const QString &password );
+	ttd::pair<int,QString> login( const QString &ID, const QString &password, const short &type=0 );
 	ttd::pair<int,QString> adminLogin( const QString &ID, const QString &password );
 	bool logout( const int UserId );
 	bool logged(int UserId);

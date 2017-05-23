@@ -200,22 +200,5 @@
  <resources>
   <include location="pic.qrc"/>
  </resources>
- <connections>
-  <connection>
-   <sender>logoutBtn</sender>
-   <signal>clicked()</signal>
-   <receiver>AdminWindow</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>621</x>
-     <y>670</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>412</x>
-     <y>399</y>
-    </hint>
-   </hints>
-  </connection>
- </connections>
+ <connections/>
 </ui>

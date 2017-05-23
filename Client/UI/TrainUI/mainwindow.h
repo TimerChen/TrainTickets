@@ -15,6 +15,8 @@
 namespace Ui {
 enum { annonymous, normal, admin, searchusr };
 enum { stationToStation, stationSearch, trainSearch };
+bool Compare_for_qtrains(const DataBase_Train::QTrain &q1,const DataBase_Train::QTrain &q2);
+
 class MainWindow;
 }
 
@@ -27,6 +29,11 @@ class MainWindow : public QMainWindow {
 	friend class Regist;
 	friend class SearchTicket;
 	friend class Myticket;
+	friend class Myinform;
+	friend class sysLog;
+	friend class searchUsr;
+	friend class modifyPlanOfATrain;
+	friend class addplansimple;
    public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -51,7 +58,9 @@ class MainWindow : public QMainWindow {
 	void link();
 	void dealError(QAbstractSocket::SocketError socketError);
 
-   private:
+    void on_styleBtn_clicked();
+
+private:
     Ui::MainWindow *ui;
     // int userType;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;
@@ -81,8 +90,24 @@ class MainWindow : public QMainWindow {
 		( const frontask::targetTicket &fask);
 	void buyTickets_remote
 		( const frontask::targetTicket &fask);
-	ttd::map< DataBase_Account::Ticket , int> askTickets_remote
+	ttd::map< DataBase_Account::Ticket , int>
+		askTickets_remote
 		( const QString &fask );
+
+	void changePwd_remote
+		( const frontask::changePwd &fask );
+	void changeName_remote
+		( const frontask::changeUsrName &fask );
+
+	DataBase_Account::Account query_name_remote( const QString &fask );
+
+	void addTrain_remote( const QString &fask );
+	void delTrain_remote( const QString &fask );
+	void openDate_remote( const QString &Train, const QDate &Date );
+	void closeDate_remote( const QString &Train, const QDate &Date );
+
+	QString query_log_remote();
+    void changestyle();
 
 
 };

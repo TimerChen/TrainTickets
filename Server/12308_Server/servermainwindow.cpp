@@ -17,6 +17,7 @@ ServerMainWindow::ServerMainWindow(QWidget *parent) :
 	ui->setupUi(this);
 
 	currentUser = -1;
+	subUser = -1;
 	database = new DataBase_Main("12308");
 	logs = database->getLog();
 
@@ -50,17 +51,26 @@ void ServerMainWindow::newCommand()
 		if(qlist[1] == QString("train"))
 		{
 			if(qlist.size() < 3)
-				database->loadData_raw_train("rawdata.csv");
-			else
-				database->loadData_raw_train(qlist[2]);
+                database->loadData_raw_train("rawdata.csv");
+            else
+                database->loadData_raw_train(qlist[2]);
 		}else if(qlist[1] == QString("buy")){
 			if(qlist.size() < 3)
-				database->loadData_raw_buy("rawbuy.in");
-			else
-				database->loadData_raw_buy(qlist[2]);
-		}
+                database->loadData_raw_buy("rawbuy.in");
+            else
+                database->loadData_raw_buy(qlist[2]);
+        }
 	}else if(qlist[0] == QString("test")){
-		database->query_stationToStation(-1,QDate(2017,3,28),"恩施","宜昌东");
+		//database->query_stationToStation(-1,QDate(2017,3,28),"恩施","宜昌东");
+		database->change_name( 0, "AIchan", "VirturalYoutuber" );
+	}else if(qlist[0] == QString("op") && qlist.size() >= 2){
+		database->setOp( qlist[1] );
+	}else if(qlist[0] == QString("register") && qlist.size() >= 3){
+		if(qlist.size() >= 4)
+			database->regist( qlist[1], qlist[2], qlist[3] );
+		else
+			database->regist( qlist[1], qlist[2] );
+
 	}
 	refreshConsole();
 	ui->commandEdit->setText("");
@@ -90,6 +100,7 @@ void ServerMainWindow::disconnect()
 	database->disconnect(currentUser);
 	database->logout(currentUser);
 	currentUser = -1;
+	subUser = -1;
 	refreshConsole();
 }
 
@@ -112,6 +123,9 @@ void ServerMainWindow::newMessage()
 	frontask::loginAccount opt_login;
 	frontask::regist opt_reg;
 	frontask::targetTicket opt_tic;
+	frontask::changePwd opt_cp;
+	frontask::changeUsrName opt_cun;
+	QDate opt_date;
 	QString opt_str;
 	switch (oType) {
 	case frontask::stationtostationsearch:
@@ -143,6 +157,30 @@ void ServerMainWindow::newMessage()
 		break;
 	case frontask::logout:
 
+		break;
+	case frontask::changeusrname:
+		in >> opt_cun;
+		break;
+	case frontask::changepwd:
+		in >> opt_cp;
+		break;
+	case frontask::getsyslog:
+
+		break;
+	case frontask::addplan:
+		in >> opt_str;
+		break;
+	case frontask::deletetrain:
+		in >> opt_str;
+		break;
+	case frontask::startselltrain:
+		in >> opt_str >> opt_date;
+		break;
+	case frontask::stopsellticket:
+		in >> opt_str >> opt_date;
+		break;
+	case frontask::getaccount:
+		in >> opt_str;
 		break;
 	default:
 		//unknown command
@@ -255,9 +293,19 @@ void ServerMainWindow::newMessage()
 	}
 	case frontask::login:
 	{
-		ttd::pair<int, QString> tmp
-			= database->login( opt_login.userID, opt_login.pwd );
-		currentUser = tmp.first;
+		ttd::pair<int, QString> tmp;
+
+		if( currentUser!=-1 )
+		{
+			// Admin cannot modify another admin's account.
+			tmp = database->login( opt_login.userID, opt_login.pwd, 2 );
+			if(tmp.first > 0)
+				subUser = tmp.first;
+		}else{
+			tmp = database->login( opt_login.userID, opt_login.pwd );
+			if(tmp.first > 0)
+				currentUser = tmp.first;
+		}
 		if(tmp.first > 0)
 			tmp.first = 1;
 		out << tmp;
@@ -266,10 +314,19 @@ void ServerMainWindow::newMessage()
 
 	case frontask::logout:
 	{
-		bool tmp
-			= database->logout( currentUser );
+
+		bool tmp;
+		if( subUser!=-1 )
+		{
+			tmp = database->logout( subUser );
+			subUser = -1;
+		}
+		else
+		{
+			tmp = database->logout( currentUser );
+			currentUser = -1;
+		}
 		out << tmp;
-		currentUser = -1;
 	}
 		break;
 	case frontask::reg:
@@ -279,6 +336,93 @@ void ServerMainWindow::newMessage()
 		out << tmp;
 	}
 		break;
+	case frontask::changepwd:
+	{
+		try{
+			database->change_pwd( currentUser, opt_cp.usrID, opt_cp.newpwd );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::changeusrname:
+	{
+		try{
+			database->change_name( currentUser, opt_cun.usrID, opt_cun.newname );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::getsyslog:
+	{
+		QString re;
+		for( size_t i=ttd::max(0,(int)(logs->size())-50); i<logs->size(); ++i )
+			re = re + (*logs)[i] + "\n";
+		out << re;
+		break;
+	}
+	case frontask::addplan:
+	{
+		try{
+			database->add_train( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::deletetrain:
+	{
+		try{
+			database->delete_train( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::startselltrain:
+	{
+		try{
+			database->startSell( currentUser, opt_str, opt_date );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::stopsellticket:
+	{
+		try{
+			database->stopSell( currentUser, opt_str, opt_date );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::getaccount:
+	{
+		DataBase_Account::Account tmp;
+		try{
+			tmp = database->queryAccount( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
+		break;
+	}
 	default:
 		break;
 	}

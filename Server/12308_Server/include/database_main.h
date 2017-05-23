@@ -84,19 +84,24 @@ public:
 	void addLog( const QString &content );
 
 
+	void change_pwd( const int &UserId, const QString &accId, const QString &Pwd );
+	void change_name( const int &UserId, const QString &accId, const QString &Name );
+
+	void setOp( const QString &UserId );
+
 	//void User
 	//UserId is for identify your identification.
 
-	void modify_train( int UserId, int TrainId, const Train &TrainInfo );
+	//void modify_train( int UserId, int TrainId, const Train &TrainInfo );
 
 	//This will return a TrainId.
-	int add_train( int UserId, const Train &TrainInfo );
-	void delete_train( int UserId, int TrainId );
+	void add_train( const int &UserId, const QString &TrainInfo );
+	void delete_train( const int &UserId, const QString &TrainId );
 
-	void startSell( int UserId, int TrainId, int DayTime );
-	void stopSell( int UserId, int TrainId, int DayTime );
+	void startSell( const int &UserId, const QString &TrainId, QDate DayTime );
+	void stopSell( const int &UserId, const QString &TrainId, QDate DayTime );
 
-	ttd::vector<QString> query_logs( int UserId, int FromTime, int ToTime );
+	//ttd::vector<QString> query_logs( int UserId, int FromTime, int ToTime );
 };
 
 #endif // DATABASE_MAIN_H

@@ -57,3 +57,5 @@ HEADERS  += servermainwindow.h \
     include/DataBase_Train.h
 
 FORMS    += servermainwindow.ui
+
+RESOURCES +=

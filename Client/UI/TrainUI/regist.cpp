@@ -31,7 +31,11 @@ void Regist::on_registBtn_clicked() {
         if (ui->usrLineEdit->text() == ""){
             QMessageBox::warning(this, "注册失败", "用户ID不得为空",
                                  QMessageBox::Cancel);
-        }
+		}else if (ui->usrLineEdit->text().length() == 4) {
+			QMessageBox::warning(this, "注册失败","如果您想获得专属4位靓号\nPlease contact timer2016@163.com!\n\n（当前会员价格为300元/2年\n我们在短期内将提价为400元/年）",QMessageBox::Cancel);
+		}else if (ui->usrLineEdit->text().length() < 6) {
+			QMessageBox::warning(this, "注册失败","抱歉,普通用户暂不支持6位以下用户ID\n如需获得6位以下下靓号\nPlease contact timer2016@163.com!\n当前会员价格为300元/2年\n我们在短期内将提价为400元/年\n欲购从速！！！",QMessageBox::Cancel);
+		}
         else if (ui->pwdLineEdit->text().length() < 6) {
             QMessageBox::warning(this, "注册失败", "密码长度应不小于6位",
                                  QMessageBox::Cancel);
@@ -42,8 +46,11 @@ void Regist::on_registBtn_clicked() {
 				= ((MainWindow*)parentWidget())->register_remote
 					(ui->usrLineEdit->text(), ui->pwdLineEdit->text());
 
-			if(serverReturn == 2)
-				accept();
+            if(serverReturn == 2){
+                QMessageBox::information(this, "注册成功", "恭喜，注册成功！",
+                                     QMessageBox::Yes);
+                accept();
+            }
 			else if(serverReturn == 1)
 				QMessageBox::warning(this, "注册失败", "存在的用户名",
 									 QMessageBox::Cancel);

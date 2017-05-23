@@ -8,6 +8,10 @@
 #include "modifyplanofatrain.h"
 #include "toserverstructs.h"
 #include "ui_searchticket.h"
+#include "include/algorithm0.hpp"
+#include <QtGlobal>
+#include "mainwindow.h"
+
 
 SearchTicket::SearchTicket(QWidget *parent, QDate _date,
                            ttd::shared_ptr<uistructs::nowAccount> _now,
@@ -28,10 +32,16 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
 
     ///设置列宽和标签栏
     ui->calLabel->setText("日期：" + date.toString());
+    if (searchType == Ui::stationToStation)
+        windowTitleChanged("站站查询");
+    else if (searchType == Ui::stationSearch)
+        windowTitleChanged("车站查询");
+    else windowTitleChanged("车次查询");
     if (searchType != Ui::stationToStation)
     {
         ui->buyTicketBtn->setEnabled(false);
         ui->ticketNumLineEdit->setEnabled(false);
+        ui->tryLuckBtn->setEnabled(false);
     }
     if (nowaccount->userType == Ui::admin) {
         ui->buyTicketBtn->setEnabled(true);
@@ -62,10 +72,10 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
     ui->ticketsTableView->setColumnWidth(0, 200);
     ui->ticketsTableView->setColumnWidth(1, 200);
     ui->ticketsTableView->setColumnWidth(2, 200);
-    ui->ticketsTableView->setColumnWidth(3, 200);
-    ui->ticketsTableView->setColumnWidth(4, 200);
+    ui->ticketsTableView->setColumnWidth(3, 300);
+    ui->ticketsTableView->setColumnWidth(4, 300);
     ui->ticketsTableView->setColumnWidth(5, 150);
-    ui->ticketsTableView->setColumnWidth(6, 100);
+    ui->ticketsTableView->setColumnWidth(6, 150);
     ui->ticketsTableView->setColumnWidth(7, 100);
     ui->ticketsTableView->setColumnWidth(8, 150);
     // ui->ticketsTableView->setColumnWidth(9, 100);
@@ -152,21 +162,33 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
 
         frontask::stationToStationSearch sss(date, ask1, ask2);
 		bool no_error = true;
-		try{
-			qtrains =
-			((MainWindow*)(parentWidget()->parentWidget()))->query_sts_remote
-								(sss);
-		}catch(...){
-			no_error = false;
-		}
+        if (nowaccount->userType == Ui::searchusr){
+            ui->tryLuckBtn->setEnabled(false);
+            try{
+                qtrains =
+                ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->query_sts_remote(sss);
+            }catch(...){
+                no_error = false;
+            }
+        }else {
+            try{
+                qtrains =
+                ((MainWindow*)(parentWidget()->parentWidget()))->query_sts_remote
+                                    (sss);
+            }catch(...){
+                no_error = false;
+            }
+        }
 
 		if (no_error) {  ///发送sss到服务器
             ///获得qtrains
 
-
+            ttd::sort(qtrains.begin(), qtrains.end(), Ui::Compare_for_qtrains);
 
             int deltaForSeat = 0;
             for (size_t i = 0; i < qtrains.size(); ++i) {
+                qtrains[i].loadStationLeaveTime = qtrains[i].loadStationLeaveTime.addDays(-1);
+                qtrains[i].unLoadStationReachTime = qtrains[i].unLoadStationReachTime.addDays(-1);
                 for (int j = 0; j < qtrains[i].seatTypeNumber; ++j) {
                     model->setItem(i + deltaForSeat, 0,
                                    new QStandardItem(qtrains[i].trainID));
@@ -177,17 +199,20 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
                     model->setItem(i + deltaForSeat, 3,
                                    new QStandardItem(
                                        qtrains[i].loadStationLeaveTime.toString(
-                                           "hh:mm:ss")));
+                                           "yyyy-MM-dd hh:mm:ss")));
                     model->setItem(
                         i + deltaForSeat, 4,
                         new QStandardItem(
                             qtrains[i].unLoadStationReachTime.toString(
-                                "hh:mm:ss")));
+                                "yyyy-MM-dd hh:mm:ss")));
 
                     model->setItem(i + deltaForSeat, 5,
                                    new QStandardItem(qtrains[i].seatType[j]));
                     double price = double(qtrains[i].price[j]) / 100;
-                    if (price <= 0) qtrains[i].ableToBuy = false;
+                    if (price <= 0) {
+                        qtrains[i].ableToBuy = false;
+                        price = 0;
+                    }
                             model->setItem(i + deltaForSeat, 6,
                                    new QStandardItem(QString::number(
                                        price, '.', 2)));
@@ -212,13 +237,29 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
         frontask::trainSearch sss(date, ask1);
 
 		bool no_error = true;
-		try{
-			trainroute =
-			((MainWindow*)(parentWidget()->parentWidget()))->query_t_remote
-								(sss);
-		}catch(...){
-			no_error = false;
-		}
+        if (nowaccount->userType == Ui::admin){
+            try{
+                trainroute =
+                ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()))->query_t_remote(sss);
+            }catch(...){
+                no_error = false;
+            }
+        }else if (nowaccount->userType == Ui::searchusr){
+            try{
+                trainroute =
+                ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->query_t_remote(sss);
+            }catch(...){
+                no_error = false;
+            }
+        }else {
+            try{
+                trainroute =
+                ((MainWindow*)(parentWidget()->parentWidget()))->query_t_remote
+                                    (sss);
+            }catch(...){
+                no_error = false;
+            }
+        }
 
 		if (no_error) {
             ///发送frontask::trainsearch
@@ -278,14 +319,23 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
         frontask::stationSearch sss(date, ask1);
 
 		bool no_error = true;
-		try{
-			vtrainroute =
-			((MainWindow*)(parentWidget()->parentWidget()))->query_s_remote
-								(sss);
-		}catch(...){
-			no_error = false;
-		}
-
+        if (nowaccount->userType == Ui::searchusr){
+            try{
+                vtrainroute =
+                ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->query_s_remote
+                                    (sss);
+            }catch(...){
+                no_error = false;
+            }
+        }else {
+            try{
+                vtrainroute =
+                ((MainWindow*)(parentWidget()->parentWidget()))->query_s_remote
+                                    (sss);
+            }catch(...){
+                no_error = false;
+            }
+        }
 		if (no_error) {
             ///发送frontask::stationsearch
             ///发送sss到服务器
@@ -301,8 +351,8 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
             for (size_t t = 0; t < vtrainroute.size(); ++t) {
                 model->setItem(t + deltaForSeat, 0,
                                new QStandardItem(vtrainroute[t].trainID));
-				qDebug() << vtrainroute[t].trainID;
-				qDebug() << vtrainroute[t].stationNumber;
+                //qDebug() << vtrainroute[t].trainID;
+                //qDebug() << vtrainroute[t].stationNumber;
                 for (int i = 0; i < vtrainroute[t].stationNumber; ++i) {
                     if (i == 0)
                         model->setItem(
@@ -351,17 +401,16 @@ SearchTicket::~SearchTicket() { delete ui; }
 
 void SearchTicket::on_buyTicketBtn_clicked() {
     int curRow = ui->ticketsTableView->currentIndex().row();
-    QAbstractItemModel *modessl = ui->ticketsTableView->model();
-
     int buyNum = ui->ticketNumLineEdit->text().toInt();
-    QString trainID = modessl->data(modessl->index(curRow, 0)).toString();
+    QString trainID = model->data(model->index(curRow, 0)).toString();
     QString usrID = nowaccount->userID;
-    QString seatType = modessl->data(modessl->index(curRow, 5)).toString();
-    QString load = modessl->data(modessl->index(curRow, 1)).toString();
-    QString unload = modessl->data(modessl->index(curRow, 2)).toString();
+    qDebug()<<usrID << endl;
+    QString seatType = model->data(model->index(curRow, 5)).toString();
+    QString load = model->data(model->index(curRow, 1)).toString();
+    QString unload = model->data(model->index(curRow, 2)).toString();
 
-    int remaintickets = modessl->data(modessl->index(curRow, 7)).toInt();
-    QString abletobuy = modessl->data(modessl->index(curRow, 8)).toString();
+    int remaintickets = model->data(model->index(curRow, 7)).toInt();
+    QString abletobuy = model->data(model->index(curRow, 8)).toString();
 
     frontask::targetTicket targetticket(date, buyNum, usrID, trainID, seatType,
                                         load, unload);
@@ -381,12 +430,12 @@ void SearchTicket::on_buyTicketBtn_clicked() {
             trainInform += "\n发站： " + targetticket.loadStation +
                            "\n到站： " + targetticket.unLoadStation +
                            "\n发车时间：" +
-                           modessl->data(modessl->index(curRow, 3)).toString() +
+                           model->data(model->index(curRow, 3)).toString() +
                            "\n到站时间： " +
-                           modessl->data(modessl->index(curRow, 4)).toString() +
+                           model->data(model->index(curRow, 4)).toString() +
                            "\n座位类型：" + targetticket.seatType + "\n票价：" +
-                           modessl->data(modessl->index(curRow, 6)).toString() +
-                           "\n总张数：" + ui->ticketNumLineEdit->text();
+                           model->data(model->index(curRow, 6)).toString() +
+                           "\n总张数：" + QString::number(buyNum,10);
             QMessageBox::StandardButton qmb = QMessageBox::question(
                 this, "确认购票", "您是否要购买以下车票：\n" + trainInform,
                 QMessageBox::Yes | QMessageBox::No);
@@ -395,7 +444,12 @@ void SearchTicket::on_buyTicketBtn_clicked() {
                 if (nowaccount->userType == Ui::searchusr) {
                     ///发送frontask::adminaddusrticket
                     /// 发送pair(targetticket, adminID)
-					///
+					try{
+                        ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+								buyTickets_remote(targetticket);
+					}catch(...){
+						no_error = false;
+					}
                 }else {
 					try{
 						((MainWindow*)(parentWidget()->parentWidget()))->
@@ -410,12 +464,99 @@ void SearchTicket::on_buyTicketBtn_clicked() {
 				if (no_error) {
                     QMessageBox::information(this, "成功", "购票成功",
                                              QMessageBox::Yes);
+
+                    model->setItem(curRow,7,new QStandardItem(QString::number(remaintickets-buyNum,10)));
                 } else
                     QMessageBox::warning(this, "失败", "非常抱歉，购票失败",
                                          QMessageBox::Cancel);
             }
         }
     } else  {
+        modifyPlanOfATrain m(nowaccount, targetticket, trainInform, this);
+        // this->hide();
+        m.exec();
+        this->close();
+    }
+}
+
+void SearchTicket::on_tryLuckBtn_clicked()
+{
+    int curRow = qrand()%(model->rowCount())-1;
+    int cnt = 0;
+    while (model->data(model->index(curRow, 8)).toString() != tr("是") && cnt++ < 10000) curRow = qrand()%(model->rowCount())-1;
+    if (cnt >= 10000) {
+        QMessageBox::warning(this,"手气真差","对不起，您的脸太黑，抽不到票",QMessageBox::Cancel);
+        return;
+    }
+    int buyNum = qrand()%model->data(model->index(curRow, 7)).toInt()+1;
+    QString trainID = model->data(model->index(curRow, 0)).toString();
+    QString usrID = nowaccount->userID;
+    QString seatType = model->data(model->index(curRow, 5)).toString();
+    QString load = model->data(model->index(curRow, 1)).toString();
+    QString unload = model->data(model->index(curRow, 2)).toString();
+
+    int remaintickets = model->data(model->index(curRow, 7)).toInt();
+    QString abletobuy = model->data(model->index(curRow, 8)).toString();
+
+    frontask::targetTicket targetticket(date, buyNum, usrID, trainID, seatType,
+                                        load, unload);
+
+    QString trainInform =
+        "车次：" + targetticket.trainID + "\n发站日期：" + date.toString();
+    if (nowaccount->userType == Ui::annonymous) {
+       QMessageBox::warning(this, "失败", "请先登录再购买车票",QMessageBox::Cancel);
+    } else if (nowaccount->userType == Ui::normal || nowaccount->userType == Ui::searchusr) {
+        if (abletobuy == tr("否")) {
+            QMessageBox::warning(this, "无法购买", "该票还未发售",
+                                 QMessageBox::Cancel);
+        } else if (buyNum > remaintickets) {
+            QMessageBox::warning(this, "无法购买", "余票不足",
+                                 QMessageBox::Cancel);
+        } else {
+            trainInform += "\n发站： " + targetticket.loadStation +
+                           "\n到站： " + targetticket.unLoadStation +
+                           "\n发车时间：" +
+                           model->data(model->index(curRow, 3)).toString() +
+                           "\n到站时间： " +
+                           model->data(model->index(curRow, 4)).toString() +
+                           "\n座位类型：" + targetticket.seatType + "\n票价：" +
+                           model->data(model->index(curRow, 6)).toString() +
+                           "\n总张数：" + QString::number(buyNum,10);
+            QMessageBox::StandardButton qmb = QMessageBox::question(
+                this, "确认购票", "您是否要购买以下车票：\n" + trainInform,
+                QMessageBox::Yes | QMessageBox::No);
+            if (qmb == QMessageBox::Yes) {
+                bool no_error = true;
+                if (nowaccount->userType == Ui::normal){
+                    try{
+                        ((MainWindow*)(parentWidget()->parentWidget()))->
+                                buyTickets_remote(targetticket);
+
+                    }catch(...){
+                        no_error = false;
+                    }
+                }
+                else {
+                    try{
+                        ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+                                buyTickets_remote(targetticket);
+
+                    }catch(...){
+                        no_error = false;
+                    }
+                }
+                if (no_error) {
+                    QMessageBox::information(this, "成功", "购票成功",
+                                             QMessageBox::Yes);
+
+                    model->setItem(curRow,7,new QStandardItem(QString::number(remaintickets-buyNum,10)));
+                } else
+                    QMessageBox::warning(this, "失败", "非常抱歉，购票失败",
+                                         QMessageBox::Cancel);
+            }
+        }
+    } else  {
+        //qDebug()<<trainInform<<endl;
         modifyPlanOfATrain m(nowaccount, targetticket, trainInform, this);
         // this->hide();
         m.exec();

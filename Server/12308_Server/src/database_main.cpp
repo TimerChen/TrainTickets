@@ -32,8 +32,10 @@ void DataBase_Main::loadData_raw_buy( const QString &FileName )
 {
 	dLog->any("Start load raw-buy-data.");
 	QFile file(FileName);	//file
-	if (!file.open(QFile::ReadOnly|QFile::Text))	throw(0);//open failed
+    if (!file.open(QFile::ReadOnly|QFile::Text))
+        throw(0);//open failed
 	QTextStream in(&file);
+    in.setCodec("UTF-8");
 
 	int total = 0;
 	int num;
@@ -67,7 +69,7 @@ void DataBase_Main::loadData_raw_train(const QString &FileName)
 {
 	dLog->any("Start load raw-train-data.");
 	dTrain->loadData_raw(FileName);
-	dLog->any("Finished load raw-buy-data.");
+	dLog->any("Finished load raw-train-data.");
 }
 
 void DataBase_Main::loadData()
@@ -105,12 +107,15 @@ int DataBase_Main::regist( const QString &Id, const QString &pwd, const QString 
 ttd::pair<int,QString> DataBase_Main::login
 ( const QString &ID, const QString &password, const short &type )
 {
-	if(type)
+	if(type==2)
 		return dLog->login
-				( ID, password, dUser->adminLogin( ID, password ) );
+				( ID, dAccount->getPasswordHash(password), dUser->login( ID, password, 1 ) );
+	else if(type == 1)
+		return dLog->login
+				( ID, dAccount->getPasswordHash(password), dUser->adminLogin( ID, password ) );
 	else
 		return dLog->login
-				( ID, password, dUser->login( ID, password ) );
+				( ID, dAccount->getPasswordHash(password), dUser->login( ID, password ) );
 }
 
 bool DataBase_Main::logout( int UserId )
@@ -130,7 +135,7 @@ DataBase_Account::Account DataBase_Main::queryAccount
 {
 	int id = dAccount->getIdNumber(ID);
 	if(dUser->account_id(UserId) != id &&
-			!dUser->is_admin(UserId))
+		(!dUser->is_admin(UserId) || dAccount->accData[id].isAdmin))
 		throw ttd::no_authority();
 
 	DataBase_Account::Account acc = dAccount->queryAccount(id);
@@ -260,4 +265,91 @@ DataBase_Train::TrainRoute DataBase_Main::query_train
 void DataBase_Main::addLog( const QString &content)
 {
 	dLog->any( content );
+}
+
+
+void DataBase_Main::change_pwd(const int &UserId, const QString &accId, const QString &Pwd)
+{
+
+	if(UserId <0)
+		throw ttd::no_authority();
+
+	int id = dAccount->getIdNumber(accId);
+
+	if(dUser->account_id(UserId) != id &&
+			!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	dAccount->modifyAccount( id, Pwd, "" );
+	dLog->modifyAccount( UserId, id );
+}
+void DataBase_Main::change_name(const int &UserId, const QString &accId, const QString &Name)
+{
+	if(UserId <0)
+		throw ttd::no_authority();
+
+	int id = dAccount->getIdNumber(accId);
+
+	if(dUser->account_id(UserId) != id &&
+			!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	dAccount->modifyAccount( id, "", Name );
+	dLog->modifyAccount( UserId, id );
+
+}
+
+void DataBase_Main::setOp( const QString &UserId )
+{
+	bool tmp;
+	try{
+		tmp = dAccount->setOp( UserId );
+	}catch(...){
+		dLog->any( "Connot find this ID." );
+		return;
+	}
+	dLog->setOp( UserId, tmp );
+}
+void DataBase_Main::add_train( const int &UserId, const QString &TrainInfo )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	dTrain->newTrain( TrainInfo );
+	dLog->newTrain(QString::number(UserId), "[Name]", "[TrainId]");
+}
+
+void DataBase_Main::delete_train( const int &UserId, const QString &TrainId )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+	bool tmp = dTrain->delTrain( TrainId );
+	dLog->delTrain(QString::number(UserId), "[Name]", TrainId );
+	if(!tmp) throw(ttd::not_exists());
+}
+
+void DataBase_Main::startSell( const int &UserId, const QString &TrainId, QDate DayTime )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+	dTrain->openOneDay( TrainId, DayTime );
+	dLog->openDay(QString::number(UserId), "[Name]", TrainId, DayTime);
+}
+
+void DataBase_Main::stopSell( const int &UserId, const QString &TrainId, QDate DayTime )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+	bool tmp;
+	tmp = dTrain->closeOneDay( TrainId, DayTime );
+	dLog->closeDay(QString::number(UserId), "[Name]", TrainId, DayTime);
+	if(!tmp) throw(ttd::not_exists());
 }

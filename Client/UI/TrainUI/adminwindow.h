@@ -28,6 +28,8 @@ private slots:
 
     void on_pushButton_clicked();
 
+    void on_logoutBtn_clicked();
+
 private:
     Ui::AdminWindow *ui;
     ttd::shared_ptr<uistructs::nowAccount> nowaccount;

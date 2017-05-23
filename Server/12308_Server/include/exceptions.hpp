@@ -67,6 +67,13 @@ public:
 	{ detail = "NoAuthority."; }
 };
 
+class not_exists : public exception
+{
+public:
+	not_exists()
+	{ detail = "This not exists."; }
+};
+
 }
 
 #endif

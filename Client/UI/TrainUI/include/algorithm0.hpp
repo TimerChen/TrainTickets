@@ -8,7 +8,7 @@ namespace ttd {
 
 template<class T>
 void swap( T &a, T &b )
-{ T c(a); a=b;b=c; }
+{ T c(a),d(b); a=d;b=c; }
 template<class T>
 T min(const T &a, const T &b){return a<b?a:b;}
 template<class T>
@@ -25,7 +25,7 @@ TI lower_bound( TI data, TI end, const T &val, Compare cmp )
 	while( l < r )
 	{
 		int mid = ( l+r )/2;
-		if( cmp( data[mid], val ) )l = mid+1;
+		if( cmp( *(data+mid), val ) )l = mid+1;
 		else r = mid;
 	}
 	return data+l;
@@ -39,7 +39,7 @@ TI upper_bound( TI data, TI end, const T &val, Compare cmp )
 	while( l < r )
 	{
 		int mid = (l+r)/2;
-		if( cmp( val, data[mid] ) )r = mid;
+		if( cmp( val, *(data+mid) ) )r = mid;
 		else l = mid+1;
 	}
 	return data + l;
@@ -60,8 +60,8 @@ TI unique( TI data, TI end, BinaryPredicate pred )
 	n = end-data-1;
 	for(i=0;i<n;i++)
 	{
-		if( j == -1 || !pred(data[j],data[i]) )
-			data[++j] = data[i];
+		if( j == -1 || !pred(*(data+j),*(data+i)) )
+			*(data+(++j)) = *(data+i);
 	}
 	return data+j+1;
 }
@@ -72,26 +72,25 @@ TI unique( TI data, TI end )
 	n = end-data-1;
 	for(i=0;i<n;i++)
 	{
-		if( j == -1 || !(data[j] == data[i]) )
-			data[++j] = data[i];
+		if( j == -1 || !(*(data+j) == *(data+i)) )
+			*(data+(++j)) = *(data+i);
 	}
 	return data+j+1;
 }
 template<class TI, class Compare >
 void sort( TI data, TI end, Compare cmp )
 {
-	if(data >= end)return;
+    if(end - data <= 1)return;
 	int l,r;
 	l = 0;r = end-data-1;
-	TI x;
-	swap(data[(l+r)/2],data[l]);
-	x = data+l;
+	swap( *(data+(l+r)/2), *(data+l) );
+    TI x = data+l;
 	while( l < r )
 	{
-		while( l < r && cmp( *x ,data[r] ) )r--;
-		if( l < r ){swap( data[l++], data[r] );x = data+r;}
-		while( l < r && cmp( data[l] ,*x ) )l++;
-		if( l < r ){swap( data[r--], data[l] );x = data+l;}
+		while( l < r && cmp( *x, *(data+r) ) )r--;
+		if( l < r ){swap( *(data+(l++)), *(data+r) );x = data+r;}
+		while( l < r && cmp( *(data+l), *x ) )l++;
+		if( l < r ){swap( *(data+(r--)), *(data+l) );x = data+l;}
 	}
 	sort( data, x, cmp );
 	sort( x+1, end, cmp );
@@ -99,18 +98,18 @@ void sort( TI data, TI end, Compare cmp )
 template<class TI >
 void sort( TI data, TI end )
 {
-	if(data >= end)return;
+    if(end - data <= 1)return;
 	int l,r;
 	l = 0;r = end-data-1;
 	TI x;
-	swap(data[(l+r)/2],data[l]);
+	swap(*(data+((l+r)/2)), *(data+l));
 	x = data+l;
 	while( l < r )
 	{
-		while( l < r && ( *x < data[r] ) )r--;
-		if( l < r ){swap( data[l++], data[r] );x = data+r;}
-		while( l < r && ( data[l] < *x ) )l++;
-		if( l < r ){swap( data[r--], data[l] );x = data+l;}
+		while( l < r && ( *x < *(data+r) ) )r--;
+		if( l < r ){swap( *(data+(l++)), *(data+r) );x = data+r;}
+		while( l < r && ( *(data+l) < *x ) )l++;
+		if( l < r ){swap( *(data+(r--)), *(data+l) );x = data+l;}
 	}
 	sort( data, x );
 	sort( x+1, end );

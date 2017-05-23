@@ -49,6 +49,7 @@ public:
     QVBoxLayout *verticalLayout_2;
     QPushButton *loginBtn;
     QPushButton *regBtn;
+    QPushButton *styleBtn;
     QStatusBar *statusBar;
 
     void setupUi(QMainWindow *MainWindow)
@@ -73,6 +74,7 @@ public:
         label_3 = new QLabel(centralWidget);
         label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(170, 240, 91, 41));
+        label_3->setTextFormat(Qt::RichText);
         label_3->setScaledContents(false);
         splitter = new QSplitter(centralWidget);
         splitter->setObjectName(QStringLiteral("splitter"));
@@ -105,22 +107,25 @@ public:
         horizontalLayout->setContentsMargins(0, 0, 0, 0);
         myticketBtn = new QPushButton(layoutWidget);
         myticketBtn->setObjectName(QStringLiteral("myticketBtn"));
-        myticketBtn->setMinimumSize(QSize(222, 58));
-        myticketBtn->setMaximumSize(QSize(222, 58));
+        QSizePolicy sizePolicy(QSizePolicy::Expanding, QSizePolicy::Preferred);
+        sizePolicy.setHorizontalStretch(0);
+        sizePolicy.setVerticalStretch(0);
+        sizePolicy.setHeightForWidth(myticketBtn->sizePolicy().hasHeightForWidth());
+        myticketBtn->setSizePolicy(sizePolicy);
 
         horizontalLayout->addWidget(myticketBtn);
 
         myinformBtn = new QPushButton(layoutWidget);
         myinformBtn->setObjectName(QStringLiteral("myinformBtn"));
-        myinformBtn->setMinimumSize(QSize(221, 58));
-        myinformBtn->setMaximumSize(QSize(221, 58));
+        sizePolicy.setHeightForWidth(myinformBtn->sizePolicy().hasHeightForWidth());
+        myinformBtn->setSizePolicy(sizePolicy);
 
         horizontalLayout->addWidget(myinformBtn);
 
         logoutBtn = new QPushButton(layoutWidget);
         logoutBtn->setObjectName(QStringLiteral("logoutBtn"));
-        logoutBtn->setMinimumSize(QSize(222, 58));
-        logoutBtn->setMaximumSize(QSize(222, 58));
+        sizePolicy.setHeightForWidth(logoutBtn->sizePolicy().hasHeightForWidth());
+        logoutBtn->setSizePolicy(sizePolicy);
 
         horizontalLayout->addWidget(logoutBtn);
 
@@ -156,11 +161,11 @@ public:
         verticalLayout_2->setObjectName(QStringLiteral("verticalLayout_2"));
         loginBtn = new QPushButton(layoutWidget1);
         loginBtn->setObjectName(QStringLiteral("loginBtn"));
-        QSizePolicy sizePolicy(QSizePolicy::Preferred, QSizePolicy::Fixed);
-        sizePolicy.setHorizontalStretch(0);
-        sizePolicy.setVerticalStretch(0);
-        sizePolicy.setHeightForWidth(loginBtn->sizePolicy().hasHeightForWidth());
-        loginBtn->setSizePolicy(sizePolicy);
+        QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
+        sizePolicy1.setHorizontalStretch(0);
+        sizePolicy1.setVerticalStretch(0);
+        sizePolicy1.setHeightForWidth(loginBtn->sizePolicy().hasHeightForWidth());
+        loginBtn->setSizePolicy(sizePolicy1);
         loginBtn->setMinimumSize(QSize(409, 58));
 
         verticalLayout_2->addWidget(loginBtn);
@@ -174,12 +179,16 @@ public:
 
         verticalLayout->addLayout(verticalLayout_2);
 
+        styleBtn = new QPushButton(centralWidget);
+        styleBtn->setObjectName(QStringLiteral("styleBtn"));
+        styleBtn->setGeometry(QRect(609, 250, 141, 31));
         MainWindow->setCentralWidget(centralWidget);
         splitter->raise();
         layoutWidget->raise();
         label->raise();
         label_3->raise();
         layoutWidget->raise();
+        styleBtn->raise();
         statusBar = new QStatusBar(MainWindow);
         statusBar->setObjectName(QStringLiteral("statusBar"));
         MainWindow->setStatusBar(statusBar);
@@ -204,6 +213,7 @@ public:
         welcomeLabel->setText(QApplication::translate("MainWindow", "\346\254\242\350\277\216\357\274\201", Q_NULLPTR));
         loginBtn->setText(QApplication::translate("MainWindow", "\347\231\273\345\275\225", Q_NULLPTR));
         regBtn->setText(QApplication::translate("MainWindow", "\346\263\250\345\206\214", Q_NULLPTR));
+        styleBtn->setText(QApplication::translate("MainWindow", "\346\233\264\346\215\242\344\270\273\351\242\230", Q_NULLPTR));
     } // retranslateUi
 
 };

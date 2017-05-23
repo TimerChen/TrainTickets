@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
 	serverIn.setDevice(serverSocket);
 	serverIn.setVersion(QDataStream::Qt_5_0);
 
-
+    qDebug()<< this << endl;
 
 }
 
@@ -46,7 +46,7 @@ MainWindow::~MainWindow() { delete ui; }
 
 void MainWindow::link()
 {
-	QFile ipconfig("ipconfig.txt");
+    QFile ipconfig(":/src/ipconfig.txt");
     ipconfig.open(QIODevice::ReadOnly);
 
     QTextStream in(&ipconfig);
@@ -102,7 +102,10 @@ void MainWindow::on_loginBtn_clicked() {
 			AdminWindow adw(nowaccount, this);
 			this->hide();
 			if(adw.exec() == QDialog::Accepted) this->show();
-			else qApp->quit();
+            else {
+                this->on_logoutBtn_clicked();
+                qApp->quit();
+            }
 			this->on_logoutBtn_clicked();
 		}
 	}
@@ -142,6 +145,7 @@ void MainWindow::on_myinformBtn_clicked() {
 	Myinform myinform(nowaccount, this);
 
 	myinform.exec();
+    ui->nameLabel->setText(nowaccount->name);
 }
 
 void MainWindow::on_stationToStationSearchBtn_clicked() {
@@ -420,6 +424,80 @@ ttd::map<DataBase_Account::Ticket,int>
 		serverSocket->waitForReadyRead();
 		serverIn.startTransaction();
 		serverIn >> no_error;
+        if(no_error) {
+            serverIn >> serverReturn;
+        }
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+void MainWindow::changePwd_remote(const frontask::changePwd &fask)
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::changepwd
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+void MainWindow::changeName_remote(const frontask::changeUsrName &fask)
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::changeusrname
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+DataBase_Account::Account MainWindow::query_name_remote( const QString &fask )
+{
+	QByteArray block;
+	DataBase_Account::Account serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::getaccount
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
 		if( no_error )
 			serverIn >> serverReturn;
 		if(serverIn.commitTransaction())
@@ -427,4 +505,146 @@ ttd::map<DataBase_Account::Ticket,int>
 	}
 	if(!no_error) throw(0);
 	return serverReturn;
+}
+
+void MainWindow::addTrain_remote( const QString &fask )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::addplan
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+
+void MainWindow::delTrain_remote( const QString &fask )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::deletetrain
+			<< fask;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+
+void MainWindow::openDate_remote( const QString &Train, const QDate &Date )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::startselltrain
+			<< Train << Date ;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+}
+
+void MainWindow::closeDate_remote( const QString &Train, const QDate &Date )
+{
+	QByteArray block;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::stopsellticket
+			<< Train << Date;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> no_error;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return;
+
+}
+
+QString MainWindow::query_log_remote()
+{
+	QByteArray block;
+	QString serverReturn;
+	QDataStream serverOut(&block,QIODevice::WriteOnly);
+	serverOut.setVersion(QDataStream::Qt_5_0);
+
+	serverOut << (quint16)frontask::getsyslog;
+	serverSocket->write(block);
+	serverSocket->waitForBytesWritten();
+	//QMessageBox::information(this,"Info","write_OK");
+	bool no_error = true;
+	while(1)
+	{
+		serverSocket->waitForReadyRead();
+		serverIn.startTransaction();
+		serverIn >> serverReturn;
+		if(serverIn.commitTransaction())
+			break;
+	}
+	if(!no_error) throw(0);
+	return serverReturn;
+}
+
+void MainWindow::changestyle() {
+    static QString styles[] = {":/qss/qss/none.qss",":/qss/qss/white.qss",":/qss/qss/black.qss"};
+    static int nowstyle = 0;
+    nowstyle = (nowstyle+1)%3;
+    QFile styleSheet(styles[nowstyle]);
+    if (!styleSheet.open(QIODevice::ReadOnly))
+    {
+        qWarning("Can't open the style sheet file.");
+    }
+    qApp->setStyleSheet(styleSheet.readAll());
+}
+
+void MainWindow::on_styleBtn_clicked()
+{
+    changestyle();
+}
+
+bool Ui::Compare_for_qtrains(const DataBase_Train::QTrain &q1,const DataBase_Train::QTrain &q2){
+    return q1.loadStationLeaveTime < q2.loadStationLeaveTime;
 }

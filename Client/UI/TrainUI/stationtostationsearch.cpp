@@ -43,7 +43,7 @@ void StationToStationSearch::on_searchbotton_clicked() {
 
         SearchTicket ticket(this,ui->dateEdit->date(), nowaccount,
                             Ui::stationToStation, ui->fromLineEdit->text(),
-                            ui->toLineEdit->text());
+                            ui->toLineEdit->text(),adminID,adminName);
         ticket.exec();
 
     } else {

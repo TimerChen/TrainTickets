@@ -34,6 +34,7 @@ void AdminWindow::on_myinformBtn_clicked()
 {
     Myinform m(nowaccount, this);
     m.exec();
+    ui->nameLabel->setText(nowaccount->name);
 }
 
 void AdminWindow::on_searchAccountBtn_clicked()
@@ -46,4 +47,9 @@ void AdminWindow::on_pushButton_clicked()
 {
     sysLog sl(nowaccount->userID, this);
     sl.exec();
+}
+
+void AdminWindow::on_logoutBtn_clicked()
+{
+    accept();
 }

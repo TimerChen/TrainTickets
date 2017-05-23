@@ -142,7 +142,6 @@ public:
         splitter->raise();
 
         retranslateUi(AdminWindow);
-        QObject::connect(logoutBtn, SIGNAL(clicked()), AdminWindow, SLOT(accept()));
 
         QMetaObject::connectSlotsByName(AdminWindow);
     } // setupUi
