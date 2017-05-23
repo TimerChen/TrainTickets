@@ -48,3 +48,8 @@ void AdminWindow::on_pushButton_clicked()
     sysLog sl(nowaccount->userID, this);
     sl.exec();
 }
+
+void AdminWindow::on_logoutBtn_clicked()
+{
+    accept();
+}

@@ -104,13 +104,23 @@ Myticket::Myticket(ttd::shared_ptr<uistructs::nowAccount> _now, QWidget *parent,
 	///
 	ttd::map<DataBase_Account::Ticket, int> qtrains;
 	bool no_error = true;
-	try{
-		qtrains = ((MainWindow*)(parentWidget()))->
-				askTickets_remote(nowaccount->userID);
-	}catch(...){
-		no_error = false;
-	}
-
+    if(nowaccount->userType == Ui::searchusr) {
+        try{
+            qDebug()<<nowaccount->userID << endl;
+            qtrains = ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+                    askTickets_remote(nowaccount->userID);
+        }catch(...){
+            no_error = false;
+        }
+    }else {
+        try{
+            qDebug()<<nowaccount->userID<< endl;
+            qtrains = ((MainWindow*)(parentWidget()))->
+                    askTickets_remote(nowaccount->userID);
+        }catch(...){
+            no_error = false;
+        }
+    }
     int deltaForSeat = 0;
     int i = 0;
     for (ttd::map<DataBase_Account::Ticket,int>::iterator it = qtrains.begin(); it != qtrains.end(); ++it) {

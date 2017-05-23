@@ -73,7 +73,7 @@ public:
 
     void retranslateUi(QDialog *searchUsr)
     {
-        searchUsr->setWindowTitle(QApplication::translate("searchUsr", "Dialog", Q_NULLPTR));
+        searchUsr->setWindowTitle(QApplication::translate("searchUsr", "\346\237\245\346\211\276\347\224\250\346\210\267", Q_NULLPTR));
         label->setText(QApplication::translate("searchUsr", "\347\224\250\346\210\267ID\357\274\232", Q_NULLPTR));
         searchBtn->setText(QApplication::translate("searchUsr", "\346\237\245\350\257\242", Q_NULLPTR));
     } // retranslateUi

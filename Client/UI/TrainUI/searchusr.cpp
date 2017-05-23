@@ -39,6 +39,7 @@ void searchUsr::on_searchBtn_clicked()
         ttd::shared_ptr<uistructs::nowAccount> searchAccount = new uistructs::nowAccount;
         ///searchAccount->name = ;
 		searchAccount->userID = usrID;
+        qDebug()<<usrID<<endl;
         searchAccount->userType = Ui::searchusr;
         //test
 		searchAccount->name = acc.name;

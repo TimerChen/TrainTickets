@@ -102,7 +102,10 @@ void MainWindow::on_loginBtn_clicked() {
 			AdminWindow adw(nowaccount, this);
 			this->hide();
 			if(adw.exec() == QDialog::Accepted) this->show();
-			else qApp->quit();
+            else {
+                this->on_logoutBtn_clicked();
+                qApp->quit();
+            }
 			this->on_logoutBtn_clicked();
 		}
 	}
