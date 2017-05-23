@@ -35,6 +35,7 @@ void DataBase_Main::loadData_raw_buy( const QString &FileName )
     if (!file.open(QFile::ReadOnly|QFile::Text))
         throw(0);//open failed
 	QTextStream in(&file);
+    in.setCodec("UTF-8");
 
 	int total = 0;
 	int num;
