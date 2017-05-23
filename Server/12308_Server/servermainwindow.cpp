@@ -65,6 +65,12 @@ void ServerMainWindow::newCommand()
 		database->change_name( 0, "AIchan", "VirturalYoutuber" );
 	}else if(qlist[0] == QString("op") && qlist.size() >= 2){
 		database->setOp( qlist[1] );
+	}else if(qlist[0] == QString("register") && qlist.size() >= 3){
+		if(qlist.size() >= 4)
+			database->regist( qlist[1], qlist[2], qlist[3] );
+		else
+			database->regist( qlist[1], qlist[2] );
+
 	}
 	refreshConsole();
 	ui->commandEdit->setText("");
