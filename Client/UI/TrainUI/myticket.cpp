@@ -185,6 +185,12 @@ void Myticket::on_modifyTicketBtn_clicked() {
             if (nowaccount->userType == Ui::searchusr) {
                 ///发送adminmodifyusrticket
                 ///发送pair(targetticket, adminID)
+				try{
+					((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+							returnTickets_remote(targetticket);
+				}catch(...){
+					no_error = false;
+				}
             }else {
             ///发送frontask::modifyticket
 			///发送targetticket到服务器来买票

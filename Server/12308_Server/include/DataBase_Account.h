@@ -13,6 +13,7 @@ class DataBase_Account : public DataBase_Base
 {
  
 	friend class DataBase_User;
+	friend class DataBase_Main;
 public:
 	struct ticLog{
 		QString train, fromStation, toStation;

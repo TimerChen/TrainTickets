@@ -33,6 +33,8 @@ void searchUsr::on_searchBtn_clicked()
 	}catch(...){
 		no_error = false;
 	}
+	if( nowaccount->userID == usrID )
+		no_error = false;
 	if (no_error){
         ttd::shared_ptr<uistructs::nowAccount> searchAccount = new uistructs::nowAccount;
         ///searchAccount->name = ;
@@ -44,5 +46,5 @@ void searchUsr::on_searchBtn_clicked()
         editSearchUsr ed(searchAccount, this, nowaccount->userID, nowaccount->userID);
         ed.exec();
     }
-    else QMessageBox::warning(this, "用户ID不存在", "对不起，您搜索的用户ID不存在", QMessageBox::Cancel);
+	else QMessageBox::warning(this, "失败", "对不起，您搜索的用户ID不存在或没有权限\n\nPlease contact timer2016@163.com!\n", QMessageBox::Cancel);
 }

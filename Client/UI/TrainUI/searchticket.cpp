@@ -402,7 +402,12 @@ void SearchTicket::on_buyTicketBtn_clicked() {
                 if (nowaccount->userType == Ui::searchusr) {
                     ///发送frontask::adminaddusrticket
                     /// 发送pair(targetticket, adminID)
-					///
+					try{
+						((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+								buyTickets_remote(targetticket);
+					}catch(...){
+						no_error = false;
+					}
                 }else {
 					try{
 						((MainWindow*)(parentWidget()->parentWidget()))->

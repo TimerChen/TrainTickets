@@ -135,7 +135,7 @@ DataBase_Account::Account DataBase_Main::queryAccount
 {
 	int id = dAccount->getIdNumber(ID);
 	if(dUser->account_id(UserId) != id &&
-			!dUser->is_admin(UserId))
+		(!dUser->is_admin(UserId) || dAccount->accData[id].isAdmin))
 		throw ttd::no_authority();
 
 	DataBase_Account::Account acc = dAccount->queryAccount(id);

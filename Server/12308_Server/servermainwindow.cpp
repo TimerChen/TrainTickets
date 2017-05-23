@@ -173,6 +173,9 @@ void ServerMainWindow::newMessage()
 	case frontask::stopsellticket:
 		in >> opt_str >> opt_date;
 		break;
+	case frontask::getaccount:
+		in >> opt_str;
+		break;
 	default:
 		//unknown command
 		return;
@@ -399,6 +402,19 @@ void ServerMainWindow::newMessage()
 			break;
 		}
 		out << true;
+		break;
+	}
+	case frontask::getaccount:
+	{
+		DataBase_Account::Account tmp;
+		try{
+			tmp = database->queryAccount( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		out << tmp;
 		break;
 	}
 	default:
