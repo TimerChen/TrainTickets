@@ -7,28 +7,29 @@
 
 namespace frontask {
 enum {
-    stationtostationsearch,  // send stationToStationSearch
-    stationsearch,           // send stationSearch
-    trainsearch,             // send trainSearch
-    login,                   // send loginAccount
-    aulogin,                 // send auLoginAccount
+	stationtostationsearch,  // send stationToStationSearch
+	stationsearch,           // send stationSearch
+	trainsearch,             // send trainSearch
+	login,                   // send loginAccount
+	aulogin,                 // send auLoginAccount
 	logout,
-    reg,                     // send regist
-    changeusrname,           // send changeUsrName
-    changepwd,               // send changePwd
-    modifymyticket,          // send targetTicket
-    buyTicket,               // send targetTicket
-    getmytickets,            // send usrID
-    adminmodifyusrtickets,   // send pair(targetTicket, adminID)
-    adminaddusrtickets,      // send pair(targetTicket, adminID)
-    adminchangeusrpwd,       // send pair(changePwd,adminID)
-    adminchangeusrname,      // send pair(changeUsrName, adminID)
-    admindeleteusr,          // send pair(usrID, usrID)
-    stopsellticket,          // send pair(targetTicket, adminID)
-    deletetrain,             // send pair(targetTicket, adminID)
-    startselltrain,          // send pair(targetTicket, adminID)
-	addplane,                 // send pair(QString, adminID)
-	querylog
+	reg,                    // send regist
+	changeusrname,          // send changeUsrName
+	changepwd,              // send changePwd
+	modifymyticket,         // send targetTicket
+	buyTicket,              // send targetTicket
+	getmytickets,           // send usrID
+	adminmodifyusrtickets,  // send pair(targetTicket, adminID)
+	adminaddusrtickets,     // send pair(targetTicket, adminID)
+	adminchangeusrpwd,      // send pair(changePwd,adminID)
+	adminchangeusrname,     // send pair(changeUsrName, adminID)
+	admindeleteusr,         // send pair(usrID, usrID)
+	stopsellticket,         // send pair(targetTicket, adminID)
+	deletetrain,            // send pair(targetTicket, adminID)
+	startselltrain,         // send pair(targetTicket, adminID)
+	addplan,                // send pair(QString, adminID)
+	getsyslog,               // send adminID
+	getaccount
 };
 struct stationToStationSearch {
     QString fromStation, toStation;

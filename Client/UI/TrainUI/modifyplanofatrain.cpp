@@ -3,6 +3,8 @@
 #include <QMessageBox>
 #include "toserverstructs.h"
 
+#include "mainwindow.h"
+
 
 modifyPlanOfATrain::modifyPlanOfATrain(
     ttd::shared_ptr<uistructs::nowAccount> _now, frontask::targetTicket _targetticket, QString _traininform, QWidget *parent)
@@ -21,13 +23,22 @@ void modifyPlanOfATrain::on_deleteTrainBtn_clicked()
     QMessageBox::question(this,"确认删除",trainInform,
     QMessageBox::Yes|QMessageBox::No);
     if (qmb == QMessageBox::Yes){
-      if (true){
-          ///发送frontask::deletetrain
-          ///向服务器发送pair(targetticket.trainID, adminID)
-          QMessageBox::information(this,"成功","删除车次成功",QMessageBox::Yes);
-      }
-      else
-      QMessageBox::warning(this,"失败","非常抱歉，删除车次失败",QMessageBox::Cancel);
+
+		bool no_error = true;
+		try{
+			((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+					delTrain_remote( targetticket.trainID );
+		}catch(...){
+			no_error = false;
+		}
+
+		if (no_error){
+			///发送frontask::deletetrain
+			///向服务器发送pair(targetticket.trainID, adminID)
+			QMessageBox::information(this,"成功","删除车次成功",QMessageBox::Yes);
+		}
+		else
+			QMessageBox::warning(this,"失败","非常抱歉，删除车次失败",QMessageBox::Cancel);
     }
 }
 
@@ -38,13 +49,20 @@ void modifyPlanOfATrain::on_stopSellBtn_clicked()
     QMessageBox::question(this,tr("确认停止售票"),trainInform,
     QMessageBox::Yes|QMessageBox::No);
     if (qmb == QMessageBox::Yes){
-      if (true){
-          ///发送frontask::stopsellticket
-          ///向服务器发送pair(targetticket.trainID,aminID)
-          QMessageBox::information(this,"成功","停售成功",QMessageBox::Yes);
-      }
-      else
-      QMessageBox::warning(this,"失败","非常抱歉，停售失败",QMessageBox::Cancel);
+		bool no_error = true;
+		try{
+			((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+					closeDate_remote( targetticket.trainID, targetticket.time );
+		}catch(...){
+			no_error = false;
+		}
+		if (no_error){
+			///发送frontask::stopsellticket
+			///向服务器发送pair(targetticket.trainID,aminID)
+			QMessageBox::information(this,"成功","停售成功",QMessageBox::Yes);
+		}
+		else
+			QMessageBox::warning(this,"失败","非常抱歉，停售失败",QMessageBox::Cancel);
     }
 }
 
@@ -55,12 +73,19 @@ void modifyPlanOfATrain::on_startsellBtn_clicked()
     QMessageBox::question(this,tr("确认开始售票"),trainInform,
     QMessageBox::Yes|QMessageBox::No);
     if (qmb == QMessageBox::Yes){
-      if (true){
-          ///发送startselltrain
-          ///向服务器发送pair(targetticket,adminID)
-          QMessageBox::information(this,"成功","发售成功",QMessageBox::Yes);
-      }
-      else
-      QMessageBox::warning(this,"失败","非常抱歉，发售失败",QMessageBox::Cancel);
+		bool no_error = true;
+		try{
+			((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+					openDate_remote( targetticket.trainID, targetticket.time );
+		}catch(...){
+			no_error = false;
+		}
+		if (no_error){
+			///发送startselltrain
+			///向服务器发送pair(targetticket,adminID)
+			QMessageBox::information(this,"成功","发售成功",QMessageBox::Yes);
+		}
+		else
+			QMessageBox::warning(this,"失败","非常抱歉，发售失败",QMessageBox::Cancel);
     }
 }

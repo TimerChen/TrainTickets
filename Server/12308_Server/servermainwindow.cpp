@@ -119,6 +119,7 @@ void ServerMainWindow::newMessage()
 	frontask::targetTicket opt_tic;
 	frontask::changePwd opt_cp;
 	frontask::changeUsrName opt_cun;
+	QDate opt_date;
 	QString opt_str;
 	switch (oType) {
 	case frontask::stationtostationsearch:
@@ -156,6 +157,21 @@ void ServerMainWindow::newMessage()
 		break;
 	case frontask::changepwd:
 		in >> opt_cp;
+		break;
+	case frontask::getsyslog:
+
+		break;
+	case frontask::addplan:
+		in >> opt_str;
+		break;
+	case frontask::deletetrain:
+		in >> opt_str;
+		break;
+	case frontask::startselltrain:
+		in >> opt_str >> opt_date;
+		break;
+	case frontask::stopsellticket:
+		in >> opt_str >> opt_date;
 		break;
 	default:
 		//unknown command
@@ -326,6 +342,58 @@ void ServerMainWindow::newMessage()
 	{
 		try{
 			database->change_name( currentUser, opt_cun.usrID, opt_cun.newname );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::getsyslog:
+	{
+		QString re;
+		for( size_t i=ttd::max(0,(int)(logs->size())-50); i<logs->size(); ++i )
+			re = re + (*logs)[i] + "\n";
+		out << re;
+		break;
+	}
+	case frontask::addplan:
+	{
+		try{
+			database->add_train( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::deletetrain:
+	{
+		try{
+			database->delete_train( currentUser, opt_str );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::startselltrain:
+	{
+		try{
+			database->startSell( currentUser, opt_str, opt_date );
+		}catch(...){
+			out << false;
+			break;
+		}
+		out << true;
+		break;
+	}
+	case frontask::stopsellticket:
+	{
+		try{
+			database->stopSell( currentUser, opt_str, opt_date );
 		}catch(...){
 			out << false;
 			break;

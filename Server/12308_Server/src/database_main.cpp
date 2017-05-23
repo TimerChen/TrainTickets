@@ -109,13 +109,13 @@ ttd::pair<int,QString> DataBase_Main::login
 {
 	if(type==2)
 		return dLog->login
-				( ID, password, dUser->login( ID, password, 1 ) );
+				( ID, dAccount->getPasswordHash(password), dUser->login( ID, password, 1 ) );
 	else if(type == 1)
 		return dLog->login
-				( ID, password, dUser->adminLogin( ID, password ) );
+				( ID, dAccount->getPasswordHash(password), dUser->adminLogin( ID, password ) );
 	else
 		return dLog->login
-				( ID, password, dUser->login( ID, password ) );
+				( ID, dAccount->getPasswordHash(password), dUser->login( ID, password ) );
 }
 
 bool DataBase_Main::logout( int UserId )
@@ -309,4 +309,47 @@ void DataBase_Main::setOp( const QString &UserId )
 		return;
 	}
 	dLog->setOp( UserId, tmp );
+}
+void DataBase_Main::add_train( const int &UserId, const QString &TrainInfo )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+
+	dTrain->newTrain( TrainInfo );
+	dLog->newTrain(QString::number(UserId), "[Name]", "[TrainId]");
+}
+
+void DataBase_Main::delete_train( const int &UserId, const QString &TrainId )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+	bool tmp = dTrain->delTrain( TrainId );
+	dLog->delTrain(QString::number(UserId), "[Name]", TrainId );
+	if(!tmp) throw(ttd::not_exists());
+}
+
+void DataBase_Main::startSell( const int &UserId, const QString &TrainId, QDate DayTime )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+	dTrain->openOneDay( TrainId, DayTime );
+	dLog->openDay(QString::number(UserId), "[Name]", TrainId, DayTime);
+}
+
+void DataBase_Main::stopSell( const int &UserId, const QString &TrainId, QDate DayTime )
+{
+	if( UserId < 0 )
+		throw ttd::no_authority();
+	if(!dUser->is_admin(UserId))
+		throw ttd::no_authority();
+	bool tmp;
+	tmp = dTrain->closeOneDay( TrainId, DayTime );
+	dLog->closeDay(QString::number(UserId), "[Name]", TrainId, DayTime);
+	if(!tmp) throw(ttd::not_exists());
 }

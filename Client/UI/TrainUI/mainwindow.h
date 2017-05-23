@@ -30,6 +30,10 @@ class MainWindow : public QMainWindow {
 	friend class SearchTicket;
 	friend class Myticket;
 	friend class Myinform;
+	friend class sysLog;
+	friend class searchUsr;
+	friend class modifyPlanOfATrain;
+	friend class addplansimple;
    public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
@@ -95,6 +99,14 @@ private:
 	void changeName_remote
 		( const frontask::changeUsrName &fask );
 
+	DataBase_Account::Account query_name_remote( const QString &fask );
+
+	void addTrain_remote( const QString &fask );
+	void delTrain_remote( const QString &fask );
+	void openDate_remote( const QString &Train, const QDate &Date );
+	void closeDate_remote( const QString &Train, const QDate &Date );
+
+	QString query_log_remote();
     void changestyle();
 
 };

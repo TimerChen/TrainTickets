@@ -44,11 +44,9 @@ public:
     QVBoxLayout *verticalLayout_2;
     QGridLayout *gridLayout;
     QLabel *label_5;
-    QLineEdit *oldpwdLineEdit;
-    QLabel *label_6;
     QLineEdit *confirmNewPwdLindeEdit;
+    QLabel *label_6;
     QLineEdit *newpwdLineEdit;
-    QLabel *label_4;
     QPushButton *changepwdButton;
     QPushButton *exitBtn;
 
@@ -124,32 +122,22 @@ public:
         label_5 = new QLabel(layoutWidget);
         label_5->setObjectName(QStringLiteral("label_5"));
 
-        gridLayout->addWidget(label_5, 1, 0, 1, 1);
-
-        oldpwdLineEdit = new QLineEdit(layoutWidget);
-        oldpwdLineEdit->setObjectName(QStringLiteral("oldpwdLineEdit"));
-
-        gridLayout->addWidget(oldpwdLineEdit, 0, 1, 1, 1);
-
-        label_6 = new QLabel(layoutWidget);
-        label_6->setObjectName(QStringLiteral("label_6"));
-
-        gridLayout->addWidget(label_6, 2, 0, 1, 1);
+        gridLayout->addWidget(label_5, 0, 0, 1, 1);
 
         confirmNewPwdLindeEdit = new QLineEdit(layoutWidget);
         confirmNewPwdLindeEdit->setObjectName(QStringLiteral("confirmNewPwdLindeEdit"));
 
-        gridLayout->addWidget(confirmNewPwdLindeEdit, 2, 1, 1, 1);
+        gridLayout->addWidget(confirmNewPwdLindeEdit, 1, 1, 1, 1);
+
+        label_6 = new QLabel(layoutWidget);
+        label_6->setObjectName(QStringLiteral("label_6"));
+
+        gridLayout->addWidget(label_6, 1, 0, 1, 1);
 
         newpwdLineEdit = new QLineEdit(layoutWidget);
         newpwdLineEdit->setObjectName(QStringLiteral("newpwdLineEdit"));
 
-        gridLayout->addWidget(newpwdLineEdit, 1, 1, 1, 1);
-
-        label_4 = new QLabel(layoutWidget);
-        label_4->setObjectName(QStringLiteral("label_4"));
-
-        gridLayout->addWidget(label_4, 0, 0, 1, 1);
+        gridLayout->addWidget(newpwdLineEdit, 0, 1, 1, 1);
 
 
         verticalLayout_2->addLayout(gridLayout);
@@ -188,7 +176,6 @@ public:
         changenameBtn->setText(QApplication::translate("Myinform", "\344\277\235\345\255\230\344\277\256\346\224\271", Q_NULLPTR));
         label_5->setText(QApplication::translate("Myinform", "\346\226\260\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
         label_6->setText(QApplication::translate("Myinform", "\347\241\256\350\256\244\346\226\260\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
-        label_4->setText(QApplication::translate("Myinform", "\346\227\247\345\257\206\347\240\201\357\274\232", Q_NULLPTR));
         changepwdButton->setText(QApplication::translate("Myinform", "\344\277\256\346\224\271\345\257\206\347\240\201", Q_NULLPTR));
         exitBtn->setText(QApplication::translate("Myinform", "\350\277\224\345\233\236\344\270\273\350\217\234\345\215\225", Q_NULLPTR));
     } // retranslateUi
