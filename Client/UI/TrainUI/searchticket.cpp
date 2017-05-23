@@ -69,7 +69,7 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
     ui->ticketsTableView->setColumnWidth(3, 300);
     ui->ticketsTableView->setColumnWidth(4, 300);
     ui->ticketsTableView->setColumnWidth(5, 150);
-    ui->ticketsTableView->setColumnWidth(6, 100);
+    ui->ticketsTableView->setColumnWidth(6, 150);
     ui->ticketsTableView->setColumnWidth(7, 100);
     ui->ticketsTableView->setColumnWidth(8, 150);
     // ui->ticketsTableView->setColumnWidth(9, 100);
@@ -221,13 +221,23 @@ SearchTicket::SearchTicket(QWidget *parent, QDate _date,
         frontask::trainSearch sss(date, ask1);
 
 		bool no_error = true;
-		try{
-			trainroute =
-			((MainWindow*)(parentWidget()->parentWidget()))->query_t_remote
-								(sss);
-		}catch(...){
-			no_error = false;
-		}
+        if (nowaccount->userType == Ui::admin){
+            try{
+                trainroute =
+                ((MainWindow*)(parentWidget()->parentWidget()->parentWidget()))->query_t_remote
+                                    (sss);
+            }catch(...){
+                no_error = false;
+            }
+        }else {
+            try{
+                trainroute =
+                ((MainWindow*)(parentWidget()->parentWidget()))->query_t_remote
+                                    (sss);
+            }catch(...){
+                no_error = false;
+            }
+        }
 
 		if (no_error) {
             ///发送frontask::trainsearch
@@ -514,6 +524,7 @@ void SearchTicket::on_tryLuckBtn_clicked()
             }
         }
     } else  {
+        qDebug()<<trainInform<<endl;
         modifyPlanOfATrain m(nowaccount, targetticket, trainInform, this);
         // this->hide();
         m.exec();

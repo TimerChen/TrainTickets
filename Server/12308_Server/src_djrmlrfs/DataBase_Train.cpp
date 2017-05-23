@@ -54,7 +54,7 @@ void DataBase_Train::loadData_raw(const QString &FileName)
 			rt.push_back(QDateTime(day,gotTime));
 			
 			getline(in,now,',');
-			if (now == "�յ�վ")	ok = 1;
+			if (now == "�յ�վ")	ok = 1;
 			QTime goTime = QTime::fromString(now,"hh:mm");
 			lt.push_back(QDateTime(day,gotTime));
 			
@@ -275,7 +275,8 @@ DataBase_Train::QTrain DataBase_Train::Train::query_stationToStation(QDate dat, 
 		ans.unLoadStationReachTime = QDateTime(dat.addDays(reachTime[j].date().day()),reachTime[j].time());
 		for (int _ = 0; _ < seatTypeNumber; _++)
 		{
-			ans.price.push_back(priceTable[_][j]-priceTable[_][i]);
+			if(priceTable[_][i] == -1) ans.price.push_back(0);
+			else ans.price.push_back(priceTable[_][j]-priceTable[_][i]);
 			int mn = 2e9;
 			for (k = i; k <= j; k++)
 			{
