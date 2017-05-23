@@ -38,7 +38,7 @@ MainWindow::MainWindow(QWidget *parent)
 	serverIn.setDevice(serverSocket);
 	serverIn.setVersion(QDataStream::Qt_5_0);
 
-
+    qDebug()<< this << endl;
 
 }
 

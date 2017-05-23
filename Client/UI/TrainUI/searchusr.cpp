@@ -25,9 +25,10 @@ void searchUsr::on_searchBtn_clicked()
 	bool no_error = true;
 	DataBase_Account::Account acc;
 	try{
-		//???
+        //???
+        qDebug()<< parentWidget()->parentWidget() << endl;
 		acc =
-		((MainWindow*)(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget()))->
+        ((MainWindow*)(parentWidget()->parentWidget()))->
 				query_name_remote(usrID);
 	}catch(...){
 		no_error = false;
